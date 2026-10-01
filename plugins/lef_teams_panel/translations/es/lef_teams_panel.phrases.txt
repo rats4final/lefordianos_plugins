@@ -1,0 +1,259 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"es"		"{olive}[Equipos]{default}"
+	}
+	"Team 1"
+	{
+		"es"		"Espectadores"
+	}
+	"Team 2"
+	{
+		"es"		"Supervivientes"
+	}
+	"Team 3"
+	{
+		"es"		"Infectados"
+	}
+	"Short 1"
+	{
+		"es"		"ESP"
+	}
+	"Short 2"
+	{
+		"es"		"SUP"
+	}
+	"Short 3"
+	{
+		"es"		"INF"
+	}
+	"Panel Title"
+	{
+		"es"		"Equipos"
+	}
+	"Panel Last Title"
+	{
+		"es"		"Equipos guardados al final de la última ronda ({1})"
+	}
+	"Panel Spectators"
+	{
+		"es"		"Espectadores ({1})"
+	}
+	"Panel Survivors"
+	{
+		"es"		"Supervivientes ({1}/{2})"
+	}
+	"Panel Infected"
+	{
+		"es"		"Infectados ({1}/{2})"
+	}
+	"Panel Close"
+	{
+		"es"		"Cerrar"
+	}
+	"Status Dead"
+	{
+		"es"		"muerto"
+	}
+	"Status Down"
+	{
+		"es"		"caído"
+	}
+	"Status Ghost"
+	{
+		"es"		"fantasma"
+	}
+	"Status Away"
+	{
+		"es"		"ausente"
+	}
+	"Status Not Here"
+	{
+		"es"		"no está"
+	}
+	"Already On Team"
+	{
+		"es"		"Ya estás en {green}{1}{default}."
+	}
+	"Team Full"
+	{
+		"es"		"No pudiste unirte a {green}{1}{default}, no hay lugar libre."
+	}
+	"No Infected Team"
+	{
+		"es"		"No hay equipo infectado en este modo de juego."
+	}
+	"Cannot Leave Pinned"
+	{
+		"es"		"No puedes cambiar de equipo mientras estás atrapado o caído."
+	}
+	"Joined Team"
+	{
+		"es"		"{olive}{1}{default} se unió a {green}{2}{default}."
+	}
+	"Swap Disabled"
+	{
+		"es"		"Las solicitudes de cambio están desactivadas en este servidor."
+	}
+	"Swap Cooldown"
+	{
+		"es"		"Espera {1} segundos más antes de volver a pedir."
+	}
+	"Swap No Targets"
+	{
+		"es"		"No hay nadie en otro equipo con quien cambiar."
+	}
+	"Swap Self"
+	{
+		"es"		"No puedes cambiar contigo mismo."
+	}
+	"Swap Same Team"
+	{
+		"es"		"{olive}{1}{default} está en tu equipo."
+	}
+	"Swap Target Busy"
+	{
+		"es"		"{olive}{1}{default} ya está respondiendo otra solicitud de cambio."
+	}
+	"Swap Sent"
+	{
+		"es"		"Solicitud de cambio enviada a {olive}{1}{default}."
+	}
+	"Swap Menu Title"
+	{
+		"es"		"¿Cambiar de equipo con quién?"
+	}
+	"Swap Request Title"
+	{
+		"es"		"{1} quiere cambiar de equipo contigo.\nTe unirías a {2}."
+	}
+	"Swap Accept"
+	{
+		"es"		"Sí, cambiar"
+	}
+	"Swap Decline"
+	{
+		"es"		"No, gracias"
+	}
+	"Swap Declined"
+	{
+		"es"		"{olive}{1}{default} rechazó tu solicitud de cambio."
+	}
+	"Swap Expired"
+	{
+		"es"		"{olive}{1}{default} no respondió tu solicitud de cambio."
+	}
+	"Swap Invalid"
+	{
+		"es"		"Esa solicitud de cambio ya no es válida."
+	}
+	"Swap Done"
+	{
+		"es"		"{olive}{1}{default} y {olive}{2}{default} cambiaron de equipo."
+	}
+	"Usage Move"
+	{
+		"es"		"Uso: sm_moveplayer <jugador> <spec|surv|inf>"
+	}
+	"Usage Swap"
+	{
+		"es"		"Uso: sm_swapplayers <jugador1> <jugador2>"
+	}
+	"Bad Team"
+	{
+		"es"		"Equipo desconocido \"{1}\". Usa spec, surv o inf."
+	}
+	"Player Gone"
+	{
+		"es"		"Ese jugador ya no está en el servidor."
+	}
+	"Player Already On Team"
+	{
+		"es"		"{olive}{1}{default} ya está en {green}{2}{default}."
+	}
+	"Swap Players Same Team"
+	{
+		"es"		"{olive}{1}{default} y {olive}{2}{default} están en el mismo equipo."
+	}
+	"Not Enough Players"
+	{
+		"es"		"No hay suficientes jugadores en los equipos para hacer eso."
+	}
+	"No Saved Teams"
+	{
+		"es"		"Todavía no hay equipos guardados. Se guardan al final de cada ronda."
+	}
+	"Teams Already Match"
+	{
+		"es"		"Todos ya están en su equipo guardado."
+	}
+	"Could Not Move"
+	{
+		"es"		"No se pudo mover a {olive}{1}{default} a {green}{2}{default} (no hay lugar libre)."
+	}
+	"Admin Moved"
+	{
+		"es"		"{olive}{1}{default} movió a {olive}{2}{default} a {green}{3}{default}."
+	}
+	"Admin Swapped"
+	{
+		"es"		"{olive}{1}{default} intercambió a {olive}{2}{default} y {olive}{3}{default}."
+	}
+	"Admin Flipped"
+	{
+		"es"		"{olive}{1}{default} invirtió los equipos."
+	}
+	"Admin Shuffled"
+	{
+		"es"		"{olive}{1}{default} mezcló los equipos."
+	}
+	"Admin Restored"
+	{
+		"es"		"{olive}{1}{default} devolvió a todos a los equipos de la última ronda."
+	}
+	"Menu Category"
+	{
+		"es"		"Gestión de equipos"
+	}
+	"Menu show"
+	{
+		"es"		"Ver equipos"
+	}
+	"Menu move"
+	{
+		"es"		"Mover a un jugador de equipo"
+	}
+	"Menu swap"
+	{
+		"es"		"Intercambiar dos jugadores"
+	}
+	"Menu flip"
+	{
+		"es"		"Invertir equipos (supervivientes <-> infectados)"
+	}
+	"Menu shuffle"
+	{
+		"es"		"Mezclar equipos al azar"
+	}
+	"Menu restore"
+	{
+		"es"		"Restaurar equipos de la última ronda"
+	}
+	"Menu Pick Player"
+	{
+		"es"		"Elige un jugador"
+	}
+	"Menu Pick Second"
+	{
+		"es"		"Intercambiar a {1} con:"
+	}
+	"Menu Pick Team"
+	{
+		"es"		"Mover a {1} a:"
+	}
+	"Menu Confirm"
+	{
+		"es"		"{1}: ¿estás seguro?"
+	}
+}

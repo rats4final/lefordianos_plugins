@@ -1,0 +1,306 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"en"		"{olive}[Teams]{default}"
+	}
+
+	// Team names, looked up as "Team <number>"
+	"Team 1"
+	{
+		"en"		"Spectators"
+	}
+	"Team 2"
+	{
+		"en"		"Survivors"
+	}
+	"Team 3"
+	{
+		"en"		"Infected"
+	}
+	"Short 1"
+	{
+		"en"		"SPEC"
+	}
+	"Short 2"
+	{
+		"en"		"SURV"
+	}
+	"Short 3"
+	{
+		"en"		"INF"
+	}
+
+	// !teams / !lastteams panel
+	"Panel Title"
+	{
+		"en"		"Teams"
+	}
+	"Panel Last Title"
+	{
+		"#format"	"{1:s}"
+		"en"		"Teams saved at the end of the last round ({1})"
+	}
+	"Panel Spectators"
+	{
+		"#format"	"{1:d}"
+		"en"		"Spectators ({1})"
+	}
+	"Panel Survivors"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"Survivors ({1}/{2})"
+	}
+	"Panel Infected"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"Infected ({1}/{2})"
+	}
+	"Panel Nobody"
+	{
+		"en"		"   -"
+	}
+	"Panel Close"
+	{
+		"en"		"Close"
+	}
+	"Status Dead"
+	{
+		"en"		"dead"
+	}
+	"Status Down"
+	{
+		"en"		"down"
+	}
+	"Status Ghost"
+	{
+		"en"		"ghost"
+	}
+	"Status Away"
+	{
+		"en"		"away"
+	}
+	"Status Not Here"
+	{
+		"en"		"not here"
+	}
+	"Bot"
+	{
+		"en"		"BOT"
+	}
+
+	// Joining
+	"Already On Team"
+	{
+		"#format"	"{1:t}"
+		"en"		"You are already on the {green}{1}{default}."
+	}
+	"Team Full"
+	{
+		"#format"	"{1:t}"
+		"en"		"Couldn't join the {green}{1}{default}, there's no free spot."
+	}
+	"No Infected Team"
+	{
+		"en"		"There is no infected team in this game mode."
+	}
+	"Cannot Leave Pinned"
+	{
+		"en"		"You can't switch teams while pinned or down."
+	}
+	"Joined Team"
+	{
+		"#format"	"{1:s},{2:t}"
+		"en"		"{olive}{1}{default} joined the {green}{2}{default}."
+	}
+
+	// !swapwith
+	"Swap Disabled"
+	{
+		"en"		"Swap requests are turned off on this server."
+	}
+	"Swap Cooldown"
+	{
+		"#format"	"{1:d}"
+		"en"		"Wait {1} more seconds before asking again."
+	}
+	"Swap No Targets"
+	{
+		"en"		"There's nobody on another team to swap with."
+	}
+	"Swap Self"
+	{
+		"en"		"You can't swap with yourself."
+	}
+	"Swap Same Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} is on your team."
+	}
+	"Swap Target Busy"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} is already answering another swap request."
+	}
+	"Swap Sent"
+	{
+		"#format"	"{1:s}"
+		"en"		"Swap request sent to {olive}{1}{default}."
+	}
+	"Swap Menu Title"
+	{
+		"en"		"Swap teams with who?"
+	}
+	"Swap Request Title"
+	{
+		"#format"	"{1:s},{2:t}"
+		"en"		"{1} wants to swap teams with you.\nYou would join the {2}."
+	}
+	"Swap Accept"
+	{
+		"en"		"Yes, swap"
+	}
+	"Swap Decline"
+	{
+		"en"		"No thanks"
+	}
+	"Swap Declined"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} said no to your swap request."
+	}
+	"Swap Expired"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} didn't answer your swap request."
+	}
+	"Swap Invalid"
+	{
+		"en"		"That swap request is no longer valid."
+	}
+	"Swap Done"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{olive}{1}{default} and {olive}{2}{default} swapped teams."
+	}
+
+	// Admin actions
+	"Usage Move"
+	{
+		"en"		"Usage: sm_moveplayer <player> <spec|surv|inf>"
+	}
+	"Usage Swap"
+	{
+		"en"		"Usage: sm_swapplayers <player1> <player2>"
+	}
+	"Bad Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"Unknown team \"{1}\". Use spec, surv or inf."
+	}
+	"Player Gone"
+	{
+		"en"		"That player is no longer on the server."
+	}
+	"Player Already On Team"
+	{
+		"#format"	"{1:s},{2:t}"
+		"en"		"{olive}{1}{default} is already on the {green}{2}{default}."
+	}
+	"Swap Players Same Team"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{olive}{1}{default} and {olive}{2}{default} are on the same team."
+	}
+	"Not Enough Players"
+	{
+		"en"		"There aren't enough players on teams to do that."
+	}
+	"No Saved Teams"
+	{
+		"en"		"No teams saved yet. They are saved at the end of each round."
+	}
+	"Teams Already Match"
+	{
+		"en"		"Everyone is already on their saved team."
+	}
+	"Could Not Move"
+	{
+		"#format"	"{1:s},{2:t}"
+		"en"		"Couldn't move {olive}{1}{default} to the {green}{2}{default} (no free spot)."
+	}
+	"Admin Moved"
+	{
+		"#format"	"{1:s},{2:s},{3:t}"
+		"en"		"{olive}{1}{default} moved {olive}{2}{default} to the {green}{3}{default}."
+	}
+	"Admin Swapped"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"{olive}{1}{default} swapped {olive}{2}{default} and {olive}{3}{default}."
+	}
+	"Admin Flipped"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} flipped the teams."
+	}
+	"Admin Shuffled"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} shuffled the teams."
+	}
+	"Admin Restored"
+	{
+		"#format"	"{1:s}"
+		"en"		"{olive}{1}{default} put everyone back on last round's teams."
+	}
+
+	// Admin menu
+	"Menu Category"
+	{
+		"en"		"Team Management"
+	}
+	"Menu show"
+	{
+		"en"		"Show teams"
+	}
+	"Menu move"
+	{
+		"en"		"Move a player to a team"
+	}
+	"Menu swap"
+	{
+		"en"		"Swap two players"
+	}
+	"Menu flip"
+	{
+		"en"		"Flip teams (survivors <-> infected)"
+	}
+	"Menu shuffle"
+	{
+		"en"		"Shuffle teams randomly"
+	}
+	"Menu restore"
+	{
+		"en"		"Restore last round's teams"
+	}
+	"Menu Pick Player"
+	{
+		"en"		"Pick a player"
+	}
+	"Menu Pick Second"
+	{
+		"#format"	"{1:s}"
+		"en"		"Swap {1} with:"
+	}
+	"Menu Pick Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"Move {1} to:"
+	}
+	"Menu Confirm"
+	{
+		"#format"	"{1:t}"
+		"en"		"{1}: are you sure?"
+	}
+}
