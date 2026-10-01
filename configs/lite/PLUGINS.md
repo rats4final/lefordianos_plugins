@@ -158,6 +158,8 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
 ## 5b. Tank and witch every map, with flow % announced
 
 Works **without Ready-Up and without confogl**. Ready-Up is optional for all of these.
+- [x] **Ours** `lef_boss_spawns`: rolls a per-map chance for tank and witch (same for both teams),
+      spawns second-half bosses on the first half's spot, and makes sure flows get announced.
 - [x] `optional/witch_and_tankifier`: picks a tank and a witch spawn on every map, avoiding bad
       spots listed per map (108 maps covered in `configs/l4d2lib/mapinfo.txt`) and keeping the witch
       away from the tank. *needs l4d2lib*

@@ -12,7 +12,6 @@ that changes game balance should be optional and off by default.
 - **Lefordianos Vanilla+ (confogl match mode)**: a `cfgogl/lefordianos/` mode for `!match`:
   the fixes plus QoL, with none of the competitive balance changes. Lowest priority.
 - Lite config plugin list to choose from: [`configs/lite/PLUGINS.md`](configs/lite/PLUGINS.md).
-
 - **Use the game's own vote screen (builtinvotes) in our plugins.** The `builtinvotes`
   extension (ships with the competitive repo) shows the same F1/F2 vote panel as L4D2's own votes.
   What it can and can't do in L4D2:
@@ -28,14 +27,31 @@ that changes game balance should be optional and off by default.
     one call and get "passed/failed", instead of repeating the setup each time.
   - Not for swap requests: a 1-person vote would block every other vote on the server while it's
     open, so `!swapwith` keeps its private menu.
-- **Tank and witch every map, with announcements.** The answer is to use existing plugins
-  rather than build one: `l4d2lib` + `witch_and_tankifier` + `l4d_boss_percent` already do it
-  without Ready-Up or confogl (see section 5b of the plugin list). Possible add-ons of our own:
-  - **Chance per map**: e.g. 80% tank / 60% witch, rolled once per map so both teams get the same.
-    `witch_and_tankifier` exposes `SetTankPercent` / `SetWitchPercent`, so a small add-on can turn
-    a boss off for that map, and `l4d_boss_percent` then announces "Tank: none".
-  - **"Tank incoming" warning**: a chat/sound heads-up when survivors get within a few % of
-    the tank's flow.
+- **"Tank incoming" warning** (add-on to `lef_boss_spawns`): a chat/sound heads-up when survivors
+  get within a few % of the tank's flow.
+- **Comeback scoring for vanilla versus** — see the section below. Waiting on a direction.
+
+## Comeback scoring (discussion, 2026-10-01)
+
+**The problem:** vanilla versus scores mostly by distance (plus a 25-point tiebreak for the team
+that did more damage). A team wiped early on a map gets almost nothing, so one bad map can mean a
+400+ point gap. That demoralises the losing team and anyone who joins it.
+
+**How it could work technically:** the competitive scoring plugins don't replace the scoreboard;
+they adjust the game's own scoring settings right before the round's score is counted
+(`L4D2_OnEndVersusModeRound`). `l4d2_penalty_bonus` uses a neat trick: it sets a *negative* defib
+penalty, which turns it into a bonus that shows on the normal scoreboard and **still counts when a
+team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use it too.
+
+**Options**, from "keeps vanilla scoring" to "changes it most":
+
+| | Idea | Changes points? | Helps the losing team specifically? |
+|---|---|---|---|
+| A | **Show it better**: after each map, the score difference and "you need X% of the next map to come back" (MoYu's `l4d2_score_difference` already does this), plus a **map wins** count ("Maps: 3–2"), so one blowout is one lost map, not the whole game. | No | Morale only |
+| B | **Effort points**: a wiped team still earns points for what it did: SI killed, tank damage/kill, witch killed/crowned. Same rules for both teams. | Yes, a little | Shrinks blowouts for whoever gets wiped |
+| C | **Catch-up bonus**: the team that's behind gets a small bonus on the next maps (e.g. a % of the gap, capped). Tunable, could be off by default. | Yes | Yes, directly |
+| D | **Cap per-map swing**: one map can't widen the gap by more than N points. | Yes | Yes, limits blowouts |
+| E | **ZoneMod's health-bonus scoring** (`l4d2_hybrid_scoremod_zone`): points for staying healthy. | A lot | No; it's a different game |
 
 ## Later
 
@@ -76,5 +92,9 @@ that changes game balance should be optional and off by default.
 
 ## Done
 
+- **lef_boss_spawns**: per-map tank/witch chance (same for both teams), second-half bosses spawn on
+  the first half's spot (port of confogl's BossSpawning), flows announced. Works with
+  `witch_and_tankifier` / `l4d_boss_percent`, without Ready-Up or confogl.
+- **l4d_tank_control_eq (patched)**: tank rotation without the Ready-Up requirement.
 - **lef_teams_panel**: rewrite of BwA Jester's players panel. `!teams`, `!lastteams`,
   `!swapwith`, and a Team Management admin menu (move, swap, flip, shuffle, restore).

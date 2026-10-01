@@ -18,6 +18,7 @@ competitive balance changes.
 | Plugin | What it does |
 |---|---|
 | [`lef_teams_panel`](plugins/lef_teams_panel/) | `!teams` panel, `!swapwith` swap requests, and a Team Management admin menu. |
+| [`lef_boss_spawns`](plugins/lef_boss_spawns/) | Per-map tank/witch chance, same spawn spot for both teams, flows announced. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |
 
 ## Building
