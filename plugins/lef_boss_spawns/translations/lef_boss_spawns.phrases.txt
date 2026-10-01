@@ -1,0 +1,12 @@
+"Phrases"
+{
+	"Announce"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{green}[Bosses]{default} Tank: {1} | Witch: {2}"
+	}
+	"No Boss"
+	{
+		"en"		"none this map"
+	}
+}

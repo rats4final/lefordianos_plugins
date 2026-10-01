@@ -1,0 +1,11 @@
+"Phrases"
+{
+	"Announce"
+	{
+		"es"		"{green}[Jefes]{default} Tank: {1} | Witch: {2}"
+	}
+	"No Boss"
+	{
+		"es"		"no hay en este mapa"
+	}
+}
