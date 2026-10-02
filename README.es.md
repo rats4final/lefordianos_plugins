@@ -29,6 +29,8 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 | [`lef_saferoom_doors`](plugins/lef_saferoom_doors/README.es.md) | Anuncia quién abrió la puerta del refugio inicial y quién cerró la final con compañeros afuera. |
 | [`lef_t1_mode`](plugins/lef_t1_mode/README.es.md) | Modo solo armas T1 que se prende y apaga (cvar, admin o votación `!t1`), configurable. |
 | [`lef_client_cvars`](plugins/lef_client_cvars/README.es.md) | Expulsa a quien tenga cvars de cliente que dan ventaja (brillo total, sin niebla...); la lista de ZoneMod, sin confogl. |
+| [`lef_votes`](plugins/lef_votes/README.es.md) | `!votes` en la pantalla de votación del juego, desde un archivo de config: mapas, equipos, expulsar (con un baneo corto, como en vanilla), AFK, silenciar, reglas, pausa solo por votación. Más una categoría *Lefordianos* en `!admin`. |
+| [`lef_menu`](plugins/lef_menu/README.es.md) | `!menu`: todos los comandos para jugadores del servidor en un menú; oculta lo que no está instalado. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/README.es.md) | Nuestro propio sonido al azar en los karma kills (necesita FastDL, ver [docs/FASTDL.es.md](docs/FASTDL.es.md)). |
 | [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/README.es.md) | Copia parchada del tank horde monitor del repo competitivo, con interruptor y recordatorio de la regla. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/README.es.md) | Copia parchada de la rotación de tank del repo competitivo que ya no necesita Ready-Up. |

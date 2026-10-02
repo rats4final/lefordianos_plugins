@@ -56,6 +56,7 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | `lef_comeback_bonus` | Uses `l4d2_penalty_bonus` (Tabun, A1m`; competitive repo) |
 | `lef_admin_restore` | Improves `admin_hp` by Harry Potter |
 | `lef_client_cvars` | Port of confogl's ClientSettings module (Confogl Team); cvar list from the competitive repo's `cvar_tracking.cfg` |
+| `lef_votes` | Ideas from Harry Potter's `l4d_votes_5` (archived) and `l4d2_vote_change`; mission manager include by Harry Potter, based on rikka0w0's |
 | `lef_t1_mode` | Weapon conversion stocks from l4d2util, as used by `l4d2_weaponrules` (ProdigySim); CS weapon precache idea from `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control by arti, with Sheo, Sir and Altair-Sossai (one line changed) |
 

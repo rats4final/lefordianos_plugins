@@ -56,6 +56,7 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | `lef_comeback_bonus` | Usa `l4d2_penalty_bonus` (Tabun, A1m`; repo competitivo) |
 | `lef_admin_restore` | Mejora el `admin_hp` de Harry Potter |
 | `lef_client_cvars` | Versión independiente del módulo ClientSettings de confogl (Confogl Team); lista de cvars del `cvar_tracking.cfg` del repo competitivo |
+| `lef_votes` | Ideas del `l4d_votes_5` (archivado) y del `l4d2_vote_change` de Harry Potter; include del mission manager de Harry Potter, basado en el de rikka0w0 |
 | `lef_t1_mode` | Funciones de conversión de armas de l4d2util, como las usa `l4d2_weaponrules` (ProdigySim); la idea de precargar armas de CS viene de `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control de arti, con Sheo, Sir y Altair-Sossai (una línea cambiada) |
 

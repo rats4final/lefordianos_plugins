@@ -29,6 +29,8 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_saferoom_doors`](plugins/lef_saferoom_doors/) | Announces who opened the start saferoom door and who closed the end one with teammates outside. |
 | [`lef_t1_mode`](plugins/lef_t1_mode/) | Switchable T1-only weapons mode (cvar, admin or `!t1` vote), configurable. |
 | [`lef_client_cvars`](plugins/lef_client_cvars/) | Kicks players whose client cvars give an advantage (fullbright, no fog...); ZoneMod's list, without confogl. |
+| [`lef_votes`](plugins/lef_votes/) | `!votes` on the game's vote screen, from a config file: maps, teams, kick (with a short ban, like vanilla), AFK, mute, rules, pause only by vote. Plus a *Lefordianos* category in `!admin`. |
+| [`lef_menu`](plugins/lef_menu/) | `!menu`: every player command on the server in one menu; hides what isn't installed. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |
 | [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/) | Patched copy of the competitive repo's tank horde monitor with an on/off switch and a rule reminder. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |

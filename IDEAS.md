@@ -309,6 +309,7 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **lef_votes** and **lef_menu**: `!votes` from a config file (the list above, kick with a 5-minute ban, pause only by vote, admin *Lefordianos* category with force pause/unpause and pass/cancel) and `!menu` for players. Not yet tested in game. Still to do: the ACS-style finale vote, the balanced shuffle (waits for the roster) and showing who voted.
 - **lef_client_cvars**: client cvar checks (fullbright, fog, flashlight...) without confogl, ZoneMod's list. Not yet tested in game.
 
 - **Lite config package**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows and Linux), our configs in `configs/lite/left4dead2/` (ZoneMod values, per-mode files, server messages). All tools moved to Python so they also run on Windows.

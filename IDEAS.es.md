@@ -337,6 +337,7 @@ también lo usaría.
 
 ## Hecho
 
+- **lef_votes** y **lef_menu**: `!votes` desde un archivo de config (la lista de arriba, expulsar con baneo de 5 minutos, pausa solo por votación, categoría *Lefordianos* de admin con forzar pausa/quitar pausa y aprobar/cancelar) y `!menu` para jugadores. Falta probarlos en el juego. Pendiente: la votación de final estilo ACS, la mezcla balanceada (espera el roster) y mostrar quién votó.
 - **lef_client_cvars**: revisión de cvars de cliente (brillo, niebla, linterna...) sin confogl, con la lista de ZoneMod. Falta probarlo en el juego.
 
 - **Paquete de la config lite**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows y Linux), nuestras configs en `configs/lite/left4dead2/` (valores de ZoneMod, archivos por modo, mensajes del servidor). Todas las herramientas pasaron a Python para que también corran en Windows.
