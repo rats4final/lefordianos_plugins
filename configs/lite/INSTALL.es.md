@@ -89,6 +89,7 @@ y en la consola del servidor:
 | Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Nombre del servidor, RCON, región, lobby/matchmaking, addons | `cfg/server.cfg` (empieza desde `cfg/server.example.cfg`) |
+| Idioma de la pantalla de votación (un texto para todos) y de los mensajes del servidor | `addons/sourcemod/configs/core.cfg`: `"ServerLang" "es"` (por defecto `"en"`). Los menús y el chat ya siguen el idioma de cada jugador |
 | Cambios de Stripper | edita `configs/lite/stripper_rules.txt` acá, corre `python3 tools/make_stripper.py` y vuelve a armar |
 
 Cada plugin además crea su propio `cfg/sourcemod/<plugin>.cfg` la primera vez que carga; los valores de

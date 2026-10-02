@@ -1,0 +1,94 @@
+// Spanish for Automatic Campaign Switcher (ACS, rikka0w0's l4d2_mission_manager), which ships only
+// English, Chinese, French and Russian. Added by Lefordianos. build_lite.py also makes the "las" copy.
+// Español para Automatic Campaign Switcher (ACS), que solo trae inglés, chino, francés y ruso.
+"Phrases"
+{
+	"Change map advertise"
+	{
+		"es"			"Escribe {1} en el chat para iniciar una votación de la próxima campaña."
+	}
+	"Map vote advertise"
+	{
+		"es"			"Para votar el próximo mapa, escribe: {1}\n           Para ver todos los votos, escribe: {2}"
+	}
+	"Choose a Map"
+	{
+		"es"			"Elige el próximo mapa"
+	}
+	"Choose a Mission"
+	{
+		"es"			"Elige la próxima campaña"
+	}
+	"I dont care"
+	{
+		"es"			"Me da igual"
+	}
+	"All maps"
+	{
+		"es"			"Todos los mapas"
+	}
+	"Campaign finished"
+	{
+		"es"			"Campaña {1} terminada"
+	}
+	"Switching campaign to"
+	{
+		"es"			"Cambiando a la campaña {1}."
+	}
+	"Switching map to"
+	{
+		"es"			"Cambiando al mapa {1}."
+	}
+	"Switching to the vote winner"
+	{
+		"es"			"Cambiando a la ganadora de la votación: {1}."
+	}
+	"Map is now winning the vote"
+	{
+		"es"			"El mapa {1} va ganando la votación"
+	}
+	"Mission is now winning the vote"
+	{
+		"es"			"La campaña {1} va ganando la votación"
+	}
+	"No one has voted yet"
+	{
+		"es"			"Nadie ha votado todavía."
+	}
+	"Voting is disable"
+	{
+		"es"			"La votación está desactivada en este servidor."
+	}
+	"Voting is not available"
+	{
+		"es"			"La votación solo está disponible en un mapa final o de Scavenge."
+	}
+	"Votes"
+	{
+		"es"			"votos"
+	}
+	"You did not vote"
+	{
+		"es"			"No votaste.\nPara votar, escribe: {1}"
+	}
+	"You voted for"
+	{
+		"es"			"Votaste por {1}.\n- Para cambiar tu voto, escribe: {2}\n- Para ver todos los votos, escribe: {3}"
+	}
+	"The next map is currently"
+	{
+		"es"			"Por ahora el próximo mapa es: {1}."
+	}
+	"The next campaign is currently"
+	{
+		"es"			"Por ahora la próxima campaña es: {1}."
+	}
+	"The next map will be one of"
+	{
+		"es"			"El próximo mapa será uno de: {1}."
+	}
+	"The next campaign will be one of"
+	{
+		"es"			"La próxima campaña será una de: {1}."
+	}
+}

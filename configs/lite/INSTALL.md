@@ -88,6 +88,7 @@ server console:
 | Steam ban checks: the Steam Web API key (keep it private) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Bot damage reduction (15%), pace/holding warnings, start panel and `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Server name, RCON, region, lobby/matchmaking, addons | `cfg/server.cfg` (start from `cfg/server.example.cfg`) |
+| Language of the vote screen (one text for everyone) and of server messages | `addons/sourcemod/configs/core.cfg`: `"ServerLang" "es"` (default `"en"`). Menus and chat already follow each player's language |
 | Stripper changes | edit `configs/lite/stripper_rules.txt` here, run `python3 tools/make_stripper.py`, rebuild |
 
 Each plugin also writes its own `cfg/sourcemod/<plugin>.cfg` the first time it loads; values in
