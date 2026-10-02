@@ -23,7 +23,7 @@ marked in [configs/lite/PLUGINS.md](configs/lite/PLUGINS.md)).
 |---|---|
 | `plugins/<name>/` | Our plugins: `scripting/`, `translations/` (+ `es/`), `configs/`, `README.md` + `README.es.md` |
 | `alliedmodders/` | Plugins imported from AlliedModders authors (credited) |
-| `configs/lite/` | The lite config: `PLUGINS.md` (bilingual picker), `manifest.txt` (what goes in the package), `stripper_rules.txt`, `left4dead2/` (our cfg files), `INSTALL.md` |
+| `configs/lite/` | The lite config (`left4dead2/cfg/server.example.cfg`, `lefordianos/test_bots.cfg` for solo testing): `PLUGINS.md` (bilingual picker), `manifest.txt` (what goes in the package), `stripper_rules.txt`, `left4dead2/` (our cfg files), `INSTALL.md` |
 | `tools/` | Python build tools (see below); `refs.txt` pins the reference repos |
 | `docs/` | FastDL guide, benefits overview |
 | `IDEAS.md`, `CHANGELOG.md`, `CREDITS.md`, `README.md` | Each with a Spanish twin `*.es.md` |
@@ -70,6 +70,12 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
   autoexec configs, so values there (and in `lefordianos/common.cfg`, which each mode file execs) win.
 - `chainsaw_fix` is Linux-only by design and fails to load on Windows; harmless.
 - You can't print to chat from inside a usermessage hook: defer with `RequestFrame`.
+- **Every map change re-runs the configs** (server.cfg, each plugin's `cfg/sourcemod/*.cfg`, and the
+  game-mode cfg that execs `common.cfg`), so a setting changed at runtime (vote, admin) silently reverts.
+  Re-apply it in `OnConfigsExecuted` and forget it once the server is empty (wait ~60 s: map changes
+  also disconnect everyone briefly). See `lef_votes` (`"persist"`) and `lef_t1_mode`.
+- The Valve wiki and AlliedModders block scripted fetches (bot checks); the Internet Archive copy of
+  the wiki's L4D2 cvar list works (`web.archive.org/web/2025/<url>`).
 
 ## Working with the owner
 

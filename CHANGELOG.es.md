@@ -6,6 +6,15 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-10-03
+
+- **Corrección:** los ajustes cambiados por votación o admin (modo T1, probabilidad de tank/witch, tank
+  horde monitor, voz entre equipos) se deshacían en el mapa siguiente, porque cada cambio de mapa vuelve a
+  ejecutar las configs. Ahora duran hasta que el servidor se vacía (clave `"persist"` de `lef_votes`, y el
+  propio `lef_t1_mode`).
+- **Config lite:** un `server.cfg` de ejemplo (a partir del del repo competitivo y del de Harry Potter,
+  revisado con la wiki de Valve) y `test_bots.cfg` / `test_off.cfg` para probar solo con bots.
+
 ## 2026-10-02
 
 ### Plugins nuevos

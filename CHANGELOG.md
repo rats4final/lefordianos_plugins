@@ -5,6 +5,14 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-10-03
+
+- **Fix:** settings changed by vote or admin (T1 mode, tank/witch chance, horde monitor, all talk) were
+  undone on the next map, because every map change re-runs the configs. They now last until the server
+  is empty (`lef_votes` `"persist"` key, and `lef_t1_mode` itself).
+- **Lite config:** an example `server.cfg` (from the competitive repo's and Harry Potter's, checked
+  against the Valve wiki) and `test_bots.cfg` / `test_off.cfg` for testing alone with bots.
+
 ## 2026-10-02
 
 ### New plugins
