@@ -12,9 +12,9 @@ Las herramientas de admin siguen en `!admin` (la categoría *Lefordianos* está 
 | Grupo | Opciones |
 |---|---|
 | Equipos | Quién está en cada equipo, equipos de la ronda pasada, cambiar de lugar con un jugador, unirse a sobrevivientes / infectados, ir AFK |
-| Votaciones | Iniciar una votación (`!votes`), votar armas T1, votar modo de juego |
+| Votaciones | Iniciar una votación (`!votes`), elegir la próxima campaña (`!mapvote`), votar armas T1, votar modo de juego |
 | Info de la partida | Puntajes, tank y witch en este mapa, quién será el tank, bono de remontada |
-| Partida | Pausar (inicia una votación), listos para quitar la pausa, ajustes del cliente que revisa el servidor |
+| Partida | Esperar a un amigo antes de empezar (`!wait`), pausar (inicia una votación), listos para quitar la pausa, ajustes del cliente que revisa el servidor |
 
 Las opciones están en `addons/sourcemod/configs/lef_menu.cfg` (título en inglés y español, más el
 comando). Una opción cuyo comando no existe en el servidor se oculta, así el mismo archivo sirve con

@@ -10,9 +10,9 @@ Admin tools stay in `!admin` (see [lef_votes](../lef_votes/) for the *Lefordiano
 | Group | Entries |
 |---|---|
 | Teams | Who is on each team, last round's teams, trade places with a player, join survivors / infected, go AFK |
-| Votes | Start a vote (`!votes`), T1 weapons vote, game mode vote |
+| Votes | Start a vote (`!votes`), pick the next campaign (`!mapvote`), T1 weapons vote, game mode vote |
 | Match info | Scores, tank and witch on this map, who becomes the tank, comeback bonus |
-| Game | Pause (starts a vote), ready to unpause, client settings the server checks |
+| Game | Wait for a friend before starting (`!wait`), pause (starts a vote), ready to unpause, client settings the server checks |
 
 The entries are in `addons/sourcemod/configs/lef_menu.cfg` (title in English and Spanish, plus the
 command). An entry whose command doesn't exist on the server is hidden, so the same file works with
