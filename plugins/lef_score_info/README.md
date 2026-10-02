@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # lef_score_info — Lefordianos Score Info
 
 Explains vanilla versus scores so a bad map doesn't feel hopeless. **It changes no points.**

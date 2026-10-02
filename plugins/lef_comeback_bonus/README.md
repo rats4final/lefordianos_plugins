@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # lef_comeback_bonus — Lefordianos Comeback Bonus
 
 Gives the team that's behind a fair chance to come back in vanilla versus. Left 4 Dead 2, versus only.

@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # lef_admin_restore — Lefordianos Admin Restore
 
 **Undo griefing.** When someone shoots, burns, incaps or kills a teammate, an admin can give the

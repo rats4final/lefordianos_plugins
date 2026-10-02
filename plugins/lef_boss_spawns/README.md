@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # lef_boss_spawns — Lefordianos Boss Spawns
 
 Makes versus tanks and witches **fair and known for both teams**. Left 4 Dead 2, versus only.

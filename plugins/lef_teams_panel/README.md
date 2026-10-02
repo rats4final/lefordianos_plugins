@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # lef_teams_panel — Lefordianos Teams Panel
 
 A rewrite of **"Jesters Players Panel and Switch Menu"** by -=BwA=- Jester (original in

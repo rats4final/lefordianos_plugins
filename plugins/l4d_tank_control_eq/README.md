@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # l4d_tank_control_eq (patched: no Ready-Up needed)
 
 **L4D2 Tank Control** by arti, with contributions by Sheo, Sir and Altair-Sossai, from
