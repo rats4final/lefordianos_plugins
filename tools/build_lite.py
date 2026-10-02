@@ -224,6 +224,47 @@ def check_platforms():
                 warn(f"extension {ext} has no {suffix} build")
 
 
+LANG_ES_LINE = re.compile(r'^(\s*)"es"(\s+)(".*")\s*$')
+
+
+def add_latam_spanish():
+    """
+    SourceMod gives players with Steam in "Spanish - Latin America" the language code "las", a
+    different language from Spain's "es", and doesn't fall back from one to the other. Without this
+    they'd see English everywhere. So every Spanish translation in the package also becomes Latin
+    American Spanish: translations/es/x.txt -> translations/las/x.txt, and inside single-file
+    translations each "es" line gets a "las" copy.
+    """
+    root = os.path.join(OUT, "addons", "sourcemod", "translations")
+    es_dir, las_dir = os.path.join(root, "es"), os.path.join(root, "las")
+    if os.path.isdir(es_dir):
+        for name in os.listdir(es_dir):
+            target = os.path.join(las_dir, name)
+            if os.path.exists(target):
+                continue
+            with open(os.path.join(es_dir, name), encoding="utf-8", errors="replace") as f:
+                lines = f.readlines()
+            os.makedirs(las_dir, exist_ok=True)
+            with open(target, "w", encoding="utf-8", newline="") as f:
+                f.writelines(LANG_ES_LINE.sub(r'\1"las"\2\3', l.rstrip("\r\n")) + "\n" for l in lines)
+    for name in os.listdir(root):
+        path = os.path.join(root, name)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8", errors="replace") as f:
+            text = f.read()
+        if '"es"' not in text or '"las"' in text:
+            continue
+        out = []
+        for line in text.splitlines():
+            out.append(line)
+            m = LANG_ES_LINE.match(line)
+            if m:
+                out.append(f'{m.group(1)}"las"{m.group(2)}{m.group(3)}')
+        with open(path, "w", encoding="utf-8", newline="") as f:
+            f.write("\n".join(out) + "\n")
+
+
 def main():
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -237,6 +278,7 @@ def main():
             print(f"{kind:5} {args[0]}")
             handle(kind, args)
 
+    add_latam_spanish()
     check_platforms()
 
     listing = os.path.join(os.path.dirname(OUT), "CONTENTS.txt")

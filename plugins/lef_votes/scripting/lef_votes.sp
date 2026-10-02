@@ -336,7 +336,7 @@ bool UsesSpanish(int client)
 	char code[8], name[32];
 	int lang = (client > 0 && IsClientInGame(client)) ? GetClientLanguage(client) : GetServerLanguage();
 	GetLanguageInfo(lang, code, sizeof(code), name, sizeof(name));
-	return StrEqual(code, "es");
+	return StrEqual(code, "es") || StrEqual(code, "las");   // Spain or Latin America
 }
 
 void GroupTitle(int index, int client, char[] buffer, int maxlength)

@@ -138,7 +138,7 @@ bool UsesSpanish(int client)
 {
 	char code[8], name[32];
 	GetLanguageInfo(GetClientLanguage(client), code, sizeof(code), name, sizeof(name));
-	return StrEqual(code, "es");
+	return StrEqual(code, "es") || StrEqual(code, "las");   // Spain or Latin America
 }
 
 // The first word of the entry's command must exist (its plugin is loaded).
