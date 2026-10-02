@@ -1,0 +1,7 @@
+"Phrases"
+{
+	"LefRulesHint"
+	{
+		"es"		"Regla: si aparece un {red}tank{default} durante un evento de horda, la horda se {blue}pausa{default}. Avanzar para saltarse el tank la hace volver, más fuerte cuanto más avancen."
+	}
+}
