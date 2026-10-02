@@ -1,0 +1,59 @@
+"Phrases"
+{
+	"Label Yours"
+	{
+		"es"		"Tu equipo"
+	}
+	"Label Theirs"
+	{
+		"es"		"El otro equipo"
+	}
+	"Label Survivors"
+	{
+		"es"		"Los supervivientes"
+	}
+	"Label Infected"
+	{
+		"es"		"Los infectados"
+	}
+	"Map Value Even"
+	{
+		"es"		"{green}[Puntos]{default} Este mapa vale {olive}{1}{default} puntos. Los puntajes están empatados."
+	}
+	"Map Value Gap"
+	{
+		"es"		"{green}[Puntos]{default} Este mapa vale {olive}{1}{default} puntos. Diferencia: {olive}{2}{default} ({3}%% de este mapa)."
+	}
+	"Halftime Target"
+	{
+		"es"		"{green}[Puntos]{default} {1} hizo {olive}{2}{default} de {3} en este mapa."
+	}
+	"Halftime To Win Map"
+	{
+		"es"		"{green}[Puntos]{default} {1} necesita {olive}{2}{default} ({3}%% del mapa) para ganar este mapa."
+	}
+	"Halftime To Lead"
+	{
+		"es"		"{green}[Puntos]{default} {1} necesita {olive}{2}{default} ({3}%% del mapa) para pasar adelante en el total."
+	}
+	"Halftime Lead Out Of Reach"
+	{
+		"es"		"{green}[Puntos]{default} {1} necesita {olive}{2}{default} para pasar adelante, más que los {3} de este mapa. ¡Achiquen la diferencia y sigan!"
+	}
+	"Map Won"
+	{
+		"es"		"{green}[Puntos]{default} {1} ganó este mapa, {olive}{2}{default} a {olive}{3}{default}."
+	}
+	"Map Draw"
+	{
+		"es"		"{green}[Puntos]{default} Este mapa terminó empatado en {olive}{1}{default}."
+	}
+	"Standings"
+	{
+		"es"		"{green}[Puntos]{default} {1}: {olive}{2}{default} pts, {olive}{3}{default} mapas ganados | {4}: {olive}{5}{default} pts, {olive}{6}{default} mapas ganados"
+	}
+	"Not Versus"
+	{
+		"es"		"{green}[Puntos]{default} Los puntajes solo se cuentan en versus."
+	}
+}

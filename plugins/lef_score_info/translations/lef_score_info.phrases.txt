@@ -1,0 +1,76 @@
+"Phrases"
+{
+	// Team labels
+	"Label Yours"
+	{
+		"en"		"Your team"
+	}
+	"Label Theirs"
+	{
+		"en"		"The other team"
+	}
+	"Label Survivors"
+	{
+		"en"		"The survivors"
+	}
+	"Label Infected"
+	{
+		"en"		"The infected"
+	}
+
+	// Survivors leave the saferoom
+	"Map Value Even"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Score]{default} This map is worth {olive}{1}{default} points. Scores are even."
+	}
+	"Map Value Gap"
+	{
+		"#format"	"{1:d},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} This map is worth {olive}{1}{default} points. Gap: {olive}{2}{default} ({3}%% of this map)."
+	}
+
+	// After the first half
+	"Halftime Target"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} {1} scored {olive}{2}{default} of {3} on this map."
+	}
+	"Halftime To Win Map"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} {1} need {olive}{2}{default} ({3}%% of the map) to win this map."
+	}
+	"Halftime To Lead"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} {1} need {olive}{2}{default} ({3}%% of the map) to take the overall lead."
+	}
+	"Halftime Lead Out Of Reach"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} {1} need {olive}{2}{default} to take the lead, more than this map's {3}. Close the gap and keep going!"
+	}
+
+	// After the map
+	"Map Won"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Score]{default} {1} won this map, {olive}{2}{default} to {olive}{3}{default}."
+	}
+	"Map Draw"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Score]{default} This map was a draw at {olive}{1}{default}."
+	}
+	"Standings"
+	{
+		"#format"	"{1:s},{2:d},{3:d},{4:s},{5:d},{6:d}"
+		"en"		"{green}[Score]{default} {1}: {olive}{2}{default} pts, {olive}{3}{default} maps won | {4}: {olive}{5}{default} pts, {olive}{6}{default} maps won"
+	}
+
+	"Not Versus"
+	{
+		"en"		"{green}[Score]{default} Scores are only tracked in versus."
+	}
+}
