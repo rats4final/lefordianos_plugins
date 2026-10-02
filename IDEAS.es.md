@@ -189,6 +189,18 @@ jugador).
 No sugeridas: "dar vida" (cambia el balance del versus; `!heal` cubre el griefing) y votar baneos (la
 expulsión troll lo cubre sin baneos permanentes).
 
+
+**Decidido el 2026-10-02:** la lista de arriba está aprobada, `!menu` es el nombre. Agregados:
+- **La votación de expulsión funciona como la del vanilla:** expulsa y además banea un rato (por defecto
+  5 minutos, configurable; 0 = solo expulsar), así un troll expulsado no vuelve enseguida. La expulsión
+  propia de SourceMod solo expulsa.
+- **Pausa solo por votación:** los jugadores ya no pueden usar `!pause` directo; inician una votación
+  Sí/No de pausa (los randoms no pueden abusar). Reanudar sigue igual que en `pause.smx` (ambos equipos se
+  ponen listos). Los admins mantienen **forzar pausa / forzar reanudar** al instante en la categoría
+  *Lefordianos* de `!admin`.
+- **Votación para silenciar** (sugerida): callar la voz y el chat de un jugador por el resto del mapa.
+- La revisión de cvars de cliente la cubre el nuevo `lef_client_cvars` (la lista de ZoneMod, sin confogl).
+
 **Más adelante:** mostrar quién votó Sí/No en cada votación (el usuario va a buscar plugins que ya
 existan), tiempo de espera entre votaciones, mínimo de jugadores, si los espectadores pueden iniciar o
 participar en votaciones (el plugin de Harry tiene esto como cvars).
@@ -324,6 +336,8 @@ también lo usaría.
   el panel de equipos (sintaxis nueva, Left4DHooks en vez de gamedata propia, traducciones).
 
 ## Hecho
+
+- **lef_client_cvars**: revisión de cvars de cliente (brillo, niebla, linterna...) sin confogl, con la lista de ZoneMod. Falta probarlo en el juego.
 
 - **Paquete de la config lite**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows y Linux), nuestras configs en `configs/lite/left4dead2/` (valores de ZoneMod, archivos por modo, mensajes del servidor). Todas las herramientas pasaron a Python para que también corran en Windows.
 

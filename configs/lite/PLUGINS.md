@@ -211,6 +211,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: expulsa a quien intente el wallhack "mat_hack".*
 - [x] `optional/l4d_thirdpersonshoulderblock`: kicks players using third-person to peek around corners.
   *ES: expulsa a quien use tercera persona para mirar detrás de las esquinas.*
+- [x] **Ours** `lef_client_cvars`: kicks players whose client cvars give an advantage (`mat_fullbright`,
+      no fog, flashlight tweaks...). ZoneMod's list of 59 cvars, ported from confogl so it works without it.
+  *ES: (nuestro) expulsa a quien tenga cvars de cliente que dan ventaja (`mat_fullbright`, sin niebla,
+  cambios a la linterna...). La lista de 59 cvars de ZoneMod, portado de confogl para que funcione sin él.*
 - [x] `optional/lerpmonitor`: tracks players' lerp; can kick extreme values. *ZoneMod tunes it*
   *ES: vigila el lerp de los jugadores; puede expulsar valores extremos.*
 - [x] `optional/ratemonitor`: tracks players' rate settings.

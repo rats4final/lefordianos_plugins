@@ -169,6 +169,17 @@ vote = adding an entry, no code. Built-in items need code only where a menu is r
 Not suggested: "give HP" (changes versus balance; `!heal` covers griefing) and ban votes (troll
 kick covers it without permanent bans).
 
+
+**Decided 2026-10-02:** the list above is approved, `!menu` is the name. Additions:
+- **Kick vote works like vanilla's:** kick plus a short temporary ban (default 5 minutes,
+  configurable; 0 = kick only), so a kicked troll can't rejoin right away. SourceMod's own kick only
+  kicks.
+- **Pause only by vote:** players can't `!pause` directly any more; they call a Yes/No pause vote
+  (randoms can't abuse it). Unpausing still works as in `pause.smx` (both teams ready up). Admins keep
+  instant **force pause / force unpause** in the `!admin` *Lefordianos* category.
+- **Mute/gag vote** (suggested): silence a player's voice and chat for the rest of the map.
+- Client cvar checks are covered by the new `lef_client_cvars` (ZoneMod's list, without confogl).
+
 **Later:** show who voted Yes/No on each vote (user will look for existing plugins), vote cooldowns,
 minimum players, whether spectators can call/join votes (Harry's plugin has these as cvars).
 
@@ -297,6 +308,8 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
   teams panel (new syntax, Left4DHooks instead of private gamedata, translations).
 
 ## Done
+
+- **lef_client_cvars**: client cvar checks (fullbright, fog, flashlight...) without confogl, ZoneMod's list. Not yet tested in game.
 
 - **Lite config package**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows and Linux), our configs in `configs/lite/left4dead2/` (ZoneMod values, per-mode files, server messages). All tools moved to Python so they also run on Windows.
 
