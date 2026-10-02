@@ -127,6 +127,20 @@ fuentes difieren: el `server.cfg` competitivo usa `0`; el tutorial de Harry sugi
 **Decisión (2026-10-02):** por ahora ningún l4dtoolz. El de lakwsh es el probable, una vez que lo
 probemos en nuestro servidor y no cause problemas.
 
+**9 o más jugadores y matchmaking (investigado 2026-10-02, del README de `l4d_unreservelobby` de Harry y
+su tutorial de servidores):**
+- Un lobby **reserva** el servidor. Mientras está reservado y **no está lleno**, el matchmaking de Steam
+  manda jugadores al azar para llenarlo. Un lobby de versus tiene **8**: con 8 adentro, el matchmaking ya
+  no manda a nadie, y un servidor reservado también rechaza al noveno por consola o lista de servidores,
+  aunque haya lugares libres.
+- O sea, el matchmaking no puede mandar a un noveno jugador. Para dejar entrar a más como espectadores:
+  l4dtoolz (lakwsh) para más lugares (`sv_setmax`, `sv_maxplayers`, `sv_visiblemaxplayers`) más el
+  `l4d_unreservelobby` de Harry, que quita la reserva cuando el servidor se llena, así el noveno en
+  adelante entra por la lista de servidores, `connect` o "Unirse a la partida" de un amigo. Cuando se van
+  todos, la reserva puede volver.
+- Costo a probar: una vez sin reserva, el matchmaking deja de rellenar los lugares vacíos con randoms
+  hasta que el servidor se vacía, y los randoms son como llenamos las partidas entre semana.
+
 ### Sonidos del karma kill
 Solo para karma kills. El karma kill de eyal282 dispara `KarmaKillSystem_OnKarmaEventPost`, así que un
 plugin chico nuestro puede tocar un sonido al azar de nuestra propia lista. Los jugadores tienen que

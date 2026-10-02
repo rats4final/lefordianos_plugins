@@ -113,6 +113,19 @@ two sources differ: the competitive `server.cfg` uses `0`; Harry's tutorial sugg
 **Decision (2026-10-02):** no l4dtoolz for now. lakwsh's is the likely choice once we've tested it
 on our server and it causes no problems.
 
+**9+ players and matchmaking (researched 2026-10-02, from Harry's `l4d_unreservelobby` README and his
+server tutorial):**
+- A lobby **reserves** the server. While reserved and **not full**, Steam's matchmaking sends random
+  players to fill it. A versus lobby holds **8**: once 8 are in, matchmaking sends nobody else, and a
+  reserved server also refuses the 9th via console or server browser, even with free slots.
+- So matchmaking can't send a 9th player. To let extra people in as spectators: l4dtoolz (lakwsh)
+  for more slots (`sv_setmax`, `sv_maxplayers`, `sv_visiblemaxplayers`) plus Harry's
+  `l4d_unreservelobby`, which drops the reservation when the server is full, so a 9th+ can join through
+  the server browser, `connect`, or a friend's "Join game". When everyone leaves, the reservation can
+  come back.
+- Trade-off to test: once unreserved, matchmaking stops refilling empty spots with randoms until the
+  server empties, and randoms are how we fill games on weekdays.
+
 ### Karma kill sounds
 Only for karma kills. eyal282's karma kill system fires `KarmaKillSystem_OnKarmaEventPost`, so a
 small plugin of ours can play a random sound from our own list. Players must download custom sounds:
