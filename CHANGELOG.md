@@ -7,6 +7,12 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Fix (first server test):** 20 fix plugins failed to load on the server because their gamedata files
+  weren't in the package: the packager only found gamedata loaded the old way (`LoadGameConfigFile`),
+  not the newer `new GameData(...)`. Now it finds both.
+- **Fix:** `l4d_afk_commands` needs a newer Actions extension than the competitive repo ships; the
+  package now has Actions 3.9.2 (keeps every older function).
+- **Fix:** `l4d2_survivor_mourn_fix` needs `sceneprocessor`; now included.
 - **Fix:** settings changed by vote or admin (T1 mode, tank/witch chance, horde monitor, all talk) were
   undone on the next map, because every map change re-runs the configs. They now last until the server
   is empty (`lef_votes` `"persist"` key, and `lef_t1_mode` itself).

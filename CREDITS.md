@@ -29,6 +29,7 @@ pinned in [`tools/refs.txt`](tools/refs.txt), so the setup can be rebuilt with o
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | SourceTV / demo recording fixes (planned) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Example of a match mode built on ZoneMod |
 | [AoC-Gamers](https://github.com/orgs/AoC-Gamers/repositories): CallVote-Manager, L4D2-Family-Share, L4D2-Player-Skills, L4D2-Player-Stats, L4D2-CommSuite, T1-ZM, SuperVanilla, L4D2-Competitive-Rework-Fix and others | AoC-Gamers | Reference for vote tracking, stats, Family Sharing and casual ZoneMod variants (see IDEAS) |
+| [actions.ext](https://github.com/Vinillia/actions.ext) | Vinillia | Actions extension 3.9.2 (newer than the competitive repo's build) |
 | [sm-ripext](https://github.com/ErikMinekus/sm-ripext) | Erik Minekus | REST in Pawn extension (HTTP + JSON), used by `lef_steam_bans` |
 
 ## AlliedModders plugins
@@ -45,6 +46,7 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | NoroHime | Announce Health (`l4d_announce_healer`) | 1.2.1 | [Steam profile](https://steamcommunity.com/id/NoroHime/) |
 | SilverShot (Silvers) | Fire Glow (`l4d_fire_glow`) | 1.8 | [t=186617](https://forums.alliedmods.net/showthread.php?t=186617) |
 | SilverShot (Silvers) | Bots Ignore PipeBombs and Shoot (`l4d_pipebomb_ignore`) | 2.0 | [t=333464](https://forums.alliedmods.net/showthread.php?t=333464) |
+| Buster "Mr. Zero" Nielsen, fork by cravenge and Dragokas | Scene Processor (`sceneprocessor`) | 1.33.3 | [t=241585](https://forums.alliedmods.net/showthread.php?t=241585) |
 | pan0s | L4D2 Menu (`l4d2_menu`) | 1.2 | [t=332614](https://forums.alliedmods.net/showthread.php?t=332614) |
 | pan0s | Statistic And Ranking System (`l4d2_srs`) | 2.5 | AlliedModders forums; bundles HexTags (Hexah), Chat-Processor (Drixevel) and GeoResolver (Hattrick HKS) |
 

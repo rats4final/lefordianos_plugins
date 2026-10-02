@@ -74,6 +74,9 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
   game-mode cfg that execs `common.cfg`), so a setting changed at runtime (vote, admin) silently reverts.
   Re-apply it in `OnConfigsExecuted` and forget it once the server is empty (wait ~60 s: map changes
   also disconnect everyone briefly). See `lef_votes` (`"persist"`) and `lef_t1_mode`.
+- Plugins load gamedata as `LoadGameConfigFile("x")` **or** `new GameData("x")` / `new GameDataWrapper("x")`;
+  `build_lite.py` must catch both (it once missed 20 files). Prebuilt `.smx` from other repos may need
+  newer extensions than the competitive repo ships (Actions: we ship 3.9.2 via `get_extensions.py`).
 - The Valve wiki and AlliedModders block scripted fetches (bot checks); the Internet Archive copy of
   the wiki's L4D2 cvar list works (`web.archive.org/web/2025/<url>`).
 
@@ -91,7 +94,7 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
 
 ## Status (2026-10-02)
 
-**Built, compiled, in the lite package (177 plugins), not yet tested in game:**
+**Built, compiled, in the lite package (178 plugins), not yet tested in game:**
 `lef_teams_panel` (teams panel, balanced shuffle with roster, balance hints), `lef_boss_spawns`,
 `lef_score_info`, `lef_admin_restore`, `lef_saferoom_doors`, `lef_t1_mode`, `lef_karma_sounds`,
 `lef_client_cvars`, `lef_votes` (config-driven votes, vanilla-like kick, pause by vote, who voted,

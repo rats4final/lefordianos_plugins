@@ -8,6 +8,12 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Corrección (primera prueba en el servidor):** 20 plugins de correcciones no cargaban porque sus
+  archivos de gamedata no estaban en el paquete: el armador solo encontraba la gamedata cargada a la
+  antigua (`LoadGameConfigFile`), no la forma nueva `new GameData(...)`. Ahora encuentra las dos.
+- **Corrección:** `l4d_afk_commands` necesita una extensión Actions más nueva que la del repo competitivo;
+  el paquete ahora trae Actions 3.9.2 (mantiene todas las funciones anteriores).
+- **Corrección:** `l4d2_survivor_mourn_fix` necesita `sceneprocessor`; ahora está incluido.
 - **Corrección:** los ajustes cambiados por votación o admin (modo T1, probabilidad de tank/witch, tank
   horde monitor, voz entre equipos) se deshacían en el mapa siguiente, porque cada cambio de mapa vuelve a
   ejecutar las configs. Ahora duran hasta que el servidor se vacía (clave `"persist"` de `lef_votes`, y el
