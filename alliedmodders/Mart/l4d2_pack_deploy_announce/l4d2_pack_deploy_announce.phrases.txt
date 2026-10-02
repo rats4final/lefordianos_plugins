@@ -1,0 +1,47 @@
+﻿/*
+	******************************************************************************************************************************************************
+
+	You can display phrases in chat with color using any of the methods below:
+
+	Using color codes:
+		•  // Default (use instead of \x01), Alt + 01 Keyboard Shortcut
+		•  // Light Green (use instead of \x03), Alt + 03 Keyboard Shortcut
+		•  // Orange (use instead of \x04), Alt + 04 Keyboard Shortcut
+		•  // Olive (use instead of \x05), Alt + 05 Keyboard Shortcut
+
+	or
+
+	Using color tags:
+		• {default} // Default (use instead of \x01)
+		• {lightgreen} // Light Green (use instead of \x03)
+		• {orange} // Orange (use instead of \x04)
+		• {olive} // Green (use instead of \x05)
+
+	******************************************************************************************************************************************************
+*/
+
+"Phrases"
+{
+	"Deployed an incendiary ammo pack"
+	{
+		"#format"		"{1:N}"
+		"en"			"{orange}{1} {lightgreen}deployed an {olive}incendiary ammo pack"
+		"es"			"{orange}{1} {lightgreen}desplegó un {olive}paquete de munición incendiaria"
+		"hu"			"{orange}{1} {lightgreen}lerakott egy {olive}gyújtólőszeres csomagot"
+		"no"			"{orange}{1} {lightgreen}utplasserte {olive}brannfarlig ammunisjonspakke"
+		"pt"			"{orange}{1} {lightgreen}implantou um {olive}pacote de munição incendiária"
+		"pt_p"			"{orange}{1} {lightgreen}implantou um {olive}pacote de munição incendiária"
+		"ru"			"{orange}{1} {lightgreen}развернул коробку {olive}зажигательных патронов"
+	}
+	"Deployed an explosive ammo pack"
+	{
+		"#format"		"{1:N}"
+		"en"			"{orange}{1} {lightgreen}deployed an {olive}explosive ammo pack"
+		"es"			"{orange}{1} {lightgreen}desplegó un {olive}paquete de munición explosiva"
+		"hu"			"{orange}{1} {lightgreen}lerakott egy {olive}robbanólőszeres csomagot"
+		"no"			"{orange}{1} {lightgreen}utplasserte {olive}eksplosiv ammunisjonspakke"
+		"pt"			"{orange}{1} {lightgreen}implantou um {olive}pacote de munição explosiva"
+		"pt_p"			"{orange}{1} {lightgreen}implantou um {olive}pacote de munição explosiva"
+		"ru"			"{orange}{1} {lightgreen}развернул коробку {olive}разрывных патронов"
+	}
+}

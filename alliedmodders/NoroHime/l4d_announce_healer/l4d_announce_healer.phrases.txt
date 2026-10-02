@@ -1,0 +1,42 @@
+// support {white} {default} or {cyan} {lightgreen} or {orange} {olive} or {green}
+
+"Phrases"
+{
+	"Health"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}Health {1}"		
+		"zho"		"{green}健康 {1}"		
+		"chi"		"{green}健康 {1}"
+	}
+	"Revived"
+	{
+		"#format"	"{1:d}"
+		"en"		"{white} / {cyan}Incapped {green}{1} {cyan}time(s)"		
+		"zho"		"{white} / {cyan}倒了 {green}{1}{cyan} 次"
+		"chi"		"{white} / {cyan}倒了 {green}{1}{cyan} 次"
+	}
+	"Buffer"
+	{
+		"#format"	"{1:d}"
+		"en"		"{white}({green}+{1}{white})"		
+	}
+	"Dying"
+	{
+		"en"		"{white} / {green}Dying"		
+		"zho"		"{white} / {green}垂死"
+		"chi"		"{white} / {green}垂死"
+	}
+	"Name"
+	{
+		"#format"	"{1:N}"
+		"en"		"{orange}{1}{white}: "
+	}
+	"Adrenaline Left"
+	{
+		"#format"	"{1:.1f}"
+		"en"		"{white} / {cyan}Adrenaline {green}{1}s"
+		"zho"		"{white} / {cyan}肾上腺素 {green}{1}s"
+		"chi"		"{white} / {cyan}肾上腺素 {green}{1}s"
+	}
+}
