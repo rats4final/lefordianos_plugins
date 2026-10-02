@@ -98,7 +98,7 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
 - WSL machine with a 10 GB cap shared with other work: check `free -g` before heavy runs.
   Builds here are light.
 
-## Status (2026-10-02)
+## Status (2026-10-03)
 
 **Built, compiled, in the lite package (179 plugins), not yet tested in game:**
 `lef_teams_panel` (teams panel, balanced shuffle with roster, balance hints), `lef_boss_spawns`,
@@ -118,4 +118,11 @@ karma sound files, FastDL host.
 demo recording (sourcetvsupport + an auto-recorder; AoC's Lilac-SourceTV fits), Vanilla+ confogl mode,
 stats-based balance levels (AoC Player-Stats/Skills), Family Sharing detection (AoC Family-Share).
 
-**Next step:** test everything on a real server (see `configs/lite/INSTALL.md`, step 4).
+**Testing (2026-10-03):** first runs on the owner's Windows server, alone with bots. Fixed so far:
+missing gamedata (packager), Actions too old, missing sceneprocessor, pause/si_class_announce errors,
+lerp limit, Latin American Spanish, panel timing, witch notice, finale-only campaign vote. To verify
+with more players: the jockey "longer stagger" report (probably vanilla: jockey/hunter landings stagger
+nearby survivors; suspects if not: l4d2_getup_slide_fix, l4d2_godframes_control_merge), votes and
+`!wait` with real people, session persistence across map changes.
+
+**Next step:** the owner tests with more players and reports the error log and what felt wrong.
