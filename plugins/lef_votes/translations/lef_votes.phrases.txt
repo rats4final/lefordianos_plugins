@@ -1,0 +1,132 @@
+"Phrases"
+{
+	"Menu Title"
+	{
+		"en"		"Vote on:"
+	}
+	"Menu Title Admin"
+	{
+		"en"		"Run now (no vote):"
+	}
+	"No Votes"
+	{
+		"en"		"{green}[Votes]{default} There is nothing to vote on."
+	}
+	"No Players"
+	{
+		"en"		"{green}[Votes]{default} There are no other players."
+	}
+	"Player Gone"
+	{
+		"en"		"{green}[Votes]{default} That player is no longer here."
+	}
+	"No Mission Manager"
+	{
+		"en"		"{green}[Votes]{default} The map list isn't available (l4d2_mission_manager isn't loaded)."
+	}
+	"Map Invalid"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} The map {olive}{1}{default} isn't installed on this server."
+	}
+	"Spectators Cannot Call"
+	{
+		"en"		"{green}[Votes]{default} Spectators can't start votes. Join a team first."
+	}
+	"Busy"
+	{
+		"en"		"{green}[Votes]{default} Another vote is already on screen. Wait for it to end."
+	}
+	"Vote Delay"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Votes]{default} Wait {olive}{1}{default} seconds before the next vote."
+	}
+	"Not Enough Players"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Votes]{default} At least {olive}{1}{default} players are needed to vote."
+	}
+	"Vote Passed Screen"
+	{
+		"en"		"Vote passed."
+	}
+	"Vote Passed"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} Passed: {olive}{1}"
+	}
+	"Vote Failed"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} Failed: {olive}{1}"
+	}
+	"Vote Passed Admin"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} An admin passed the vote: {olive}{1}"
+	}
+	"Vote Cancelled Admin"
+	{
+		"en"		"{green}[Votes]{default} An admin cancelled the vote."
+	}
+	"Kicked"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} was kicked by vote."
+	}
+	"Kicked Ban"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} was kicked by vote and can't rejoin for {2} minutes."
+	}
+	"Kick Reason"
+	{
+		"en"		"Kicked by vote."
+	}
+	"Kick Reason Ban"
+	{
+		"#format"	"{1:d}"
+		"en"		"Kicked by vote. You can rejoin in {1} minutes."
+	}
+	"Pause Needs Vote"
+	{
+		"en"		"{green}[Votes]{default} Pausing needs a vote. Starting one now."
+	}
+	"Pause Disabled"
+	{
+		"en"		"{green}[Votes]{default} Pausing is turned off on this server."
+	}
+	"No Own Vote"
+	{
+		"en"		"There is no !votes vote on screen to pass."
+	}
+	"No Vote"
+	{
+		"en"		"There is no vote on screen."
+	}
+	"Admin Category"
+	{
+		"en"		"Lefordianos"
+	}
+	"Admin run"
+	{
+		"en"		"Run a vote option now"
+	}
+	"Admin forcepause"
+	{
+		"en"		"Force pause"
+	}
+	"Admin forceunpause"
+	{
+		"en"		"Force unpause"
+	}
+	"Admin pass"
+	{
+		"en"		"Pass the current vote"
+	}
+	"Admin cancel"
+	{
+		"en"		"Cancel the current vote"
+	}
+}

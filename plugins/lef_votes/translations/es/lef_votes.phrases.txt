@@ -1,0 +1,123 @@
+"Phrases"
+{
+	"Menu Title"
+	{
+		"es"		"Votar por:"
+	}
+	"Menu Title Admin"
+	{
+		"es"		"Hacer ahora (sin votación):"
+	}
+	"No Votes"
+	{
+		"es"		"{green}[Votos]{default} No hay nada para votar."
+	}
+	"No Players"
+	{
+		"es"		"{green}[Votos]{default} No hay otros jugadores."
+	}
+	"Player Gone"
+	{
+		"es"		"{green}[Votos]{default} Ese jugador ya no está."
+	}
+	"No Mission Manager"
+	{
+		"es"		"{green}[Votos]{default} La lista de mapas no está disponible (falta l4d2_mission_manager)."
+	}
+	"Map Invalid"
+	{
+		"es"		"{green}[Votos]{default} El mapa {olive}{1}{default} no está instalado en este servidor."
+	}
+	"Spectators Cannot Call"
+	{
+		"es"		"{green}[Votos]{default} Los espectadores no pueden iniciar votaciones. Únete a un equipo primero."
+	}
+	"Busy"
+	{
+		"es"		"{green}[Votos]{default} Ya hay otra votación en pantalla. Espera a que termine."
+	}
+	"Vote Delay"
+	{
+		"es"		"{green}[Votos]{default} Espera {olive}{1}{default} segundos antes de la próxima votación."
+	}
+	"Not Enough Players"
+	{
+		"es"		"{green}[Votos]{default} Hacen falta al menos {olive}{1}{default} jugadores para votar."
+	}
+	"Vote Passed Screen"
+	{
+		"es"		"Votación aprobada."
+	}
+	"Vote Passed"
+	{
+		"es"		"{green}[Votos]{default} Aprobada: {olive}{1}"
+	}
+	"Vote Failed"
+	{
+		"es"		"{green}[Votos]{default} Rechazada: {olive}{1}"
+	}
+	"Vote Passed Admin"
+	{
+		"es"		"{green}[Votos]{default} Un admin aprobó la votación: {olive}{1}"
+	}
+	"Vote Cancelled Admin"
+	{
+		"es"		"{green}[Votos]{default} Un admin canceló la votación."
+	}
+	"Kicked"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} fue expulsado por votación."
+	}
+	"Kicked Ban"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} fue expulsado por votación y no puede volver por {2} minutos."
+	}
+	"Kick Reason"
+	{
+		"es"		"Expulsado por votación."
+	}
+	"Kick Reason Ban"
+	{
+		"es"		"Expulsado por votación. Puedes volver en {1} minutos."
+	}
+	"Pause Needs Vote"
+	{
+		"es"		"{green}[Votos]{default} Pausar necesita una votación. Iniciándola ahora."
+	}
+	"Pause Disabled"
+	{
+		"es"		"{green}[Votos]{default} Pausar está desactivado en este servidor."
+	}
+	"No Own Vote"
+	{
+		"es"		"No hay una votación de !votes en pantalla para aprobar."
+	}
+	"No Vote"
+	{
+		"es"		"No hay ninguna votación en pantalla."
+	}
+	"Admin Category"
+	{
+		"es"		"Lefordianos"
+	}
+	"Admin run"
+	{
+		"es"		"Hacer una opción de votación ya"
+	}
+	"Admin forcepause"
+	{
+		"es"		"Forzar pausa"
+	}
+	"Admin forceunpause"
+	{
+		"es"		"Forzar quitar pausa"
+	}
+	"Admin pass"
+	{
+		"es"		"Aprobar la votación actual"
+	}
+	"Admin cancel"
+	{
+		"es"		"Cancelar la votación actual"
+	}
+}
