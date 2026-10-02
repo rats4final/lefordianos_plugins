@@ -317,4 +317,19 @@
 		"#format"	"{1:d}"
 		"en"		"The balanced shuffle works with up to {1} players on teams."
 	}
+	"Hint Switch"
+	{
+		"#format"	"{1:d},{2:d},{3:t},{4:s}"
+		"en"		"Your team has {olive}{1}{default} humans and the other {olive}{2}{default}. To even it out, join {olive}{3}{default}: type {olive}{4}{default}."
+	}
+	"Hint Free Bot"
+	{
+		"#format"	"{1:t},{2:s}"
+		"en"		"A bot is playing a {olive}{1}{default} spot. Take it: type {olive}{2}{default}."
+	}
+	"Hint Free Spot"
+	{
+		"#format"	"{1:t},{2:s}"
+		"en"		"{olive}{1}{default} is short a player. Join: type {olive}{2}{default}."
+	}
 }

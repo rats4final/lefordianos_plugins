@@ -268,4 +268,16 @@
 	{
 		"es"		"La mezcla balanceada funciona con hasta {1} jugadores en equipos."
 	}
+	"Hint Switch"
+	{
+		"es"		"Tu equipo tiene {olive}{1}{default} humanos y el otro {olive}{2}{default}. Para emparejar, únete a {olive}{3}{default}: escribe {olive}{4}{default}."
+	}
+	"Hint Free Bot"
+	{
+		"es"		"Un bot está ocupando un lugar en {olive}{1}{default}. Tómalo: escribe {olive}{2}{default}."
+	}
+	"Hint Free Spot"
+	{
+		"es"		"A {olive}{1}{default} le falta un jugador. Únete: escribe {olive}{2}{default}."
+	}
 }

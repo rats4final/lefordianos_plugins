@@ -73,6 +73,15 @@ los límites de los equipos y no deja salir a un superviviente atrapado o caído
 Pausar/reanudar (usar `pause.smx`), los alias de comandos de equipo (usar `l4d_afk_commands`), la
 restauración automática de espectadores (usar `l4d2_spec_stays_spec`) y el menú de registro de depuración.
 
+## Avisos de balance (versus)
+
+- Quien se une al equipo que ya tiene **2 o más humanos de más** recibe, en privado, a qué equipo unirse
+  para emparejar y el comando (`!survivors` / `!infected` de `l4d_afk_commands`, o `!teams`).
+- Cada `lef_teams_spec_hint_interval` segundos (60), a los espectadores se les avisa cuando un bot ocupa
+  un lugar de sobreviviente o a los infectados les falta un jugador, pero solo del lado con menos humanos.
+- Junto con `l4d_afk_commands_versus_teams_unbalance_limit 1` (config lite: nadie puede unirse al equipo
+  que ya tiene más humanos), esto evita la mayoría de partidas "2 humanos + 2 bots contra 4".
+
 ## Mezcla balanceada y el roster
 
 Las mezclas al azar muchas veces dejan a todos los habituales en un mismo equipo. La mezcla balanceada le
@@ -100,6 +109,8 @@ parecido posible.
 | `lef_teams_panel_swap_requests` | `1` | Permitir `!swapwith`. |
 | `lef_teams_panel_request_timeout` | `20` | Segundos que un pedido de cambio queda abierto. |
 | `lef_teams_panel_request_cooldown` | `15` | Segundos entre pedidos de cambio del mismo jugador. |
+| `lef_teams_balance_hints` | `1` | Avisos de balance en versus para los que entran y los espectadores. |
+| `lef_teams_spec_hint_interval` | `60` | Segundos entre avisos de lugares libres a los espectadores. `0` = no. |
 | `lef_teams_roster_level` | `3` | Mezcla balanceada: nivel de un habitual sin `"level"`. |
 | `lef_teams_random_level` | `2` | Mezcla balanceada: nivel de quien no está en el roster. |
 

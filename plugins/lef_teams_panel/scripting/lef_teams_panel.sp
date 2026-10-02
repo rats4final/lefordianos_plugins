@@ -12,6 +12,8 @@
  *  - !swapwith    asks a player on another team to trade places with you.
  *  - A "Team Management" category in the SourceMod !admin menu to move,
  *    swap, flip, shuffle, balance and restore teams.
+ *  - Balance hints: a player who joins the team that already has 2+ more humans is told
+ *    how to switch, and spectators are told when there's a free spot (a bot) to take.
  *  - Balanced shuffle: splits the players so both teams are as even as possible,
  *    using a level per player from configs/lef_roster.cfg (our regulars) and a
  *    default level for everyone else.
@@ -90,6 +92,8 @@ ConVar
 	g_cvSwapRequests,
 	g_cvRequestTimeout,
 	g_cvRequestCooldown,
+	g_cvBalanceHints,
+	g_cvSpecHintInterval,
 	g_cvRosterLevel,
 	g_cvRandomLevel,
 	g_cvSurvivorLimit,
@@ -131,6 +135,8 @@ public void OnPluginStart()
 	g_cvRequestCooldown = CreateConVar("lef_teams_panel_request_cooldown", "15", "Seconds a player must wait between swap requests.", _, true, 0.0);
 	g_cvRosterLevel     = CreateConVar("lef_teams_roster_level", "3", "Balanced shuffle: level of a roster player whose entry has no \"level\".", _, true, 0.0, true, 10.0);
 	g_cvRandomLevel     = CreateConVar("lef_teams_random_level", "2", "Balanced shuffle: level of a player who isn't in the roster.", _, true, 0.0, true, 10.0);
+	g_cvBalanceHints     = CreateConVar("lef_teams_balance_hints", "1", "Versus: tell a player who joins the team with 2+ more humans how to switch, and tell spectators about free spots.", _, true, 0.0, true, 1.0);
+	g_cvSpecHintInterval = CreateConVar("lef_teams_spec_hint_interval", "60", "Seconds between free-spot reminders to spectators. 0 = off.", _, true, 0.0);
 	AutoExecConfig(true, "lef_teams_panel");
 
 	g_cvSurvivorLimit = FindConVar("survivor_limit");
@@ -150,6 +156,8 @@ public void OnPluginStart()
 	RegAdminCmd("sm_roster_reload", Cmd_RosterReload, ADMFLAG_CONFIG, "Reload configs/lef_roster.cfg");
 
 	HookEvent("round_end", Event_RoundEnd, EventHookMode_PostNoCopy);
+	HookEvent("player_team", Event_PlayerTeam);
+	CreateTimer(15.0, Timer_SpecHint, _, TIMER_REPEAT);
 
 	g_aLastTeams = new ArrayList(sizeof(SavedPlayer));
 	g_smRoster   = new StringMap();
@@ -935,6 +943,109 @@ Action Cmd_RosterReload(int client, int args)
 	LoadRoster();
 	ReplyToCommand(client, "[Teams] %d player(s) in the roster.", g_smRoster.Size);
 	return Plugin_Handled;
+}
+
+// ---------------------------------------------------------------------------
+// Balance hints
+// ---------------------------------------------------------------------------
+
+// Humans per side; idle players count for survivors (their bot keeps their place).
+int CountSideHumans(int team)
+{
+	return team == TEAM_SURVIVOR ? CountHumans(TEAM_SURVIVOR) + CountIdleHumans() : CountHumans(team);
+}
+
+void Event_PlayerTeam(Event event, const char[] name, bool dontBroadcast)
+{
+	if (!g_cvBalanceHints.BoolValue || event.GetBool("disconnect") || event.GetBool("isbot"))
+	{
+		return;
+	}
+	int team = event.GetInt("team");
+	if (team == TEAM_SURVIVOR || team == TEAM_INFECTED)
+	{
+		// The event fires before the team changes; check once it has.
+		CreateTimer(1.0, Timer_CheckNewcomer, event.GetInt("userid"), TIMER_FLAG_NO_MAPCHANGE);
+	}
+}
+
+Action Timer_CheckNewcomer(Handle timer, int userid)
+{
+	int client = GetClientOfUserId(userid);
+	if (client == 0 || !IsClientInGame(client) || !HasInfectedTeam())
+	{
+		return Plugin_Stop;
+	}
+
+	int team = GetClientTeam(client);
+	if (team != TEAM_SURVIVOR && team != TEAM_INFECTED)
+	{
+		return Plugin_Stop;
+	}
+
+	int other = team == TEAM_SURVIVOR ? TEAM_INFECTED : TEAM_SURVIVOR;
+	int mine = CountSideHumans(team), theirs = CountSideHumans(other);
+	if (mine >= theirs + 2 && theirs < GetTeamCapacity(other))
+	{
+		char teamPhrase[16];
+		FormatEx(teamPhrase, sizeof(teamPhrase), "Team %d", other);
+		CPrintToChat(client, "%t %t", "Tag", "Hint Switch", mine, theirs, teamPhrase, JoinCommand(other));
+	}
+	return Plugin_Stop;
+}
+
+Action Timer_SpecHint(Handle timer)
+{
+	static float next;
+	float interval = g_cvSpecHintInterval.FloatValue;
+	if (!g_cvBalanceHints.BoolValue || interval <= 0.0 || GetGameTime() < next || !HasInfectedTeam())
+	{
+		return Plugin_Continue;
+	}
+
+	// Suggest the side with fewer humans that still has room.
+	int survivors = CountSideHumans(TEAM_SURVIVOR), infected = CountSideHumans(TEAM_INFECTED);
+	int team;
+	if (survivors <= infected && survivors < GetTeamCapacity(TEAM_SURVIVOR) && FindFreeSurvivorBot() != 0)
+	{
+		team = TEAM_SURVIVOR;
+	}
+	else if (infected < survivors && infected < GetTeamCapacity(TEAM_INFECTED))
+	{
+		team = TEAM_INFECTED;
+	}
+	else
+	{
+		return Plugin_Continue;
+	}
+
+	char teamPhrase[16];
+	FormatEx(teamPhrase, sizeof(teamPhrase), "Team %d", team);
+	bool told;
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && !IsFakeClient(i) && GetClientTeam(i) == TEAM_SPECTATOR && GetIdleBot(i) == 0)
+		{
+			CPrintToChat(i, "%T %T", "Tag", i, team == TEAM_SURVIVOR ? "Hint Free Bot" : "Hint Free Spot", i, teamPhrase, JoinCommand(team));
+			told = true;
+		}
+	}
+	if (told)
+	{
+		next = GetGameTime() + interval;
+	}
+	return Plugin_Continue;
+}
+
+// The command to suggest: l4d_afk_commands' if loaded (its anti-abuse rules apply), else our panel.
+char[] JoinCommand(int team)
+{
+	char command[16] = "!teams";
+	if (CommandExists(team == TEAM_SURVIVOR ? "sm_survivors" : "sm_infected"))
+	{
+		strcopy(command, sizeof(command), team == TEAM_SURVIVOR ? "!survivors" : "!infected");
+	}
+	return command;
 }
 
 // ---------------------------------------------------------------------------

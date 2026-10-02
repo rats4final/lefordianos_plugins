@@ -72,6 +72,16 @@ and won't let a pinned or downed survivor leave.
 Pause/unpause (use `pause.smx`), the join command aliases (use `l4d_afk_commands`), automatic
 spectator restore (use `l4d2_spec_stays_spec`), and the debug-logging menu.
 
+## Balance hints (versus)
+
+- A player who joins the team that already has **2+ more humans** is told, privately, which team to
+  join to even it out and the command for it (`!survivors` / `!infected` from `l4d_afk_commands`, or
+  `!teams`).
+- Every `lef_teams_spec_hint_interval` seconds (60), spectators are told when a bot is holding a
+  survivor spot or the infected are short a player, but only for the side with fewer humans.
+- Together with `l4d_afk_commands_versus_teams_unbalance_limit 1` (lite config: nobody can join the
+  team that already has more humans), this avoids most "2 humans + 2 bots vs 4" games.
+
 ## Balanced shuffle and the roster
 
 Random shuffles often put all the regulars on one team. The balanced shuffle gives each player a
@@ -96,6 +106,8 @@ level and splits the players so both teams' levels add up as close as possible.
 | `lef_teams_panel_swap_requests` | `1` | Allow `!swapwith`. |
 | `lef_teams_panel_request_timeout` | `20` | Seconds a swap request stays open. |
 | `lef_teams_panel_request_cooldown` | `15` | Seconds between swap requests from the same player. |
+| `lef_teams_balance_hints` | `1` | Versus balance hints for newcomers and spectators. |
+| `lef_teams_spec_hint_interval` | `60` | Seconds between free-spot reminders to spectators. `0` = off. |
 | `lef_teams_roster_level` | `3` | Balanced shuffle: level of a roster player with no `"level"`. |
 | `lef_teams_random_level` | `2` | Balanced shuffle: level of a player who isn't in the roster. |
 
