@@ -78,11 +78,11 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
 **Survivors · Supervivientes**
 - [x] `fixes/firebulletsfix`: bullets come from the right spot (fixes shoot position).
   *ES: las balas salen del lugar correcto (corrige la posición de disparo).*
-- [x] `fixes/fix_fastmelee`: fixes melee swinging faster than it should.
+- [ ] `fixes/fix_fastmelee`: fixes melee swinging faster than it should.
   *ES: corrige el arma cuerpo a cuerpo golpeando más rápido de lo debido.*
 - [x] `fixes/l4d2_melee_damage_control`: melee applies the correct damage to infected.
   *ES: el cuerpo a cuerpo hace el daño correcto a los infectados.*
-- [x] `fixes/l4d2_incap_fire_fix`: incapped survivors can shoot normally while holding shove.
+- [ ] `fixes/l4d2_incap_fire_fix`: incapped survivors can shoot normally while holding shove.
   *ES: los supervivientes caídos pueden disparar normal mientras mantienen el empujón.*
 - [x] `fixes/l4d2_sg552_zoom_fix`: SG552 zoom no longer gets the camera stuck.
   *ES: el zoom de la SG552 ya no traba la cámara.*
@@ -138,7 +138,7 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: corrige el ácido esparciéndose mal. Por defecto no se esparce en los cuartos seguros, como pretende el juego vanilla.*
 - [x] `fixes/l4d_fix_shove_duration`: SI don't get shoved by "nothing".
   *ES: los SI no reciben empujones de "la nada".*
-- [x] `fixes/l4d_fix_saferoom_ghostspawn`: ghosts can't spawn inside the saferoom.
+- [ ] `fixes/l4d_fix_saferoom_ghostspawn`: ghosts can't spawn inside the saferoom.
   *ES: los fantasmas no pueden aparecer dentro del cuarto seguro.*
 - [x] `fixes/l4d_fix_finale_breakable`: SI can break finale-area props before the finale. *needs sourcescramble*
   *ES: los SI pueden romper objetos de la zona del final antes de que empiece.*
@@ -184,7 +184,7 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   mitad (0.5)**, lo que favorece a los supervivientes. Se puede ajustar cerca de vanilla.*
 - [ ] `fixes/l4d2_jockey_jumpcap_patch`: jockeys can't cap with a normal jump in some situations (3 s block).
   *ES: los jockeys no pueden atrapar con un salto normal en algunas situaciones (bloqueo de 3 s).*
-- [ ] `fixes/l4d2_tank_flying_incap`: survivors go flying on the punch that incaps them (vanilla just drops them).
+- [x] `fixes/l4d2_tank_flying_incap`: survivors go flying on the punch that incaps them (vanilla just drops them).
   *ES: los supervivientes salen volando con el golpe que los derriba (en vanilla solo caen).*
 - [ ] `fixes/l4d2_shadow_removal`: removes shadows so survivors can't see infected through walls.
       Arguably an exploit fix, but it does change what you see.
@@ -203,12 +203,14 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: quita la asistencia de apuntado del control y un exploit de autoaim.*
 - [x] `optional/l4d_texture_manager_block`: kicks players trying the "mat_hack" wallhack.
   *ES: expulsa a quien intente el wallhack "mat_hack".*
-- [ ] `optional/l4d_thirdpersonshoulderblock`: kicks players using third-person to peek around corners.
+- [x] `optional/l4d_thirdpersonshoulderblock`: kicks players using third-person to peek around corners.
   *ES: expulsa a quien use tercera persona para mirar detrás de las esquinas.*
 - [x] `optional/lerpmonitor`: tracks players' lerp; can kick extreme values. *ZoneMod tunes it*
   *ES: vigila el lerp de los jugadores; puede expulsar valores extremos.*
-- [ ] `optional/ratemonitor`: tracks players' rate settings.
+- [x] `optional/ratemonitor`: tracks players' rate settings.
   *ES: vigila la configuración de rate de los jugadores.*
+
+  HEREE
 
 ## 4. Quality of life and info (no balance change) · Comodidad e información (sin cambiar el balance)
 - [x] `optional/l4d2_tank_props_glow`: hittables glow while a tank is alive, and don't fade. *ZoneMod tunes colour/range*
@@ -225,13 +227,13 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: `!coinflip` (cara o cruz) / `!roll` (dado).*
 - [x] `optional/teamflip`: `!teamflip` picks a random team.
   *ES: `!teamflip` elige un equipo al azar.*
-- [x] `optional/l4d2_stats`: skeets/crowns/levels printed to chat.
+- [ ] `optional/l4d2_stats`: skeets/crowns/levels printed to chat.
   *ES: skeets, crowns y levels en el chat.*
-- [ ] `optional/l4d2_skill_detect`: the full skill detector (skeets, crowns, high pounces, etc.). Overlaps l4d2_stats.
+- [x] `optional/l4d2_skill_detect`: the full skill detector (skeets, crowns, high pounces, etc.). Overlaps l4d2_stats.
   *ES: el detector completo de jugadas (skeets, crowns, saltos altos, etc.). Se superpone con l4d2_stats.*
-- [ ] `optional/survivor_mvp`: survivor MVP at the end of the round.
+- [x] `optional/survivor_mvp`: survivor MVP at the end of the round.
   *ES: el MVP de los supervivientes al final de la ronda.*
-- [ ] `optional/l4d2_playstats`: detailed round stats (MVP, accuracy, skills), kept across disconnects.
+- [x] `optional/l4d2_playstats`: detailed round stats (MVP, accuracy, skills), kept across disconnects.
   *ES: estadísticas detalladas de la ronda (MVP, precisión, jugadas), aunque alguien se desconecte.*
 - [x] `optional/si_class_announce`: infected team sees which SI classes are up at round start.
   *ES: el equipo infectado ve qué clases de SI tiene al empezar la ronda.*
@@ -239,9 +241,9 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los cuerpos de los comunes muertos desaparecen (menos desorden, menos lag).*
 - [x] `optional/caster_assister`: spectators can set their fly speed and move up/down.
   *ES: los espectadores pueden ajustar su velocidad de vuelo y moverse arriba/abajo.*
-- [ ] `optional/specrates`: low network rates for spectators (saves bandwidth).
+- [x] `optional/specrates`: low network rates for spectators (saves bandwidth).
   *ES: rates de red bajos para espectadores (ahorra ancho de banda).*
-- [x] `optional/autopause`: auto-pauses if a player crashes, and gives them their spot back. *needs pause.smx*
+- [ ] `optional/autopause`: auto-pauses if a player crashes, and gives them their spot back. *needs pause.smx*
   *ES: pausa sola si a un jugador se le cierra el juego, y le devuelve su lugar.*
 - [x] `optional/l4d2_ghost_warp`: ghost infected can warp to survivors with a command.
   *ES: los infectados en modo fantasma pueden teletransportarse a los supervivientes con un comando.*
@@ -293,7 +295,7 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los admins pueden entrar aunque el servidor esté lleno.*
 - [ ] **Harry** `savechat`: logs chat to a file.
   *ES: guarda el chat en un archivo.*
-- [ ] **Harry** `l4d2_mission_manager` + ACS: automatic campaign rotation, with a vote for the next campaign at the finale.
+- [x] **Harry** `l4d2_mission_manager` + ACS: automatic campaign rotation, with a vote for the next campaign at the finale.
   *ES: rotación automática de campañas, con votación de la siguiente campaña en el final.*
 
 ## 5b. Tank and witch every map, with flow % announced · Tank y witch en cada mapa, con el % anunciado
@@ -353,7 +355,7 @@ Works **without Ready-Up and without confogl**. Ready-Up is optional for all of 
   *ES: bloquea exploits de daño (por ejemplo, tirar una molotov y cambiarse de equipo).*
 - [x] **Harry** `l4d2_survivor_mourn_fix`: survivors can mourn L4D1 survivors on the L4D2 set.
   *ES: los supervivientes pueden lamentar la muerte de los de L4D1 en el grupo de L4D2.*
-- [x] **Harry** `l4d_shotgun_sound_fix`: shotguns have sound in third person.
+- [ ] **Harry** `l4d_shotgun_sound_fix`: shotguns have sound in third person.
   *ES: las escopetas tienen sonido en tercera persona.*
 - [x] **Harry** `l4d2_chainsaw_fix`: fixes a Linux server crash with chainsaws.
   *ES: corrige un crasheo de servidores Linux con la motosierra.*
@@ -434,7 +436,7 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: te dice qué plugins tienen versiones más nuevas. *Mantenimiento del servidor.**
 - [ ] **Silvers** `sm_configs`: keeps your config values when a plugin update changes its cfg file.
   *ES: conserva tus valores cuando una actualización de plugin cambia su archivo cfg.*
-- [ ] Silvers' visual extras (`l4d_fire_glow`, `l4d_explosive_flash`, `l4d_glare`, `Dynamic_Light`,
+- [x] Silvers' visual extras (`l4d_fire_glow`, `l4d_explosive_flash`, `l4d_glare`, `Dynamic_Light`,
       `l4d_dsp_effects`, ...) and Lux's `Enhanced_Throwables`: lights and effects. Nice, but extra
       light changes what both teams can see.
   *ES: extras visuales de Silvers y el `Enhanced_Throwables` de Lux: luces y efectos. Lindos, pero
@@ -452,9 +454,9 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
 - [ ] **AM** `l4d_announce_healer` (NoroHime): shows the health of whoever you heal, revive, pass
       pills to, or aim at.
   *ES: muestra la vida de a quien curas, levantas, le pasas pastillas o apuntas.*
-- [ ] **AM** `l4d_pipebomb_ignore` (Silvers): bots keep shooting while a pipe bomb is out (better bots).
+- [x] **AM** `l4d_pipebomb_ignore` (Silvers): bots keep shooting while a pipe bomb is out (better bots).
   *ES: los bots siguen disparando mientras hay una bomba casera (bots mejores).*
-- [ ] **Silvers** `Vote_Mode`: vote to switch game mode (coop, realism, versus, mutations). Uses a menu
+- [x] **Silvers** `Vote_Mode`: vote to switch game mode (coop, realism, versus, mutations). Uses a menu
       vote, not the game's vote screen. Pairs well with `gamemode-based_configs` (section 5).
   *ES: votación para cambiar el modo de juego (coop, realismo, versus, mutaciones). Usa una votación
   por menú, no la pantalla de votación del juego. Combina bien con `gamemode-based_configs` (sección 5).*
@@ -504,7 +506,7 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
       (Mostly exploit fixes; on by default for 3 of them.)
   *ES: bloquea el glitch de velocidad en escaleras, el bug de no recibir daño por caída y el glitch de
   aumento de vida. (Casi todo correcciones de exploits; 3 vienen activadas por defecto.)*
-- [ ] `optional/l4d2_nobhaps`: blocks bunny-hopping.
+- [x] `optional/l4d2_nobhaps`: blocks bunny-hopping.
   *ES: bloquea el bunny-hop.*
 - [ ] `optional/temphealthfix`: correct temp health after hittable/ledge incaps.
   *ES: vida temporal correcta después de caer por un objeto golpeado o un borde.*
@@ -522,7 +524,7 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: los SI se queman por menos tiempo (por defecto el fuego se apaga en 1 s; el tank no se quema).*
 - [ ] `optional/l4d_bash_kills`: SI can't be shoved to death.
   *ES: no se puede matar a los SI a empujones.*
-- [ ] `optional/l4d_pounceprotect`: taking damage doesn't stop a hunter from pouncing.
+- [x] `optional/l4d_pounceprotect`: taking damage doesn't stop a hunter from pouncing.
   *ES: recibir daño no impide que el hunter salte.*
 - [ ] `optional/l4d2_hunter_no_deadstops`: hunters in the air can't be deadstopped by shoves.
   *ES: a los hunters en el aire no se les puede hacer deadstop con empujones.*
@@ -532,25 +534,25 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: bloquea los saltos hacia atrás del hunter.*
 - [ ] `optional/l4d_jockey_ledgehang`: changes jockey recharge after a ledge-hang.
   *ES: cambia la recarga del jockey después de dejar a alguien colgando de un borde.*
-- [ ] `optional/l4d2_unsilent_jockey`: jockeys make sound constantly.
+- [x] `optional/l4d2_unsilent_jockey`: jockeys make sound constantly.
   *ES: los jockeys hacen ruido todo el tiempo.*
 - [ ] `optional/l4d2_si_ffblock`: infected can't hurt each other.
   *ES: los infectados no se pueden hacer daño entre sí.*
 - [ ] `optional/l4d2_si_staggers`: SI aren't staggered by other SI (boomer, charger, witch).
   *ES: los SI no se tambalean por otros SI (boomer, charger, witch).*
-- [ ] `optional/l4d2_dominatorscontrol`: allows "quad caps" in native order.
+- [x] `optional/l4d2_dominatorscontrol`: allows "quad caps" in native order.
   *ES: permite "quad caps" en el orden nativo.*
-- [ ] `optional/l4d2_fix_spawn_order`: fixed SI spawn rotation.
+- [x] `optional/l4d2_fix_spawn_order`: fixed SI spawn rotation.
   *ES: rotación fija de aparición de SI.*
-- [ ] `optional/l4d2_nospitterduringtank`: no spitter while a tank is up.
+- [x] `optional/l4d2_nospitterduringtank`: no spitter while a tank is up.
   *ES: no hay spitter mientras hay un tank.*
-- [ ] `optional/despawn_health`: SI get health back when they despawn.
+- [x] `optional/despawn_health`: SI get health back when they despawn.
   *ES: los SI recuperan vida cuando vuelven a ser fantasmas.*
-- [ ] `optional/l4d2_nosecondchances`: SI bots that were human-controlled with a cap don't die instantly.
+- [x] `optional/l4d2_nosecondchances`: SI bots that were human-controlled with a cap don't die instantly.
   *ES: los bots SI que eran controlados por un humano y tenían a alguien atrapado no mueren al instante.*
 - [ ] `optional/charger_incap_damage`: changes charger pound damage on incapped survivors.
   *ES: cambia el daño de los golpes del charger a supervivientes caídos.*
-- [ ] `optional/l4d2_getup_slide_fix` / `optional/l4d2_getup_fixes` / `optional/l4d2_godframes_control_merge`:
+- [x] `optional/l4d2_getup_slide_fix` / `optional/l4d2_getup_fixes` / `optional/l4d2_godframes_control_merge`:
       get-up animations, god frames and friendly-fire rules. *ZoneMod tunes them heavily*
   *ES: animaciones de levantarse, frames de invulnerabilidad y reglas de fuego amigo.*
 - [ ] `optional/staggersolver`: no inputs during stumbles.
@@ -567,9 +569,9 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: cambia el daño de los objetos golpeables.*
 - [ ] `optional/l4d2_tank_damage_cvars`: per-attack tank damage.
   *ES: daño del tank por tipo de ataque.*
-- [ ] `optional/l4d2_tank_attack_control`: tank rock/punch choice tweaks.
+- [x] `optional/l4d2_tank_attack_control`: tank rock/punch choice tweaks.
   *ES: ajustes a cómo el tank elige entre roca y golpe.*
-- [ ] `optional/l4d2_tankrage`: tank keeps rage while survivors run back.
+- [x] `optional/l4d2_tankrage`: tank keeps rage while survivors run back.
   *ES: el tank no pierde furia mientras los supervivientes corren hacia atrás.*
 - [ ] `optional/checkpoint-rage-control`: tank loses rage while survivors hide in the saferoom.
   *ES: el tank pierde furia mientras los supervivientes se esconden en el cuarto seguro.*
@@ -579,27 +581,27 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: cambia las hordas infinitas durante el tank.*
 - [ ] `optional/l4d_tank_painfade`: tank's screen flashes red when hurt.
   *ES: la pantalla del tank se pone roja al recibir daño.*
-- [ ] `optional/l4d_tankpunchstuckfix`: punched survivors don't get stuck in the ceiling. (Close to a pure fix.)
+- [x] `optional/l4d_tankpunchstuckfix`: punched survivors don't get stuck in the ceiling. (Close to a pure fix.)
   *ES: los supervivientes golpeados no se quedan trabados en el techo. (Casi una corrección pura.)*
-- [ ] `optional/rock_stumble_block`: rocks don't vanish if the tank is stumbled mid-throw. (Close to a pure fix.)
+- [x] `optional/rock_stumble_block`: rocks don't vanish if the tank is stumbled mid-throw. (Close to a pure fix.)
   *ES: las rocas no desaparecen si el tank se tambalea a mitad del lanzamiento. (Casi una corrección pura.)*
-- [ ] `optional/l4d2_bw_rock_hit`: rocks don't pass through black-and-white survivors. (Close to a pure fix.)
+- [x] `optional/l4d2_bw_rock_hit`: rocks don't pass through black-and-white survivors. (Close to a pure fix.)
   *ES: las rocas no atraviesan a supervivientes en blanco y negro. (Casi una corrección pura.)*
-- [ ] `optional/smart_ai_rock`: AI tanks don't throw underhand rocks they can't aim.
+- [x] `optional/smart_ai_rock`: AI tanks don't throw underhand rocks they can't aim.
   *ES: los tanks de la IA no lanzan rocas por abajo que no pueden apuntar.*
 - [ ] `optional/l4d2_profitless_ai_tank`: passing the tank to AI doesn't give a free respawn.
   *ES: pasarle el tank a la IA no te da una reaparición gratis.*
 - [ ] `optional/boomer_horde_equalizer_refactored`: boomer hordes are the same size every time. *needs sourcescramble*
   *ES: las hordas del boomer son siempre del mismo tamaño.*
-- [ ] `optional/l4d_equalise_alarm_cars`: the same cars are alarmed for both teams.
+- [x] `optional/l4d_equalise_alarm_cars`: the same cars are alarmed for both teams.
   *ES: los mismos autos tienen alarma para ambos equipos.*
 - [ ] `optional/l4d2_ledgeblock`: no ledge hanging on some maps.
   *ES: en algunos mapas no se puede quedar colgado de los bordes.*
 - [ ] `optional/eq_finale_tanks`: changes how many tanks spawn in finales.
   *ES: cambia cuántos tanks aparecen en los finales.*
-- [ ] `optional/l4d2_antibaiter`: forces a horde if infected wait too long to attack.
+- [x] `optional/l4d2_antibaiter`: forces a horde if infected wait too long to attack.
   *ES: fuerza una horda si los infectados esperan demasiado para atacar.*
-- [ ] `optional/l4d2_collision_adjustments`: rocks pass through commons, etc. *needs collisionhook*
+- [x] `optional/l4d2_collision_adjustments`: rocks pass through commons, etc. *needs collisionhook*
   *ES: las rocas atraviesan a los comunes, etc.*
 
 ## 8. Competitive-only (not suggested for the lite config) · Solo competitivo (no sugerido para la config lite)
