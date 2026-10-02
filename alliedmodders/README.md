@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # Other authors' plugins
 
 Original source of plugins by other AlliedModders authors, kept **unchanged** for reference.

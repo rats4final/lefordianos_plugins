@@ -1,3 +1,5 @@
+[Español](IDEAS.es.md)
+
 # Ideas
 
 A running list. Add freely, and move things to "Done" when they ship.
@@ -8,7 +10,10 @@ that changes game balance should be optional and off by default.
 ## In progress
 
 - **Lite config (no confogl)**: a plain-SourceMod server set: the competitive repo's bug fixes
-  (`generalfixes.cfg`), the teams panel, and the QoL plugins we like.
+  (`generalfixes.cfg`), the teams panel, and the QoL plugins we like. Per-mode settings come from
+  Harry Potter's `gamemode-based_configs` (`cfg/sourcemod/gamemode_cvars/<mode>.cfg`, run on map
+  start and on mode change); every mode file should set the same cvars, since it never undoes the
+  previous mode's. With Silvers' `Vote_Mode`, players can switch modes and get the right settings.
 - **Lefordianos Vanilla+ (confogl match mode)**: a `cfgogl/lefordianos/` mode for `!match`:
   the fixes plus QoL, with none of the competitive balance changes. Lowest priority.
 - Lite config plugin list to choose from: [`configs/lite/PLUGINS.md`](configs/lite/PLUGINS.md).

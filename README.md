@@ -1,3 +1,5 @@
+[Español](README.es.md)
+
 # Lefordianos Plugins
 
 SourceMod plugins and server configs for our Left 4 Dead 2 versus server. The goal is
@@ -12,6 +14,8 @@ competitive balance changes.
 | [`alliedmodders/`](alliedmodders/) | Other authors' original sources, kept unchanged for reference. One folder per author. |
 | [`configs/`](configs/) | Server setups: a lite one without confogl (plugin list to pick from in [`configs/lite/PLUGINS.md`](configs/lite/PLUGINS.md)), and a confogl match mode later. |
 | [`IDEAS.md`](IDEAS.md) | Ideas and what's in progress. |
+
+Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a single file in both languages.
 
 ## Plugins
 
