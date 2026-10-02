@@ -76,6 +76,21 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 | D | **Cap per-map swing**: one map can't widen the gap by more than N points. | Yes | Yes, limits blowouts |
 | E | **ZoneMod's health-bonus scoring** (`l4d2_hybrid_scoremod_zone`): points for staying healthy. | A lot | No; it's a different game |
 
+## From the new sources (2026-10-01)
+
+- **On-screen info (`lef_hud`)**: Mart's `l4d2_scripted_hud` shows that L4D2's built-in HUD text
+  slots (the ones mutations use) can be written directly from SourceMod, with no VScript. We could
+  keep a small line on screen, e.g. "Tank 63% · Witch none · Gap 300", fed by `lef_boss_spawns` and
+  `lef_score_info`, instead of only announcing in chat. Only 4 slots exist and mutations use them,
+  so it should step aside in those modes.
+- **Vote_Mode on the game's vote screen**: Silvers' `Vote_Mode` switches game mode by vote but uses
+  a menu vote. A version (or wrapper) using builtinvotes would fit the vote-screen idea above. The
+  vote screen is Yes/No only, so it would be "Switch to Realism?" after picking from a menu.
+- **`!lef` help menu**: one menu listing our commands (`!teams`, `!swapwith`, `!bosses`, `!score`,
+  `!comeback`...) instead of pan0s' generic `!menu`.
+- **Stats for balanced teams**: pan0s' SRS shows which stats are worth recording; our version
+  would use non-blocking database queries and no extra extensions.
+
 ## Later
 
 - **Demo recording** for both configs (parked 2026-10-01, we'll come back to it):

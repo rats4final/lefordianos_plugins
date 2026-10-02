@@ -197,6 +197,67 @@ Works **without Ready-Up and without confogl**. Ready-Up is optional for all of 
 - [ ] **Harry** `physics_object_pushfix`: walking into gascans/propane no longer pushes them.
 - [ ] **Harry** `l4d_witch_bash_wandering`: shoving a wandering witch startles her (vanilla doesn't).
 
+## 6b. New sources (added 2026-10-01)
+
+Where they live: **Lux** = `Left-4-fix`; **Silvers** = `Various_Scripts_Collection` (or its own repo
+folder); **AM** = `from_alliedmodders`. `dhooks` is built into SourceMod 1.12.
+
+**Fixes (LuxLuma's Left-4-fix, updated July 2026)**
+- [x] **Lux** `Defib_Fix`: defibs no longer fail or revive the wrong person.
+- [x] **Lux** `Witch_Target_patch`: the witch goes after the right survivor.
+- [x] **Lux** `witch_prevent_target_loss`: the witch doesn't randomly lose her target.
+- [x] **Lux** `Witch_Double_Startle_Fix`: a wandering witch doesn't play her startle twice.
+- [x] **Lux** `stop_air_revive`: can't revive in mid-air to dodge fall damage (exploit).
+- [x] **Lux** `survivor_afk_fix`: fixes the game's own "go AFK" function.
+- [x] **Lux** `witch_pipebomb_exploit_fix_&_death_optmizer`: a pipe bomb + horde can't delete the
+      witch; also stops sending far-away zombie deaths to players (less network traffic).
+- [ ] **Lux** `l4d2_changelevel`: cleaner map changes than `sm_map` (needed by MoYu's
+      `vote_custom_campaigns`). Overlaps the competitive repo's `l4d2_fix_changelevel`.
+- [ ] **Lux** `physics_object_pushfix`: same job as Harry's in section 6; pick one.
+- [ ] **Lux** `Hunter_pounce_alignment_fix`: L4D1-style hunter alignment on pounce. *Changes gameplay a little.*
+- [ ] **Lux** `Charger_Collision_patch`: chargers can bowl more survivors and hit the same one
+      again. *Changes gameplay.* *needs sourcescramble*
+- [ ] **Lux** `witch_allow_in_safezone`: a witch can chase into the saferoom. *Changes gameplay.*
+
+**Fixes and tools (Silvers' collection, updated Sept 2026)**
+- [x] **Silvers** `l4d_exploit_fixes`: blocks damage from idle, disconnected or team-switched players
+      (e.g. throw a molotov, then go spectator). Overlaps Harry's `l4d_exploit_dmg_block`; pick one.
+- [x] **Silvers** `l4d_unlimited_grenades_fix`: blocks an infinite-grenades exploit.
+- [x] **Silvers** `l4d_witch_stumble_fix`: the witch can't get stuck stumbling forever after an explosion.
+- [x] **Silvers** `l4d_transition_level`: if the round doesn't end after the saferoom door closes,
+      survivors are moved to the middle of the room so it does.
+- [x] **Silvers** `l4d_lagged_movement`: stops plugins fighting over player speed (needed if several
+      plugins change speed).
+- [x] **Silvers** `l4d_heartbeat`: black-and-white fixes; our `lef_admin_restore` works through it.
+      (Newer than Harry's copy.)
+- [ ] **Silvers** `l4d2_vs_rematch`: hides the "rematch?" vote panel at the end of a versus campaign.
+- [ ] **Silvers** `l4d_item_equip`: being handed pills/adrenaline doesn't switch your weapon to them.
+- [x] **Silvers** `plugin_updates_checker`: tells you which plugins have newer versions. *Server maintenance.*
+- [ ] **Silvers** `sm_configs`: keeps your config values when a plugin update changes its cfg file.
+- [ ] Silvers' visual extras (`l4d_fire_glow`, `l4d_explosive_flash`, `l4d_glare`, `Dynamic_Light`,
+      `l4d_dsp_effects`, ...) and Lux's `Enhanced_Throwables`: lights and effects. Nice, but extra
+      light changes what both teams can see.
+
+**Info and QoL (AlliedModders)**
+- [x] **AM** `l4d_throwable_announcer` (Mart): "X threw a bile bomb / molotov / pipe bomb".
+- [x] **AM** `l4d_explosion_announcer` (Mart): "X blew up the gascan / propane / car". Also handy for
+      spotting who blew something up next to the team.
+- [x] **AM** `l4d2_pack_deploy_announce` (Mart): "X deployed incendiary ammo".
+- [ ] **AM** `l4d_announce_healer` (NoroHime): shows the health of whoever you heal, revive, pass
+      pills to, or aim at.
+- [ ] **AM** `l4d_pipebomb_ignore` (Silvers): bots keep shooting while a pipe bomb is out (better bots).
+- [ ] **Silvers** `Vote_Mode`: vote to switch game mode (coop, realism, versus, mutations). Uses a menu
+      vote, not the game's vote screen.
+
+**Looked at, not suggested**
+- `Console_Spam_Patches`: already in section 2 (the competitive repo's copy is newer).
+- `Dissolve_Infected`: cosmetic; the competitive repo's ragdoll remover covers the useful part.
+- pan0s' `l4d2_srs` (stats & ranking): needs three more plugins plus a GeoIP extension, and runs
+  database queries in a way that can make the server stutter. Good as a reference for the
+  "balanced teams" idea, not to run.
+- pan0s' `l4d2_menu`: a 93-line `!menu` that lists commands; we'd rather make our own help menu.
+- Mart's `l4d2_scripted_hud`: a tool, not something to run as-is. See IDEAS ("on-screen info").
+
 ## 7. Gameplay and balance changes (ZoneMod's choices — off unless you want them)
 
 **Survivors**
