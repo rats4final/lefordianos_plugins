@@ -1,0 +1,23 @@
+"Phrases"
+{
+	"Start Opened"
+	{
+		"es"		"{green}[Puerta]{default} {olive}{1}{default} abrió la puerta del refugio."
+	}
+	"Start Opened Itself"
+	{
+		"es"		"{green}[Puerta]{default} La puerta del refugio se abrió sola."
+	}
+	"End Opened"
+	{
+		"es"		"{green}[Puerta]{default} {olive}{1}{default} abrió la puerta del refugio final."
+	}
+	"End Closed"
+	{
+		"es"		"{green}[Puerta]{default} {olive}{1}{default} cerró la puerta del refugio final."
+	}
+	"End Closed Outside"
+	{
+		"es"		"{green}[Puerta]{default} {olive}{1}{default} cerró la puerta del refugio final con {red}{2}{default} compañero(s) todavía afuera."
+	}
+}

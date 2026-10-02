@@ -1,0 +1,27 @@
+"Phrases"
+{
+	"Start Opened"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Door]{default} {olive}{1}{default} opened the saferoom door."
+	}
+	"Start Opened Itself"
+	{
+		"en"		"{green}[Door]{default} The saferoom door opened by itself."
+	}
+	"End Opened"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Door]{default} {olive}{1}{default} opened the end saferoom door."
+	}
+	"End Closed"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Door]{default} {olive}{1}{default} closed the end saferoom door."
+	}
+	"End Closed Outside"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{green}[Door]{default} {olive}{1}{default} closed the end saferoom door with {red}{2}{default} teammate(s) still outside."
+	}
+}
