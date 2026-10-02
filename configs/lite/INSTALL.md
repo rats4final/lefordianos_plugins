@@ -50,6 +50,19 @@ At the **end** of the server's `cfg/server.cfg`, add:
 exec lefordianos/server_base.cfg
 ```
 
+No `server.cfg` yet, or want a clean one? Copy `cfg/server.example.cfg` to `cfg/server.cfg` and fill
+in the lines marked `CHANGE ME` (name, RCON password, region, Steam group). It explains every line
+and already ends with the `exec` above. It's built from the competitive repo's and Harry Potter's
+server.cfg; updates only ship the example, so your `server.cfg` is never overwritten.
+
+## Testing alone with bots
+
+From the server console or RCON: `exec lefordianos/test_bots.cfg` turns on `sv_cheats` and lets a
+versus game run with bot-only teams, so you can try plugins alone (play infected against bot
+survivors, give yourself the tank, spawn things). The file lists handy commands. Undo it with
+`exec lefordianos/test_off.cfg`, and never leave it on with randoms. It needs
+`sv_allow_lobby_connect_only 0` (the example server.cfg's value).
+
 ## 4. Start and check
 
 Start the server (extensions and Stripper need a full start, not just a map change), then in the
@@ -74,6 +87,7 @@ server console:
 | Vote kick ban length, pause only by vote, who can start votes | `cfg/sourcemod/lef_votes.cfg` (created on first load) |
 | Steam ban checks: the Steam Web API key (keep it private) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Bot damage reduction (15%), pace/holding warnings, start panel and `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
+| Server name, RCON, region, lobby/matchmaking, addons | `cfg/server.cfg` (start from `cfg/server.example.cfg`) |
 | Stripper changes | edit `configs/lite/stripper_rules.txt` here, run `python3 tools/make_stripper.py`, rebuild |
 
 Each plugin also writes its own `cfg/sourcemod/<plugin>.cfg` the first time it loads; values in

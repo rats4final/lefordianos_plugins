@@ -50,6 +50,19 @@ Al **final** del `cfg/server.cfg` del servidor, agrega:
 exec lefordianos/server_base.cfg
 ```
 
+¿Todavía no tienes `server.cfg`, o quieres uno limpio? Copia `cfg/server.example.cfg` a `cfg/server.cfg` y
+completa las líneas marcadas `CHANGE ME` (nombre, contraseña de RCON, región, grupo de Steam). Explica cada
+línea y ya termina con el `exec` de arriba. Está hecho a partir del server.cfg del repo competitivo y del
+de Harry Potter; las actualizaciones solo traen el ejemplo, así tu `server.cfg` nunca se sobrescribe.
+
+## Probar solo con bots
+
+En la consola del servidor o por RCON: `exec lefordianos/test_bots.cfg` prende `sv_cheats` y deja correr
+una partida de versus con equipos de solo bots, para probar plugins solo (jugar de infectado contra bots,
+darte el tank, hacer aparecer cosas). El archivo lista comandos útiles. Se deshace con
+`exec lefordianos/test_off.cfg`, y nunca lo dejes prendido con randoms. Necesita
+`sv_allow_lobby_connect_only 0` (el valor del server.cfg de ejemplo).
+
 ## 4. Arrancar y revisar
 
 Arranca el servidor (las extensiones y Stripper necesitan un arranque completo, no solo un cambio de mapa)
@@ -75,6 +88,7 @@ y en la consola del servidor:
 | Duración del baneo al expulsar por votación, pausa solo por votación, quién puede iniciar votaciones | `cfg/sourcemod/lef_votes.cfg` (se crea al cargar la primera vez) |
 | Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
+| Nombre del servidor, RCON, región, lobby/matchmaking, addons | `cfg/server.cfg` (empieza desde `cfg/server.example.cfg`) |
 | Cambios de Stripper | edita `configs/lite/stripper_rules.txt` acá, corre `python3 tools/make_stripper.py` y vuelve a armar |
 
 Cada plugin además crea su propio `cfg/sourcemod/<plugin>.cfg` la primera vez que carga; los valores de
