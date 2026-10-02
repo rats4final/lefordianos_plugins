@@ -24,6 +24,8 @@ file L4D2-Competitive-Rework/addons/sourcemod/extensions/collisionhook.ext.dll a
 file L4D2-Competitive-Rework/addons/sourcemod/extensions/collisionhook.ext.so addons/sourcemod/extensions/collisionhook.ext.so
 file L4D2-Competitive-Rework/addons/sourcemod/extensions/sourcescramble.ext.dll addons/sourcemod/extensions/sourcescramble.ext.dll
 file L4D2-Competitive-Rework/addons/sourcemod/extensions/sourcescramble.ext.so addons/sourcemod/extensions/sourcescramble.ext.so
+# REST in Pawn (HTTP + JSON), Windows and Linux, from tools/get_extensions.py. Used by lef_steam_bans.
+dir  @repo/tools/extensions/ripext/package .
 file L4D2-Competitive-Rework/addons/sourcemod/gamedata/actions.games.txt addons/sourcemod/gamedata/actions.games.txt
 file L4D2-Competitive-Rework/addons/sourcemod/gamedata/collisionhook.txt addons/sourcemod/gamedata/collisionhook.txt
 dir  L4D2-Competitive-Rework/addons/stripper/bin addons/stripper/bin
@@ -230,6 +232,10 @@ ours lef_karma_sounds
 ours lef_client_cvars
 ours lef_votes
 ours lef_menu
+ours lef_round_start
+ours lef_game_hints
+ours lef_bot_protect
+ours lef_steam_bans
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 

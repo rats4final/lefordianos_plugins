@@ -318,6 +318,20 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   aprobar/cancelar la votación).*
 - [x] **Ours** `lef_menu`: `!menu` with every player command on the server; hides what isn't installed.
   *ES: (nuestro) `!menu` con todos los comandos para jugadores del servidor; oculta lo que no está instalado.*
+- [x] **Ours** `lef_round_start`: start panel (tank/witch spots, teams) and `!wait`, a vote that keeps
+      the saferoom closed until a friend joins. No Ready-Up, no F1.
+  *ES: (nuestro) panel de inicio (dónde sale tank/witch, equipos) y `!wait`, una votación que mantiene
+  cerrado el refugio hasta que entre un amigo. Sin Ready-Up, sin F1.*
+- [x] **Ours** `lef_game_hints`: warnings only (rushing, falling behind, holding an infected) and tank tips.
+  *ES: (nuestro) solo avisos (rushear, quedarse atrás, guardar un infectado) y consejos para el tank.*
+- [x] **Ours** `lef_bot_protect`: survivor bots take 15% less damage from infected players.
+      *Small balance change, chosen 2026-10-02; 0 = vanilla.*
+  *ES: (nuestro) los bots sobrevivientes reciben 15% menos daño de los jugadores infectados. Cambio de
+  balance chico, elegido el 2026-10-02; 0 = vanilla.*
+- [x] **Ours** `lef_steam_bans`: tells admins about VAC/game/community bans of joining players (bans
+      only). Needs REST in Pawn (included) and a Steam Web API key.
+  *ES: (nuestro) avisa a los admins de baneos VAC/de juego/de comunidad de quien entra (solo baneos).
+  Necesita REST in Pawn (incluido) y una clave de la API web de Steam.*
 - [x] **Ours** `lef_admin_restore`: `!heal` and `!restore` (undo team damage, incaps, team kills
       and lost items), with admin heads-ups. Replaces Harry Potter's `admin_hp`.
   *ES: (nuestro) `!heal` y `!restore` (deshace daño de equipo, derribos, muertes por compañeros y

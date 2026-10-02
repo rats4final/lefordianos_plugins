@@ -22,10 +22,11 @@ Desde la carpeta de este repo:
 ```bash
 python3 tools/fetch_refs.py      # la primera vez: clona los repos de referencia al lado de este
 python3 tools/get_sourcemod.py   # la primera vez: descarga nuestro compilador fijo de SourceMod
+python3 tools/get_extensions.py  # la primera vez: descarga las extensiones que incluimos (REST in Pawn)
 python3 tools/build_lite.py      # arma el paquete
 ```
 
-El resultado queda en `build/lite/left4dead2/` (unos 15 MB, 173 plugins), más `build/lite/CONTENTS.txt`
+El resultado queda en `build/lite/left4dead2/` (unos 22 MB, 177 plugins), más `build/lite/CONTENTS.txt`
 con la lista de plugins. Si falta algo, o algo existe solo para una plataforma, el armado termina con
 avisos.
 
@@ -55,7 +56,7 @@ Arranca el servidor (las extensiones y Stripper necesitan un arranque completo, 
 y en la consola del servidor:
 
 - `meta list`: aparece **Stripper**.
-- `sm exts list`: aparecen **Actions**, **BuiltinVotes**, **CollisionHook** y **Source Scramble**, todas
+- `sm exts list`: aparecen **Actions**, **BuiltinVotes**, **CollisionHook**, **REST in Pawn** y **Source Scramble**, todas
   funcionando.
 - `sm plugins list`: busca plugins marcados como fallidos.
   - **En Windows**, `l4d2_chainsaw_fix` falla a propósito: arregla un crasheo que solo pasa en Linux.
@@ -72,6 +73,8 @@ y en la consola del servidor:
 | Armas reemplazadas en el modo T1 | `addons/sourcemod/configs/lef_t1_mode.cfg` |
 | Qué pueden votar los jugadores (`!votes`) y qué muestra `!menu` | `addons/sourcemod/configs/lef_votes.cfg`, `addons/sourcemod/configs/lef_menu.cfg` |
 | Duración del baneo al expulsar por votación, pausa solo por votación, quién puede iniciar votaciones | `cfg/sourcemod/lef_votes.cfg` (se crea al cargar la primera vez) |
+| Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
+| Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Cambios de Stripper | edita `configs/lite/stripper_rules.txt` acá, corre `python3 tools/make_stripper.py` y vuelve a armar |
 
 Cada plugin además crea su propio `cfg/sourcemod/<plugin>.cfg` la primera vez que carga; los valores de

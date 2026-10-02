@@ -22,10 +22,11 @@ From this repo's folder:
 ```bash
 python3 tools/fetch_refs.py      # first time: clones the reference repos next to this one
 python3 tools/get_sourcemod.py   # first time: downloads our pinned SourceMod compiler
+python3 tools/get_extensions.py  # first time: downloads extensions we ship (REST in Pawn)
 python3 tools/build_lite.py      # builds the package
 ```
 
-The result is `build/lite/left4dead2/` (about 15 MB, 173 plugins), plus `build/lite/CONTENTS.txt`
+The result is `build/lite/left4dead2/` (about 22 MB, 177 plugins), plus `build/lite/CONTENTS.txt`
 with the plugin list. The build stops with warnings if anything is missing or only exists for one
 platform.
 
@@ -55,7 +56,7 @@ Start the server (extensions and Stripper need a full start, not just a map chan
 server console:
 
 - `meta list`: shows **Stripper**.
-- `sm exts list`: shows **Actions**, **BuiltinVotes**, **CollisionHook**, **Source Scramble**, all running.
+- `sm exts list`: shows **Actions**, **BuiltinVotes**, **CollisionHook**, **REST in Pawn**, **Source Scramble**, all running.
 - `sm plugins list`: look for plugins marked as failed.
   - **On Windows**, `l4d2_chainsaw_fix` fails on purpose: it fixes a Linux-only crash.
 - Errors are logged in `addons/sourcemod/logs/errors_<date>.log`.
@@ -71,6 +72,8 @@ server console:
 | Weapons replaced in T1 mode | `addons/sourcemod/configs/lef_t1_mode.cfg` |
 | What players can vote on (`!votes`), and what `!menu` lists | `addons/sourcemod/configs/lef_votes.cfg`, `addons/sourcemod/configs/lef_menu.cfg` |
 | Vote kick ban length, pause only by vote, who can start votes | `cfg/sourcemod/lef_votes.cfg` (created on first load) |
+| Steam ban checks: the Steam Web API key (keep it private) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
+| Bot damage reduction (15%), pace/holding warnings, start panel and `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Stripper changes | edit `configs/lite/stripper_rules.txt` here, run `python3 tools/make_stripper.py`, rebuild |
 
 Each plugin also writes its own `cfg/sourcemod/<plugin>.cfg` the first time it loads; values in
