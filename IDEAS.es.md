@@ -57,15 +57,26 @@ desactivada por defecto.
 - **Mantener las witches y los tanks programados** como en vanilla:
   - no usar la parte de `global_filters.cfg` de ZoneMod que quita witches (sí su parte que quita
     ragdolls y la que corrige tipos de entidad);
-  - también quitar estos bloques de eventos: c1m4 "tank a los 29 segundos", c4m2 / c4m3 "arreglar
-    varias witches no deseadas", c7m1 "abrir sola la puerta del 2º vagón después del tank" y "quitar
-    los sonidos falsos de tank". Los arreglos como el del generador de c9m2 y el filtro del tank de
-    c10m3 se quedan.
+  - también quitar estos bloques de eventos: c1m4 "tank a los 29 segundos" (ZoneMod agrega un tank
+    cuando el ascensor llega abajo en el centro comercial; vanilla no tiene tank antes del final) y
+    c4m2 / c4m3 "arreglar varias witches no deseadas". Los arreglos como el del generador de c9m2 y el
+    filtro del tank de c10m3 se quedan.
+  - **c7m1 se queda** (decidido el 2026-10-02): la puerta del vagón se abre sola 20 s después de que
+    aparece el tank, y se quitan los sonidos falsos de tank. Buena comodidad; si no, los supervivientes
+    queman al tank dentro del vagón.
   - Los tanks programados de los mapas (por ejemplo el del vagón de c7m1, o los finales) nunca los
     quitan nuestros plugins; la lista `static_tank_map` solo evita que `witch_and_tankifier` agregue un
     *segundo* tank por % ahí.
-- Plan: un script chico que copia los archivos de ZoneMod y les corta esas secciones/bloques, así se
-  puede volver a aplicar cuando ZoneMod actualice sus stripper.
+- **Hecho:** `tools/make_stripper.py` + `configs/lite/stripper_rules.txt` generan
+  `configs/lite/left4dead2/cfg/stripper/lefordianos/`. Volver a correrlo cuando ZoneMod actualice.
+- **Filtros globales** (`global_filters.cfg`, se aplica a todos los mapas) tiene 17 secciones. Quitadas:
+  WITCH REMOVAL, T2 WEAPON SPAWN FIX (convierte todas las T2 en T1 en todos lados), COMPETITIVE ITEM
+  SPAWNS (quita ametralladoras fijas, bidones, propano, oxígeno). Se quedan: quitar ragdolls, arreglos de
+  entidades/densidad de objetos/objetos golpeables/puertas/colisiones, limpieza de basura física, mesas
+  fijas, limpieza de sonidos y efectos visuales. **Falta decidir:** PILL CABINET MAX (los botiquines de
+  pared dan como mucho 2 pastillas), ITEM PICKUP FIX (los puntos de cuerpo a cuerpo/objetos dan una sola
+  recogida), INFECTED CLIP / TRIGGER FIX (quita las paredes invisibles que impiden a los infectados
+  llegar a algunos lugares).
 
 ### Tickrate (en pausa, no por ahora)
 Todo lo que averiguamos, para no tener que investigarlo de nuevo:
@@ -112,13 +123,14 @@ crashea desde The Last Stand. Las configs competitivas ponen el límite de human
 `sv_maxplayers` + `sv_visiblemaxplayers` en `server.cfg`. Para `sv_allow_lobby_connect_only` las dos
 fuentes difieren: el `server.cfg` competitivo usa `0`; el tutorial de Harry sugiere `1` junto con su
 `l4d_unreservelobby` para servidores de 5+ lugares. A probar en nuestro servidor.
-**Decisión:** usar el de lakwsh.
+**Decisión (2026-10-02):** por ahora ningún l4dtoolz. El de lakwsh es el probable, una vez que lo
+probemos en nuestro servidor y no cause problemas.
 
 ### Sonidos del karma kill
 Solo para karma kills. El karma kill de eyal282 dispara `KarmaKillSystem_OnKarmaEventPost`, así que un
 plugin chico nuestro puede tocar un sonido al azar de nuestra propia lista. Los jugadores tienen que
 descargar los sonidos propios:
-- **FastDL** es la buena forma: un servidor web con los archivos, y `sv_downloadurl "http://.../"` en el
+- **FastDL** es la buena forma (guía completa: [docs/FASTDL.es.md](docs/FASTDL.es.md)): un servidor web con los archivos, y `sv_downloadurl "http://.../"` en el
   servidor del juego. Una IP pública en casa sirve: correr un servidor web chico (nginx, Caddy, o hasta
   `python3 -m http.server`), abrir su puerto en el router, usar `http://` (la descarga del juego no es
   confiable con `https://`), y comprimir los archivos como `.bz2` para que bajen más rápido. Si la IP de
@@ -141,9 +153,9 @@ L4D2 no existen las votaciones de opción múltiple). Otras opciones: modo T1, t
 prendido/apagado, mezcla balanceada.
 
 ### Tank horde monitor (sin decidir)
-Si lo usamos, que se pueda prender y apagar (votación/admin/cvar, como el modo T1) y que anuncie la regla
-cuando está activo ("la horda se pausa mientras está el tank; avanzar la hace volver"), porque los
-jugadores randoms no lo conocen y van a rushear.
+Ya se puede prender y apagar: nuestra copia parchada en `plugins/l4d2_tank_horde_monitor` agrega
+`l4d2_tank_horde_monitor_enable` (0 = vanilla) y un recordatorio de la regla una vez por ronda. Falta
+decidir si se activa; su votación va a ir en el menú `!votes`.
 
 ### Equipos balanceados
 Archivo de roster con nuestros SteamID, un nombre y un nivel manual del 1 al 5 (los randoms reciben un
@@ -262,6 +274,10 @@ también lo usaría.
   el panel de equipos (sintaxis nueva, Left4DHooks en vez de gamedata propia, traducciones).
 
 ## Hecho
+
+- **lef_karma_sounds**: nuestro propio sonido al azar en los karma kills, esperando los archivos de sonido.
+- **l4d2_tank_horde_monitor (parchado)**: interruptor y recordatorio de la regla.
+- **Stripper lite**: generado desde el de ZoneMod con `tools/make_stripper.py`.
 
 - **lef_saferoom_doors**: quién abrió la puerta del refugio inicial, quién cerró la final con compañeros afuera. Falta probarlo en el juego.
 - **lef_t1_mode**: modo solo armas T1 que se prende y apaga (cvar, admin, votación `!t1`), lista configurable. Falta probarlo en el juego.

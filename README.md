@@ -28,6 +28,8 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_admin_restore`](plugins/lef_admin_restore/) | `!heal`, and `!restore` to undo what teammates did to a survivor (HP, incaps, team kills, items). |
 | [`lef_saferoom_doors`](plugins/lef_saferoom_doors/) | Announces who opened the start saferoom door and who closed the end one with teammates outside. |
 | [`lef_t1_mode`](plugins/lef_t1_mode/) | Switchable T1-only weapons mode (cvar, admin or `!t1` vote), configurable. |
+| [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |
+| [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/) | Patched copy of the competitive repo's tank horde monitor with an on/off switch and a rule reminder. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |
 
 ## Building

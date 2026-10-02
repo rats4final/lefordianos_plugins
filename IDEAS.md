@@ -49,13 +49,22 @@ that changes game balance should be optional and off by default.
 - **Keep scripted witches and tanks** like vanilla:
   - don't use the witch-removal part of ZoneMod's `global_filters.cfg` (keep its ragdoll removal and
     entity-type fix);
-  - also drop these event blocks: c1m4 "spawn tank at 29 seconds", c4m2 / c4m3 "fix multiple unwanted
-    witches", c7m1 "automatically open the 2nd train car door after the tank" and "remove the fake
-    tank sounds". Fixes like c9m2's generator freeze and c10m3's tank filter stay.
+  - also drop these event blocks: c1m4 "spawn tank at 29 seconds" (ZoneMod adds a tank when the
+    elevator reaches the bottom of the mall; vanilla has no tank before the finale) and c4m2 / c4m3
+    "fix multiple unwanted witches". Fixes like c9m2's generator freeze and c10m3's tank filter stay.
+  - **c7m1 is kept** (decided 2026-10-02): the train-car door opens by itself 20 s after the tank
+    spawns, and the fake tank sounds are removed. Good QoL; otherwise survivors burn the tank inside
+    the car.
   - Scripted map tanks (e.g. c7m1's train car, finales) are never removed by our plugins; the
     `static_tank_map` list only stops `witch_and_tankifier` adding a *second* flow tank there.
-- Plan: a small script that copies ZoneMod's files and cuts those sections/blocks out, so updates to
-  ZoneMod's stripper can be re-applied.
+- **Done:** `tools/make_stripper.py` + `configs/lite/stripper_rules.txt` generate
+  `configs/lite/left4dead2/cfg/stripper/lefordianos/`. Re-run it after ZoneMod updates.
+- **Global filters** (`global_filters.cfg`, applies to every map) has 17 sections. Removed: WITCH
+  REMOVAL, T2 WEAPON SPAWN FIX (turns every T2 into T1 everywhere), COMPETITIVE ITEM SPAWNS (removes
+  miniguns, gas cans, propane, oxygen). Kept: ragdoll removal, entity/item density/hittable/door/prop
+  collision fixes, junk prop cleanup, immovable tables, sound and visual cleanups. **Still to decide:**
+  PILL CABINET MAX (cabinets give at most 2 pills), ITEM PICKUP FIX (melee/item spawns give one
+  pickup), INFECTED CLIP / TRIGGER FIX (removes clips that keep infected out of some spots).
 
 ### Tickrate (parked, not for now)
 Everything we learned, so we don't have to research it again:
@@ -100,12 +109,13 @@ since The Last Stand. The competitive configs set the human limit through `mv_ma
 `sv_maxplayers` + `sv_visiblemaxplayers` in `server.cfg`. For `sv_allow_lobby_connect_only` the
 two sources differ: the competitive `server.cfg` uses `0`; Harry's tutorial suggests `1` plus his
 `l4d_unreservelobby` for servers with 5+ slots. To test on our server.
-**Decision:** use lakwsh's.
+**Decision (2026-10-02):** no l4dtoolz for now. lakwsh's is the likely choice once we've tested it
+on our server and it causes no problems.
 
 ### Karma kill sounds
 Only for karma kills. eyal282's karma kill system fires `KarmaKillSystem_OnKarmaEventPost`, so a
 small plugin of ours can play a random sound from our own list. Players must download custom sounds:
-- **FastDL** is the good way: a web server with the files, and `sv_downloadurl "http://.../"` on the
+- **FastDL** is the good way (full guide: [docs/FASTDL.md](docs/FASTDL.md)): a web server with the files, and `sv_downloadurl "http://.../"` on the
   game server. A public IP at home works: run a small web server (nginx, Caddy, or even
   `python3 -m http.server`), forward its port, use `http://` (the game's downloader isn't reliable
   with `https://`), and compress files as `.bz2` so they download faster. If the home IP changes,
@@ -127,9 +137,9 @@ campaign from a menu (list from the mission manager), then a Yes/No vote on the 
 balanced shuffle.
 
 ### Tank horde monitor (undecided)
-If we use it, make it switchable (vote/admin/cvar, like T1 mode) and announce the rule when it's on
-("the horde pauses while the tank is up; pushing ahead brings it back"), because random players
-don't know it and will rush.
+Made switchable: our patched copy in `plugins/l4d2_tank_horde_monitor` adds
+`l4d2_tank_horde_monitor_enable` (0 = vanilla) and a once-per-round rule reminder. Still undecided
+whether to turn it on; a vote for it will go in the `!votes` menu.
 
 ### Balanced teams
 Roster file with our SteamIDs, a name and a manual level 1–5 (randoms get a default level).
@@ -242,6 +252,10 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
   teams panel (new syntax, Left4DHooks instead of private gamedata, translations).
 
 ## Done
+
+- **lef_karma_sounds**: our own random sound on karma kills, waiting for the sound files.
+- **l4d2_tank_horde_monitor (patched)**: on/off switch and rule reminder.
+- **Lite stripper**: generated from ZoneMod's with `tools/make_stripper.py`.
 
 - **lef_saferoom_doors**: who opened the start saferoom door, who closed the end one with teammates outside. Not yet tested in game.
 - **lef_t1_mode**: switchable T1-only weapons mode (cvar, admin, `!t1` vote), configurable list. Not yet tested in game.
