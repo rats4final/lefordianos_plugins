@@ -33,6 +33,10 @@ cualquier arma prohibida que un superviviente agarre o traiga del mapa anterior.
 Si los supervivientes todavía están en el refugio inicial se aplica en el momento; si no, desde la
 próxima ronda. Cuando salen del refugio con el modo activo, el chat dice "Solo armas T1 esta ronda".
 
+Lo elegido por votación (`!t1`) o por un admin (`sm_forcet1`) dura toda la sesión: los cambios de mapa
+vuelven a ejecutar las configs, que lo apagarían, así que se vuelve a aplicar después de ellas. Cuando el
+servidor se vacía, vuelve al `lef_t1_enable` de las configs.
+
 ## Configuración (`cfg/sourcemod/lef_t1_mode.cfg`)
 
 | Cvar | Por defecto | Significado |

@@ -33,6 +33,10 @@ banned weapon a survivor picks up or carries over from the previous map.
 If the survivors are still in the starting saferoom it applies right away; otherwise from the next
 round. When survivors leave the saferoom with the mode on, chat says "Only T1 weapons this round".
 
+A choice made by vote (`!t1`) or by an admin (`sm_forcet1`) lasts for the whole session: map changes
+re-run the configs, which would switch it back, so it's applied again after them. Once the server is
+empty, it goes back to `lef_t1_enable` from the configs.
+
 ## Settings (`cfg/sourcemod/lef_t1_mode.cfg`)
 
 | Cvar | Default | Meaning |

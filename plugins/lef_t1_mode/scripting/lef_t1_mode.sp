@@ -11,7 +11,9 @@
  *  - a vote on the game's vote screen: !t1 (needs the builtinvotes extension).
  *
  * The change applies right away while the survivors are still in the starting saferoom, and from
- * the next round otherwise. When active it converts weapon spawns at round start, weapons created
+ * the next round otherwise. A choice made by vote or admin lasts for the session: map changes re-run
+ * the configs (which would switch it back), so it is applied again afterwards, until the server is
+ * empty. When active it converts weapon spawns at round start, weapons created
  * later, and any banned weapon a survivor picks up or carries over from the previous map.
  *
  * Works with or without confogl. Weapon conversion uses l4d2util's stocks, the same ones the
@@ -57,6 +59,7 @@ int  g_iRule[WEPID_SIZE];    // replacement weapon id, WEPID_NONE = remove, -1 =
 bool g_bActive;              // the mode as applied to the current round
 Handle g_hVote;
 bool g_bVoteTarget;          // what the running vote would switch to
+int  g_iSessionChoice = -1;  // on/off chosen by vote or admin this session (-1 = none: follow the configs)
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
@@ -408,6 +411,48 @@ void GiveItem(int client, const char[] item)
 }
 
 // ---------------------------------------------------------------------------
+// Session choice: survive map changes, forget when the server is empty
+// ---------------------------------------------------------------------------
+
+public void OnConfigsExecuted()
+{
+	if (g_iSessionChoice != -1)
+	{
+		g_cvEnable.SetBool(g_iSessionChoice == 1);
+	}
+}
+
+public void OnClientDisconnect_Post(int client)
+{
+	// Map changes disconnect everyone for a moment too, so wait before deciding the server is empty.
+	if (!AnyHumanConnected())
+	{
+		CreateTimer(60.0, Timer_CheckEmpty);
+	}
+}
+
+Action Timer_CheckEmpty(Handle timer)
+{
+	if (!AnyHumanConnected())
+	{
+		g_iSessionChoice = -1;
+	}
+	return Plugin_Stop;
+}
+
+bool AnyHumanConnected()
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientConnected(i) && !IsFakeClient(i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+// ---------------------------------------------------------------------------
 // Commands and vote
 // ---------------------------------------------------------------------------
 
@@ -424,6 +469,7 @@ Action Cmd_Force(int client, int args)
 	bool on = StrEqual(arg, "on", false) || StrEqual(arg, "1");
 
 	LogAction(client, -1, "\"%L\" turned T1 mode %s", client, on ? "on" : "off");
+	g_iSessionChoice = on ? 1 : 0;
 	g_cvEnable.SetBool(on);
 	return Plugin_Handled;
 }
@@ -517,6 +563,7 @@ void VoteResult_Handler(Handle vote, int num_votes, int num_clients, const int[]
 			char passed[64];
 			FormatEx(passed, sizeof(passed), "%T", g_bVoteTarget ? "Vote Passed On" : "Vote Passed Off", LANG_SERVER);
 			DisplayBuiltinVotePass(vote, passed);
+			g_iSessionChoice = g_bVoteTarget ? 1 : 0;
 			g_cvEnable.SetBool(g_bVoteTarget);
 			return;
 		}
