@@ -1,0 +1,47 @@
+# What we remove from ZoneMod's stripper files for the lite config. Used by tools/make_stripper.py.
+# Lo que quitamos de los archivos de stripper de ZoneMod para la config lite. Lo usa tools/make_stripper.py.
+#
+# [global-exclude-sections]  one section name of global_filters.cfg per line
+#                            un nombre de sección de global_filters.cfg por línea
+# [map-exclude-sections]     map: SECTION NAME | SECTION NAME
+# [map-exclude-blocks]       map: start of a "; ---" block title | ...
+#                            mapa: comienzo del título de un bloque "; ---" | ...
+#
+# After editing, run:  python3 tools/make_stripper.py
+# Después de editar:    python3 tools/make_stripper.py
+
+[global-exclude-sections]
+# Keep scripted witches (decided 2026-10-02) / Mantener las witches programadas
+WITCH REMOVAL
+# ZoneMod turns every tier 2 weapon spawn into tier 1 on every map. Not vanilla; lef_t1_mode does this when wanted.
+# ZoneMod convierte todas las armas T2 en T1 en todos los mapas. No es vanilla; lef_t1_mode lo hace cuando se quiere.
+T2 WEAPON SPAWN FIX
+# Removes miniguns, gas cans, propane and oxygen tanks from every map. / Quita ametralladoras fijas, bidones, propano y oxígeno de todos los mapas.
+COMPETITIVE ITEM SPAWNS
+
+[map-exclude-sections]
+# Special reworks on official maps (decided 2026-10-02) / Retrabajos especiales en mapas oficiales
+c1m1_hotel: ELEVATOR HOLDOUT
+c1m3_mall: LOWER EVENT PATH | SAFEROOM ROUTE REWORK
+c2m2_fairgrounds: STARTING SAFEROOM REWORK | CUT SCAVENGE AREA | CAROUSEL ROOM | C2M3 SAFEROOM REWORK
+c2m3_coaster: STARTING SAFEROOM REWORK | C2M4 SAFEROOM REWORK
+c2m4_barns: STARTING SAFEROOM REWORK | BUMPER CARS ROUTE CHANGE
+c3m1_plankcountry: TOWN ONE WAY DROP
+c4m4_milltown_b: PLAYGROUND ROUTE REWORK
+c5m5_bridge: BRIDGE RAILINGS
+c6m1_riverbank: EMPTY APARTMENT ROOMS REWORK
+c7m2_barge: SAFEROOM ONE WAY DROP
+c8m1_apartment: BLOCK STREET
+c10m1_caves: TREE CARDS
+c12m4_barn: WAREHOUSE AWNING
+
+[map-exclude-blocks]
+# Keep vanilla scripted bosses / Mantener los jefes programados del vanilla
+# c1m4: ZoneMod adds a tank when the elevator opens (vanilla has none before the finale).
+# c1m4: ZoneMod agrega un tank cuando se abre el ascensor (vanilla no tiene ninguno antes del final).
+c1m4_atrium: Spawn tank at 29 seconds | Wrong way sign for tanks | Fix tank spawn direction
+# c4m2 / c4m3: ZoneMod limits the sugar mill witches. / ZoneMod limita las witches del ingenio.
+c4m2_sugarmill_a: Fix multiple unwanted witches
+c4m3_sugarmill_b: Fix multiple unwanted witches
+# c7m1 (train car tank: door opens by itself, no fake tank sounds) is KEPT: good QoL, otherwise the tank gets burned in the car.
+# c7m1 (tank del vagón: la puerta se abre sola, sin sonidos falsos de tank) SE QUEDA: buena comodidad, si no queman al tank en el vagón.
