@@ -1,0 +1,19 @@
+# Reference repos: folder name, git URL, pinned commit. Used by tools/fetch-refs.sh.
+-L4D-L4D2-Enhanced-Throwables https://github.com/LuxLuma/-L4D-L4D2-Enhanced-Throwables 089464fb798450fb12008bf314256f4184e5234e
+Console_Spam_Patches https://github.com/SilvDev/Console_Spam_Patches d6044aef47487e33d386ca478920c79fd7b409d2
+Dissolve_Infected https://github.com/SilvDev/Dissolve_Infected 957b7167b815d7e3fe4439fa0bfdc58ee481749c
+Dynamic_Light https://github.com/SilvDev/Dynamic_Light a079916ebf2a00f19f460b25ae609d859b296bff
+Game-Private_Plugin https://github.com/fbef0102/Game-Private_Plugin 6235c937fd174851550df293d44916e9670dc6c2
+L4D1_2-Plugins https://github.com/fbef0102/L4D1_2-Plugins 3494e4786210f143d642e12b2ce6f6918bb7160b
+L4D2-Competitive-Rework https://github.com/SirPlease/L4D2-Competitive-Rework f8df6a1338ca9f11535284a7a1da312266d032ba
+Left-4-fix https://github.com/LuxLuma/Left-4-fix a3016b7c182049ca77ad3f817a7124ed812d5880
+Left4DHooks https://github.com/SilvDev/Left4DHooks 5c9d6a6dad39881329664e4ad6f105d286b6b0af
+MoYu_Server_Stupid_Plugins https://github.com/Target5150/MoYu_Server_Stupid_Plugins 1cb29bf3f3e8cc972db5e8db01a17aad90e318eb
+Practiceogl-Rework https://github.com/AoC-Gamers/Practiceogl-Rework 88e7591ade52b4d9fb3fef1e9503f39ac150f093
+Various_Scripts_Collection https://github.com/SilvDev/Various_Scripts_Collection c0cc8890f043ae95e4d002a4c16055acb04ea5d2
+Vote_Mode https://github.com/SilvDev/Vote_Mode ba37d041cb4814257175afe58543dcb394c4d9d1
+l4d2-karma-kill-system https://github.com/eyal282/l4d2-karma-kill-system 395bb5161f7c3566f2cb3fa0299edddde6c075b3
+l4d2_mission_manager https://github.com/rikka0w0/l4d2_mission_manager 8df00f7626b6a7261ccae9533b8d979ebda6402e
+l4dtoolz https://github.com/lakwsh/l4dtoolz efa19444081c0ff02913a1365930a09c49cb332b
+sm-plugin-SMAC https://github.com/srcdslab/sm-plugin-SMAC f07d0b4a656f068dd6b059b98cdaa3f2b48cba89
+sourcetvsupport https://github.com/shqke/sourcetvsupport a19d90cda0a2299d3b737675d68e2d1a50596a8a
