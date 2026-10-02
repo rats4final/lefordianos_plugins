@@ -12,6 +12,8 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
   horde monitor, voz entre equipos) se deshacían en el mapa siguiente, porque cada cambio de mapa vuelve a
   ejecutar las configs. Ahora duran hasta que el servidor se vacía (clave `"persist"` de `lef_votes`, y el
   propio `lef_t1_mode`).
+- **Config lite:** addons del workshop de los jugadores apagados para todos (`l4d2_addons_eclipse 0` en
+  `common.cfg`).
 - **Config lite:** un `server.cfg` de ejemplo (a partir del del repo competitivo y del de Harry Potter,
   revisado con la wiki de Valve) y `test_bots.cfg` / `test_off.cfg` para probar solo con bots.
 

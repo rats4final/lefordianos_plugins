@@ -94,7 +94,8 @@ Silvers. Algunas que los jugadores van a notar:
   niebla, cambios a la linterna...).
 - **Espiar y wallhacks**: bloquea mirar en tercera persona y el wallhack "mat_hack", y oculta a los
   infectados fantasma de los wallhacks.
-- **Lerp y rate**: vigila el lerp y el rate de los jugadores.
+- **Addons del workshop apagados** para todos (`l4d2_addons_eclipse 0`): algunos dan ventaja (mapas más
+  claros, props transparentes). Los jugadores pierden sus skins en este servidor.
 - **Baneos de Steam**: avisa a los admins cuando alguien que entra tiene baneos VAC, de juego o de
   comunidad. Solo mira baneos: ni horas ni perfil.
 

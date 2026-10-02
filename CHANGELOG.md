@@ -10,6 +10,7 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 - **Fix:** settings changed by vote or admin (T1 mode, tank/witch chance, horde monitor, all talk) were
   undone on the next map, because every map change re-runs the configs. They now last until the server
   is empty (`lef_votes` `"persist"` key, and `lef_t1_mode` itself).
+- **Lite config:** players' workshop addons off for everyone (`l4d2_addons_eclipse 0` in `common.cfg`).
 - **Lite config:** an example `server.cfg` (from the competitive repo's and Harry Potter's, checked
   against the Valve wiki) and `test_bots.cfg` / `test_off.cfg` for testing alone with bots.
 

@@ -85,6 +85,8 @@ Silvers. Some players will notice:
 - **Peeking and wallhacks**: blocks third-person peeking and the "mat_hack" wallhack, and hides ghost
   infected from wallhacks.
 - **Lerp and rate**: watches players' lerp and rate settings.
+- **Workshop addons off** for everyone (`l4d2_addons_eclipse 0`): some give advantages (brighter
+  maps, see-through props). Players lose their skins on this server.
 - **Steam bans**: tells admins when a joining player has VAC, game or community bans. It only looks
   at bans: no hours, no profile.
 
