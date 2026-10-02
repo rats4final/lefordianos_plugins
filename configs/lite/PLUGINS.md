@@ -417,7 +417,9 @@ Works **without Ready-Up and without confogl**. Ready-Up is optional for all of 
 - [x] **Harry** `l4d_exploit_dmg_block`: blocks damage exploits (e.g. throw a molotov, then switch teams).
   *ES: bloquea exploits de daño (por ejemplo, tirar una molotov y cambiarse de equipo).*
 - [x] **Harry** `l4d2_survivor_mourn_fix`: survivors can mourn L4D1 survivors on the L4D2 set.
-  *ES: los supervivientes pueden lamentar la muerte de los de L4D1 en el grupo de L4D2.*
+      *needs `sceneprocessor` (included, from our alliedmodders/ folder)*
+  *ES: los supervivientes pueden lamentar la muerte de los de L4D1 en el grupo de L4D2. Necesita
+  `sceneprocessor` (incluido, de nuestra carpeta alliedmodders/).*
 - [ ] **Harry** `l4d_shotgun_sound_fix`: shotguns have sound in third person.
   *ES: las escopetas tienen sonido en tercera persona.*
 - [x] **Harry** `l4d2_chainsaw_fix`: fixes a Linux server crash with chainsaws.
