@@ -223,7 +223,52 @@ decidir si se activa; su votación va a ir en el menú `!votes`.
 Archivo de roster con nuestros SteamID, un nombre y un nivel manual del 1 al 5 (los randoms reciben un
 nivel por defecto). `!balance` / menú de admin "Mezcla balanceada" prueba todas las formas de repartir a
 los jugadores conectados (8 jugadores = 70 formas) y elige la más pareja. Parte de `lef_teams_panel`.
-Esperando los SteamID.
+
+### Equipos balanceados (hecho 2026-10-02)
+Hecho dentro de `lef_teams_panel` como `sm_balanceteams` (menú de admin y `!votes`). El roster va en
+`configs/lef_roster.cfg` en el servidor (el paquete solo trae `lef_roster.example.cfg`, así las
+actualizaciones nunca lo sobrescriben). Esperando los SteamID y, si se quiere, los niveles.
+
+### Ideas nuevas (2026-10-02), propuestas, sin decidir
+1. **Votación de campaña al final**: ACS (ya está en el paquete) tiene su propia votación por mayoría,
+   `!mapvote` (cada jugador elige una campaña, `!mapvotes` muestra la cuenta, la ganadora va después). La
+   pantalla de votación Sí/No no puede "elegir una entre muchas", así que se mantiene la de ACS, se abre
+   su menú solo cuando empieza el final, y se agrega a `!menu`.
+2. **Mostrar quién votó**: no hace falta otro plugin. Los clientes mandan `Vote Yes` / `Vote No` en
+   cualquier votación en pantalla (la del juego y las de BuiltinVotes), y los mensajes `VotePass` /
+   `VoteFail` marcan el final, así que se puede escribir "Sí: A, B — No: C" después de cada votación.
+3. **Bots en sobrevivientes a los que les hacen focus**: primero evitar partidas disparejas: votar el
+   tamaño de equipo (2v2 / 3v3 / 4v4, `survivor_limit` + `z_max_player_zombies`, desde el mapa
+   siguiente); balance más estricto al unirse (`l4d_afk_commands_versus_teams_unbalance_limit 1`); avisar
+   a los espectadores que pueden tomar el bot. Reducir el daño a los bots cambiaría el balance, así que
+   solo como opción, apagada por defecto.
+4. **Mejores bots sobrevivientes**: el usuario busca plugins.
+5. **Guardar un infectado mucho tiempo**: aviso al jugador (y opcionalmente al equipo) después de N
+   segundos vivo o en modo fantasma sin atacar. Solo avisos.
+6. **Rusheros y jugadores que se quedan atrás**: avisos según la distancia (flow) al equipo, con
+   excepciones (último vivo, compañeros derribados o agarrados, eventos crescendo/gauntlet, finales). El
+   `no-rushing` de Harry teletransporta y mata, demasiado duro para nosotros; solo tomar su lógica de
+   distancia.
+7. **Ruta del centro comercial (Dead Center)**: el `c1m3_mall.cfg` de ZoneMod no fuerza una ruta (solo
+   acelera las puertas de la ruta de abajo). Revisar en el juego con `stripper_dump` qué lógica de ruta
+   tiene el mapa, y después decidir si agregar una elección al azar como en The Parish.
+8. **Panel al inicio de ronda y esperar jugadores ("+1")**: Ready-Up (competitivo) tiene un modo de
+   arranque automático (`l4d_ready_enabled 2`, nadie aprieta F1) y un pie de panel donde otros plugins
+   pueden escribir, pero su arranque automático solo espera a los que todavía están cargando. Opciones:
+   nuestro propio "esperar al inicio" liviano (los sobrevivientes no pueden salir del refugio mientras
+   haya una votación "+1" activa, con cuenta regresiva, votación para alargarla, y el nuevo va al equipo
+   más chico) más un panel de inicio (% de tank/witch, info) que se muestra hasta que alguien sale del
+   refugio, atacan los infectados o pasan N segundos; o Ready-Up en arranque automático con nuestras
+   líneas en su pie.
+9. **Consejos para el tank**: cuando un jugador pasa a ser tank, un aviso corto con algunos consejos
+   (espera a que tu equipo reaparezca y avisa el hit, evita zonas abiertas, usa objetos golpeables y
+   rocas, no persigas hasta el refugio).
+10. **Horas y baneos VAC al entrar**: `vacbans` de Harry (Sourcemod-Plugins; necesita la extensión
+   Socket y una clave de la API web de Steam) y `l4d2_playtime_interface` de Forgetest (MoYu; necesita
+   REST in Pawn y una clave). Los perfiles privados ocultan las horas.
+11. **REST in Pawn (ripext)**: una extensión para HTTP + JSON (Windows y Linux). Con una sola clave de
+   API cubriría horas, baneos, mensajes a Discord (resumen de partida, llamar a un admin) y revisar
+   actualizaciones. Costo: una extensión más que mantener al día.
 
 ### Windows y Linux
 Todo tiene que funcionar en los dos:

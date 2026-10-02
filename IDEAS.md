@@ -200,7 +200,48 @@ whether to turn it on; a vote for it will go in the `!votes` menu.
 ### Balanced teams
 Roster file with our SteamIDs, a name and a manual level 1–5 (randoms get a default level).
 `!balance` / admin menu "Balanced shuffle" tries every split of the players present (8 players = 70
-splits) and picks the most even one. Part of `lef_teams_panel`. Waiting for the SteamIDs.
+splits) and picks the most even one. Part of `lef_teams_panel`.
+
+### Balanced teams (built 2026-10-02)
+Built into `lef_teams_panel` as `sm_balanceteams` (admin menu and `!votes`). The roster lives in
+`configs/lef_roster.cfg` on the server (the package ships only `lef_roster.example.cfg`, so updates
+never overwrite it). Waiting for the SteamIDs and, optionally, levels.
+
+### New ideas (2026-10-02), proposed, not decided yet
+1. **Finale campaign vote**: ACS (already in the package) has its own plurality vote, `!mapvote`
+   (each player picks a campaign, `!mapvotes` shows the count, the winner plays next). The Yes/No vote
+   screen can't do "pick one of many", so keep ACS's vote, open its menu automatically when the finale
+   starts, and add it to `!menu`.
+2. **Show who voted**: no extra plugin needed. Clients send `Vote Yes` / `Vote No` for every vote on
+   screen (the game's own and BuiltinVotes'), and the `VotePass` / `VoteFail` messages mark the end, so
+   a listener can print "Yes: A, B — No: C" after each vote.
+3. **Bots on survivors get focused**: avoid uneven games first: a team size vote (2v2 / 3v3 / 4v4,
+   `survivor_limit` + `z_max_player_zombies`, from the next map); stricter balance on join
+   (`l4d_afk_commands_versus_teams_unbalance_limit 1`); tell spectators they can take the bot. A
+   damage reduction for bots would be a balance change, so only as an option, off by default.
+4. **Better survivor bots**: user is looking for plugins.
+5. **Holding an infected too long**: warning to the player (and optionally the team) after N seconds
+   alive or in ghost mode without attacking. Warnings only.
+6. **Rushers and players left behind**: warnings by flow distance from the team, with exceptions (last
+   one alive, teammates incapped or pinned, crescendo/gauntlet events, finales). Harry's `no-rushing`
+   teleports and slays, which is too harsh for us; borrow its distance logic only.
+7. **Dead Center mall route**: ZoneMod's `c1m3_mall.cfg` doesn't force a route (it only speeds up the
+   lower route's doors). Check in game with `stripper_dump` which route logic the map has, then decide
+   whether to add a random pick like The Parish.
+8. **Round start panel and waiting for players ("+1")**: Ready-Up (competitive) has an auto-start mode
+   (`l4d_ready_enabled 2`, nobody presses F1) and a panel footer other plugins can write to, but its
+   auto-start only waits for players still loading. Options: our own light "start hold" (survivors
+   can't leave the saferoom while a "+1 wait" vote is active, countdown, vote to extend, newcomer goes
+   to the smaller team) plus a start panel (tank/witch %, info) shown until someone leaves the saferoom,
+   SI attack or N seconds; or Ready-Up auto-start with our lines in its footer.
+9. **Tank tips**: when a player becomes the tank, a short hint with a few tips (wait for your team to
+   respawn and call the hit, avoid open areas, use hittables and rocks, don't chase into the saferoom).
+10. **Hours and VAC bans on join**: Harry's `vacbans` (Sourcemod-Plugins; needs the Socket extension
+   and a Steam Web API key) and Forgetest's `l4d2_playtime_interface` (MoYu; needs REST in Pawn and a
+   key). Private profiles hide hours.
+11. **REST in Pawn (ripext)**: an HTTP + JSON extension (Windows and Linux). With one API key it would
+   cover hours, bans, Discord messages (match recap, admin calls) and update checks. Cost: one more
+   extension to keep up to date.
 
 ### Windows and Linux
 Everything must run on both:
