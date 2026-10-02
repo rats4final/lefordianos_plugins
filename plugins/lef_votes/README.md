@@ -12,7 +12,7 @@ means adding an entry with a server command, no code. Reload with `sm_votes_relo
 
 | Group | Votes |
 |---|---|
-| Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (opens ACS's `!mapvote`), change game mode (opens Vote_Mode's `!votemode`) |
+| Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (opens ACS's `!mapvote`; only shown on finale maps, the only place ACS allows it), change game mode (opens Vote_Mode's `!votemode`) |
 | Teams | Shuffle, balanced shuffle (roster levels), swap survivors and infected, restore last round's teams (`lef_teams_panel`) |
 | Players | Kick, move to spectators (AFK), mute voice and chat for the rest of the map |
 | Rules | Tank and witch chance 0 / 50 / 100 %, T1 weapons only on/off, tank horde monitor on/off |

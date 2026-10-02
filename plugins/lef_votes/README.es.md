@@ -13,7 +13,7 @@ agregar una entrada con un comando del servidor, sin programar. Se recarga con `
 
 | Grupo | Votaciones |
 |---|---|
-| Mapas | Cambiar mapa (campaña → lista de mapas del mission manager), reiniciar este mapa, próxima campaña (abre el `!mapvote` de ACS), cambiar modo de juego (abre el `!votemode` de Vote_Mode) |
+| Mapas | Cambiar mapa (campaña → lista de mapas del mission manager), reiniciar este mapa, próxima campaña (abre el `!mapvote` de ACS; solo aparece en los mapas finales, el único lugar donde ACS lo permite), cambiar modo de juego (abre el `!votemode` de Vote_Mode) |
 | Equipos | Mezclar, mezcla balanceada (niveles del roster), intercambiar sobrevivientes e infectados, volver a los equipos de la ronda pasada (`lef_teams_panel`) |
 | Jugadores | Expulsar, mover a espectadores (AFK), silenciar voz y chat por el resto del mapa |
 | Reglas | Probabilidad de tank y witch 0 / 50 / 100 %, solo armas T1 sí/no, tank horde monitor sí/no |

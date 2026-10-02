@@ -6,7 +6,8 @@
  *
  * The entries are in configs/lef_menu.cfg, grouped. Picking one runs that command for the player,
  * as if they had typed it. Entries whose command doesn't exist on the server (plugin not
- * installed) are hidden, so the same config works with any plugin set.
+ * installed) are hidden, so the same config works with any plugin set. Entries with "finale_only"
+ * only show on a campaign's last map.
  * Admin tools stay in !admin.
  */
 
@@ -15,6 +16,7 @@
 
 #include <sourcemod>
 #include <colors>
+#include <left4dhooks>
 
 #define PLUGIN_VERSION "1.0.0"
 #define CONFIG_FILE    "configs/lef_menu.cfg"
@@ -40,6 +42,7 @@ enum struct MenuEntry
 	char titleEn[96];
 	char titleEs[96];
 	char command[128];
+	bool finaleOnly;   // only shown on a campaign's last map
 }
 
 ArrayList g_aGroups;
@@ -102,6 +105,7 @@ void LoadConfig()
 					entry.group = groupIndex;
 					ReadTitle(kv, entry.titleEn, sizeof(entry.titleEn), entry.titleEs, sizeof(entry.titleEs), key);
 					kv.GetString("command", entry.command, sizeof(entry.command));
+					entry.finaleOnly = kv.GetNum("finale_only", 0) != 0;
 					if (entry.command[0] != '\0')
 					{
 						g_aEntries.PushArray(entry);
@@ -144,6 +148,10 @@ bool UsesSpanish(int client)
 // The first word of the entry's command must exist (its plugin is loaded).
 bool IsAvailable(MenuEntry entry)
 {
+	if (entry.finaleOnly && !L4D_IsMissionFinalMap())
+	{
+		return false;
+	}
 	char name[64];
 	int len = BreakString(entry.command, name, sizeof(name));
 	return len != 0 && CommandExists(name);

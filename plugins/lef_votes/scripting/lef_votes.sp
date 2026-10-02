@@ -85,6 +85,7 @@ enum struct VoteItem
 	char command[256];
 	bool adminOnly;
 	char persist[32];   // remember this command for the session under this key ("" = don't)
+	bool finaleOnly;    // only shown on a campaign's last map (e.g. ACS's next-campaign vote)
 }
 
 ArrayList g_aGroups;
@@ -302,6 +303,7 @@ void LoadConfig()
 					kv.GetString("command", item.command, sizeof(item.command));
 					item.adminOnly = kv.GetNum("admin_only", 0) != 0;
 					kv.GetString("persist", item.persist, sizeof(item.persist));
+					item.finaleOnly = kv.GetNum("finale_only", 0) != 0;
 					g_aItems.PushArray(item);
 				}
 				while (kv.GotoNextKey());
@@ -425,6 +427,10 @@ int CountVisibleItems(int group, int client)
 bool IsItemVisible(VoteItem item, int client)
 {
 	if (item.adminOnly && !g_bAdminMode[client])
+	{
+		return false;
+	}
+	if (item.finaleOnly && !L4D_IsMissionFinalMap())
 	{
 		return false;
 	}
