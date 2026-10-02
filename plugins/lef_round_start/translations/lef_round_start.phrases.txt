@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Panel Title"
+	{
+		"#format"	"{1:s}"
+		"en"		"Lefordianos · {1}"
+	}
+	"Panel Bosses"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"Tank: {1}   Witch: {2}"
+	}
+	"Panel None"
+	{
+		"en"		"none"
+	}
+	"Panel Half"
+	{
+		"#format"	"{1:d}"
+		"en"		"Round half: {1} of 2"
+	}
+	"Panel Teams"
+	{
+		"#format"	"{1:d},{2:d},{3:d}"
+		"en"		"Humans: survivors {1}, infected {2}, spectating {3}"
+	}
+	"Panel Waiting"
+	{
+		"#format"	"{1:d},{2:d},{3:d}"
+		"en"		"Waiting for {1} player(s): {2}:{3:02d}"
+	}
+	"Panel Commands"
+	{
+		"en"		"!menu: all commands   !teams: teams"
+	}
+	"Panel Wait"
+	{
+		"en"		"Friend joining? Type !wait so nobody leaves early"
+	}
+	"Panel Close"
+	{
+		"en"		"Close"
+	}
+	"Hint Held"
+	{
+		"en"		"Waiting for players: you can't leave the saferoom yet."
+	}
+	"Hint Waiting"
+	{
+		"#format"	"{1:d},{2:d},{3:d}"
+		"en"		"Waiting for {1} player(s): {2}:{3:02d}\n!extend = more time, !go = start now"
+	}
+	"Hint Go"
+	{
+		"en"		"You can leave the saferoom now."
+	}
+	"Wait Started"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"{green}[Start]{default} Waiting for {olive}{1}{default} more player(s), up to {olive}{2}{default} seconds. Nobody can leave the saferoom until then."
+	}
+	"Wait Extended"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Start]{default} Waiting {olive}{1}{default} more seconds."
+	}
+	"Wait Done Joined"
+	{
+		"en"		"{green}[Start]{default} Everyone is here. You can leave the saferoom."
+	}
+	"Wait Done Time"
+	{
+		"en"		"{green}[Start]{default} Time's up. You can leave the saferoom."
+	}
+	"Wait Done Vote"
+	{
+		"en"		"{green}[Start]{default} Vote passed: no more waiting. You can leave the saferoom."
+	}
+	"Wait Done Admin"
+	{
+		"en"		"{green}[Start]{default} An admin stopped the wait. You can leave the saferoom."
+	}
+	"Vote Wait One"
+	{
+		"#format"	"{1:d}"
+		"en"		"Wait for 1 more player before leaving the saferoom?"
+	}
+	"Vote Wait Many"
+	{
+		"#format"	"{1:d}"
+		"en"		"Wait for {1} more players before leaving the saferoom?"
+	}
+	"Vote Extend"
+	{
+		"#format"	"{1:d}"
+		"en"		"Wait {1} more seconds for players?"
+	}
+	"Vote Go"
+	{
+		"en"		"Stop waiting and start now?"
+	}
+	"Vote Passed"
+	{
+		"en"		"Vote passed."
+	}
+	"Not Waiting"
+	{
+		"en"		"{green}[Start]{default} Nobody is being waited for. Type {olive}!wait{default} to start a wait vote."
+	}
+	"Already Waiting"
+	{
+		"en"		"{green}[Start]{default} Already waiting for players. {olive}!extend{default} asks for more time."
+	}
+	"No More Extends"
+	{
+		"en"		"{green}[Start]{default} The wait can't be extended again."
+	}
+	"Already Live"
+	{
+		"en"		"{green}[Start]{default} The round has already started."
+	}
+	"Ready Up Loaded"
+	{
+		"en"		"{green}[Start]{default} Ready-Up is running on this server; use its !ready instead."
+	}
+	"Join A Team"
+	{
+		"en"		"{green}[Start]{default} Join a team first."
+	}
+	"Vote Busy"
+	{
+		"en"		"{green}[Start]{default} Another vote is on screen. Try again when it ends."
+	}
+	"Vote Delay"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Start]{default} Wait {olive}{1}{default} seconds before the next vote."
+	}
+	"Tip Wait"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Start]{default} Waiting for {1}? Type {olive}!wait{default} to vote to keep the saferoom closed until they join."
+	}
+	"Wait Menu Title"
+	{
+		"en"		"Keep the saferoom closed until how many more players join?"
+	}
+	"Wait Menu One"
+	{
+		"#format"	"{1:d}"
+		"en"		"1 player"
+	}
+	"Wait Menu Many"
+	{
+		"#format"	"{1:d}"
+		"en"		"{1} players"
+	}
+}

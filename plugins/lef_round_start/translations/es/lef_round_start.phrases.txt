@@ -1,0 +1,143 @@
+"Phrases"
+{
+	"Panel Title"
+	{
+		"es"		"Lefordianos · {1}"
+	}
+	"Panel Bosses"
+	{
+		"es"		"Tank: {1}   Witch: {2}"
+	}
+	"Panel None"
+	{
+		"es"		"no hay"
+	}
+	"Panel Half"
+	{
+		"es"		"Mitad de la ronda: {1} de 2"
+	}
+	"Panel Teams"
+	{
+		"es"		"Humanos: sobrevivientes {1}, infectados {2}, mirando {3}"
+	}
+	"Panel Waiting"
+	{
+		"es"		"Esperando a {1} jugador(es): {2}:{3}"
+	}
+	"Panel Commands"
+	{
+		"es"		"!menu: todos los comandos   !teams: equipos"
+	}
+	"Panel Wait"
+	{
+		"es"		"¿Entra un amigo? Escribe !wait para que nadie salga antes"
+	}
+	"Panel Close"
+	{
+		"es"		"Cerrar"
+	}
+	"Hint Held"
+	{
+		"es"		"Esperando jugadores: todavía no puedes salir del refugio."
+	}
+	"Hint Waiting"
+	{
+		"es"		"Esperando a {1} jugador(es): {2}:{3}\n!extend = más tiempo, !go = empezar ya"
+	}
+	"Hint Go"
+	{
+		"es"		"Ya pueden salir del refugio."
+	}
+	"Wait Started"
+	{
+		"es"		"{green}[Inicio]{default} Esperando a {olive}{1}{default} jugador(es) más, hasta {olive}{2}{default} segundos. Nadie puede salir del refugio hasta entonces."
+	}
+	"Wait Extended"
+	{
+		"es"		"{green}[Inicio]{default} Se espera {olive}{1}{default} segundos más."
+	}
+	"Wait Done Joined"
+	{
+		"es"		"{green}[Inicio]{default} Ya están todos. Pueden salir del refugio."
+	}
+	"Wait Done Time"
+	{
+		"es"		"{green}[Inicio]{default} Se acabó el tiempo. Pueden salir del refugio."
+	}
+	"Wait Done Vote"
+	{
+		"es"		"{green}[Inicio]{default} Votación aprobada: no se espera más. Pueden salir del refugio."
+	}
+	"Wait Done Admin"
+	{
+		"es"		"{green}[Inicio]{default} Un admin terminó la espera. Pueden salir del refugio."
+	}
+	"Vote Wait One"
+	{
+		"es"		"¿Esperar a 1 jugador más antes de salir del refugio?"
+	}
+	"Vote Wait Many"
+	{
+		"es"		"¿Esperar a {1} jugadores más antes de salir del refugio?"
+	}
+	"Vote Extend"
+	{
+		"es"		"¿Esperar {1} segundos más a los jugadores?"
+	}
+	"Vote Go"
+	{
+		"es"		"¿Dejar de esperar y empezar ya?"
+	}
+	"Vote Passed"
+	{
+		"es"		"Votación aprobada."
+	}
+	"Not Waiting"
+	{
+		"es"		"{green}[Inicio]{default} No se está esperando a nadie. Escribe {olive}!wait{default} para votar una espera."
+	}
+	"Already Waiting"
+	{
+		"es"		"{green}[Inicio]{default} Ya se está esperando a jugadores. {olive}!extend{default} pide más tiempo."
+	}
+	"No More Extends"
+	{
+		"es"		"{green}[Inicio]{default} La espera ya no se puede alargar."
+	}
+	"Already Live"
+	{
+		"es"		"{green}[Inicio]{default} La ronda ya empezó."
+	}
+	"Ready Up Loaded"
+	{
+		"es"		"{green}[Inicio]{default} Este servidor usa Ready-Up; usa su !ready."
+	}
+	"Join A Team"
+	{
+		"es"		"{green}[Inicio]{default} Únete a un equipo primero."
+	}
+	"Vote Busy"
+	{
+		"es"		"{green}[Inicio]{default} Hay otra votación en pantalla. Intenta cuando termine."
+	}
+	"Vote Delay"
+	{
+		"es"		"{green}[Inicio]{default} Espera {olive}{1}{default} segundos antes de la próxima votación."
+	}
+	"Tip Wait"
+	{
+		"es"		"{green}[Inicio]{default} ¿Esperando a {1}? Escribe {olive}!wait{default} para votar que nadie salga del refugio hasta que entren."
+	}
+	"Wait Menu Title"
+	{
+		"es"		"¿Mantener el refugio cerrado hasta que entren cuántos jugadores más?"
+	}
+	"Wait Menu One"
+	{
+		"es"		"1 jugador"
+	}
+	"Wait Menu Many"
+	{
+		"es"		"{1} jugadores"
+	}
+}
