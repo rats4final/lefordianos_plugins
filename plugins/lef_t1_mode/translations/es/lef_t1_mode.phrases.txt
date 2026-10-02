@@ -1,0 +1,55 @@
+"Phrases"
+{
+	"Active This Round"
+	{
+		"es"		"{green}[T1]{default} Solo armas T1 esta ronda. Escribe {olive}!t1{default} para votar desactivarlo."
+	}
+	"Now On"
+	{
+		"es"		"{green}[T1]{default} El modo solo T1 está {olive}activado{default}."
+	}
+	"Now Off"
+	{
+		"es"		"{green}[T1]{default} El modo solo T1 está {olive}desactivado{default}."
+	}
+	"Next Round On"
+	{
+		"es"		"{green}[T1]{default} El modo solo T1 se {olive}activa{default} desde la próxima ronda."
+	}
+	"Next Round Off"
+	{
+		"es"		"{green}[T1]{default} El modo solo T1 se {olive}desactiva{default} desde la próxima ronda."
+	}
+	"Vote Title On"
+	{
+		"es"		"¿Activar solo armas T1?"
+	}
+	"Vote Title Off"
+	{
+		"es"		"¿Desactivar solo armas T1?"
+	}
+	"Vote Passed On"
+	{
+		"es"		"Solo armas T1: activado"
+	}
+	"Vote Passed Off"
+	{
+		"es"		"Solo armas T1: desactivado"
+	}
+	"No Votes"
+	{
+		"es"		"{green}[T1]{default} Las votaciones no están disponibles en este servidor (falta builtinvotes)."
+	}
+	"Spectators Cannot Vote"
+	{
+		"es"		"{green}[T1]{default} Los espectadores no pueden iniciar esta votación."
+	}
+	"Vote In Progress"
+	{
+		"es"		"{green}[T1]{default} Ya hay otra votación en curso."
+	}
+	"Vote Delay"
+	{
+		"es"		"{green}[T1]{default} Espera {1} segundos antes de iniciar otra votación."
+	}
+}

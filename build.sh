@@ -62,6 +62,11 @@ for plugin_dir in "$here"/plugins/*/; do
 	if [[ -d "${plugin_dir}translations" ]]; then
 		cp -r "${plugin_dir}translations/." "$out/translations/"
 	fi
+
+	if [[ -d "${plugin_dir}configs" ]]; then
+		mkdir -p "$out/configs"
+		cp -r "${plugin_dir}configs/." "$out/configs/"
+	fi
 done
 
 exit $status

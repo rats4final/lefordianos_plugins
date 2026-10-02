@@ -1,0 +1,56 @@
+"Phrases"
+{
+	"Active This Round"
+	{
+		"en"		"{green}[T1]{default} Only T1 weapons this round. Type {olive}!t1{default} to vote it off."
+	}
+	"Now On"
+	{
+		"en"		"{green}[T1]{default} T1-only mode is {olive}on{default}."
+	}
+	"Now Off"
+	{
+		"en"		"{green}[T1]{default} T1-only mode is {olive}off{default}."
+	}
+	"Next Round On"
+	{
+		"en"		"{green}[T1]{default} T1-only mode turns {olive}on{default} from the next round."
+	}
+	"Next Round Off"
+	{
+		"en"		"{green}[T1]{default} T1-only mode turns {olive}off{default} from the next round."
+	}
+	"Vote Title On"
+	{
+		"en"		"Turn on T1-only weapons?"
+	}
+	"Vote Title Off"
+	{
+		"en"		"Turn off T1-only weapons?"
+	}
+	"Vote Passed On"
+	{
+		"en"		"T1-only weapons: on"
+	}
+	"Vote Passed Off"
+	{
+		"en"		"T1-only weapons: off"
+	}
+	"No Votes"
+	{
+		"en"		"{green}[T1]{default} Votes aren't available on this server (builtinvotes is missing)."
+	}
+	"Spectators Cannot Vote"
+	{
+		"en"		"{green}[T1]{default} Spectators can't start this vote."
+	}
+	"Vote In Progress"
+	{
+		"en"		"{green}[T1]{default} Another vote is already running."
+	}
+	"Vote Delay"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[T1]{default} Wait {1} seconds before starting another vote."
+	}
+}
