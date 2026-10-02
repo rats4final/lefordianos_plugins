@@ -144,6 +144,55 @@ descargar los sonidos propios:
 Usar **el SMAC de srcdslab y el Little Anti-Cheat de srcdslab**. Empezar LAC con `lilac_ban 0` (solo
 registra) un par de semanas.
 
+### Una sola puerta de entrada: `!menu` para jugadores, `!admin` para admins (propuesto 2026-10-02)
+
+**Panel de equipos vs. votaciones, la diferencia:** el menú de admin del panel de equipos es
+**instantáneo y solo para admins** (un admin decide y pasa). `!votes` es para que **los jugadores
+decidan juntos** en la pantalla de votación del juego, sin admin, para cosas que afectan a todos.
+Algunas acciones están en los dos (mezclar, invertir, restaurar equipos): los admins las hacen al
+instante, los jugadores las votan.
+
+Para que sea simple para todos:
+- **Jugadores:** un solo `!menu` (alias `!lef`) con: *Equipos* (el panel `!teams`, `!swapwith`),
+  *Votar* (la lista de `!votes`), *Info* (`!bosses`, `!score`), *Ayuda* (todos nuestros comandos,
+  una línea cada uno).
+- **Admins:** todo en el menú `!admin` de SourceMod (el que ya usan los admins): la categoría
+  *Gestión de equipos* que ya existe, más una categoría nueva *Lefordianos* para ejecutar al
+  instante cualquier ítem de votación, y forzar/cancelar la votación en curso. Curar/restaurar
+  siguen en *Comandos de jugador*.
+
+**Diseño de `lef_votes`** (inspirado en el `l4d_votes_5` archivado de Harry Potter y en su
+`l4d2_vote_change` privado, cuyo README/capturas muestran un menú → Sí/No en la pantalla de
+votación del juego, y votaciones personalizadas definidas en un archivo de config): cada ítem de
+votación se define en un archivo de config con un título (EN/ES), el comando del servidor que se
+ejecuta si pasa, quién puede iniciarla y su mensaje. Agregar una votación = agregar una entrada, sin
+programar. Solo hace falta código para los ítems que necesitan un menú antes (elegir mapa, elegir
+jugador).
+
+**Votaciones sugeridas:**
+
+| Grupo | Votación | Cómo |
+|---|---|---|
+| Mapas | Cambiar campaña / mapa (oficiales + custom, nombres del mission manager) | menú, después Sí/No |
+| Mapas | Próxima campaña en el final (reemplaza la votación de ACS) | automática en el final |
+| Mapas | Reiniciar el mapa actual | Sí/No |
+| Mapas | Cambiar el modo de juego (versus, coop, realismo...) | menú, después Sí/No (hoy lo hace Vote_Mode) |
+| Equipos | Mezclar / mezcla balanceada (con el roster) / invertir / restaurar los equipos de la última ronda | Sí/No |
+| Jugadores | Mover un jugador a espectador (AFK) | elegir jugador, después Sí/No |
+| Jugadores | Expulsar a un jugador, o **expulsión troll** (kick + no puede volver por 5 minutos, sin ban real) | elegir jugador, después Sí/No |
+| Reglas | Modo solo T1 prendido/apagado | Sí/No (`sm_forcet1`) |
+| Reglas | Tank horde monitor prendido/apagado | Sí/No |
+| Reglas | Probabilidad de tank / witch por mapa: 0%, 50%, 100% | menú, después Sí/No (desde el próximo mapa) |
+| Reglas | Alltalk prendido/apagado | Sí/No |
+| Solo admins | Forzar / cancelar la votación en curso | `!admin` |
+
+No sugeridas: "dar vida" (cambia el balance del versus; `!heal` cubre el griefing) y votar baneos (la
+expulsión troll lo cubre sin baneos permanentes).
+
+**Más adelante:** mostrar quién votó Sí/No en cada votación (el usuario va a buscar plugins que ya
+existan), tiempo de espera entre votaciones, mínimo de jugadores, si los espectadores pueden iniciar o
+participar en votaciones (el plugin de Harry tiene esto como cvars).
+
 ### Votaciones, y reemplazar Automatic Campaign Switcher
 El `l4d_votes_5` archivado de Harry (L4D1_2-Plugins) sirve para aprender: un menú `!votes` (cambiar mapa
 oficial/custom, reiniciar, expulsar, dar vida, alltalk) en la pantalla de votación del juego. Su sucesor

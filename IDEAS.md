@@ -128,6 +128,50 @@ small plugin of ours can play a random sound from our own list. Players must dow
 Use **srcdslab's SMAC and srcdslab's Little Anti-Cheat**. Start LAC with `lilac_ban 0` (log only)
 for a couple of weeks.
 
+### One front door: `!menu` for players, `!admin` for admins (proposed 2026-10-02)
+
+**Teams panel vs. votes, the difference:** the teams panel's admin menu is **instant, admin-only**
+(an admin decides and it happens). `!votes` is for **players deciding together** on the game's vote
+screen, no admin needed, for things that affect everyone. Some actions exist in both (shuffle,
+flip, restore teams): admins do them instantly, players vote for them.
+
+To keep it simple for everyone:
+- **Players:** one `!menu` (alias `!lef`) with: *Teams* (the `!teams` panel, `!swapwith`), *Vote*
+  (the `!votes` list), *Info* (`!bosses`, `!score`), *Help* (all our commands, one line each).
+- **Admins:** everything in SourceMod's `!admin` menu (the one admins already use): the existing
+  *Team Management* category, plus a new *Lefordianos* category to run any vote item instantly,
+  and to force-pass / cancel the current vote. Heal/restore stay in *Player Commands*.
+
+**`lef_votes` design** (inspired by Harry Potter's archived `l4d_votes_5` and his private
+`l4d2_vote_change`, whose README/screenshots show a menu → Yes/No on the game's vote screen, and
+custom votes defined in a config file): every vote item is defined in a config file with a title
+(EN/ES), the server command to run if it passes, who can call it, and its pass message. Adding a
+vote = adding an entry, no code. Built-in items need code only where a menu is required first
+(pick a map, pick a player).
+
+**Suggested votes:**
+
+| Group | Vote | How |
+|---|---|---|
+| Maps | Change campaign / map (official + custom, names from the mission manager) | menu, then Yes/No |
+| Maps | Next campaign at the finale (replaces ACS's vote) | automatic at the finale |
+| Maps | Restart the current map | Yes/No |
+| Maps | Change game mode (versus, coop, realism...) | menu, then Yes/No (Vote_Mode does this today) |
+| Teams | Shuffle / balanced shuffle (with the roster) / flip / restore last round's teams | Yes/No |
+| Players | Move a player to spectator (AFK) | pick player, then Yes/No |
+| Players | Kick a player, or **troll kick** (kick + can't rejoin for 5 minutes, no real ban) | pick player, then Yes/No |
+| Rules | T1-only mode on/off | Yes/No (`sm_forcet1`) |
+| Rules | Tank horde monitor on/off | Yes/No |
+| Rules | Tank / witch chance per map: 0%, 50%, 100% | menu, then Yes/No (applies next map) |
+| Rules | Alltalk on/off | Yes/No |
+| Admin only | Force-pass / cancel the current vote | `!admin` |
+
+Not suggested: "give HP" (changes versus balance; `!heal` covers griefing) and ban votes (troll
+kick covers it without permanent bans).
+
+**Later:** show who voted Yes/No on each vote (user will look for existing plugins), vote cooldowns,
+minimum players, whether spectators can call/join votes (Harry's plugin has these as cvars).
+
 ### Votes, and replacing Automatic Campaign Switcher
 Harry's archived `l4d_votes_5` (L4D1_2-Plugins) is a good base to learn from: a `!votes` menu
 (change official/custom map, restart, kick, give HP, alltalk) on the game's vote screen. Its
