@@ -1,0 +1,19 @@
+"Phrases"
+{
+	"Kicked Value"
+	{
+		"es"		"{green}[Cvars]{default} {olive}{1}{default} fue expulsado por {red}{2} {3}{default} (no permitido)."
+	}
+	"Kicked Missing"
+	{
+		"es"		"{green}[Cvars]{default} {olive}{1}{default} fue expulsado: su juego ocultó {red}{2}{default}."
+	}
+	"Kick Reason Value"
+	{
+		"es"		"Ajuste no permitido: {1} {2} (permitido: {3}). Corrígelo en la consola y vuelve a entrar."
+	}
+	"Kick Reason Missing"
+	{
+		"es"		"Tu juego no informó {1} (protegido o faltante)."
+	}
+}

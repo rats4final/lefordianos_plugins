@@ -1,0 +1,23 @@
+"Phrases"
+{
+	"Kicked Value"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"{green}[Client Cvars]{default} {olive}{1}{default} was kicked for {red}{2} {3}{default} (not allowed)."
+	}
+	"Kicked Missing"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{green}[Client Cvars]{default} {olive}{1}{default} was kicked: their game hid {red}{2}{default}."
+	}
+	"Kick Reason Value"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"Client setting not allowed: {1} {2} (allowed: {3}). Fix it in your console and rejoin."
+	}
+	"Kick Reason Missing"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your game didn't report {1} (protected or missing)."
+	}
+}
