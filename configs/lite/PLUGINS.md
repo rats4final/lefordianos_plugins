@@ -170,6 +170,13 @@ Works **without Ready-Up and without confogl**. Ready-Up is optional for all of 
 - Map files: `static_tank_map` / `static_witch_map` lines (maps with scripted tanks, where no
   extra tank should be added) come from ZoneMod's `shared_settings.cfg` and would go in our cfg.
 
+## 5c. Scores and comebacks
+
+- [x] **Ours** `lef_score_info`: explains the score: what each map is worth, the gap, what's
+      needed to win the map / take the lead, and a map wins count. **Changes no points.**
+- [ ] **Ours** `lef_comeback_bonus`: the team that's behind by 100+ earns +15% of the distance it
+      covers, capped at the gap. **Changes points.** *needs `optional/l4d2_penalty_bonus`*
+
 ## 6. Extra fixes from Harry and MoYu (not in ZoneMod)
 - [x] **Harry** `l4d_revive_reload_interrupt`: reviving no longer jams your weapon mid-reload.
 - [x] **Harry** `l4d_switch_team_survivor_dead_fix`: switching to survivors no longer spawns you dead/incapped.

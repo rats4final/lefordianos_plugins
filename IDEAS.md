@@ -29,7 +29,8 @@ that changes game balance should be optional and off by default.
     open, so `!swapwith` keeps its private menu.
 - **"Tank incoming" warning** (add-on to `lef_boss_spawns`): a chat/sound heads-up when survivors
   get within a few % of the tank's flow.
-- **Comeback scoring for vanilla versus** — see the section below. Waiting on a direction.
+- **Comeback scoring for vanilla versus**: chose options A and C (see below), built as
+  `lef_score_info` and `lef_comeback_bonus`. Needs testing on the server.
 
 ## Comeback scoring (discussion, 2026-10-01)
 
@@ -92,6 +93,7 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **lef_score_info** (option A) and **lef_comeback_bonus** (option C): built, not yet tested in game.
 - **lef_boss_spawns**: per-map tank/witch chance (same for both teams), second-half bosses spawn on
   the first half's spot (port of confogl's BossSpawning), flows announced. Works with
   `witch_and_tankifier` / `l4d_boss_percent`, without Ready-Up or confogl.
