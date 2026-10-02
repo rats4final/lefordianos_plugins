@@ -26,7 +26,7 @@ python3 tools/get_extensions.py  # first time: downloads extensions we ship (RES
 python3 tools/build_lite.py      # builds the package
 ```
 
-The result is `build/lite/left4dead2/` (about 22 MB, 178 plugins), plus `build/lite/CONTENTS.txt`
+The result is `build/lite/left4dead2/` (about 22 MB, 179 plugins), plus `build/lite/CONTENTS.txt`
 with the plugin list. The build stops with warnings if anything is missing or only exists for one
 platform.
 

@@ -26,7 +26,7 @@ python3 tools/get_extensions.py  # la primera vez: descarga las extensiones que 
 python3 tools/build_lite.py      # arma el paquete
 ```
 
-El resultado queda en `build/lite/left4dead2/` (unos 22 MB, 178 plugins), más `build/lite/CONTENTS.txt`
+El resultado queda en `build/lite/left4dead2/` (unos 22 MB, 179 plugins), más `build/lite/CONTENTS.txt`
 con la lista de plugins. Si falta algo, o algo existe solo para una plataforma, el armado termina con
 avisos.
 

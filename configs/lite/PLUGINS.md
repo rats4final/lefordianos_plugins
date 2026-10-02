@@ -238,6 +238,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: quién le hizo cuánto daño al tank.*
 - [x] `optional/l4d2_tank_announce`: chat message + sound when a tank spawns.
   *ES: mensaje en el chat + sonido cuando aparece un tank.*
+- [x] **Harry** `tank_witch_spawn_notify`: chat message + sound when a witch spawns (its tank message is
+      off: `l4d2_tank_announce` does that). *Added 2026-10-03.*
+  *ES: mensaje en el chat + sonido cuando aparece una witch (su aviso de tank está apagado: eso lo hace
+  `l4d2_tank_announce`). Agregado el 2026-10-03.*
 - [x] `optional/pill_passer`: pass pills/adrenaline with Reload.
   *ES: pasa pastillas/adrenalina con la tecla de recargar.*
 - [x] `optional/current`: `!current` shows how far the survivors are (flow %).
@@ -254,8 +258,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: el MVP de los supervivientes al final de la ronda.*
 - [x] `optional/l4d2_playstats`: detailed round stats (MVP, accuracy, skills), kept across disconnects.
   *ES: estadísticas detalladas de la ronda (MVP, precisión, jugadas), aunque alguien se desconecte.*
-- [x] `optional/si_class_announce`: infected team sees which SI classes are up at round start.
-  *ES: el equipo infectado ve qué clases de SI tiene al empezar la ronda.*
+- [x] `optional/si_class_announce` (**our patched copy**): when survivors leave the saferoom, survivors
+      and spectators see the infected team's classes. (Corrected 2026-10-03: it's not the infected who see it.)
+  *ES: (copia parchada nuestra) cuando los sobrevivientes salen del refugio, los sobrevivientes y
+  espectadores ven las clases del equipo infectado. (Corregido el 2026-10-03: no lo ven los infectados.)*
 - [x] `optional/l4d_common_ragdolls_be_gone`: dead commons' ragdolls vanish (less clutter, less lag).
   *ES: los cuerpos de los comunes muertos desaparecen (menos desorden, menos lag).*
 - [x] `optional/caster_assister`: spectators can set their fly speed and move up/down.
@@ -272,7 +278,7 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los bots no pueden usar pastillas (así no las desperdician).*
 
 ## 5. Admin and server management · Administración del servidor
-- [x] `optional/pause`: `!pause` with both teams readying up to unpause, admin force-pause. *needs builtinvotes*
+- [x] `optional/pause` (**our patched copy**: works without l4dtoolz): `!pause` with both teams readying up to unpause, admin force-pause. *needs builtinvotes*
   *ES: `!pause`; para reanudar ambos equipos tienen que estar listos; los admins pueden forzar la pausa.*
 - [x] `l4d_pause_message`: blocks pause commands when the server can't pause.
   *ES: bloquea los comandos de pausa cuando el servidor no puede pausar.*

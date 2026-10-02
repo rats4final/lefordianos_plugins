@@ -98,6 +98,8 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/ratemonitor.smx L
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_props_glow.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_props_glow.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_tank_damage_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tank_damage_announce.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_announce.sp
+# Harry: chat + sound when a witch spawns (its tank message is off in common.cfg)
+smx  L4D1_2-Plugins/tank_witch_spawn_notify/plugins/tank_witch_spawn_notify.smx L4D1_2-Plugins/tank_witch_spawn_notify/scripting/tank_witch_spawn_notify.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/pill_passer.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/pill_passer.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/current.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/current.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/coinflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/coinflip.sp
@@ -105,14 +107,15 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/teamflip.smx L4D2
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_skill_detect.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_skill_detect.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/survivor_mvp.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/survivor_mvp.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_playstats.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_playstats.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/si_class_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/si_class_announce.sp
+# si_class_announce and pause: our patched copies (see plugins/si_class_announce, plugins/pause)
+ours si_class_announce
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_common_ragdolls_be_gone.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_common_ragdolls_be_gone.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/caster_assister.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/caster_assister.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/specrates.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/specrates.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_ghost_warp.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_ghost_warp.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/blocktrolls.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/blocktrolls.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_block_bot_pills.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_block_bot_pills.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/pause.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/pause.sp
+ours pause
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/l4d_pause_message.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_pause_message.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_setscores.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_setscores.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/witch_and_tankifier.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/witch_and_tankifier.sp
