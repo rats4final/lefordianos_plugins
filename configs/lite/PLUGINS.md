@@ -146,6 +146,8 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
       The original wouldn't load without Ready-Up even though it never uses it; our copy in
       `plugins/l4d_tank_control_eq` drops that requirement.
 - [x] **Harry** `l4d2_spec_stays_spec` (MoYu has one too): spectators stay spectators on map change.
+- [x] **Ours** `lef_admin_restore`: `!heal` and `!restore` (undo team damage, incaps, team kills
+      and lost items), with admin heads-ups. Replaces Harry Potter's `admin_hp`.
 - [x] `optional/l4d2_setscores`: admins (or a vote) can fix the scores. *needs builtinvotes*
 - [ ] `optional/slots_vote`: vote to change the number of slots. *needs builtinvotes*
 - [ ] **Harry** `l4d2_vote_manager3`: control who may call the game's built-in votes.

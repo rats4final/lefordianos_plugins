@@ -21,6 +21,7 @@ competitive balance changes.
 | [`lef_boss_spawns`](plugins/lef_boss_spawns/) | Per-map tank/witch chance, same spawn spot for both teams, flows announced. |
 | [`lef_score_info`](plugins/lef_score_info/) | Explains versus scores: map value, gap, what's needed to come back, map wins. No point changes. |
 | [`lef_comeback_bonus`](plugins/lef_comeback_bonus/) | The trailing team earns a capped bonus on the distance it covers. |
+| [`lef_admin_restore`](plugins/lef_admin_restore/) | `!heal`, and `!restore` to undo what teammates did to a survivor (HP, incaps, team kills, items). |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |
 
 ## Building

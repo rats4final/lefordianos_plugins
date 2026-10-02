@@ -32,7 +32,7 @@ that changes game balance should be optional and off by default.
 - **Comeback scoring for vanilla versus**: chose options A and C (see below), built as
   `lef_score_info` and `lef_comeback_bonus`. Needs testing on the server.
 
-## Undo griefing: admin restore (proposed 2026-10-01)
+## Undo griefing: admin restore (built as `lef_admin_restore`, 2026-10-01)
 
 Improves Harry Potter's `admin_hp` (`!hp` heals *every* survivor to full, root only, no menu).
 Working name `lef_admin_restore`.
@@ -115,6 +115,7 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **lef_admin_restore**: `!heal`, `!restore`, `!teamdamage`, admin heads-ups. Not yet tested in game.
 - **lef_score_info** (option A) and **lef_comeback_bonus** (option C): built, not yet tested in game.
 - **lef_boss_spawns**: per-map tank/witch chance (same for both teams), second-half bosses spawn on
   the first half's spot (port of confogl's BossSpawning), flows announced. Works with
