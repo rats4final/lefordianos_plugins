@@ -1,0 +1,72 @@
+[Español](CHANGELOG.es.md)
+
+# Changelog
+
+What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
+in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
+
+## 2026-10-02
+
+### New plugins
+- **`lef_round_start`**: start-of-round panel (tank/witch spots, teams, commands) and `!wait`, a vote
+  that keeps the saferoom closed until a friend joins. `+1` in chat only gives a private tip. No
+  Ready-Up needed.
+- **`lef_game_hints`**: warnings only, for rushing, falling behind and holding an infected too long.
+  Tips for whoever becomes (or is passed) the tank.
+- **`lef_bot_protect`**: survivor bots take 15% less damage from infected players, so they aren't
+  free kills.
+- **`lef_steam_bans`**: tells admins about joining players' VAC, game and community bans (bans only,
+  no hours). Uses REST in Pawn and a Steam Web API key.
+- **`lef_votes`**:
+  - `!votes` from a config file: maps, teams, kick with a 5-minute ban (like vanilla), AFK, mute,
+    rules, pause only by vote;
+  - a *Lefordianos* category in `!admin`;
+  - after every vote, the list of who voted Yes and No;
+  - ACS's next-campaign vote opens on finale maps.
+- **`lef_menu`**: `!menu` with every player command on the server.
+- **`lef_client_cvars`**: kicks players with advantage client cvars (fullbright, no fog...),
+  ZoneMod's 59-cvar list, without confogl.
+- **`lef_saferoom_doors`**: who opened the start saferoom door, who closed the end one on teammates.
+- **`lef_t1_mode`**: switchable T1-only weapons mode (vote, admin or cvar).
+- **`lef_karma_sounds`**: our own sounds on karma kills (waiting for the sound files).
+
+### Changed
+- **`lef_teams_panel`**:
+  - balanced shuffle, using a roster of SteamIDs and levels;
+  - tells newcomers and spectators how to even out the teams.
+- **`l4d2_tank_horde_monitor`** (patched): on/off switch and a rule reminder; installed off.
+
+### Lite config
+- Assembled: 177 plugins for Windows and Linux.
+- **Settings:**
+  - ZoneMod values for the chosen gameplay plugins;
+  - 50% tank and 50% witch chance per map;
+  - nobody can join the team that already has more humans;
+  - ACS announces its vote in chat.
+- **Map files:**
+  - Stripper configs generated from ZoneMod's, minus the special reworks and a few global changes;
+  - per-game-mode configs through Harry Potter's `gamemode-based_configs`.
+- **Plugins from other sources:**
+  - anti-cheat: SMAC and Little Anti-Cheat (srcdslab), LAC logging only;
+  - REST in Pawn extension.
+
+### Tools and docs
+- **Tools:** Python build tools for Windows and Linux: pinned SourceMod 1.12 compiler, pinned
+  reference repos, pinned extensions, lite package builder, Stripper generator.
+- **Docs:** credits for every source; English/Spanish docs; FastDL guide; AGENTS.md for AI sessions.
+- **References:** AlliedModders plugins imported (Mart, NoroHime, Silvers, pan0s). AoC-Gamers repos
+  reviewed.
+
+## 2026-10-01
+
+- **Repo started.** Reference repos read; ideas list; bilingual plugin picker for the lite config.
+- **`lef_teams_panel`**: rewrite of -=BwA=- Jester's Players Panel (`!teams`, `!swapwith`, Team
+  Management admin menu).
+- **`lef_boss_spawns`**:
+  - per-map tank/witch chance, the same for both teams;
+  - same spawn spots in both halves;
+  - flows announced.
+- **`lef_score_info`**: `!score` explains versus scoring (map value, gap, what's left).
+- **`lef_comeback_bonus`**: a bonus for the trailing team (built, not in the lite package).
+- **`lef_admin_restore`**: `!heal` and `!restore` to undo griefing (team damage, incaps, lost items).
+- **`l4d_tank_control_eq`**: patched to run without Ready-Up.

@@ -6,6 +6,9 @@ Plugins de SourceMod y configuraciones para nuestro servidor de versus de Left 4
 es **versus vanilla con las mejoras de comodidad y correcciones de bugs** de ZoneMod y compañía, sin
 los cambios de balance competitivo.
 
+Qué les da a jugadores y admins: [docs/BENEFITS.es.md](docs/BENEFITS.es.md). Qué se hizo y cuándo:
+[CHANGELOG.es.md](CHANGELOG.es.md). Contexto para asistentes de IA: [AGENTS.md](AGENTS.md) (en inglés).
+
 ## Estructura
 
 | Carpeta | Qué contiene |

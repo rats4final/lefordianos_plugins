@@ -6,6 +6,9 @@ SourceMod plugins and server configs for our Left 4 Dead 2 versus server. The go
 **vanilla versus with the quality-of-life and bug fixes** from ZoneMod and friends, without the
 competitive balance changes.
 
+What it gives players and admins: [docs/BENEFITS.md](docs/BENEFITS.md). What was built when:
+[CHANGELOG.md](CHANGELOG.md). Context for AI assistants: [AGENTS.md](AGENTS.md).
+
 ## Layout
 
 | Folder | What's in it |
