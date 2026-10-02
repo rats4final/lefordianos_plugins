@@ -1,3 +1,4 @@
 build/
 *.smx
 *:Zone.Identifier
+tools/sourcemod/

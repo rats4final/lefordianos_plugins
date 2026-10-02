@@ -12,12 +12,23 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 refs="${REFS:-$here/..}"
 
-spcomp="$refs/L4D2-Competitive-Rework/addons/sourcemod/scripting/sourcemod/spcomp64"
-# Order matters: the newest Left4DHooks headers win over the copy bundled with the competitive repo.
+# Our own pinned SourceMod (tools/get-sourcemod.sh); falls back to the competitive repo's copy.
+own_sm="$here/tools/sourcemod/current"
+if [[ -f "$own_sm/spcomp64" ]]; then
+	spcomp="$own_sm/spcomp64"
+	sm_include="$own_sm/include"
+else
+	echo "Note: tools/sourcemod not found, using the competitive repo's compiler (run tools/get-sourcemod.sh)." >&2
+	spcomp="$refs/L4D2-Competitive-Rework/addons/sourcemod/scripting/sourcemod/spcomp64"
+	sm_include="$refs/L4D2-Competitive-Rework/addons/sourcemod/scripting/sourcemod/include"
+fi
+
+# Third-party headers still come from the reference repos. Order matters: the newest
+# Left4DHooks headers win over the copy bundled with the competitive repo.
 includes=(
 	"$refs/Left4DHooks/sourcemod/scripting/include"
 	"$refs/L4D2-Competitive-Rework/addons/sourcemod/scripting/include"
-	"$refs/L4D2-Competitive-Rework/addons/sourcemod/scripting/sourcemod/include"
+	"$sm_include"
 )
 
 [[ -f "$spcomp" ]] || { echo "Compiler not found: $spcomp" >&2; exit 1; }
