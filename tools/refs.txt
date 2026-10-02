@@ -20,3 +20,15 @@ sourcetvsupport https://github.com/shqke/sourcetvsupport a19d90cda0a2299d3b73767
 sm-plugin-lilac https://github.com/srcdslab/sm-plugin-lilac 97b40dd920c7d6876e03ebb75fc1d957381e5139
 Sourcemod-Plugins https://github.com/fbef0102/Sourcemod-Plugins 629b3820ad1176a0e4af2f74989a4b0883ec50cd
 Multi-Colors https://github.com/Bara/Multi-Colors d2f2dc9126255571c0fc4499d5729cacb57265ca
+CallVote-Manager https://github.com/AoC-Gamers/CallVote-Manager 3f656957560f5c3e3f8744b7608aa85d10a1e610
+L4D2-Family-Share https://github.com/AoC-Gamers/L4D2-Family-Share 934e65c0facf5df65d4025973d58b23e8bfe4973
+L4D2-Player-Skills https://github.com/AoC-Gamers/L4D2-Player-Skills 79598f4f83a9ac8756b2084434473ecb74afbd75
+L4D2-Player-Stats https://github.com/AoC-Gamers/L4D2-Player-Stats cacb3f05760dcc3c4d769637e9bc5e8257739ad7
+AFK-On-Readyup https://github.com/AoC-Gamers/AFK-On-Readyup 0ca0895acaeda8af10ef3950045428fe438f60fd
+L4D2-Mission-Manager https://github.com/AoC-Gamers/L4D2-Mission-Manager 34de8db1cf50907a021b28ed7584ffb92d2d1dcc
+L4D2-CommSuite https://github.com/AoC-Gamers/L4D2-CommSuite 76668cea9f99c3bbd9eb85a04db3783fc3036e0c
+T1-ZM https://github.com/AoC-Gamers/T1-ZM 54e5ee0d28d8cb22edd76264bdae40f4cc12dce8
+SuperVanilla https://github.com/AoC-Gamers/SuperVanilla 0ebd77ff1597a90c590ac72e57a6864a4e25feca
+L4D2-Competitive-Rework-Fix https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix cd6676e04b77d40fdf98e71f4b02fea41bc54b1f
+Lilac-SourceTV https://github.com/AoC-Gamers/Lilac-SourceTV 7dce26d5bbdf65449fd91bb78f1aaf710918646f
+L4D2-Translation-Localizer https://github.com/AoC-Gamers/L4D2-Translation-Localizer f6559262759a30c616c2e2cd29d66352b66c7e2a
