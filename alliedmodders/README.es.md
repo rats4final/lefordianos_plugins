@@ -14,6 +14,7 @@ original se queda aquí, para poder compararlos siempre.
 | Mart | Throwable / Explosion announcers, Upgrade pack announce, Scripted HUD | AlliedModders | — |
 | NoroHime | `l4d_announce_healer` | AlliedModders | — |
 | SilverShot | `l4d_fire_glow`, `l4d_pipebomb_ignore` | AlliedModders | — |
+| Buster "Mr. Zero" Nielsen; fork de cravenge y Dragokas | `sceneprocessor` 1.33.3 (lo necesita el `l4d2_survivor_mourn_fix` de Harry; copia del repo Rotoblin-AZMod de Harry Potter) | [AlliedModders t=241585](https://forums.alliedmods.net/showthread.php?t=241585) | — |
 | pan0s | `l4d2_menu`, `l4d2_srs` (contenido de los zip, sin binarios compilados) | AlliedModders | — |
 
 Las versiones y enlaces al foro de cada uno están en [CREDITS.es.md](../CREDITS.es.md). No se guardan archivos compilados (`.smx`, `.so`, `.dll`).
