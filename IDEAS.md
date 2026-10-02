@@ -37,6 +37,114 @@ that changes game balance should be optional and off by default.
 - **Comeback scoring for vanilla versus**: chose options A and C (see below), built as
   `lef_score_info` and `lef_comeback_bonus`. Needs testing on the server.
 
+## Decisions and plans (2026-10-02)
+
+### Stripper for the lite config
+- Use ZoneMod's stripper files (`cfg/stripper/zonemod/maps/`) **minus the special reworks** on 13
+  official maps: c1m1 elevator holdout, c1m3 lower event path / saferoom route, c2m2 & c2m3 & c2m4
+  saferoom reworks / scavenge area / carousel room / bumper cars route, c3m1 town one-way drop, c4m4
+  playground route, c5m5 bridge railings, c6m1 empty apartment rooms, c7m2 saferoom one-way drop,
+  c8m1 block street, c10m1 tree cards, c12m4 warehouse awning. Everything else on those maps stays
+  (exploit fixes, out of bounds, stuck spots...).
+- **Keep scripted witches and tanks** like vanilla:
+  - don't use the witch-removal part of ZoneMod's `global_filters.cfg` (keep its ragdoll removal and
+    entity-type fix);
+  - also drop these event blocks: c1m4 "spawn tank at 29 seconds", c4m2 / c4m3 "fix multiple unwanted
+    witches", c7m1 "automatically open the 2nd train car door after the tank" and "remove the fake
+    tank sounds". Fixes like c9m2's generator freeze and c10m3's tank filter stay.
+  - Scripted map tanks (e.g. c7m1's train car, finales) are never removed by our plugins; the
+    `static_tank_map` list only stops `witch_and_tankifier` adding a *second* flow tank there.
+- Plan: a small script that copies ZoneMod's files and cuts those sections/blocks out, so updates to
+  ZoneMod's stripper can be re-applied.
+
+### Tickrate (parked, not for now)
+Everything we learned, so we don't have to research it again:
+- **It's server-wide.** Set with the launch option `-tickrate 60` / `100` (lakwsh's l4dtoolz; with
+  Accelerator74's l4dtoolz you also need `tickrate_enabler`). lakwsh's version also has
+  `sv_tickrate N`, which applies after the next map change. It can't differ between the lite config
+  and a confogl mode without a map change.
+- **Rates to set** (`server.cfg`, many need `sm_cvar`): `sv_minrate`/`sv_maxrate`/`net_splitpacket_maxrate`
+  = tickrate × 1000; `sv_minupdaterate`/`sv_maxupdaterate`/`sv_mincmdrate`/`sv_maxcmdrate` = tickrate;
+  `sv_client_min_interp_ratio 0`/`sv_client_max_interp_ratio 0`; `fps_max 0`; `nb_update_frequency`
+  (how often commons/witches think: lower = smoother but more CPU). The competitive repo's
+  `server.cfg` has a ready 100-tick block. lakwsh's l4dtoolz raises `sv_minrate`/`sv_minupdaterate`
+  by itself when the tickrate changes.
+- **Things that break above 30 tick, and their fixes:**
+  - the boomer's vomit range gets shorter in versus → [`lakwsh/l4d2_vomit_fix`](https://github.com/lakwsh/l4d2_vomit_fix)
+    (not in our folder yet);
+  - dual pistols fire much faster → `l4d2_pistol_delay`;
+  - door speed, fall damage and other tick-based timings → `TickrateFixes` (plus `tick_door_speed 1.3`).
+- **Quirks:** the client's `net_graph` shows at most 100 even at 128 tick (display only); a client's
+  real cmdrate can't exceed their FPS; if the server's FPS (`sv` in net_graph) drops below the
+  tickrate during tank + horde, everyone gets fewer updates. The competitive guide suggests a ~3 GHz
+  CPU for 100 tick. CPU and upload bandwidth grow roughly with the tickrate (100 tick ≈ 3× 30 tick).
+
+### l4dtoolz: Accelerator74 vs lakwsh
+Both are forks of the original by ivailosp. The competitive repo ships Accelerator74's.
+
+| | Accelerator74 (competitive repo) | lakwsh (recommended by Harry for L4D2) |
+|---|---|---|
+| Max clients (players + bots) | Launch option `-maxplayers N`, else **31**. Fixed for the whole run. | `sv_setmax N` (18–32, default 18). Use `+sv_setmax 31` at launch; can change at runtime (when the server is empty). |
+| Human player limit | `sv_maxplayers` (-1 = game default, 0–32) | `sv_maxplayers` (-1 = game default, up to 31) |
+| Lobby reservation | `sv_force_unreserved` | `sv_force_unreserved`, plus `sv_cookie` to read/set the lobby cookie (0 removes the lobby) |
+| Tickrate | No (needs `tickrate_enabler`) | Yes: `-tickrate N` / `sv_tickrate N` |
+| "No Steam logon" workaround | No | `sv_steam_bypass 1` — but SteamIDs are then **not verified**: admins by SteamID and our roster can't be trusted, Family Sharing bans stop working, SteamWorks breaks, and server-browser info needs `l4d2_a2s_fix`. Only switch on while the error is happening. |
+| Block Family Sharing accounts | No | `sv_anti_sharing 1` |
+| How it finds game code | Symbols/signatures | Offsets with pointer checks: less likely to break on updates |
+| Games | L4D1 and L4D2 | L4D2 (Harry points L4D1 users to Accelerator74's) |
+| Windows / Linux | Both | Both |
+
+Gotchas: `sv_setmax` ≠ `sv_maxplayers` (all clients incl. bots vs. real players); above 31 crashes
+since The Last Stand. The competitive configs set the human limit through `mv_maxplayers` (from
+`match_vote`) because `sv_maxplayers` gets reset on map change; with lakwsh we'd set
+`sv_maxplayers` + `sv_visiblemaxplayers` in `server.cfg`. For `sv_allow_lobby_connect_only` the
+two sources differ: the competitive `server.cfg` uses `0`; Harry's tutorial suggests `1` plus his
+`l4d_unreservelobby` for servers with 5+ slots. To test on our server.
+**Decision:** use lakwsh's.
+
+### Karma kill sounds
+Only for karma kills. eyal282's karma kill system fires `KarmaKillSystem_OnKarmaEventPost`, so a
+small plugin of ours can play a random sound from our own list. Players must download custom sounds:
+- **FastDL** is the good way: a web server with the files, and `sv_downloadurl "http://.../"` on the
+  game server. A public IP at home works: run a small web server (nginx, Caddy, or even
+  `python3 -m http.server`), forward its port, use `http://` (the game's downloader isn't reliable
+  with `https://`), and compress files as `.bz2` so they download faster. If the home IP changes,
+  use a dynamic DNS name. Upload speed at home limits how fast players download.
+- Without FastDL, players download from the game server itself (slow). Harry's
+  `l4d_fastdl_delay_downloader` makes them download only at map change, not on join.
+
+### Anti-cheat
+Use **srcdslab's SMAC and srcdslab's Little Anti-Cheat**. Start LAC with `lilac_ban 0` (log only)
+for a couple of weeks.
+
+### Votes, and replacing Automatic Campaign Switcher
+Harry's archived `l4d_votes_5` (L4D1_2-Plugins) is a good base to learn from: a `!votes` menu
+(change official/custom map, restart, kick, give HP, alltalk) on the game's vote screen. Its
+successor `l4d2_vote_change` is private (paid, no source). Harry's `match_vote` in Sourcemod-Plugins
+is another example. Idea: our own `!votes` menu that also replaces ACS: at the finale, pick the next
+campaign from a menu (list from the mission manager), then a Yes/No vote on the game's screen
+(multiple-choice votes don't exist in L4D2). Other items: T1 mode, tank horde monitor on/off,
+balanced shuffle.
+
+### Tank horde monitor (undecided)
+If we use it, make it switchable (vote/admin/cvar, like T1 mode) and announce the rule when it's on
+("the horde pauses while the tank is up; pushing ahead brings it back"), because random players
+don't know it and will rush.
+
+### Balanced teams
+Roster file with our SteamIDs, a name and a manual level 1–5 (randoms get a default level).
+`!balance` / admin menu "Balanced shuffle" tries every split of the players present (8 players = 70
+splits) and picks the most even one. Part of `lef_teams_panel`. Waiting for the SteamIDs.
+
+### Windows and Linux
+Everything must run on both:
+- Our plugins: the same `.smx` runs on both. Fine.
+- Plugins with gamedata (signatures/offsets): check each file has Windows **and** Linux entries.
+- Extensions and Metamod plugins need both `.so` and `.dll`: the competitive repo ships both for its
+  extensions; lakwsh's l4dtoolz and Stripper:Source have both builds.
+- Our tools (`build.sh`, `tools/*.sh`) are bash: on Windows use Git Bash or WSL; a PowerShell
+  version can come later if needed.
+
 ## Undo griefing: admin restore (built as `lef_admin_restore`, 2026-10-01)
 
 Improves Harry Potter's `admin_hp` (`!hp` heals *every* survivor to full, root only, no menu).
@@ -134,6 +242,9 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
   teams panel (new syntax, Left4DHooks instead of private gamedata, translations).
 
 ## Done
+
+- **lef_saferoom_doors**: who opened the start saferoom door, who closed the end one with teammates outside. Not yet tested in game.
+- **lef_t1_mode**: switchable T1-only weapons mode (cvar, admin, `!t1` vote), configurable list. Not yet tested in game.
 
 - **lef_admin_restore**: `!heal`, `!restore`, `!teamdamage`, admin heads-ups. Not yet tested in game.
 - **lef_score_info** (option A) and **lef_comeback_bonus** (option C): built, not yet tested in game.

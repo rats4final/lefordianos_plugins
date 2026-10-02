@@ -26,6 +26,8 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 | [`lef_score_info`](plugins/lef_score_info/README.es.md) | Explica los puntajes de versus: cuánto vale el mapa, la diferencia, qué hace falta para remontar, mapas ganados. No cambia puntos. |
 | [`lef_comeback_bonus`](plugins/lef_comeback_bonus/README.es.md) | El equipo que va perdiendo gana un bono limitado sobre la distancia que recorre. |
 | [`lef_admin_restore`](plugins/lef_admin_restore/README.es.md) | `!heal`, y `!restore` para deshacer lo que los compañeros le hicieron a un superviviente (vida, derribos, muertes, objetos). |
+| [`lef_saferoom_doors`](plugins/lef_saferoom_doors/README.es.md) | Anuncia quién abrió la puerta del refugio inicial y quién cerró la final con compañeros afuera. |
+| [`lef_t1_mode`](plugins/lef_t1_mode/README.es.md) | Modo solo armas T1 que se prende y apaga (cvar, admin o votación `!t1`), configurable. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/README.es.md) | Copia parchada de la rotación de tank del repo competitivo que ya no necesita Ready-Up. |
 
 ## Compilar

@@ -44,6 +44,122 @@ desactivada por defecto.
 - **Puntaje de remontada para versus vanilla**: elegimos las opciones A y C (ver abajo), hechas como
   `lef_score_info` y `lef_comeback_bonus`. Falta probarlas en el servidor.
 
+## Decisiones y planes (2026-10-02)
+
+### Stripper para la config lite
+- Usar los archivos de stripper de ZoneMod (`cfg/stripper/zonemod/maps/`) **sin los retrabajos
+  especiales** de 13 mapas oficiales: c1m1 aguante del ascensor, c1m3 ruta del evento / ruta del
+  refugio, c2m2 y c2m3 y c2m4 refugios rehechos / zona de scavenge / cuarto del carrusel / ruta de los
+  autitos chocones, c3m1 bajada de un solo sentido en el pueblo, c4m4 ruta del parque, c5m5 barandas
+  del puente, c6m1 departamentos vacíos, c7m2 bajada de un solo sentido en el refugio, c8m1 calle
+  bloqueada, c10m1 árboles, c12m4 toldo del galpón. Todo lo demás de esos mapas se queda (arreglos de
+  exploits, fuera del mapa, lugares donde uno se traba...).
+- **Mantener las witches y los tanks programados** como en vanilla:
+  - no usar la parte de `global_filters.cfg` de ZoneMod que quita witches (sí su parte que quita
+    ragdolls y la que corrige tipos de entidad);
+  - también quitar estos bloques de eventos: c1m4 "tank a los 29 segundos", c4m2 / c4m3 "arreglar
+    varias witches no deseadas", c7m1 "abrir sola la puerta del 2º vagón después del tank" y "quitar
+    los sonidos falsos de tank". Los arreglos como el del generador de c9m2 y el filtro del tank de
+    c10m3 se quedan.
+  - Los tanks programados de los mapas (por ejemplo el del vagón de c7m1, o los finales) nunca los
+    quitan nuestros plugins; la lista `static_tank_map` solo evita que `witch_and_tankifier` agregue un
+    *segundo* tank por % ahí.
+- Plan: un script chico que copia los archivos de ZoneMod y les corta esas secciones/bloques, así se
+  puede volver a aplicar cuando ZoneMod actualice sus stripper.
+
+### Tickrate (en pausa, no por ahora)
+Todo lo que averiguamos, para no tener que investigarlo de nuevo:
+- **Es de todo el servidor.** Se pone con la opción de arranque `-tickrate 60` / `100` (con el l4dtoolz
+  de lakwsh; con el de Accelerator74 hace falta además `tickrate_enabler`). La versión de lakwsh también
+  tiene `sv_tickrate N`, que se aplica después del próximo cambio de mapa. No puede ser distinto entre la
+  config lite y un modo de confogl sin cambiar de mapa.
+- **Rates a configurar** (`server.cfg`, varios necesitan `sm_cvar`): `sv_minrate`/`sv_maxrate`/`net_splitpacket_maxrate`
+  = tickrate × 1000; `sv_minupdaterate`/`sv_maxupdaterate`/`sv_mincmdrate`/`sv_maxcmdrate` = tickrate;
+  `sv_client_min_interp_ratio 0`/`sv_client_max_interp_ratio 0`; `fps_max 0`; `nb_update_frequency`
+  (cada cuánto "piensan" los comunes y las witches: más bajo = más suave pero más CPU). El `server.cfg`
+  del repo competitivo trae un bloque listo para 100 tick. El l4dtoolz de lakwsh sube `sv_minrate` y
+  `sv_minupdaterate` solo cuando cambia el tickrate.
+- **Cosas que se rompen arriba de 30 tick, y sus arreglos:**
+  - el alcance del vómito del boomer se acorta en versus → [`lakwsh/l4d2_vomit_fix`](https://github.com/lakwsh/l4d2_vomit_fix)
+    (todavía no está en nuestra carpeta);
+  - las pistolas dobles disparan mucho más rápido → `l4d2_pistol_delay`;
+  - velocidad de las puertas, daño por caída y otros tiempos que dependen del tick → `TickrateFixes`
+    (más `tick_door_speed 1.3`).
+- **Rarezas:** el `net_graph` del jugador muestra como mucho 100 aunque el servidor vaya a 128 (es solo
+  visual); el cmdrate real de un jugador no puede pasar sus FPS; si los FPS del servidor (`sv` en el
+  net_graph) caen por debajo del tickrate durante tank + horda, todos reciben menos actualizaciones. La
+  guía del repo competitivo sugiere una CPU de ~3 GHz para 100 tick. La CPU y la subida de internet
+  crecen más o menos con el tickrate (100 tick ≈ 3× 30 tick).
+
+### l4dtoolz: Accelerator74 vs lakwsh
+Los dos son forks del original de ivailosp. El repo competitivo trae el de Accelerator74.
+
+| | Accelerator74 (repo competitivo) | lakwsh (el que recomienda Harry para L4D2) |
+|---|---|---|
+| Máximo de clientes (jugadores + bots) | Opción de arranque `-maxplayers N`, si no **31**. Fijo mientras corre el servidor. | `sv_setmax N` (18–32, por defecto 18). Usar `+sv_setmax 31` al arrancar; se puede cambiar en marcha (con el servidor vacío). |
+| Límite de jugadores humanos | `sv_maxplayers` (-1 = lo del juego, 0–32) | `sv_maxplayers` (-1 = lo del juego, hasta 31) |
+| Reserva de lobby | `sv_force_unreserved` | `sv_force_unreserved`, más `sv_cookie` para ver/poner la cookie del lobby (0 quita el lobby) |
+| Tickrate | No (necesita `tickrate_enabler`) | Sí: `-tickrate N` / `sv_tickrate N` |
+| Arreglo de "No Steam logon" | No | `sv_steam_bypass 1`, pero entonces los SteamID **no se verifican**: los admins por SteamID y nuestro roster no son confiables, los baneos de cuentas familiares dejan de funcionar, SteamWorks se rompe, y la info del buscador de servidores necesita `l4d2_a2s_fix`. Prenderlo solo mientras dure el error. |
+| Bloquear cuentas de Family Sharing | No | `sv_anti_sharing 1` |
+| Cómo encuentra el código del juego | Símbolos/firmas | Offsets con verificación de punteros: es menos probable que se rompa con las actualizaciones |
+| Juegos | L4D1 y L4D2 | L4D2 (Harry manda a los de L4D1 al de Accelerator74) |
+| Windows / Linux | Ambos | Ambos |
+
+Ojo: `sv_setmax` ≠ `sv_maxplayers` (todos los clientes con bots vs. solo jugadores reales); más de 31
+crashea desde The Last Stand. Las configs competitivas ponen el límite de humanos con `mv_maxplayers`
+(de `match_vote`) porque `sv_maxplayers` se reinicia al cambiar de mapa; con lakwsh pondríamos
+`sv_maxplayers` + `sv_visiblemaxplayers` en `server.cfg`. Para `sv_allow_lobby_connect_only` las dos
+fuentes difieren: el `server.cfg` competitivo usa `0`; el tutorial de Harry sugiere `1` junto con su
+`l4d_unreservelobby` para servidores de 5+ lugares. A probar en nuestro servidor.
+**Decisión:** usar el de lakwsh.
+
+### Sonidos del karma kill
+Solo para karma kills. El karma kill de eyal282 dispara `KarmaKillSystem_OnKarmaEventPost`, así que un
+plugin chico nuestro puede tocar un sonido al azar de nuestra propia lista. Los jugadores tienen que
+descargar los sonidos propios:
+- **FastDL** es la buena forma: un servidor web con los archivos, y `sv_downloadurl "http://.../"` en el
+  servidor del juego. Una IP pública en casa sirve: correr un servidor web chico (nginx, Caddy, o hasta
+  `python3 -m http.server`), abrir su puerto en el router, usar `http://` (la descarga del juego no es
+  confiable con `https://`), y comprimir los archivos como `.bz2` para que bajen más rápido. Si la IP de
+  casa cambia, usar un nombre de DNS dinámico. La velocidad de subida de casa limita qué tan rápido
+  descargan los jugadores.
+- Sin FastDL, los jugadores descargan del servidor del juego (lento). El `l4d_fastdl_delay_downloader`
+  de Harry hace que descarguen solo al cambiar de mapa, no al entrar.
+
+### Antitrampas
+Usar **el SMAC de srcdslab y el Little Anti-Cheat de srcdslab**. Empezar LAC con `lilac_ban 0` (solo
+registra) un par de semanas.
+
+### Votaciones, y reemplazar Automatic Campaign Switcher
+El `l4d_votes_5` archivado de Harry (L4D1_2-Plugins) sirve para aprender: un menú `!votes` (cambiar mapa
+oficial/custom, reiniciar, expulsar, dar vida, alltalk) en la pantalla de votación del juego. Su sucesor
+`l4d2_vote_change` es privado (de pago, sin código). El `match_vote` de Harry en Sourcemod-Plugins es otro
+ejemplo. Idea: nuestro propio menú `!votes` que además reemplace a ACS: en el final, elegir la próxima
+campaña en un menú (lista del mission manager) y después una votación Sí/No en la pantalla del juego (en
+L4D2 no existen las votaciones de opción múltiple). Otras opciones: modo T1, tank horde monitor
+prendido/apagado, mezcla balanceada.
+
+### Tank horde monitor (sin decidir)
+Si lo usamos, que se pueda prender y apagar (votación/admin/cvar, como el modo T1) y que anuncie la regla
+cuando está activo ("la horda se pausa mientras está el tank; avanzar la hace volver"), porque los
+jugadores randoms no lo conocen y van a rushear.
+
+### Equipos balanceados
+Archivo de roster con nuestros SteamID, un nombre y un nivel manual del 1 al 5 (los randoms reciben un
+nivel por defecto). `!balance` / menú de admin "Mezcla balanceada" prueba todas las formas de repartir a
+los jugadores conectados (8 jugadores = 70 formas) y elige la más pareja. Parte de `lef_teams_panel`.
+Esperando los SteamID.
+
+### Windows y Linux
+Todo tiene que funcionar en los dos:
+- Nuestros plugins: el mismo `.smx` corre en ambos. Bien.
+- Plugins con gamedata (firmas/offsets): revisar que cada archivo tenga entradas de Windows **y** Linux.
+- Las extensiones y plugins de Metamod necesitan `.so` y `.dll`: el repo competitivo trae ambos para sus
+  extensiones; el l4dtoolz de lakwsh y Stripper:Source tienen las dos versiones.
+- Nuestras herramientas (`build.sh`, `tools/*.sh`) son bash: en Windows usar Git Bash o WSL; si hace
+  falta, más adelante se puede hacer una versión en PowerShell.
+
 ## Deshacer el griefing: restaurar por admin (hecho como `lef_admin_restore`, 2026-10-01)
 
 Mejora el `admin_hp` de Harry Potter (`!hp` cura a *todos* los supervivientes al máximo, solo root,
@@ -146,6 +262,9 @@ también lo usaría.
   el panel de equipos (sintaxis nueva, Left4DHooks en vez de gamedata propia, traducciones).
 
 ## Hecho
+
+- **lef_saferoom_doors**: quién abrió la puerta del refugio inicial, quién cerró la final con compañeros afuera. Falta probarlo en el juego.
+- **lef_t1_mode**: modo solo armas T1 que se prende y apaga (cvar, admin, votación `!t1`), lista configurable. Falta probarlo en el juego.
 
 - **lef_admin_restore**: `!heal`, `!restore`, `!teamdamage`, avisos a los admins. Falta probarlo en el juego.
 - **lef_score_info** (opción A) y **lef_comeback_bonus** (opción C): hechos, falta probarlos en el juego.
