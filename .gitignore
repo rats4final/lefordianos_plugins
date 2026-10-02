@@ -2,3 +2,4 @@ build/
 *.smx
 *:Zone.Identifier
 tools/sourcemod/
+__pycache__/

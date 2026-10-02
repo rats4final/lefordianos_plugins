@@ -19,3 +19,4 @@ sm-plugin-SMAC https://github.com/srcdslab/sm-plugin-SMAC f07d0b4a656f068dd6b059
 sourcetvsupport https://github.com/shqke/sourcetvsupport a19d90cda0a2299d3b737675d68e2d1a50596a8a
 sm-plugin-lilac https://github.com/srcdslab/sm-plugin-lilac 97b40dd920c7d6876e03ebb75fc1d957381e5139
 Sourcemod-Plugins https://github.com/fbef0102/Sourcemod-Plugins 629b3820ad1176a0e4af2f74989a4b0883ec50cd
+Multi-Colors https://github.com/Bara/Multi-Colors d2f2dc9126255571c0fc4499d5729cacb57265ca
