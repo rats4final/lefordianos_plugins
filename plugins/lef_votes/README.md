@@ -36,6 +36,13 @@ pause vote instead. If it passes, the game pauses as usual (`pause.smx`), and un
 before (both teams `!ready`). Admins can still `!pause` directly, and have **force pause** and
 **force unpause** in the admin menu. Turn this off with `lef_votes_pause_by_vote 0`.
 
+## Votes last the whole session
+
+Every map change re-runs the server configs, which would quietly undo a voted setting (tank/witch
+chance, horde monitor, all talk). So those votes are remembered and applied again after each map's
+configs, until the server is empty; then everything goes back to the configs. In the config file
+this is the `"persist"` key.
+
 ## Who voted
 
 After every vote on the vote screen (the game's own votes from the Esc menu, ours, and other

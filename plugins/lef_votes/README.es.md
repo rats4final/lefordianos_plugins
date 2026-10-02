@@ -37,6 +37,13 @@ inicia una votación de pausa. Si pasa, el juego se pausa como siempre (`pause.s
 funciona igual que antes (los dos equipos `!ready`). Los admins sí pueden `!pause` directo, y tienen
 **forzar pausa** y **forzar quitar pausa** en el menú de admin. Se apaga con `lef_votes_pause_by_vote 0`.
 
+## Las votaciones duran toda la sesión
+
+Cada cambio de mapa vuelve a ejecutar las configs del servidor, que desharían sin avisar un ajuste votado
+(probabilidad de tank/witch, tank horde monitor, voz entre equipos). Por eso esas votaciones se recuerdan y
+se vuelven a aplicar después de las configs de cada mapa, hasta que el servidor se vacía; ahí todo vuelve a
+las configs. En el archivo de config es la clave `"persist"`.
+
 ## Quién votó
 
 Después de cada votación en la pantalla de votación (las del propio juego desde el menú Esc, las nuestras

@@ -23,6 +23,11 @@
  * lists who voted Yes and who voted No. Players send "Vote Yes" / "Vote No" for all of them, and the
  * VoteStart / VotePass / VoteFail messages mark the start and the end.
  *
+ * Votes that change a setting (tank/witch chance, horde monitor, all talk) are remembered for the
+ * session: every map change re-runs the server configs, which would undo them, so they are applied
+ * again once the configs have run. Entries that replace each other share a "persist" key in the
+ * config, so the latest one wins. Everything goes back to the configs once the server is empty.
+ *
  * Next campaign: ACS (Automatic Campaign Switcher) has its own vote for the next campaign, where
  * each player picks one and the most picked wins. On a finale map we open that menu for everyone a
  * little after the survivors leave the saferoom, so nobody forgets to vote.
@@ -79,6 +84,7 @@ enum struct VoteItem
 	char type[16];
 	char command[256];
 	bool adminOnly;
+	char persist[32];   // remember this command for the session under this key ("" = don't)
 }
 
 ArrayList g_aGroups;
@@ -95,6 +101,9 @@ ConVar
 	g_cvPauseByVote,
 	g_cvShowVoters,
 	g_cvFinaleMapVote;
+
+// Settings changed by vote or admin, re-applied after each map's configs: persist key -> command.
+StringMap g_smSession;
 
 // Who voted what on the vote screen right now (any vote, not only ours).
 bool  g_bTrackingVote;
@@ -164,6 +173,7 @@ public void OnPluginStart()
 
 	g_aGroups = new ArrayList(sizeof(VoteGroup));
 	g_aItems  = new ArrayList(sizeof(VoteItem));
+	g_smSession = new StringMap();
 	LoadConfig();
 
 	TopMenu topmenu;
@@ -192,6 +202,56 @@ public void OnMapStart()
 {
 	g_bTrackingVote     = false;
 	g_bFinaleVoteOpened = false;
+}
+
+// ---------------------------------------------------------------------------
+// Session settings: re-apply voted settings after each map's configs
+// ---------------------------------------------------------------------------
+
+public void OnConfigsExecuted()
+{
+	StringMapSnapshot snap = g_smSession.Snapshot();
+	char key[32], command[256];
+	for (int i = 0; i < snap.Length; i++)
+	{
+		snap.GetKey(i, key, sizeof(key));
+		if (g_smSession.GetString(key, command, sizeof(command)))
+		{
+			ServerCommand("%s", command);
+		}
+	}
+	delete snap;
+}
+
+public void OnClientDisconnect_Post(int client)
+{
+	// Map changes disconnect everyone for a moment too, so wait before deciding the server is empty.
+	if (!AnyHumanConnected())
+	{
+		CreateTimer(60.0, Timer_CheckEmpty);
+	}
+}
+
+Action Timer_CheckEmpty(Handle timer)
+{
+	if (!AnyHumanConnected() && g_smSession.Size > 0)
+	{
+		g_smSession.Clear();
+		LogMessage("Server empty: voted settings forgotten, back to the configs from the next map");
+	}
+	return Plugin_Stop;
+}
+
+bool AnyHumanConnected()
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientConnected(i) && !IsFakeClient(i))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 // ---------------------------------------------------------------------------
@@ -241,6 +301,7 @@ void LoadConfig()
 					kv.GetString("type", item.type, sizeof(item.type), "command");
 					kv.GetString("command", item.command, sizeof(item.command));
 					item.adminOnly = kv.GetNum("admin_only", 0) != 0;
+					kv.GetString("persist", item.persist, sizeof(item.persist));
 					g_aItems.PushArray(item);
 				}
 				while (kv.GotoNextKey());
@@ -789,6 +850,10 @@ void Execute(int index, int initiator, int targetUserId, const char[] map)
 	if (StrEqual(item.type, "command"))
 	{
 		ServerCommand("%s", item.command);
+		if (item.persist[0] != '\0')
+		{
+			g_smSession.SetString(item.persist, item.command);
+		}
 	}
 	else if (StrEqual(item.type, "restart"))
 	{
