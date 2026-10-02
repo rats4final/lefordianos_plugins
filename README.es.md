@@ -31,6 +31,8 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 ## Compilar
 
 ```bash
+tools/get-sourcemod.sh      # una vez: descarga nuestro compilador fijo de SourceMod 1.12 en tools/sourcemod/
+tools/fetch-refs.sh         # una vez: clona los repos de referencia al lado de este (commits fijados)
 ./build.sh                  # compila todo
 ./build.sh lef_teams_panel  # compila un solo plugin
 ```
@@ -38,10 +40,14 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 El resultado queda en `build/`, ordenado como la carpeta `left4dead2/` de un servidor, así que
 instalar es copiar: `build/addons/sourcemod/plugins/*.smx` y `build/addons/sourcemod/translations/`.
 
-El script usa el compilador y los archivos include de los repos de referencia que están al lado de
-este (`../L4D2-Competitive-Rework`, `../Left4DHooks`). Usa `REFS=/alguna/ruta` si están en otro lugar.
+El compilador es nuestra propia copia fija de SourceMod (versión en `tools/SOURCEMOD_VERSION`;
+`tools/get-sourcemod.sh latest` la actualiza). Los archivos include de terceros (Left4DHooks, colors,
+builtinvotes...) siguen viniendo de los repos de referencia que están al lado de este. Usa
+`REFS=/alguna/ruta` si están en otro lugar.
 
-## Repos de referencia
+## Repos de referencia y créditos
+
+Ver [CREDITS.es.md](CREDITS.es.md) para cada fuente, sus autores y enlaces.
 
 Están al lado de este repo, solo para leer: L4D2-Competitive-Rework (SirPlease), L4D1_2-Plugins
 (Harry Potter), MoYu_Server_Stupid_Plugins (Forgetest), Left4DHooks (Silvers),

@@ -31,6 +31,8 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 ## Building
 
 ```bash
+tools/get-sourcemod.sh      # once: download our pinned SourceMod 1.12 compiler into tools/sourcemod/
+tools/fetch-refs.sh         # once: clone the reference repos next to this one (pinned commits)
 ./build.sh                  # build everything
 ./build.sh lef_teams_panel  # build one plugin
 ```
@@ -38,10 +40,13 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 Output goes to `build/`, laid out like a server's `left4dead2/` folder, so deploying is a copy:
 `build/addons/sourcemod/plugins/*.smx` and `build/addons/sourcemod/translations/`.
 
-The script uses the compiler and include files from the reference repos next to this one
-(`../L4D2-Competitive-Rework`, `../Left4DHooks`). Set `REFS=/some/path` if they live elsewhere.
+The compiler is our own pinned SourceMod (version in `tools/SOURCEMOD_VERSION`; `tools/get-sourcemod.sh latest`
+updates it). Third-party include files (Left4DHooks, colors, builtinvotes...) still come from the
+reference repos next to this one. Set `REFS=/some/path` if they live elsewhere.
 
-## Reference repos
+## Reference repos and credits
+
+See [CREDITS.md](CREDITS.md) for every source, its authors and links.
 
 Kept next to this repo, read-only: L4D2-Competitive-Rework (SirPlease), L4D1_2-Plugins
 (Harry Potter), MoYu_Server_Stupid_Plugins (Forgetest), Left4DHooks (Silvers),
