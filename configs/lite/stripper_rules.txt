@@ -18,6 +18,10 @@ WITCH REMOVAL
 T2 WEAPON SPAWN FIX
 # Removes miniguns, gas cans, propane and oxygen tanks from every map. / Quita ametralladoras fijas, bidones, propano y oxígeno de todos los mapas.
 COMPETITIVE ITEM SPAWNS
+# Decided 2026-10-02: vanilla pill cabinets and multi-pickup spawns. / Decidido el 2026-10-02: botiquines de pared y puntos de recogida como en vanilla.
+PILL CABINET MAX OVERRIDE
+ITEM PICKUP FIX
+# INFECTED CLIP / TRIGGER FIX is KEPT (decided 2026-10-02). / INFECTED CLIP / TRIGGER FIX SE QUEDA (decidido el 2026-10-02).
 
 [map-exclude-sections]
 # Special reworks on official maps (decided 2026-10-02) / Retrabajos especiales en mapas oficiales
