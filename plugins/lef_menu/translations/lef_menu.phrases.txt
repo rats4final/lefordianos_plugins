@@ -1,0 +1,11 @@
+"Phrases"
+{
+	"Menu Title"
+	{
+		"en"		"Lefordianos"
+	}
+	"Empty"
+	{
+		"en"		"{green}[Menu]{default} The menu is empty."
+	}
+}
