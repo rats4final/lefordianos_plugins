@@ -30,9 +30,10 @@ import os
 import re
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
-DEFAULT_SRC = os.path.join(REPO, "..", "L4D2-Competitive-Rework", "cfg", "stripper", "zonemod")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lefbuild import REFS, REPO  # noqa: E402
+
+DEFAULT_SRC = os.path.join(REFS, "L4D2-Competitive-Rework", "cfg", "stripper", "zonemod")
 DEFAULT_RULES = os.path.join(REPO, "configs", "lite", "stripper_rules.txt")
 DEFAULT_OUT = os.path.join(REPO, "configs", "lite", "left4dead2", "cfg", "stripper", "lefordianos")
 

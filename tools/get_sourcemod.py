@@ -23,7 +23,9 @@ DROP = f"https://sm.alliedmods.net/smdrop/{BRANCH}"
 
 
 def fetch(url):
-    with urllib.request.urlopen(url) as r:
+    # The download server rejects Python's default User-Agent (HTTP 403), so send a normal one.
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (lefordianos_plugins build tools)"})
+    with urllib.request.urlopen(req) as r:
         return r.read()
 
 
