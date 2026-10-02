@@ -227,6 +227,7 @@ ours lef_admin_restore
 ours lef_saferoom_doors
 ours lef_t1_mode
 ours lef_karma_sounds
+ours lef_client_cvars
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 
