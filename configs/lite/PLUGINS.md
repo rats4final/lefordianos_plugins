@@ -307,6 +307,17 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   `!teams`, `!t1`, `!bosses`).*
 - [x] **Harry** `l4d2_spec_stays_spec` (MoYu has one too): spectators stay spectators on map change.
   *ES: (MoYu también tiene uno) los espectadores siguen siendo espectadores al cambiar de mapa.*
+- [x] **Ours** `lef_votes`: `!votes` on the game's vote screen, from a config file (maps, teams, kick
+      with a 5-minute ban like vanilla, AFK, mute, tank/witch chance, T1, alltalk, pause). Players
+      can only pause by vote; admins get a *Lefordianos* category in `!admin` (run any option now,
+      force pause/unpause, pass/cancel the vote).
+  *ES: (nuestro) `!votes` en la pantalla de votación del juego, desde un archivo de config (mapas,
+  equipos, expulsar con baneo de 5 minutos como en vanilla, AFK, silenciar, probabilidad de tank/witch,
+  T1, voz entre equipos, pausa). Los jugadores solo pueden pausar por votación; los admins tienen una
+  categoría *Lefordianos* en `!admin` (hacer cualquier opción ya, forzar pausa/quitar pausa,
+  aprobar/cancelar la votación).*
+- [x] **Ours** `lef_menu`: `!menu` with every player command on the server; hides what isn't installed.
+  *ES: (nuestro) `!menu` con todos los comandos para jugadores del servidor; oculta lo que no está instalado.*
 - [x] **Ours** `lef_admin_restore`: `!heal` and `!restore` (undo team damage, incaps, team kills
       and lost items), with admin heads-ups. Replaces Harry Potter's `admin_hp`.
   *ES: (nuestro) `!heal` y `!restore` (deshace daño de equipo, derribos, muertes por compañeros y

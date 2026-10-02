@@ -228,6 +228,8 @@ ours lef_saferoom_doors
 ours lef_t1_mode
 ours lef_karma_sounds
 ours lef_client_cvars
+ours lef_votes
+ours lef_menu
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 

@@ -25,7 +25,7 @@ python3 tools/get_sourcemod.py   # la primera vez: descarga nuestro compilador f
 python3 tools/build_lite.py      # arma el paquete
 ```
 
-El resultado queda en `build/lite/left4dead2/` (unos 15 MB, 170 plugins), más `build/lite/CONTENTS.txt`
+El resultado queda en `build/lite/left4dead2/` (unos 15 MB, 173 plugins), más `build/lite/CONTENTS.txt`
 con la lista de plugins. Si falta algo, o algo existe solo para una plataforma, el armado termina con
 avisos.
 
@@ -70,6 +70,8 @@ y en la consola del servidor:
 | Mensajes del servidor | `addons/sourcemod/translations/smd_advertisements.phrases.txt` |
 | Sonidos del karma kill | `addons/sourcemod/configs/lef_karma_sounds.txt` + [docs/FASTDL.es.md](../../docs/FASTDL.es.md) |
 | Armas reemplazadas en el modo T1 | `addons/sourcemod/configs/lef_t1_mode.cfg` |
+| Qué pueden votar los jugadores (`!votes`) y qué muestra `!menu` | `addons/sourcemod/configs/lef_votes.cfg`, `addons/sourcemod/configs/lef_menu.cfg` |
+| Duración del baneo al expulsar por votación, pausa solo por votación, quién puede iniciar votaciones | `cfg/sourcemod/lef_votes.cfg` (se crea al cargar la primera vez) |
 | Cambios de Stripper | edita `configs/lite/stripper_rules.txt` acá, corre `python3 tools/make_stripper.py` y vuelve a armar |
 
 Cada plugin además crea su propio `cfg/sourcemod/<plugin>.cfg` la primera vez que carga; los valores de
