@@ -1,0 +1,31 @@
+"Phrases"
+{
+	"Label Yours"
+	{
+		"es"		"Tu equipo"
+	}
+	"Label Theirs"
+	{
+		"es"		"El otro equipo"
+	}
+	"Label Survivors"
+	{
+		"es"		"Los supervivientes"
+	}
+	"Label Infected"
+	{
+		"es"		"Los infectados"
+	}
+	"Active"
+	{
+		"es"		"{green}[Remontada]{default} {1} va perdiendo por {olive}{3}{default}: como supervivientes en este mapa ganan {olive}+{2}%%{default} de su distancia."
+	}
+	"Not Active"
+	{
+		"es"		"{green}[Remontada]{default} No hay bono de remontada en este mapa (se activa cuando un equipo pierde por {olive}{1}+{default} puntos)."
+	}
+	"Paid"
+	{
+		"es"		"{green}[Remontada]{default} {olive}+{1}{default} de bono de remontada para {2}."
+	}
+}

@@ -1,0 +1,34 @@
+"Phrases"
+{
+	"Label Yours"
+	{
+		"en"		"Your team"
+	}
+	"Label Theirs"
+	{
+		"en"		"The other team"
+	}
+	"Label Survivors"
+	{
+		"en"		"The survivors"
+	}
+	"Label Infected"
+	{
+		"en"		"The infected"
+	}
+	"Active"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{green}[Comeback]{default} {1} is behind by {olive}{3}{default}: as survivors on this map they earn {olive}+{2}%%{default} of their distance."
+	}
+	"Not Active"
+	{
+		"#format"	"{1:d}"
+		"en"		"{green}[Comeback]{default} No comeback bonus on this map (it starts when a team is {olive}{1}+{default} points behind)."
+	}
+	"Paid"
+	{
+		"#format"	"{1:d},{2:s}"
+		"en"		"{green}[Comeback]{default} {olive}+{1}{default} comeback bonus for {2}."
+	}
+}
