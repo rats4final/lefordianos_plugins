@@ -1,0 +1,19 @@
+"Phrases"
+{
+	"No Bans"
+	{
+		"es"		"{green}[Baneos]{default} {olive}{1}{default}: sin baneos en Steam."
+	}
+	"Has Bans"
+	{
+		"es"		"{green}[Baneos]{default} {olive}{1}{default} tiene {red}{2}{default} baneo(s) VAC y {red}{3}{default} baneo(s) de juego en Steam; el último fue hace {4} días."
+	}
+	"Community Banned"
+	{
+		"es"		"{green}[Baneos]{default} {olive}{1}{default} está baneado de la Comunidad de Steam."
+	}
+	"Kick Reason"
+	{
+		"es"		"Este servidor no permite baneos VAC de los últimos {1} días."
+	}
+}

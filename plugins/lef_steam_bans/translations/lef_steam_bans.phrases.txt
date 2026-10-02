@@ -1,0 +1,23 @@
+"Phrases"
+{
+	"No Bans"
+	{
+		"#format"	"{1:N}"
+		"en"		"{green}[Bans]{default} {olive}{1}{default}: no bans on Steam."
+	}
+	"Has Bans"
+	{
+		"#format"	"{1:s},{2:d},{3:d},{4:d}"
+		"en"		"{green}[Bans]{default} {olive}{1}{default} has {red}{2}{default} VAC ban(s) and {red}{3}{default} game ban(s) on Steam; the last one was {4} days ago."
+	}
+	"Community Banned"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Bans]{default} {olive}{1}{default} is banned from the Steam Community."
+	}
+	"Kick Reason"
+	{
+		"#format"	"{1:d}"
+		"en"		"This server doesn't allow VAC bans from the last {1} days."
+	}
+}
