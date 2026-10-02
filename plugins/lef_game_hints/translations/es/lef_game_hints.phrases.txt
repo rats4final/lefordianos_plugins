@@ -1,0 +1,79 @@
+"Phrases"
+{
+	"Rushing"
+	{
+		"es"		"{green}[Aviso]{default} Estás muy adelantado de tu equipo. Mantente cerca: solo eres presa fácil."
+	}
+	"Rushing Team"
+	{
+		"es"		"{green}[Aviso]{default} {olive}{1}{default} está muy adelantado del equipo."
+	}
+	"Behind"
+	{
+		"es"		"{green}[Aviso]{default} Estás muy atrás de tu equipo. Alcánzalos antes de que te atrapen solo."
+	}
+	"Behind Team"
+	{
+		"es"		"{green}[Aviso]{default} {olive}{1}{default} está muy atrás del equipo."
+	}
+	"Holding Ghost"
+	{
+		"es"		"{green}[Aviso]{default} Hace rato que podías aparecer. Tu equipo te necesita en la pelea."
+	}
+	"Holding Ghost Team"
+	{
+		"es"		"{green}[Aviso]{default} {olive}{1}{default} lleva rato pudiendo aparecer."
+	}
+	"Holding Alive"
+	{
+		"es"		"{green}[Aviso]{default} Llevas mucho tiempo vivo sin atacar. Úsalo con tu equipo, o déjalo ir."
+	}
+	"Holding Alive Team"
+	{
+		"es"		"{green}[Aviso]{default} {olive}{1}{default} lleva mucho tiempo vivo sin atacar."
+	}
+	"Tank Is"
+	{
+		"es"		"{green}[Tank]{default} {olive}{1}{default} es el tank. Aparezcan junto al tank y esperen su aviso."
+	}
+	"Tank Team Respawning"
+	{
+		"es"		"{green}[Tank]{default} Tu equipo todavía está reapareciendo: espera hasta que puedan atacar contigo."
+	}
+	"Tank Team Up"
+	{
+		"es"		"{green}[Tank]{default} Tu equipo está listo: avisa en el chat cuando entres, así todos atacan juntos."
+	}
+	"Tank Tip 1"
+	{
+		"es"		"{green}[Consejo]{default} Evita las zonas abiertas: los sobrevivientes te disparan desde lejos. Usa esquinas y paredes."
+	}
+	"Tank Tip 2"
+	{
+		"es"		"{green}[Consejo]{default} Golpea autos, contenedores y troncos hacia los sobrevivientes: pegan fuerte y de lejos."
+	}
+	"Tank Tip 3"
+	{
+		"es"		"{green}[Consejo]{default} Tira rocas a los que están lejos y golpea a los que están cerca."
+	}
+	"Tank Tip 4"
+	{
+		"es"		"{green}[Consejo]{default} Ve por quien se detiene a ayudar a un compañero: ayudar lo deja quieto."
+	}
+	"Tank Tip 5"
+	{
+		"es"		"{green}[Consejo]{default} No persigas a los sobrevivientes dentro de un refugio o un pasillo largo: recibirás mucho daño."
+	}
+	"Tank Tip 6"
+	{
+		"es"		"{green}[Consejo]{default} El fuego te daña con el tiempo: si te estás quemando, ataca rápido en vez de esperar."
+	}
+	"Tank Tip 7"
+	{
+		"es"		"{green}[Consejo]{default} Atacar solo es arriesgado: espera a los especiales de tu equipo para que los sobrevivientes estén ocupados."
+	}
+	"Tank Tip 8"
+	{
+		"es"		"{green}[Consejo]{default} Si pasas mucho tiempo sin golpear a nadie, se acaba tu medidor de control y el tank pasa a otro jugador."
+	}
+}

@@ -1,0 +1,84 @@
+"Phrases"
+{
+	"Rushing"
+	{
+		"en"		"{green}[Hint]{default} You are far ahead of your team. Stay close: alone you are an easy target."
+	}
+	"Rushing Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Hint]{default} {olive}{1}{default} is far ahead of the team."
+	}
+	"Behind"
+	{
+		"en"		"{green}[Hint]{default} You are far behind your team. Catch up before you get caught alone."
+	}
+	"Behind Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Hint]{default} {olive}{1}{default} is far behind the team."
+	}
+	"Holding Ghost"
+	{
+		"en"		"{green}[Hint]{default} You could have spawned a while ago. Your team needs you in the fight."
+	}
+	"Holding Ghost Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Hint]{default} {olive}{1}{default} has been ready to spawn for a while."
+	}
+	"Holding Alive"
+	{
+		"en"		"{green}[Hint]{default} You have been alive a long time without attacking. Use it with your team, or let it go."
+	}
+	"Holding Alive Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Hint]{default} {olive}{1}{default} has been alive a long time without attacking."
+	}
+	"Tank Is"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Tank]{default} {olive}{1}{default} is the tank. Spawn with the tank and wait for the call."
+	}
+	"Tank Team Respawning"
+	{
+		"en"		"{green}[Tank]{default} Your team is still respawning: hold back until they can attack with you."
+	}
+	"Tank Team Up"
+	{
+		"en"		"{green}[Tank]{default} Your team is up: say in chat when you go in, so everyone hits together."
+	}
+	"Tank Tip 1"
+	{
+		"en"		"{green}[Tank tip]{default} Avoid open areas: survivors shoot you from far away. Use corners and walls."
+	}
+	"Tank Tip 2"
+	{
+		"en"		"{green}[Tank tip]{default} Punch cars, dumpsters and logs at survivors: they hit hard and from a distance."
+	}
+	"Tank Tip 3"
+	{
+		"en"		"{green}[Tank tip]{default} Throw rocks at survivors who are far away, punch the ones who are close."
+	}
+	"Tank Tip 4"
+	{
+		"en"		"{green}[Tank tip]{default} Go for survivors who stop to help a teammate: helping makes them stand still."
+	}
+	"Tank Tip 5"
+	{
+		"en"		"{green}[Tank tip]{default} Don't chase survivors into a saferoom or a long hallway: you'll take a lot of damage."
+	}
+	"Tank Tip 6"
+	{
+		"en"		"{green}[Tank tip]{default} Fire hurts you over time: if you are burning, push fast instead of waiting."
+	}
+	"Tank Tip 7"
+	{
+		"en"		"{green}[Tank tip]{default} Attacking alone is risky: wait for your team's specials so the survivors are busy."
+	}
+	"Tank Tip 8"
+	{
+		"en"		"{green}[Tank tip]{default} If you go too long without hitting survivors, your control meter runs out and the tank passes to someone else."
+	}
+}
