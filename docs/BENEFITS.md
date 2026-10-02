@@ -48,11 +48,15 @@ Silvers. Some players will notice:
 - Tank damage report, survivor MVP and round stats at the end of each round.
 - **Who did what**: who threw a molotov or bile, who blew up a gascan, who deployed ammo, who opened
   the saferoom and who closed it on teammates, karma kills.
+- **Witch spawns** are announced in chat with a sound, like tanks.
 - **Who voted**: after every vote, the list of who voted Yes and who voted No.
 - **Hints, never punishments**: warnings to rushers, to players left behind and to infected held
   too long, and tips for new tank players.
 
 ## Easier for everyone
+
+- **English and Spanish everywhere**: menus and messages follow each player's game language,
+  including Steam's "Spanish - Latin America".
 
 - **`!menu`**: every player command in one place, so nobody has to memorise them.
 - **`!votes`**: the game's own vote screen for:

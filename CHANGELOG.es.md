@@ -14,6 +14,18 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 - **Corrección:** `l4d_afk_commands` necesita una extensión Actions más nueva que la del repo competitivo;
   el paquete ahora trae Actions 3.9.2 (mantiene todas las funciones anteriores).
 - **Corrección:** `l4d2_survivor_mourn_fix` necesita `sceneprocessor`; ahora está incluido.
+- **Corrección (segunda prueba en el servidor):**
+  - `pause` tiraba errores cada segundo durante la pausa: necesita `sv_maxplayers`, que solo existe con
+    l4dtoolz. Copia parchada en `plugins/pause`.
+  - `si_class_announce` llamaba a Ready-Up sin revisar que estuviera cargado. Copia parchada en
+    `plugins/si_class_announce`.
+  - `lerpmonitor` permitía como máximo 67 ms (un valor para 100 tick), así que quien tenía el lerp por
+    defecto del juego (100 ms) iba a espectadores. Ahora hasta 100 ms.
+  - Los jugadores con Steam en "Español - Latinoamérica" veían todo en inglés: SourceMod lo trata como
+    otro idioma (`las`). Ahora cada traducción en español del paquete también lo cubre.
+- **Panel de inicio:** muestra las clases iniciales del equipo infectado; se queda 15 s después de que los
+  sobrevivientes salen del refugio y se esconde con el primer golpe de un infectado (hasta 60 s).
+- **Se anuncia cuando aparece una witch** (`tank_witch_spawn_notify` de Harry Potter).
 - **Corrección:** los ajustes cambiados por votación o admin (modo T1, probabilidad de tank/witch, tank
   horde monitor, voz entre equipos) se deshacían en el mapa siguiente, porque cada cambio de mapa vuelve a
   ejecutar las configs. Ahora duran hasta que el servidor se vacía (clave `"persist"` de `lef_votes`, y el

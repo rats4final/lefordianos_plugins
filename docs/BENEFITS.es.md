@@ -52,11 +52,15 @@ Silvers. Algunas que los jugadores van a notar:
 - Reporte de daño al tank, MVP de sobrevivientes y estadísticas al final de cada ronda.
 - **Quién hizo qué**: quién tiró una molotov o una bilis, quién explotó un bidón, quién desplegó munición,
   quién abrió el refugio y quién lo cerró dejando compañeros afuera, karma kills.
+- **Aparición de witches**: se anuncia en el chat con un sonido, como los tanks.
 - **Quién votó**: después de cada votación, la lista de quién votó Sí y quién votó No.
 - **Avisos, nunca castigos**: avisos a los que rushean, a los que se quedan atrás y a los infectados
   guardados mucho tiempo, y consejos para los que juegan de tank.
 
 ## Más fácil para todos
+
+- **Inglés y español en todo**: los menús y mensajes siguen el idioma del juego de cada jugador, incluido
+  el "Español - Latinoamérica" de Steam.
 
 - **`!menu`**: todos los comandos para jugadores en un solo lugar, para que nadie tenga que memorizarlos.
 - **`!votes`**: la pantalla de votación del propio juego para:

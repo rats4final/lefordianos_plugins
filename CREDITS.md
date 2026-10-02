@@ -65,6 +65,8 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | `lef_game_hints` | Distance-as-share-of-the-map idea from Harry Potter's `no-rushing` |
 | `lef_steam_bans` | Idea from StevoTVR's VAC Status Checker ([t=80942](https://forums.alliedmods.net/showthread.php?t=80942)), forked by Harry Potter as `vacbans` |
 | `lef_t1_mode` | Weapon conversion stocks from l4d2util, as used by `l4d2_weaponrules` (ProdigySim); CS weapon precache idea from `l4d2_sniper_precache` (Visor, A1m`) |
+| `pause` (patched) | Pause plugin by CanadaRox, Sir, Forgetest and A1m` (competitive repo) |
+| `si_class_announce` (patched) | Special Infected Class Announce by Tabun and Forgetest (competitive repo) |
 | `l4d_tank_control_eq` | L4D2 Tank Control by arti, with Sheo, Sir and Altair-Sossai (one line changed) |
 
 If something is missing or a credit is wrong, please tell us and we'll fix it.
