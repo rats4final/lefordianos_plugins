@@ -1,0 +1,234 @@
+# Lite config package: what goes in, and from where. Used by tools/build_lite.py.
+# Contenido del paquete de la config lite y de dónde sale. Lo usa tools/build_lite.py.
+#
+# Paths are relative to the reference repos folder (the folder that contains this repo);
+# "@repo/" means this repo. Plugins go to addons/sourcemod/plugins/lefordianos/[subdir]/,
+# which SourceMod loads automatically (unlike plugins/optional/).
+#
+#   smx  <prebuilt .smx> <its .sp, used to find gamedata/translations> [subdir]   (quote paths with spaces)
+#   sp   <.sp to compile> [subdir]
+#   ours <plugin folder in @repo/plugins/>
+#   file <src> <dst relative to left4dead2/>
+#   dir  <src folder> <dst folder relative to left4dead2/>
+
+# --- Libraries and extensions / Librerías y extensiones ---
+file Left4DHooks/sourcemod/plugins/left4dhooks.smx addons/sourcemod/plugins/left4dhooks.smx
+dir  Left4DHooks/sourcemod/gamedata addons/sourcemod/gamedata
+dir  Left4DHooks/sourcemod/data addons/sourcemod/data
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/actions.autoload addons/sourcemod/extensions/actions.autoload
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/actions.ext.2.l4d2.dll addons/sourcemod/extensions/actions.ext.2.l4d2.dll
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/actions.ext.2.l4d2.so addons/sourcemod/extensions/actions.ext.2.l4d2.so
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/builtinvotes.ext.2.l4d2.dll addons/sourcemod/extensions/builtinvotes.ext.2.l4d2.dll
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/builtinvotes.ext.2.l4d2.so addons/sourcemod/extensions/builtinvotes.ext.2.l4d2.so
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/collisionhook.ext.dll addons/sourcemod/extensions/collisionhook.ext.dll
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/collisionhook.ext.so addons/sourcemod/extensions/collisionhook.ext.so
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/sourcescramble.ext.dll addons/sourcemod/extensions/sourcescramble.ext.dll
+file L4D2-Competitive-Rework/addons/sourcemod/extensions/sourcescramble.ext.so addons/sourcemod/extensions/sourcescramble.ext.so
+file L4D2-Competitive-Rework/addons/sourcemod/gamedata/actions.games.txt addons/sourcemod/gamedata/actions.games.txt
+file L4D2-Competitive-Rework/addons/sourcemod/gamedata/collisionhook.txt addons/sourcemod/gamedata/collisionhook.txt
+dir  L4D2-Competitive-Rework/addons/stripper/bin addons/stripper/bin
+file L4D2-Competitive-Rework/addons/metamod/stripper.vdf addons/metamod/stripper.vdf
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2lib.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2lib.sp
+file L4D2-Competitive-Rework/addons/sourcemod/configs/l4d2lib/mapinfo.txt addons/sourcemod/configs/l4d2lib/mapinfo.txt
+
+# --- Competitive repo plugins (prebuilt) / Plugins del repo competitivo (ya compilados) ---
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_null_cusercmd_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_null_cusercmd_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_hltv_crash_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_hltv_crash_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/command_buffer.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/command_buffer.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_script_cmd_swap.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_script_cmd_swap.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_console_spam.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_console_spam.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/sv_consistency_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/sv_consistency_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_changelevel.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_changelevel.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_votepoll_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_votepoll_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/bequiet.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/bequiet.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_skip_intro.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_skip_intro.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/firebulletsfix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/firebulletsfix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_melee_damage_control.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_melee_damage_control.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_sg552_zoom_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_sg552_zoom_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/weapon_spawn_duplicate_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/weapon_spawn_duplicate_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_rocket_jump.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_rocket_jump.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_stagger_dir.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_stagger_dir.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_shove_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_shove_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_common_shove.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_common_shove.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_ellis_hunter_bandaid_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_ellis_hunter_bandaid_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_deathfall_cam.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_deathfall_cam.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_ai_damagefix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_ai_damagefix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_backjump_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_backjump_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_no_post_jockey_deadstops.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_no_post_jockey_deadstops.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockeyed_ladder_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_jockeyed_ladder_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockey_hitbox_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_jockey_hitbox_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_shenanigans.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_shenanigans.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_ladder_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_ladder_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_vomit_trace_patch.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_vomit_trace_patch.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_bend_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_bend_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_block_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_block_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_float_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_float_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_rocket_pull.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_rocket_pull.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_charge_target_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_charge_target_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_spit_cooldown_frozen_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_spit_cooldown_frozen_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_spit_spread_patch.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_spit_spread_patch.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_shove_duration.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_shove_duration.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_finale_breakable.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_finale_breakable.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_firsthit.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_firsthit.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/frozen_tank_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/frozen_tank_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_punch_block.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_punch_block.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_rock_trace_unblock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_rock_trace_unblock.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_tank_rock_handoff.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_tank_rock_handoff.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_tank_spawn_antirock_protect.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_spawn_antirock_protect.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_scripted_tank_stage_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_scripted_tank_stage_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_rotated_physblocker.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_rotated_physblocker.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_prop_touching_rules.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_prop_touching_rules.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_fix_prop_los.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_fix_prop_los.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_car_alarm_hittable_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_car_alarm_hittable_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_explosiondmg_prev.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_explosiondmg_prev.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_consistent_escaperoute.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_consistent_escaperoute.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_team_shuffle.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_team_shuffle.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_ladderblock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_ladderblock.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_tank_flying_incap.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_flying_incap.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/nodeathcamskip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/nodeathcamskip.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_return_thrown_items.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_return_thrown_items.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/anticheat/l4d2_noghostcheat.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_noghostcheat.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_block_autoaim.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_block_autoaim.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_texture_manager_block.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_texture_manager_block.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_thirdpersonshoulderblock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_thirdpersonshoulderblock.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/lerpmonitor.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/lerpmonitor.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/ratemonitor.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/ratemonitor.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_props_glow.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_props_glow.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_tank_damage_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tank_damage_announce.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_announce.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/pill_passer.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/pill_passer.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/current.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/current.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/coinflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/coinflip.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/teamflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/teamflip.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_skill_detect.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_skill_detect.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/survivor_mvp.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/survivor_mvp.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_playstats.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_playstats.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/si_class_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/si_class_announce.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_common_ragdolls_be_gone.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_common_ragdolls_be_gone.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/caster_assister.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/caster_assister.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/specrates.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/specrates.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_ghost_warp.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_ghost_warp.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/blocktrolls.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/blocktrolls.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_block_bot_pills.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_block_bot_pills.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/pause.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/pause.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/l4d_pause_message.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_pause_message.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_setscores.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_setscores.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/witch_and_tankifier.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/witch_and_tankifier.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_boss_percent.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_boss_percent.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_nobhaps.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_nobhaps.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_pounceprotect.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_pounceprotect.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_unsilent_jockey.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_unsilent_jockey.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_dominatorscontrol.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_dominatorscontrol.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_fix_spawn_order.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_spawn_order.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_nospitterduringtank.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_nospitterduringtank.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/despawn_health.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/despawn_health.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_nosecondchances.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_nosecondchances.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_getup_slide_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_getup_slide_fix.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_getup_fixes.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_getup_fixes.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_godframes_control_merge.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_godframes_control_merge.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_attack_control.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_attack_control.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tankrage.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tankrage.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_tankpunchstuckfix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tankpunchstuckfix.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/rock_stumble_block.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/rock_stumble_block.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_bw_rock_hit.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_bw_rock_hit.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/smart_ai_rock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/smart_ai_rock.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/boomer_horde_equalizer_refactored.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/boomer_horde_equalizer_refactored.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_equalise_alarm_cars.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_equalise_alarm_cars.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_antibaiter.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_antibaiter.sp
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_collision_adjustments.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_collision_adjustments.sp
+
+# --- Harry Potter (prebuilt) ---
+smx  L4D1_2-Plugins/l4d_afk_commands/plugins/l4d_afk_commands.smx L4D1_2-Plugins/l4d_afk_commands/scripting/l4d_afk_commands.sp
+smx  L4D1_2-Plugins/l4d_tank_pass/plugins/l4d_tank_pass.smx L4D1_2-Plugins/l4d_tank_pass/scripting/l4d_tank_pass.sp
+smx  L4D1_2-Plugins/l4d2_spec_stays_spec/plugins/l4d2_spec_stays_spec.smx L4D1_2-Plugins/l4d2_spec_stays_spec/scripting/l4d2_spec_stays_spec.sp
+smx  L4D1_2-Plugins/l4d_revive_reload_interrupt/plugins/l4d_revive_reload_interrupt.smx L4D1_2-Plugins/l4d_revive_reload_interrupt/scripting/l4d_revive_reload_interrupt.sp
+smx  L4D1_2-Plugins/l4d_switch_team_survivor_dead_fix/plugins/l4d_switch_team_survivor_dead_fix.smx L4D1_2-Plugins/l4d_switch_team_survivor_dead_fix/scripting/l4d_switch_team_survivor_dead_fix.sp
+smx  L4D1_2-Plugins/jockey_ride_team_switch_teleport_fix/plugins/jockey_ride_team_switch_teleport_fix.smx L4D1_2-Plugins/jockey_ride_team_switch_teleport_fix/scripting/jockey_ride_team_switch_teleport_fix.sp
+smx  L4D1_2-Plugins/l4d_minigun_fly_fix/plugins/l4d_minigun_fly_fix.smx L4D1_2-Plugins/l4d_minigun_fly_fix/scripting/l4d_minigun_fly_fix.sp
+smx  L4D1_2-Plugins/l4d2_gascan_flame_fix/plugins/l4d2_gascan_flame_fix.smx L4D1_2-Plugins/l4d2_gascan_flame_fix/scripting/l4d2_gascan_flame_fix.sp
+smx  L4D1_2-Plugins/l4d_witch_retreat_panic_fix/plugins/l4d_witch_retreat_panic_fix.smx L4D1_2-Plugins/l4d_witch_retreat_panic_fix/scripting/l4d_witch_retreat_panic_fix.sp
+smx  L4D1_2-Plugins/l4d_ghost_spawn_exploit/plugins/l4d_ghost_spawn_exploit.smx L4D1_2-Plugins/l4d_ghost_spawn_exploit/scripting/l4d_ghost_spawn_exploit.sp
+smx  L4D1_2-Plugins/l4d_exploit_dmg_block/plugins/l4d_exploit_dmg_block.smx L4D1_2-Plugins/l4d_exploit_dmg_block/scripting/l4d_exploit_dmg_block.sp
+smx  L4D1_2-Plugins/l4d2_survivor_mourn_fix/plugins/l4d2_survivor_mourn_fix.smx L4D1_2-Plugins/l4d2_survivor_mourn_fix/scripting/l4d2_survivor_mourn_fix.sp
+smx  L4D1_2-Plugins/l4d2_chainsaw_fix/plugins/l4d2_chainsaw_fix.smx L4D1_2-Plugins/l4d2_chainsaw_fix/scripting/l4d2_chainsaw_fix.sp
+smx  L4D1_2-Plugins/l4d2_karma_kill/plugins/l4d2_karma_kill.smx L4D1_2-Plugins/l4d2_karma_kill/scripting/l4d2_karma_kill.sp
+smx  L4D1_2-Plugins/gamemode-based_configs/addons/sourcemod/plugins/gamemode-based_configs.smx L4D1_2-Plugins/gamemode-based_configs/addons/sourcemod/scripting/gamemode-based_configs.sp
+smx  L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/plugins/l4d2_mission_manager.smx L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/scripting/l4d2_mission_manager.sp
+dir  L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/translations addons/sourcemod/translations
+dir  L4D1_2-Plugins/l4d2_mission_manager/missions.cache missions.cache
+smx  Sourcemod-Plugins/cannounce/plugins/cannounce.smx Sourcemod-Plugins/cannounce/scripting/cannounce.sp
+smx  Sourcemod-Plugins/smd_advertisements/plugins/smd_advertisements.smx Sourcemod-Plugins/smd_advertisements/scripting/smd_advertisements.sp
+
+# --- Automatic Campaign Switcher (rikka0w0), compiled against Harry's mission manager ---
+sp   l4d2_mission_manager/scripting/acs.sp
+dir  l4d2_mission_manager/translations addons/sourcemod/translations
+
+# --- MoYu / Forgetest (compiled) ---
+sp   "MoYu_Server_Stupid_Plugins/The Last Stand/l4d2_fix_common_flee/scripting/l4d2_fix_common_flee.sp" fixes
+sp   "MoYu_Server_Stupid_Plugins/The Last Stand/l4d_fix_target_replace/scripting/l4d_fix_target_replace.sp" fixes
+sp   "MoYu_Server_Stupid_Plugins/The Last Stand/l4d_spray_origin_fix/scripting/l4d_spray_origin_fix.sp" fixes
+
+# --- Lux / Left-4-fix ---
+sp  "Left-4-fix/left 4 fix/Defib_Fix/scripting/Defib_Fix.sp" fixes
+smx  "Left-4-fix/left 4 fix/witch/witch_target_patch/plugins/Witch_Target_patch.smx" "Left-4-fix/left 4 fix/witch/witch_target_patch/scripting/Witch_Target_patch.sp" fixes
+smx  "Left-4-fix/left 4 fix/witch/witch_prevent_target_loss/plugins/witch_prevent_target_loss.smx" "Left-4-fix/left 4 fix/witch/witch_prevent_target_loss/scripting/witch_prevent_target_loss.sp" fixes
+smx  "Left-4-fix/left 4 fix/witch/Witch_Double_Startle_Fix/plugins/Witch_Double_Startle_Fix.smx" "Left-4-fix/left 4 fix/witch/Witch_Double_Startle_Fix/scripting/Witch_Double_Startle_Fix.sp" fixes
+sp  "Left-4-fix/left 4 fix/survivors/stop_air_revive/scripting/stop_air_revive.sp" fixes
+sp  "Left-4-fix/left 4 fix/survivors/survivor_afk_fix/scripting/survivor_afk_fix.sp" fixes
+sp  "Left-4-fix/left 4 fix/general/witch_pipebomb_exploit_fix_&_death_optmizer.sp" fixes
+sp   ./-L4D-L4D2-Enhanced-Throwables/Enhanced_Throwables.sp
+
+# --- Silvers (compiled) ---
+sp   Various_Scripts_Collection/l4d_exploit_fixes.sp fixes
+sp   Various_Scripts_Collection/l4d_unlimited_grenades_fix.sp fixes
+sp   Various_Scripts_Collection/l4d_witch_stumble_fix.sp fixes
+sp   Various_Scripts_Collection/l4d_transition_level.sp fixes
+sp   Various_Scripts_Collection/l4d_lagged_movement.sp
+sp   Various_Scripts_Collection/l4d_heartbeat.sp
+sp   Various_Scripts_Collection/l4d_fire_glow.sp
+sp   Various_Scripts_Collection/l4d_explosive_flash.sp
+sp   Various_Scripts_Collection/l4d_dsp_effects.sp
+sp   Dynamic_Light/scripting/l4d_dynamic_light.sp
+dir  Dynamic_Light/translations addons/sourcemod/translations
+sp   Vote_Mode/scripting/l4d_votemode.sp
+dir  Vote_Mode/translations addons/sourcemod/translations
+file Vote_Mode/data/l4d_votemode.cfg addons/sourcemod/data/l4d_votemode.cfg
+sp   @repo/alliedmodders/SilverShot/l4d_pipebomb_ignore/l4d_pipebomb_ignore.sp
+file @repo/alliedmodders/SilverShot/l4d_pipebomb_ignore/l4d_pipebomb_ignore.txt addons/sourcemod/gamedata/l4d_pipebomb_ignore.txt
+
+# --- Mart (compiled from our alliedmodders/ copies) ---
+sp   @repo/alliedmodders/Mart/l4d_throwable_announcer/l4d_throwable_announcer.sp
+file @repo/alliedmodders/Mart/l4d_throwable_announcer/l4d_throwable_announcer.phrases.txt addons/sourcemod/translations/l4d_throwable_announcer.phrases.txt
+sp   @repo/alliedmodders/Mart/l4d_explosion_announcer/l4d_explosion_announcer.sp
+file @repo/alliedmodders/Mart/l4d_explosion_announcer/l4d_explosion_announcer.phrases.txt addons/sourcemod/translations/l4d_explosion_announcer.phrases.txt
+sp   @repo/alliedmodders/Mart/l4d2_pack_deploy_announce/l4d2_pack_deploy_announce.sp
+file @repo/alliedmodders/Mart/l4d2_pack_deploy_announce/l4d2_pack_deploy_announce.phrases.txt addons/sourcemod/translations/l4d2_pack_deploy_announce.phrases.txt
+
+# --- Anti-cheat (srcdslab forks, compiled) ---
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_aimbot.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_autotrigger.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_client.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_commands.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_cvars.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_l4d2_fixes.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_rcon.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_speedhack.sp anticheat
+sp   sm-plugin-SMAC/addons/sourcemod/scripting/smac_spinhack.sp anticheat
+dir  sm-plugin-SMAC/addons/sourcemod/translations addons/sourcemod/translations
+sp   sm-plugin-lilac/addons/sourcemod/scripting/lilac.sp anticheat
+dir  sm-plugin-lilac/addons/sourcemod/translations addons/sourcemod/translations
+
+# --- Ours / Nuestros ---
+ours lef_teams_panel
+ours lef_boss_spawns
+ours lef_score_info
+ours lef_admin_restore
+ours lef_saferoom_doors
+ours lef_t1_mode
+ours lef_karma_sounds
+ours l4d_tank_control_eq
+ours l4d2_tank_horde_monitor
+
+# --- Our config files (stripper, cfgs) / Nuestros archivos de configuración ---
+dir  @repo/configs/lite/left4dead2 .
