@@ -1,0 +1,10 @@
+// Lefordianos Karma Sounds: one sound per line, path relative to left4dead2/sound/
+// Put the files on the game server in left4dead2/sound/..., and the .bz2 copies on FastDL (docs/FASTDL.md).
+// Lines starting with // are ignored. Empty list = the plugin does nothing.
+//
+// Un sonido por línea, ruta relativa a left4dead2/sound/
+// Pon los archivos en el servidor del juego en left4dead2/sound/..., y las copias .bz2 en FastDL (docs/FASTDL.es.md).
+// Las líneas que empiezan con // se ignoran. Lista vacía = el plugin no hace nada.
+//
+// lefordianos/karma/fall1.wav
+// lefordianos/karma/fall2.mp3
