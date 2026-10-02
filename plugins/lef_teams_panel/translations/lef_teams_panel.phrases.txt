@@ -303,4 +303,18 @@
 		"#format"	"{1:t}"
 		"en"		"{1}: are you sure?"
 	}
+	"Menu balance"
+	{
+		"en"		"Balanced shuffle (roster levels)"
+	}
+	"Admin Balanced"
+	{
+		"#format"	"{1:s},{2:d},{3:d}"
+		"en"		"{olive}{1}{default} balanced the teams (levels: survivors {2}, infected {3})."
+	}
+	"Too Many To Balance"
+	{
+		"#format"	"{1:d}"
+		"en"		"The balanced shuffle works with up to {1} players on teams."
+	}
 }

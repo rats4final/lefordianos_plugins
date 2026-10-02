@@ -28,9 +28,10 @@ no se enteran de qué les viene.
 | Intercambiar dos jugadores | `sm_swapplayers <jugador1> <jugador2>` |
 | Invertir equipos (supervivientes ↔ infectados) | `sm_flipteams` |
 | Mezclar equipos al azar | `sm_shuffleteams` |
+| Mezcla balanceada (niveles del roster) | `sm_balanceteams` |
 | Restaurar los equipos de la última ronda | `sm_restoreteams` |
 
-Invertir, mezclar y restaurar preguntan "¿estás seguro?" primero en el menú. El acceso se puede
+Invertir, mezclar, balancear y restaurar preguntan "¿estás seguro?" primero en el menú. El acceso se puede
 cambiar por comando en `admin_overrides.cfg`.
 
 ## Lo que deja a otros plugins (a propósito)
@@ -72,6 +73,25 @@ los límites de los equipos y no deja salir a un superviviente atrapado o caído
 Pausar/reanudar (usar `pause.smx`), los alias de comandos de equipo (usar `l4d_afk_commands`), la
 restauración automática de espectadores (usar `l4d2_spec_stays_spec`) y el menú de registro de depuración.
 
+## Mezcla balanceada y el roster
+
+Las mezclas al azar muchas veces dejan a todos los habituales en un mismo equipo. La mezcla balanceada le
+da un nivel a cada jugador y reparte a los jugadores para que los niveles de los dos equipos sumen lo más
+parecido posible.
+
+- Nuestros habituales van en `addons/sourcemod/configs/lef_roster.cfg` (cópialo de
+  `lef_roster.example.cfg` la primera vez; las actualizaciones solo traen el ejemplo, así tu lista nunca
+  se sobrescribe): SteamID (cualquier formato:
+  `STEAM_1:…`, `[U:1:…]` o `7656…`), un nombre y un nivel opcional de 1 (nuevo) a 5 (el mejor). El
+  archivo explica cómo encontrar un SteamID.
+- Quien no está en el roster cuenta como `lef_teams_random_level` (2); un habitual sin nivel cuenta como
+  `lef_teams_roster_level` (3). Así, sin poner ningún nivel, los habituales simplemente se reparten parejo.
+- Prueba todas las formas de repartir (8 jugadores = 70 repartos parejos). Entre repartos igual de parejos,
+  reparte a los habituales por igual y después elige uno al azar, para que el mismo grupo no quede siempre
+  con los mismos equipos.
+- `sm_roster` muestra el nivel de cada jugador y si está en el roster; `sm_roster_reload` vuelve a leer el
+  archivo. También se puede votar desde `!votes` (lef_votes).
+
 ## Configuración (`cfg/sourcemod/lef_teams_panel.cfg`, se crea al cargarlo por primera vez)
 
 | Cvar | Por defecto | Significado |
@@ -80,6 +100,8 @@ restauración automática de espectadores (usar `l4d2_spec_stays_spec`) y el men
 | `lef_teams_panel_swap_requests` | `1` | Permitir `!swapwith`. |
 | `lef_teams_panel_request_timeout` | `20` | Segundos que un pedido de cambio queda abierto. |
 | `lef_teams_panel_request_cooldown` | `15` | Segundos entre pedidos de cambio del mismo jugador. |
+| `lef_teams_roster_level` | `3` | Mezcla balanceada: nivel de un habitual sin `"level"`. |
+| `lef_teams_random_level` | `2` | Mezcla balanceada: nivel de quien no está en el roster. |
 
 ## Requisitos
 

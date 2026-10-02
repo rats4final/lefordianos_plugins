@@ -27,9 +27,10 @@ The panel shows survivors as dead/down/away, and bots as open spots. Infected cl
 | Swap two players | `sm_swapplayers <player1> <player2>` |
 | Flip teams (survivors ↔ infected) | `sm_flipteams` |
 | Shuffle teams randomly | `sm_shuffleteams` |
+| Balanced shuffle (roster levels) | `sm_balanceteams` |
 | Restore last round's teams | `sm_restoreteams` |
 
-Flip, shuffle and restore ask "are you sure?" in the menu first. Access can be changed per
+Flip, shuffle, balance and restore ask "are you sure?" in the menu first. Access can be changed per
 command in `admin_overrides.cfg`.
 
 ## What it leaves to other plugins (on purpose)
@@ -71,6 +72,22 @@ and won't let a pinned or downed survivor leave.
 Pause/unpause (use `pause.smx`), the join command aliases (use `l4d_afk_commands`), automatic
 spectator restore (use `l4d2_spec_stays_spec`), and the debug-logging menu.
 
+## Balanced shuffle and the roster
+
+Random shuffles often put all the regulars on one team. The balanced shuffle gives each player a
+level and splits the players so both teams' levels add up as close as possible.
+
+- Our regulars go in `addons/sourcemod/configs/lef_roster.cfg` (copy it from `lef_roster.example.cfg`
+  the first time; updates only ship the example, so your list is never overwritten): SteamID (any format: `STEAM_1:…`,
+  `[U:1:…]` or `7656…`), a name, and an optional level from 1 (new) to 5 (best). The file explains
+  how to find a SteamID.
+- Anyone not in the roster counts as `lef_teams_random_level` (2); a regular without a level counts
+  as `lef_teams_roster_level` (3). So with no levels at all, the regulars are simply spread evenly.
+- It tries every split (8 players = 70 even splits). Between equally even splits it spreads the
+  regulars evenly, then picks one at random, so the same group doesn't get the same teams every time.
+- `sm_roster` lists each player's level and whether they're in the roster; `sm_roster_reload`
+  re-reads the file. Also votable from `!votes` (lef_votes).
+
 ## Settings (`cfg/sourcemod/lef_teams_panel.cfg`, created on first load)
 
 | Cvar | Default | Meaning |
@@ -79,6 +96,8 @@ spectator restore (use `l4d2_spec_stays_spec`), and the debug-logging menu.
 | `lef_teams_panel_swap_requests` | `1` | Allow `!swapwith`. |
 | `lef_teams_panel_request_timeout` | `20` | Seconds a swap request stays open. |
 | `lef_teams_panel_request_cooldown` | `15` | Seconds between swap requests from the same player. |
+| `lef_teams_roster_level` | `3` | Balanced shuffle: level of a roster player with no `"level"`. |
+| `lef_teams_random_level` | `2` | Balanced shuffle: level of a player who isn't in the roster. |
 
 ## Requirements
 

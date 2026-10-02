@@ -11,7 +11,10 @@
  *  - !lastteams   shows the teams saved at the end of the last round.
  *  - !swapwith    asks a player on another team to trade places with you.
  *  - A "Team Management" category in the SourceMod !admin menu to move,
- *    swap, flip, shuffle and restore teams.
+ *    swap, flip, shuffle, balance and restore teams.
+ *  - Balanced shuffle: splits the players so both teams are as even as possible,
+ *    using a level per player from configs/lef_roster.cfg (our regulars) and a
+ *    default level for everyone else.
  *
  * What it deliberately leaves to other plugins (see README.md):
  *  - Join/spectate commands  -> l4d_afk_commands or playermanagement.
@@ -32,7 +35,7 @@
 #undef REQUIRE_PLUGIN
 #include <adminmenu>
 
-#define PLUGIN_VERSION "2.0.0"
+#define PLUGIN_VERSION "2.1.0"
 
 #define TEAM_NONE      0
 #define TEAM_SPECTATOR 1
@@ -47,6 +50,9 @@
 #define SLOT_SPECTATOR -1
 #define SLOT_TEAM_A    0
 #define SLOT_TEAM_B    1
+
+#define ROSTER_FILE    "configs/lef_roster.cfg"
+#define MAX_BALANCE    16   // 2^16 splits to try at most
 
 #define PANEL_TIME     20
 #define PANEL_NAME_LEN 20
@@ -69,7 +75,14 @@ enum struct SavedPlayer
 	int  slot;
 }
 
+enum struct RosterEntry
+{
+	char name[MAX_NAME_LENGTH];
+	int  level;
+}
+
 ArrayList g_aLastTeams;
+StringMap g_smRoster;
 char      g_sLastTeamsMap[64];
 
 ConVar
@@ -77,6 +90,8 @@ ConVar
 	g_cvSwapRequests,
 	g_cvRequestTimeout,
 	g_cvRequestCooldown,
+	g_cvRosterLevel,
+	g_cvRandomLevel,
 	g_cvSurvivorLimit,
 	g_cvMaxInfected;
 
@@ -114,6 +129,8 @@ public void OnPluginStart()
 	g_cvSwapRequests    = CreateConVar("lef_teams_panel_swap_requests", "1", "Let players ask each other to swap teams with !swapwith.", _, true, 0.0, true, 1.0);
 	g_cvRequestTimeout  = CreateConVar("lef_teams_panel_request_timeout", "20", "Seconds a swap request stays open.", _, true, 5.0, true, 60.0);
 	g_cvRequestCooldown = CreateConVar("lef_teams_panel_request_cooldown", "15", "Seconds a player must wait between swap requests.", _, true, 0.0);
+	g_cvRosterLevel     = CreateConVar("lef_teams_roster_level", "3", "Balanced shuffle: level of a roster player whose entry has no \"level\".", _, true, 0.0, true, 10.0);
+	g_cvRandomLevel     = CreateConVar("lef_teams_random_level", "2", "Balanced shuffle: level of a player who isn't in the roster.", _, true, 0.0, true, 10.0);
 	AutoExecConfig(true, "lef_teams_panel");
 
 	g_cvSurvivorLimit = FindConVar("survivor_limit");
@@ -128,10 +145,15 @@ public void OnPluginStart()
 	RegAdminCmd("sm_flipteams", Cmd_FlipTeams, ADMFLAG_KICK, "Swap everyone on survivors with everyone on infected");
 	RegAdminCmd("sm_shuffleteams", Cmd_ShuffleTeams, ADMFLAG_KICK, "Randomly split the playing players into two new teams");
 	RegAdminCmd("sm_restoreteams", Cmd_RestoreTeams, ADMFLAG_KICK, "Put everyone back on the teams saved at the end of the last round");
+	RegAdminCmd("sm_balanceteams", Cmd_BalanceTeams, ADMFLAG_KICK, "Split the playing players into the two most even teams (levels from the roster)");
+	RegAdminCmd("sm_roster", Cmd_Roster, ADMFLAG_KICK, "Show each player's level for the balanced shuffle");
+	RegAdminCmd("sm_roster_reload", Cmd_RosterReload, ADMFLAG_CONFIG, "Reload configs/lef_roster.cfg");
 
 	HookEvent("round_end", Event_RoundEnd, EventHookMode_PostNoCopy);
 
 	g_aLastTeams = new ArrayList(sizeof(SavedPlayer));
+	g_smRoster   = new StringMap();
+	LoadRoster();
 
 	TopMenu topmenu;
 	if (LibraryExists("adminmenu") && (topmenu = GetAdminTopMenu()) != null)
@@ -876,6 +898,238 @@ Action Cmd_RestoreTeams(int client, int args)
 	return Plugin_Handled;
 }
 
+Action Cmd_BalanceTeams(int client, int args)
+{
+	AdminBalanceTeams(client);
+	return Plugin_Handled;
+}
+
+Action Cmd_Roster(int client, int args)
+{
+	ReplyToCommand(client, "[Teams] %d player(s) in the roster. Levels of the players here:", g_smRoster.Size);
+
+	bool inRoster;
+	char name[MAX_NAME_LENGTH], rosterName[MAX_NAME_LENGTH];
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (!IsClientInGame(i) || IsFakeClient(i))
+		{
+			continue;
+		}
+		int level = GetPlayerLevel(i, inRoster, rosterName, sizeof(rosterName));
+		GetClientName(i, name, sizeof(name));
+		if (inRoster)
+		{
+			ReplyToCommand(client, "  %s: %d (roster: %s)", name, level, rosterName);
+		}
+		else
+		{
+			ReplyToCommand(client, "  %s: %d (not in roster)", name, level);
+		}
+	}
+	return Plugin_Handled;
+}
+
+Action Cmd_RosterReload(int client, int args)
+{
+	LoadRoster();
+	ReplyToCommand(client, "[Teams] %d player(s) in the roster.", g_smRoster.Size);
+	return Plugin_Handled;
+}
+
+// ---------------------------------------------------------------------------
+// Roster and balanced shuffle
+// ---------------------------------------------------------------------------
+
+void LoadRoster()
+{
+	g_smRoster.Clear();
+
+	char path[PLATFORM_MAX_PATH];
+	BuildPath(Path_SM, path, sizeof(path), ROSTER_FILE);
+	if (!FileExists(path))
+	{
+		return;
+	}
+
+	KeyValues kv = new KeyValues("Roster");
+	if (!kv.ImportFromFile(path))
+	{
+		LogError("Couldn't read %s", ROSTER_FILE);
+		delete kv;
+		return;
+	}
+
+	if (kv.GotoFirstSubKey())
+	{
+		char id[64];
+		do
+		{
+			kv.GetSectionName(id, sizeof(id));
+			NormalizeSteamId(id);
+
+			RosterEntry entry;
+			kv.GetString("name", entry.name, sizeof(entry.name), id);
+			entry.level = kv.GetNum("level", -1);
+			g_smRoster.SetArray(id, entry, sizeof(entry));
+		}
+		while (kv.GotoNextKey());
+	}
+
+	delete kv;
+}
+
+// Accepts STEAM_0:/STEAM_1: (made STEAM_1:, as L4D2 reports it), [U:1:n] and 7656... as given.
+void NormalizeSteamId(char[] id)
+{
+	TrimString(id);
+	if (strncmp(id, "steam_", 6, false) == 0)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			id[i] = CharToUpper(id[i]);
+		}
+		if (id[6] == '0')
+		{
+			id[6] = '1';
+		}
+	}
+	else if (id[0] == '[')
+	{
+		id[1] = CharToUpper(id[1]);
+	}
+}
+
+// A player's level for the balanced shuffle: from the roster (by any SteamID format), else the default.
+int GetPlayerLevel(int client, bool &inRoster, char[] rosterName = "", int nameLength = 0)
+{
+	static const AuthIdType types[] = { AuthId_Steam2, AuthId_Steam3, AuthId_SteamID64 };
+
+	char auth[64];
+	RosterEntry entry;
+	for (int t = 0; t < sizeof(types); t++)
+	{
+		if (!GetClientAuthId(client, types[t], auth, sizeof(auth)))
+		{
+			continue;
+		}
+		NormalizeSteamId(auth);
+		if (g_smRoster.GetArray(auth, entry, sizeof(entry)))
+		{
+			inRoster = true;
+			if (nameLength > 0)
+			{
+				strcopy(rosterName, nameLength, entry.name);
+			}
+			return entry.level >= 0 ? entry.level : g_cvRosterLevel.IntValue;
+		}
+	}
+
+	inRoster = false;
+	return g_cvRandomLevel.IntValue;
+}
+
+// Tries every way to split the playing players (8 players = 70 even splits) and keeps the one
+// where the two teams' levels add up closest. Ties: spread the roster players evenly, then pick
+// at random, so the same group doesn't always end up with the same teams.
+void AdminBalanceTeams(int admin)
+{
+	int  players[MAXPLAYERS], levels[MAXPLAYERS];
+	bool inRoster[MAXPLAYERS];
+	int  count;
+
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && !IsFakeClient(i) && GetClientTeam(i) >= TEAM_SURVIVOR)
+		{
+			if (count == MAX_BALANCE)
+			{
+				ReplyToAdmin(admin, "%t %t", "Tag", "Too Many To Balance", MAX_BALANCE);
+				return;
+			}
+			players[count] = i;
+			levels[count]  = GetPlayerLevel(i, inRoster[count]);
+			count++;
+		}
+	}
+
+	if (count < 2 || !HasInfectedTeam())
+	{
+		ReplyToAdmin(admin, "%t %t", "Tag", "Not Enough Players");
+		return;
+	}
+
+	int survivorCap = GetTeamCapacity(TEAM_SURVIVOR);
+	int infectedCap = GetTeamCapacity(TEAM_INFECTED);
+	int small = count / 2, big = count - small;
+
+	int best = -1, bestDiff, bestRosterDiff, bestSurvivors, bestInfected, ties;
+	for (int mask = 0; mask < (1 << count); mask++)   // bit k set = players[k] on survivors
+	{
+		int survivors, levelS, levelI, rosterS, rosterI;
+		for (int k = 0; k < count; k++)
+		{
+			if (mask & (1 << k))
+			{
+				survivors++;
+				levelS  += levels[k];
+				rosterS += view_as<int>(inRoster[k]);
+			}
+			else
+			{
+				levelI  += levels[k];
+				rosterI += view_as<int>(inRoster[k]);
+			}
+		}
+
+		if ((survivors != small && survivors != big) || survivors > survivorCap || count - survivors > infectedCap)
+		{
+			continue;
+		}
+
+		int diff       = levelS > levelI ? levelS - levelI : levelI - levelS;
+		int rosterDiff = rosterS > rosterI ? rosterS - rosterI : rosterI - rosterS;
+
+		if (best == -1 || diff < bestDiff || (diff == bestDiff && rosterDiff < bestRosterDiff))
+		{
+			ties = 1;
+		}
+		else if (diff == bestDiff && rosterDiff == bestRosterDiff)
+		{
+			if (GetRandomInt(1, ++ties) != 1)
+			{
+				continue;
+			}
+		}
+		else
+		{
+			continue;
+		}
+
+		best           = mask;
+		bestDiff       = diff;
+		bestRosterDiff = rosterDiff;
+		bestSurvivors  = levelS;
+		bestInfected   = levelI;
+	}
+
+	if (best == -1)
+	{
+		ReplyToAdmin(admin, "%t %t", "Tag", "Not Enough Players");
+		return;
+	}
+
+	int want[MAXPLAYERS + 1];
+	for (int k = 0; k < count; k++)
+	{
+		want[players[k]] = (best & (1 << k)) ? TEAM_SURVIVOR : TEAM_INFECTED;
+	}
+
+	ApplyAssignment(want, admin);
+	LogAction(admin, -1, "\"%L\" balanced the teams (levels %d vs %d)", admin, bestSurvivors, bestInfected);
+	CPrintToChatAll("%t %t", "Tag", "Admin Balanced", AdminName(admin), bestSurvivors, bestInfected);
+}
+
 void AdminMovePlayer(int admin, int target, int team)
 {
 	char teamPhrase[16], targetName[MAX_NAME_LENGTH];
@@ -1131,6 +1385,7 @@ public void OnAdminMenuReady(Handle aTopMenu)
 	g_hTopMenu.AddItem("lef_teams_swap", AdminItem_Handler, g_tmoCategory, "sm_swapplayers", ADMFLAG_KICK, "swap");
 	g_hTopMenu.AddItem("lef_teams_flip", AdminItem_Handler, g_tmoCategory, "sm_flipteams", ADMFLAG_KICK, "flip");
 	g_hTopMenu.AddItem("lef_teams_shuffle", AdminItem_Handler, g_tmoCategory, "sm_shuffleteams", ADMFLAG_KICK, "shuffle");
+	g_hTopMenu.AddItem("lef_teams_balance", AdminItem_Handler, g_tmoCategory, "sm_balanceteams", ADMFLAG_KICK, "balance");
 	g_hTopMenu.AddItem("lef_teams_restore", AdminItem_Handler, g_tmoCategory, "sm_restoreteams", ADMFLAG_KICK, "restore");
 }
 
@@ -1413,6 +1668,10 @@ int Confirm_Handler(Menu menu, MenuAction action, int param1, int param2)
 		else if (StrEqual(info, "restore"))
 		{
 			AdminRestoreTeams(param1);
+		}
+		else if (StrEqual(info, "balance"))
+		{
+			AdminBalanceTeams(param1);
 		}
 
 		ReturnToCategory(param1);
