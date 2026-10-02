@@ -120,7 +120,8 @@ def locate(sp, root, filename, folder_hint):
 def copy_dependencies(sp, label):
     root = repo_root(sp)
     # Gamedata
-    for name in wanted_names(sp, r"LoadGameConfigFile"):
+    # Old style LoadGameConfigFile("x") and new style new GameData("x") / new GameDataWrapper("x").
+    for name in wanted_names(sp, r"(?:LoadGameConfigFile|new\s+GameData\w*)"):
         name = name[:-4] if name.endswith(".txt") else name
         if name in CORE_GAMEDATA:
             continue
