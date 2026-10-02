@@ -1,0 +1,88 @@
+"Phrases"
+{
+	// Admin heads-up
+	"Notify Damage"
+	{
+		"#format"	"{1:s},{2:s},{3:d}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} did {red}{3}{default} team damage to {olive}{2}{default}. {green}!restore{default} to undo."
+	}
+	"Notify Incap"
+	{
+		"#format"	"{1:s},{2:s},{3:d}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} incapped teammate {olive}{2}{default}. {green}!restore{default} to undo."
+	}
+	"Notify Kill"
+	{
+		"#format"	"{1:s},{2:s},{3:d}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} killed teammate {olive}{2}{default}. {green}!restore{default} to undo."
+	}
+
+	// Results
+	"Healed One"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} healed {olive}{2}{default}."
+	}
+	"Healed All"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} healed all survivors."
+	}
+	"Restored"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} gave {olive}{2}{default} back what teammates took: {3}."
+	}
+	"Pinned"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} is pinned by an infected, try again when they're free."
+	}
+	"Nothing To Undo"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Restore]{default} Nothing to undo for {olive}{1}{default}."
+	}
+	"Nothing To Undo Anyone"
+	{
+		"en"		"{green}[Restore]{default} Nobody has team damage to undo right now."
+	}
+	"Died Otherwise"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Restore]{default} {olive}{1}{default} wasn't killed by a teammate, so they won't be respawned."
+	}
+	"Player Gone"
+	{
+		"en"		"{green}[Restore]{default} That player is no longer on the server."
+	}
+
+	// Summaries ("45 HP, 1 incap, killed, items")
+	"Summary Incaps"
+	{
+		"#format"	"{1:d}"
+		"en"		"{1} incap(s)"
+	}
+	"Summary Killed"
+	{
+		"en"		"killed"
+	}
+	"Summary Items"
+	{
+		"en"		"items"
+	}
+
+	// Admin menu
+	"Menu Heal"
+	{
+		"en"		"Heal survivors"
+	}
+	"Menu Restore"
+	{
+		"en"		"Undo team damage"
+	}
+	"Menu All Survivors"
+	{
+		"en"		"All survivors"
+	}
+}

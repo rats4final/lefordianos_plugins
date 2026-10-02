@@ -1,0 +1,71 @@
+"Phrases"
+{
+	"Notify Damage"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} le hizo {red}{3}{default} de daño de equipo a {olive}{2}{default}. {green}!restore{default} para deshacer."
+	}
+	"Notify Incap"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} derribó a su compañero {olive}{2}{default}. {green}!restore{default} para deshacer."
+	}
+	"Notify Kill"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} mató a su compañero {olive}{2}{default}. {green}!restore{default} para deshacer."
+	}
+	"Healed One"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} curó a {olive}{2}{default}."
+	}
+	"Healed All"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} curó a todos los supervivientes."
+	}
+	"Restored"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} le devolvió a {olive}{2}{default} lo que le quitaron sus compañeros: {3}."
+	}
+	"Pinned"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} está atrapado por un infectado, intenta cuando esté libre."
+	}
+	"Nothing To Undo"
+	{
+		"es"		"{green}[Restaurar]{default} No hay nada que deshacer para {olive}{1}{default}."
+	}
+	"Nothing To Undo Anyone"
+	{
+		"es"		"{green}[Restaurar]{default} Nadie tiene daño de equipo para deshacer ahora."
+	}
+	"Died Otherwise"
+	{
+		"es"		"{green}[Restaurar]{default} {olive}{1}{default} no murió por un compañero, así que no se le revive."
+	}
+	"Player Gone"
+	{
+		"es"		"{green}[Restaurar]{default} Ese jugador ya no está en el servidor."
+	}
+	"Summary Incaps"
+	{
+		"es"		"{1} derribo(s)"
+	}
+	"Summary Killed"
+	{
+		"es"		"muerte"
+	}
+	"Summary Items"
+	{
+		"es"		"objetos"
+	}
+	"Menu Heal"
+	{
+		"es"		"Curar supervivientes"
+	}
+	"Menu Restore"
+	{
+		"es"		"Deshacer daño de equipo"
+	}
+	"Menu All Survivors"
+	{
+		"es"		"Todos los supervivientes"
+	}
+}
