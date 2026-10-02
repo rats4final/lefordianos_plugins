@@ -1,0 +1,33 @@
+// Lefordianos server messages for Harry Potter's smd_advertisements (replaces its example file).
+// Mensajes del servidor de Lefordianos para smd_advertisements de Harry Potter (reemplaza su archivo de ejemplo).
+// One message per number, shown in order every smd_advertisements_interval seconds (set in lefordianos/common.cfg).
+// Un mensaje por número, se muestran en orden cada smd_advertisements_interval segundos (en lefordianos/common.cfg).
+// Colors / Colores: {default} {green} {olive} {lightgreen} {red} {blue}
+"Phrases"
+{
+	"1"
+	{
+		"en"	"{green}!teams{default}: see the teams and switch. {green}!swapwith{default}: ask someone on the other team to swap."
+		"es"	"{green}!teams{default}: ver los equipos y cambiarte. {green}!swapwith{default}: pedirle a alguien del otro equipo cambiar de lugar."
+	}
+	"2"
+	{
+		"en"	"{green}!bosses{default}: where the tank and witch are on this map. {green}!score{default}: scores and maps won."
+		"es"	"{green}!bosses{default}: dónde están el tank y la witch en este mapa. {green}!score{default}: puntajes y mapas ganados."
+	}
+	"3"
+	{
+		"en"	"{green}!spec{default} / {green}!survivors{default} / {green}!infected{default}: change team."
+		"es"	"{green}!spec{default} / {green}!survivors{default} / {green}!infected{default}: cambiar de equipo."
+	}
+	"4"
+	{
+		"en"	"{green}!t1{default}: vote for T1-only weapons. {green}!pause{default}: pause (both teams ready up to continue)."
+		"es"	"{green}!t1{default}: votar el modo solo armas T1. {green}!pause{default}: pausar (ambos equipos se ponen listos para seguir)."
+	}
+	"5"
+	{
+		"en"	"Got the tank but want a teammate to play it? {green}!pass{default}"
+		"es"	"¿Te tocó el tank y prefieres que lo juegue un compañero? {green}!pass{default}"
+	}
+}
