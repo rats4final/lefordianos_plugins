@@ -3,3 +3,4 @@ build/
 *:Zone.Identifier
 tools/sourcemod/
 __pycache__/
+tools/extensions/

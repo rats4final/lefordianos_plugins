@@ -46,6 +46,10 @@ def base_includes(sm_include):
         os.path.join(REFS, "Multi-Colors", "addons", "sourcemod", "scripting", "include"),
         sm_include,
     ]
+    # Extensions downloaded by tools/get_extensions.py (e.g. REST in Pawn).
+    ext_root = os.path.join(HERE, "extensions")
+    if os.path.isdir(ext_root):
+        dirs += [os.path.join(ext_root, name, "include") for name in sorted(os.listdir(ext_root))]
     return [d for d in dirs if os.path.isdir(d)]
 
 
