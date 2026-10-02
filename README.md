@@ -31,6 +31,10 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_client_cvars`](plugins/lef_client_cvars/) | Kicks players whose client cvars give an advantage (fullbright, no fog...); ZoneMod's list, without confogl. |
 | [`lef_votes`](plugins/lef_votes/) | `!votes` on the game's vote screen, from a config file: maps, teams, kick (with a short ban, like vanilla), AFK, mute, rules, pause only by vote. Plus a *Lefordianos* category in `!admin`. |
 | [`lef_menu`](plugins/lef_menu/) | `!menu`: every player command on the server in one menu; hides what isn't installed. |
+| [`lef_round_start`](plugins/lef_round_start/) | Start panel (tank/witch spots, teams) and `!wait`: a vote keeps the saferoom closed until a friend joins. No Ready-Up needed. |
+| [`lef_game_hints`](plugins/lef_game_hints/) | Warnings only: rushing, falling behind, holding an infected too long; tips for the tank. |
+| [`lef_bot_protect`](plugins/lef_bot_protect/) | Survivor bots take 15% less damage from infected players, so they aren't free kills. |
+| [`lef_steam_bans`](plugins/lef_steam_bans/) | Tells admins when a joining player has VAC, game or community bans (bans only, nothing else). Needs REST in Pawn and a Steam API key. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |
 | [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/) | Patched copy of the competitive repo's tank horde monitor with an on/off switch and a rule reminder. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |
@@ -42,6 +46,7 @@ All tools are Python 3 and work on Windows and Linux (on Windows use `py` instea
 ```bash
 python3 tools/fetch_refs.py       # once: clone the reference repos next to this one (pinned commits)
 python3 tools/get_sourcemod.py    # once: download our pinned SourceMod 1.12 compiler into tools/sourcemod/
+python3 tools/get_extensions.py   # once: download extensions we ship (REST in Pawn) into tools/extensions/
 python3 tools/build.py            # build our plugins into build/   (./build.sh is a shortcut)
 python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # build the full lite config package into build/lite/

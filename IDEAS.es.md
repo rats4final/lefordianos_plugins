@@ -229,7 +229,36 @@ Hecho dentro de `lef_teams_panel` como `sm_balanceteams` (menú de admin y `!vot
 `configs/lef_roster.cfg` en el servidor (el paquete solo trae `lef_roster.example.cfg`, así las
 actualizaciones nunca lo sobrescriben). Esperando los SteamID y, si se quiere, los niveles.
 
-### Ideas nuevas (2026-10-02), propuestas, sin decidir
+### Ideas nuevas (2026-10-02): decididas y hechas el mismo día
+Decisiones: nuestro propio "esperar al inicio" liviano (no Ready-Up); para los bots: balance estricto al
+unirse, avisos a espectadores y a los que entran, y una reducción de daño suave del 15%; solo baneos (sin
+horas: "mucho doxxeo, no estamos tan tryhards"); `+1` en el chat no debe iniciar una votación por sí solo
+(asusta a los randoms): da un consejo privado, y `!wait` abre un menú. Hecho: `lef_round_start`,
+`lef_game_hints`, `lef_bot_protect`, `lef_steam_bans`, lista de votantes y votación de final de ACS en
+`lef_votes`, avisos de balance en `lef_teams_panel`.
+Pendiente: plugins de mejores bots (el usuario los busca), la ruta del centro comercial de Dead Center
+(hace falta un `stripper_dump` del servidor), y el segundo hilo de VAC que mandó el usuario (p=1335581; el
+foro bloquea la lectura automática, hace falta su nombre).
+
+**Repos de AoC-Gamers (revisados 2026-10-02)**, clonados al lado de este repo y fijados en `tools/refs.txt`:
+- `CallVote-Manager`: controla las votaciones propias del juego (límites de expulsión por jugador, baneos
+  de votación, progreso "X votó Sí"). Necesita una base de datos más `language_manager`/`campaign_manager`;
+  más pesado de lo que necesitamos ahora. Nuestra lista de votantes cubre "quién votó"; vale la pena después
+  si el abuso de votekick se vuelve un problema.
+- `L4D2-Family-Share`: detecta copias prestadas (Steam Family Sharing), la forma usual en que vuelven los
+  baneados. Necesita el fork de SteamWorks de AoC y su servicio web SteamIDTools. Buen siguiente paso para
+  los baneos.
+- `L4D2-Player-Skills` / `L4D2-Player-Stats`: skeets, levels, crowns, MVP y estadísticas de ronda con una
+  API. Podrían dar los niveles de la mezcla balanceada a partir de estadísticas reales en vez de manuales.
+- `L4D2-CommSuite`: relay de chat/voz para espectadores y logs de chat.
+- `T1-ZM` y `SuperVanilla`: variantes casuales de ZoneMod con el puntaje oficial; buenas referencias para el
+  modo Vanilla+.
+- `L4D2-Competitive-Rework-Fix`: correcciones mantenidas de plugins competitivos (readyup, tank_control_eq,
+  spechud, boss_percent...). Comparar con nuestro `l4d_tank_control_eq` parchado.
+- `AFK-On-Readyup`, `Lilac-SourceTV` (graba una demo cuando LAC detecta un tramposo: encaja con la idea de
+  demos), `L4D2-Mission-Manager` (su fork del mission manager).
+
+### Ideas nuevas (2026-10-02), como se propusieron primero
 1. **Votación de campaña al final**: ACS (ya está en el paquete) tiene su propia votación por mayoría,
    `!mapvote` (cada jugador elige una campaña, `!mapvotes` muestra la cuenta, la ganadora va después). La
    pantalla de votación Sí/No no puede "elegir una entre muchas", así que se mantiene la de ACS, se abre
@@ -382,6 +411,8 @@ también lo usaría.
 
 ## Hecho
 
+- **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), más la lista de votantes y la votación de final de ACS en `lef_votes` y los avisos de balance en `lef_teams_panel`. REST in Pawn viene de `tools/get_extensions.py`. Falta probarlos en el juego.
+- **Mezcla balanceada** (2026-10-02): `sm_balanceteams`, roster en `configs/lef_roster.cfg`. Esperando los SteamID.
 - **lef_votes** y **lef_menu**: `!votes` desde un archivo de config (la lista de arriba, expulsar con baneo de 5 minutos, pausa solo por votación, categoría *Lefordianos* de admin con forzar pausa/quitar pausa y aprobar/cancelar) y `!menu` para jugadores. Falta probarlos en el juego. Pendiente: la votación de final estilo ACS, la mezcla balanceada (espera el roster) y mostrar quién votó.
 - **lef_client_cvars**: revisión de cvars de cliente (brillo, niebla, linterna...) sin confogl, con la lista de ZoneMod. Falta probarlo en el juego.
 

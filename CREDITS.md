@@ -28,6 +28,8 @@ pinned in [`tools/refs.txt`](tools/refs.txt), so the setup can be rebuilt with o
 | [Multi-Colors](https://github.com/Bara/Multi-Colors) | Bara | `multicolors` include, needed to compile SMAC |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | SourceTV / demo recording fixes (planned) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Example of a match mode built on ZoneMod |
+| [AoC-Gamers](https://github.com/orgs/AoC-Gamers/repositories): CallVote-Manager, L4D2-Family-Share, L4D2-Player-Skills, L4D2-Player-Stats, L4D2-CommSuite, T1-ZM, SuperVanilla, L4D2-Competitive-Rework-Fix and others | AoC-Gamers | Reference for vote tracking, stats, Family Sharing and casual ZoneMod variants (see IDEAS) |
+| [sm-ripext](https://github.com/ErikMinekus/sm-ripext) | Erik Minekus | REST in Pawn extension (HTTP + JSON), used by `lef_steam_bans` |
 
 ## AlliedModders plugins
 
@@ -57,6 +59,9 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | `lef_admin_restore` | Improves `admin_hp` by Harry Potter |
 | `lef_client_cvars` | Port of confogl's ClientSettings module (Confogl Team); cvar list from the competitive repo's `cvar_tracking.cfg` |
 | `lef_votes` | Ideas from Harry Potter's `l4d_votes_5` (archived) and `l4d2_vote_change`; mission manager include by Harry Potter, based on rikka0w0's |
+| `lef_round_start` | Saferoom hold method (`warp_to_start_area`) from Ready-Up (competitive repo) |
+| `lef_game_hints` | Distance-as-share-of-the-map idea from Harry Potter's `no-rushing` |
+| `lef_steam_bans` | Idea from StevoTVR's VAC Status Checker ([t=80942](https://forums.alliedmods.net/showthread.php?t=80942)), forked by Harry Potter as `vacbans` |
 | `lef_t1_mode` | Weapon conversion stocks from l4d2util, as used by `l4d2_weaponrules` (ProdigySim); CS weapon precache idea from `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control by arti, with Sheo, Sir and Altair-Sossai (one line changed) |
 

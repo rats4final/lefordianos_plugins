@@ -207,7 +207,33 @@ Built into `lef_teams_panel` as `sm_balanceteams` (admin menu and `!votes`). The
 `configs/lef_roster.cfg` on the server (the package ships only `lef_roster.example.cfg`, so updates
 never overwrite it). Waiting for the SteamIDs and, optionally, levels.
 
-### New ideas (2026-10-02), proposed, not decided yet
+### New ideas (2026-10-02): decided and built the same day
+Decisions: our own light start hold (not Ready-Up); for bots: strict balance on join, hints to
+spectators and newcomers, and a mild 15% damage reduction; bans only (no hours: "too much doxxing,
+we're not that tryhard"); `+1` in chat must not start a vote by itself (it scares randoms): it gives a
+private tip, `!wait` opens a menu. Built: `lef_round_start`, `lef_game_hints`, `lef_bot_protect`,
+`lef_steam_bans`, voter list and ACS finale vote in `lef_votes`, balance hints in `lef_teams_panel`.
+Still open: better bot AI plugins (user is looking), the Dead Center mall route (needs a
+`stripper_dump` from the server), and the second VAC thread the user sent (p=1335581; the forum blocks
+automated reading, need its name).
+
+**AoC-Gamers repos (reviewed 2026-10-02)**, cloned next to this repo and pinned in `tools/refs.txt`:
+- `CallVote-Manager`: controls the game's own votes (kick limits per player, vote bans, "X voted
+  Yes" progress). Needs a database plus `language_manager`/`campaign_manager`; heavier than we need now.
+  Our voter list covers "who voted"; worth it later if vote-kick abuse becomes a problem.
+- `L4D2-Family-Share`: detects borrowed copies (Steam Family Sharing), the usual way banned players
+  come back. Needs AoC's SteamWorks fork and their SteamIDTools web service. Good next step for bans.
+- `L4D2-Player-Skills` / `L4D2-Player-Stats`: skeets, levels, crowns, MVP and round stats with an API.
+  Could feed the balanced shuffle's levels from real stats instead of manual ones.
+- `L4D2-CommSuite`: chat/voice relay for spectators and chat logs.
+- `T1-ZM` and `SuperVanilla`: casual ZoneMod variants with the official scoring; good references for
+  the Vanilla+ match mode.
+- `L4D2-Competitive-Rework-Fix`: maintained fixes for competitive plugins (readyup, tank_control_eq,
+  spechud, boss_percent...). Compare with our patched `l4d_tank_control_eq`.
+- `AFK-On-Readyup`, `Lilac-SourceTV` (records a demo when LAC detects a cheater: fits the demo idea),
+  `L4D2-Mission-Manager` (their mission manager fork).
+
+### New ideas (2026-10-02), as first proposed
 1. **Finale campaign vote**: ACS (already in the package) has its own plurality vote, `!mapvote`
    (each player picks a campaign, `!mapvotes` shows the count, the winner plays next). The Yes/No vote
    screen can't do "pick one of many", so keep ACS's vote, open its menu automatically when the finale
@@ -350,6 +376,8 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), plus voter list and ACS finale vote in `lef_votes` and balance hints in `lef_teams_panel`. REST in Pawn comes from `tools/get_extensions.py`. Not yet tested in game.
+- **Balanced shuffle** (2026-10-02): `sm_balanceteams`, roster in `configs/lef_roster.cfg`. Waiting for the SteamIDs.
 - **lef_votes** and **lef_menu**: `!votes` from a config file (the list above, kick with a 5-minute ban, pause only by vote, admin *Lefordianos* category with force pause/unpause and pass/cancel) and `!menu` for players. Not yet tested in game. Still to do: the ACS-style finale vote, the balanced shuffle (waits for the roster) and showing who voted.
 - **lef_client_cvars**: client cvar checks (fullbright, fog, flashlight...) without confogl, ZoneMod's list. Not yet tested in game.
 

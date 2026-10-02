@@ -28,6 +28,8 @@ en [`tools/refs.txt`](tools/refs.txt), así todo se puede rearmar con un solo co
 | [Multi-Colors](https://github.com/Bara/Multi-Colors) | Bara | Include `multicolors`, necesario para compilar SMAC |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | Arreglos de SourceTV / grabación de demos (planeado) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Ejemplo de un modo de partida hecho sobre ZoneMod |
+| [AoC-Gamers](https://github.com/orgs/AoC-Gamers/repositories): CallVote-Manager, L4D2-Family-Share, L4D2-Player-Skills, L4D2-Player-Stats, L4D2-CommSuite, T1-ZM, SuperVanilla, L4D2-Competitive-Rework-Fix y otros | AoC-Gamers | Referencia para seguimiento de votaciones, estadísticas, Family Sharing y variantes casuales de ZoneMod (ver IDEAS) |
+| [sm-ripext](https://github.com/ErikMinekus/sm-ripext) | Erik Minekus | Extensión REST in Pawn (HTTP + JSON), la usa `lef_steam_bans` |
 
 ## Plugins de AlliedModders
 
@@ -57,6 +59,9 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | `lef_admin_restore` | Mejora el `admin_hp` de Harry Potter |
 | `lef_client_cvars` | Versión independiente del módulo ClientSettings de confogl (Confogl Team); lista de cvars del `cvar_tracking.cfg` del repo competitivo |
 | `lef_votes` | Ideas del `l4d_votes_5` (archivado) y del `l4d2_vote_change` de Harry Potter; include del mission manager de Harry Potter, basado en el de rikka0w0 |
+| `lef_round_start` | Método para retener el refugio (`warp_to_start_area`) de Ready-Up (repo competitivo) |
+| `lef_game_hints` | Idea de medir la distancia como parte del mapa, del `no-rushing` de Harry Potter |
+| `lef_steam_bans` | Idea del VAC Status Checker de StevoTVR ([t=80942](https://forums.alliedmods.net/showthread.php?t=80942)), que Harry Potter tiene como `vacbans` |
 | `lef_t1_mode` | Funciones de conversión de armas de l4d2util, como las usa `l4d2_weaponrules` (ProdigySim); la idea de precargar armas de CS viene de `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control de arti, con Sheo, Sir y Altair-Sossai (una línea cambiada) |
 
