@@ -13,7 +13,7 @@ agregar una entrada con un comando del servidor, sin programar. Se recarga con `
 
 | Grupo | Votaciones |
 |---|---|
-| Mapas | Cambiar mapa (campaña → lista de mapas del mission manager), reiniciar este mapa, cambiar modo de juego (abre el `!votemode` de Vote_Mode) |
+| Mapas | Cambiar mapa (campaña → lista de mapas del mission manager), reiniciar este mapa, próxima campaña (abre el `!mapvote` de ACS), cambiar modo de juego (abre el `!votemode` de Vote_Mode) |
 | Equipos | Mezclar, mezcla balanceada (niveles del roster), intercambiar sobrevivientes e infectados, volver a los equipos de la ronda pasada (`lef_teams_panel`) |
 | Jugadores | Expulsar, mover a espectadores (AFK), silenciar voz y chat por el resto del mapa |
 | Reglas | Probabilidad de tank y witch 0 / 50 / 100 %, solo armas T1 sí/no, tank horde monitor sí/no |
@@ -37,6 +37,22 @@ inicia una votación de pausa. Si pasa, el juego se pausa como siempre (`pause.s
 funciona igual que antes (los dos equipos `!ready`). Los admins sí pueden `!pause` directo, y tienen
 **forzar pausa** y **forzar quitar pausa** en el menú de admin. Se apaga con `lef_votes_pause_by_vote 0`.
 
+## Quién votó
+
+Después de cada votación en la pantalla de votación (las del propio juego desde el menú Esc, las nuestras
+y las de otros plugins), el chat muestra quién votó Sí y quién votó No. `lef_votes_show_voters 2` también
+muestra cada voto a medida que llega; `0` lo apaga. No hace falta otro plugin: los jugadores mandan
+"Vote Yes" / "Vote No" en toda votación, y escuchamos eso.
+
+## Próxima campaña en el final
+
+ACS (Automatic Campaign Switcher, en el paquete lite) tiene su propia votación de la próxima campaña: cada
+jugador elige una con `!mapvote`, `!mapvotes` muestra la cuenta, y la más elegida va después. La pantalla
+Sí/No del juego no puede "elegir una entre muchas", así que mantenemos la votación de ACS y solo **abrimos
+su menú para todos en el mapa final**, 15 segundos después de que los sobrevivientes salen del refugio
+(`lef_votes_finale_mapvote`). La config lite pone `acs_voting_ad_mode 2` para que ACS ya no lo abra en
+cada mapa.
+
 ## Menú de admin
 
 `!admin` → **Lefordianos**:
@@ -57,6 +73,8 @@ funciona igual que antes (los dos equipos `!ready`). Los admins sí pueden `!pau
 | `lef_votes_kick_ban_minutes` | 5 | Minutos que un expulsado por votación no puede volver (0 = solo expulsar) |
 | `lef_votes_immune_flags` | b | Banderas de admin que no se pueden expulsar, mover ni silenciar por votación |
 | `lef_votes_pause_by_vote` | 1 | Los jugadores solo pueden pausar con una votación |
+| `lef_votes_show_voters` | 1 | Mostrar quién votó: 0 = no, 1 = al final, 2 = también cada voto |
+| `lef_votes_finale_mapvote` | 1 | Abrir la votación de próxima campaña de ACS en los mapas finales |
 
 La pantalla de votación muestra un solo texto para todos, en el idioma del servidor; los menús siguen el
 idioma de cada jugador (inglés o español).

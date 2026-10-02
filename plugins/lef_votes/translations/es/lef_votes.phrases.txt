@@ -120,4 +120,20 @@
 	{
 		"es"		"Cancelar la votación actual"
 	}
+	"Voters"
+	{
+		"es"		"{green}[Votos]{default} Sí ({1}): {olive}{2}{default} | No ({3}): {olive}{4}"
+	}
+	"Voted Yes"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} votó Sí."
+	}
+	"Voted No"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} votó No."
+	}
+	"Next Campaign Vote"
+	{
+		"es"		"{green}[Votos]{default} Último mapa de la campaña: elige la próxima campaña (escribe {olive}!mapvote{default} para cambiar tu elección)."
+	}
 }

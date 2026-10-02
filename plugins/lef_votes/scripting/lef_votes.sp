@@ -19,6 +19,14 @@
  * Admins (generic flag) get a "Lefordianos" category in !admin: run any entry instantly, force
  * pause / unpause, and pass or cancel the current vote. Admins can always !pause directly.
  *
+ * Who voted: after every vote on the vote screen (the game's own, ours, or another plugin's), chat
+ * lists who voted Yes and who voted No. Players send "Vote Yes" / "Vote No" for all of them, and the
+ * VoteStart / VotePass / VoteFail messages mark the start and the end.
+ *
+ * Next campaign: ACS (Automatic Campaign Switcher) has its own vote for the next campaign, where
+ * each player picks one and the most picked wins. On a finale map we open that menu for everyone a
+ * little after the survivors leave the saferoom, so nobody forgets to vote.
+ *
  * Inspired by Harry Potter's archived l4d_votes_5 and the README of his private l4d2_vote_change
  * (custom votes defined in a config file).
  */
@@ -36,10 +44,13 @@
 #include <basecomm>
 #include <l4d2_mission_manager>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
 #define CONFIG_FILE    "configs/lef_votes.cfg"
 
 #define TEAM_SPECTATOR 1
+#define VOTE_NONE      0
+#define VOTE_YES       1
+#define VOTE_NO        2
 #define TEAM_INFECTED  3
 #define ZC_TANK        8
 
@@ -81,7 +92,15 @@ ConVar
 	g_cvSpecJoin,
 	g_cvKickBanMinutes,
 	g_cvImmuneFlags,
-	g_cvPauseByVote;
+	g_cvPauseByVote,
+	g_cvShowVoters,
+	g_cvFinaleMapVote;
+
+// Who voted what on the vote screen right now (any vote, not only ours).
+bool  g_bTrackingVote;
+float g_fTrackingSince;
+int   g_iVoteChoice[MAXPLAYERS + 1];
+bool  g_bFinaleVoteOpened;
 
 // The vote on screen right now (ours).
 Handle g_hVote;
@@ -127,6 +146,8 @@ public void OnPluginStart()
 	g_cvKickBanMinutes = CreateConVar("lef_votes_kick_ban_minutes", "5", "A vote kick also bans for this many minutes, like vanilla's vote kick. 0 = kick only.", _, true, 0.0);
 	g_cvImmuneFlags    = CreateConVar("lef_votes_immune_flags", "b", "Admins with any of these flags can't be vote-kicked, moved or muted.");
 	g_cvPauseByVote    = CreateConVar("lef_votes_pause_by_vote", "1", "Players (not admins) can only pause through a vote; typing !pause starts it.", _, true, 0.0, true, 1.0);
+	g_cvShowVoters     = CreateConVar("lef_votes_show_voters", "1", "After every vote on the vote screen, list who voted Yes and No. 0 = off, 1 = at the end, 2 = also each vote as it comes in.", _, true, 0.0, true, 2.0);
+	g_cvFinaleMapVote  = CreateConVar("lef_votes_finale_mapvote", "1", "On a finale map, open ACS's next-campaign vote (!mapvote) for everyone after leaving the saferoom.", _, true, 0.0, true, 1.0);
 	AutoExecConfig(true, "lef_votes");
 
 	RegConsoleCmd("sm_votes", Cmd_Votes, "Open the vote menu");
@@ -135,6 +156,11 @@ public void OnPluginStart()
 	RegAdminCmd("sm_vc", Cmd_CancelVote, ADMFLAG_GENERIC, "Cancel the current vote");
 
 	AddCommandListener(Listener_Pause, "sm_pause");
+	AddCommandListener(Listener_Vote, "Vote");
+	HookUserMessage(GetUserMessageId("VoteStart"), Message_VoteStart);
+	HookUserMessage(GetUserMessageId("VotePass"), Message_VoteEnd);
+	HookUserMessage(GetUserMessageId("VoteFail"), Message_VoteEnd);
+	HookEvent("player_left_start_area", Event_LeftStartArea, EventHookMode_PostNoCopy);
 
 	g_aGroups = new ArrayList(sizeof(VoteGroup));
 	g_aItems  = new ArrayList(sizeof(VoteItem));
@@ -159,6 +185,13 @@ public void OnLibraryRemoved(const char[] name)
 public void OnClientDisconnect(int client)
 {
 	g_bPauseAllowed[client] = false;
+	g_iVoteChoice[client]   = VOTE_NONE;
+}
+
+public void OnMapStart()
+{
+	g_bTrackingVote     = false;
+	g_bFinaleVoteOpened = false;
 }
 
 // ---------------------------------------------------------------------------
@@ -878,6 +911,147 @@ int FindItemByType(const char[] type)
 		}
 	}
 	return -1;
+}
+
+// ---------------------------------------------------------------------------
+// Who voted what
+// ---------------------------------------------------------------------------
+
+// VoteStart: team (byte), initiator (byte), issue, param, initiator name. The game counts the
+// initiator as Yes without them sending "Vote Yes", so we do the same.
+Action Message_VoteStart(UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init)
+{
+	// A vote being redrawn for one player (late joiner) sends VoteStart again: keep the tally.
+	if (g_bTrackingVote && GetGameTime() - g_fTrackingSince < 120.0)
+	{
+		return Plugin_Continue;
+	}
+
+	msg.ReadByte();
+	int initiator = msg.ReadByte();
+
+	g_bTrackingVote  = true;
+	g_fTrackingSince = GetGameTime();
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		g_iVoteChoice[i] = VOTE_NONE;
+	}
+	if (initiator > 0 && initiator <= MaxClients)
+	{
+		g_iVoteChoice[initiator] = VOTE_YES;
+	}
+	return Plugin_Continue;
+}
+
+Action Listener_Vote(int client, const char[] command, int argc)
+{
+	if (!g_bTrackingVote || client <= 0 || client > MaxClients || g_iVoteChoice[client] != VOTE_NONE || !IsClientInGame(client))
+	{
+		return Plugin_Continue;
+	}
+
+	char arg[8];
+	GetCmdArg(1, arg, sizeof(arg));
+	if (StrEqual(arg, "Yes", false))
+	{
+		g_iVoteChoice[client] = VOTE_YES;
+	}
+	else if (StrEqual(arg, "No", false))
+	{
+		g_iVoteChoice[client] = VOTE_NO;
+	}
+	else
+	{
+		return Plugin_Continue;
+	}
+
+	if (g_cvShowVoters.IntValue == 2 && !IsFakeClient(client))
+	{
+		char name[MAX_NAME_LENGTH];
+		GetClientName(client, name, sizeof(name));
+		CPrintToChatAll("%t", g_iVoteChoice[client] == VOTE_YES ? "Voted Yes" : "Voted No", name);
+	}
+	return Plugin_Continue;
+}
+
+Action Message_VoteEnd(UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init)
+{
+	if (g_bTrackingVote)
+	{
+		g_bTrackingVote = false;
+		// Can't print from inside a message hook; do it next frame.
+		RequestFrame(Frame_PrintVoters);
+	}
+	return Plugin_Continue;
+}
+
+void Frame_PrintVoters()
+{
+	if (g_cvShowVoters.IntValue == 0)
+	{
+		return;
+	}
+
+	char yes[256], no[256], name[MAX_NAME_LENGTH];
+	int yesCount, noCount;
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (g_iVoteChoice[i] == VOTE_NONE || !IsClientInGame(i) || IsFakeClient(i))
+		{
+			continue;
+		}
+		GetClientName(i, name, sizeof(name));
+		if (g_iVoteChoice[i] == VOTE_YES)
+		{
+			Format(yes, sizeof(yes), "%s%s%s", yes, yesCount++ > 0 ? ", " : "", name);
+		}
+		else
+		{
+			Format(no, sizeof(no), "%s%s%s", no, noCount++ > 0 ? ", " : "", name);
+		}
+	}
+
+	if (yesCount + noCount == 0)
+	{
+		return;
+	}
+	if (yes[0] == '\0')
+	{
+		strcopy(yes, sizeof(yes), "-");
+	}
+	if (no[0] == '\0')
+	{
+		strcopy(no, sizeof(no), "-");
+	}
+	CPrintToChatAll("%t", "Voters", yesCount, yes, noCount, no);
+}
+
+// ---------------------------------------------------------------------------
+// Next campaign (ACS) on finale maps
+// ---------------------------------------------------------------------------
+
+void Event_LeftStartArea(Event event, const char[] name, bool dontBroadcast)
+{
+	if (!g_cvFinaleMapVote.BoolValue || g_bFinaleVoteOpened || !L4D_IsMissionFinalMap() || !CommandExists("mapvote"))
+	{
+		return;
+	}
+	g_bFinaleVoteOpened = true;   // once per map: the first team's round is enough
+	CreateTimer(15.0, Timer_OpenMapVote, _, TIMER_FLAG_NO_MAPCHANGE);
+}
+
+Action Timer_OpenMapVote(Handle timer)
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		// Don't cover a menu someone is already using.
+		if (IsClientInGame(i) && !IsFakeClient(i) && GetClientMenu(i) == MenuSource_None)
+		{
+			CPrintToChat(i, "%T", "Next Campaign Vote", i);
+			FakeClientCommand(i, "mapvote");
+		}
+	}
+	return Plugin_Stop;
 }
 
 // ---------------------------------------------------------------------------

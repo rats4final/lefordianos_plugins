@@ -129,4 +129,23 @@
 	{
 		"en"		"Cancel the current vote"
 	}
+	"Voters"
+	{
+		"#format"	"{1:d},{2:s},{3:d},{4:s}"
+		"en"		"{green}[Votes]{default} Yes ({1}): {olive}{2}{default} | No ({3}): {olive}{4}"
+	}
+	"Voted Yes"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} voted Yes."
+	}
+	"Voted No"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} voted No."
+	}
+	"Next Campaign Vote"
+	{
+		"en"		"{green}[Votes]{default} Last map of the campaign: pick the next campaign (type {olive}!mapvote{default} to change your pick)."
+	}
 }

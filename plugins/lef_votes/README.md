@@ -12,7 +12,7 @@ means adding an entry with a server command, no code. Reload with `sm_votes_relo
 
 | Group | Votes |
 |---|---|
-| Maps | Change map (campaign → map list from the mission manager), restart this map, change game mode (opens Vote_Mode's `!votemode`) |
+| Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (opens ACS's `!mapvote`), change game mode (opens Vote_Mode's `!votemode`) |
 | Teams | Shuffle, balanced shuffle (roster levels), swap survivors and infected, restore last round's teams (`lef_teams_panel`) |
 | Players | Kick, move to spectators (AFK), mute voice and chat for the rest of the map |
 | Rules | Tank and witch chance 0 / 50 / 100 %, T1 weapons only on/off, tank horde monitor on/off |
@@ -36,6 +36,22 @@ pause vote instead. If it passes, the game pauses as usual (`pause.smx`), and un
 before (both teams `!ready`). Admins can still `!pause` directly, and have **force pause** and
 **force unpause** in the admin menu. Turn this off with `lef_votes_pause_by_vote 0`.
 
+## Who voted
+
+After every vote on the vote screen (the game's own votes from the Esc menu, ours, and other
+plugins'), chat lists who voted Yes and who voted No. `lef_votes_show_voters 2` also shows each vote
+as it comes in; `0` turns it off. No extra plugin needed: players send "Vote Yes" / "Vote No" for every
+vote, and we listen to that.
+
+## Next campaign at the finale
+
+ACS (Automatic Campaign Switcher, in the lite package) has its own vote for the next campaign: each
+player picks one with `!mapvote`, `!mapvotes` shows the count, and the most picked plays next. The
+game's Yes/No screen can't do "pick one of many", so we keep ACS's vote and just **open its menu for
+everyone on the finale map**, 15 seconds after the survivors leave the saferoom
+(`lef_votes_finale_mapvote`). The lite config sets `acs_voting_ad_mode 2` so ACS no longer opens it on
+every map.
+
 ## Admin menu
 
 `!admin` → **Lefordianos**:
@@ -56,6 +72,8 @@ before (both teams `!ready`). Admins can still `!pause` directly, and have **for
 | `lef_votes_kick_ban_minutes` | 5 | Minutes a vote-kicked player can't rejoin (0 = kick only) |
 | `lef_votes_immune_flags` | b | Admin flags that can't be vote-kicked, moved or muted |
 | `lef_votes_pause_by_vote` | 1 | Players can only pause through a vote |
+| `lef_votes_show_voters` | 1 | List who voted: 0 = off, 1 = at the end, 2 = also each vote |
+| `lef_votes_finale_mapvote` | 1 | Open ACS's next-campaign vote on finale maps |
 
 The vote screen shows one text for everyone, in the server's language; the menus follow each
 player's language (English or Spanish).
