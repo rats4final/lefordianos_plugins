@@ -25,6 +25,11 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 - **Start panel:** shows the infected team's starting classes; stays 15 s after survivors leave the
   saferoom and hides at the first infected hit (up to 60 s).
 - **Witch spawns are announced** (Harry Potter's `tank_witch_spawn_notify`).
+- **Next campaign** entry in `!votes` and `!menu` only shows on finale maps: ACS only allows that vote
+  there and answered "only on a finale map" elsewhere (`"finale_only"` key). Changing campaign
+  mid-campaign is still `!votes` > Change map.
+- **ACS in Spanish:** it only shipped English, Chinese, French and Russian; we add Spanish (and Latin
+  American Spanish).
 - **Fix:** settings changed by vote or admin (T1 mode, tank/witch chance, horde monitor, all talk) were
   undone on the next map, because every map change re-runs the configs. They now last until the server
   is empty (`lef_votes` `"persist"` key, and `lef_t1_mode` itself).
