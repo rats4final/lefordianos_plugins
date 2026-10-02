@@ -1,5 +1,11 @@
 # Lite config: plugin picker · Config lite: selector de plugins
 
+> **Built:** the ticked plugins are packaged by `tools/build_lite.py` from [manifest.txt](manifest.txt);
+> install steps in [INSTALL.md](INSTALL.md). If you tick/untick something here, update the manifest too.
+> *ES: **Armado:** los plugins marcados los empaqueta `tools/build_lite.py` desde [manifest.txt](manifest.txt);
+> los pasos de instalación están en [INSTALL.es.md](INSTALL.es.md). Si marcas/desmarcas algo acá, actualiza
+> también el manifest.*
+
 > One file in both languages, so the ticks stay in one place. Each item has the English line first
 > and the Spanish line (*ES*) under it.
 > Un solo archivo en ambos idiomas, para que las marcas estén en un solo lugar. Cada ítem tiene

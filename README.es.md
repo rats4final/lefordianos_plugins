@@ -34,20 +34,22 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 
 ## Compilar
 
+Todas las herramientas son de Python 3 y funcionan en Windows y Linux (en Windows usa `py` en vez de `python3`).
+
 ```bash
-tools/get-sourcemod.sh      # una vez: descarga nuestro compilador fijo de SourceMod 1.12 en tools/sourcemod/
-tools/fetch-refs.sh         # una vez: clona los repos de referencia al lado de este (commits fijados)
-./build.sh                  # compila todo
-./build.sh lef_teams_panel  # compila un solo plugin
+python3 tools/fetch_refs.py       # una vez: clona los repos de referencia al lado de este (commits fijados)
+python3 tools/get_sourcemod.py    # una vez: descarga nuestro compilador fijo de SourceMod 1.12 en tools/sourcemod/
+python3 tools/build.py            # compila nuestros plugins en build/   (./build.sh es un atajo)
+python3 tools/build.py lef_t1_mode
+python3 tools/build_lite.py       # arma el paquete completo de la config lite en build/lite/
+python3 tools/make_stripper.py    # regenera los archivos de Stripper lite desde los de ZoneMod
 ```
 
-El resultado queda en `build/`, ordenado como la carpeta `left4dead2/` de un servidor, así que
-instalar es copiar: `build/addons/sourcemod/plugins/*.smx` y `build/addons/sourcemod/translations/`.
+La versión del compilador está fijada en `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`
+la actualiza). Los archivos include de terceros (Left4DHooks, colors, builtinvotes, multicolors...) vienen de
+los repos de referencia que están al lado de este. Usa `REFS=/alguna/ruta` si están en otro lugar.
 
-El compilador es nuestra propia copia fija de SourceMod (versión en `tools/SOURCEMOD_VERSION`;
-`tools/get-sourcemod.sh latest` la actualiza). Los archivos include de terceros (Left4DHooks, colors,
-builtinvotes...) siguen viniendo de los repos de referencia que están al lado de este. Usa
-`REFS=/alguna/ruta` si están en otro lugar.
+**Config lite:** ver [configs/lite/INSTALL.es.md](configs/lite/INSTALL.es.md) para armarla e instalarla en un servidor.
 
 ## Repos de referencia y créditos
 

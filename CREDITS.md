@@ -6,7 +6,7 @@ This repo stands on other people's work. This page lists where everything comes 
 
 ## Reference repos
 
-These live next to this repo (not inside it). `tools/fetch-refs.sh` clones them all at the commits
+These live next to this repo (not inside it). `tools/fetch_refs.py` clones them all at the commits
 pinned in [`tools/refs.txt`](tools/refs.txt), so the setup can be rebuilt with one command.
 
 | Repo | Main author(s) | What we use it for |
@@ -25,6 +25,7 @@ pinned in [`tools/refs.txt`](tools/refs.txt), so the setup can be rebuilt with o
 | [sm-plugin-SMAC](https://github.com/srcdslab/sm-plugin-SMAC) | srcdslab, fork of SMAC by GoD-Tony, Silenci0 and contributors | Anti-cheat |
 | [sm-plugin-lilac](https://github.com/srcdslab/sm-plugin-lilac) | srcdslab, fork of Little Anti-Cheat by J-Tanzanite | Anti-cheat |
 | [Sourcemod-Plugins](https://github.com/fbef0102/Sourcemod-Plugins) | Harry Potter (fbef0102) | `cannounce` (connect messages), `smd_advertisements` (server messages) |
+| [Multi-Colors](https://github.com/Bara/Multi-Colors) | Bara | `multicolors` include, needed to compile SMAC |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | SourceTV / demo recording fixes (planned) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Example of a match mode built on ZoneMod |
 

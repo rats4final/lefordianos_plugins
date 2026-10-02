@@ -6,7 +6,7 @@ Este repo se apoya en el trabajo de otras personas. Esta página lista de dónde
 
 ## Repos de referencia
 
-Están al lado de este repo (no adentro). `tools/fetch-refs.sh` los clona todos en los commits fijados
+Están al lado de este repo (no adentro). `tools/fetch_refs.py` los clona todos en los commits fijados
 en [`tools/refs.txt`](tools/refs.txt), así todo se puede rearmar con un solo comando.
 
 | Repo | Autor(es) principal(es) | Para qué lo usamos |
@@ -25,6 +25,7 @@ en [`tools/refs.txt`](tools/refs.txt), así todo se puede rearmar con un solo co
 | [sm-plugin-SMAC](https://github.com/srcdslab/sm-plugin-SMAC) | srcdslab, fork de SMAC de GoD-Tony, Silenci0 y colaboradores | Antitrampas |
 | [sm-plugin-lilac](https://github.com/srcdslab/sm-plugin-lilac) | srcdslab, fork de Little Anti-Cheat de J-Tanzanite | Antitrampas |
 | [Sourcemod-Plugins](https://github.com/fbef0102/Sourcemod-Plugins) | Harry Potter (fbef0102) | `cannounce` (mensajes de conexión), `smd_advertisements` (mensajes del servidor) |
+| [Multi-Colors](https://github.com/Bara/Multi-Colors) | Bara | Include `multicolors`, necesario para compilar SMAC |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | Arreglos de SourceTV / grabación de demos (planeado) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Ejemplo de un modo de partida hecho sobre ZoneMod |
 

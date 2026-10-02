@@ -34,19 +34,22 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 
 ## Building
 
+All tools are Python 3 and work on Windows and Linux (on Windows use `py` instead of `python3`).
+
 ```bash
-tools/get-sourcemod.sh      # once: download our pinned SourceMod 1.12 compiler into tools/sourcemod/
-tools/fetch-refs.sh         # once: clone the reference repos next to this one (pinned commits)
-./build.sh                  # build everything
-./build.sh lef_teams_panel  # build one plugin
+python3 tools/fetch_refs.py       # once: clone the reference repos next to this one (pinned commits)
+python3 tools/get_sourcemod.py    # once: download our pinned SourceMod 1.12 compiler into tools/sourcemod/
+python3 tools/build.py            # build our plugins into build/   (./build.sh is a shortcut)
+python3 tools/build.py lef_t1_mode
+python3 tools/build_lite.py       # build the full lite config package into build/lite/
+python3 tools/make_stripper.py    # regenerate the lite Stripper files from ZoneMod's
 ```
 
-Output goes to `build/`, laid out like a server's `left4dead2/` folder, so deploying is a copy:
-`build/addons/sourcemod/plugins/*.smx` and `build/addons/sourcemod/translations/`.
-
-The compiler is our own pinned SourceMod (version in `tools/SOURCEMOD_VERSION`; `tools/get-sourcemod.sh latest`
-updates it). Third-party include files (Left4DHooks, colors, builtinvotes...) still come from the
+The compiler version is pinned in `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`
+updates it). Third-party include files (Left4DHooks, colors, builtinvotes, multicolors...) come from the
 reference repos next to this one. Set `REFS=/some/path` if they live elsewhere.
+
+**Lite config:** see [configs/lite/INSTALL.md](configs/lite/INSTALL.md) to build and install it on a server.
 
 ## Reference repos and credits
 

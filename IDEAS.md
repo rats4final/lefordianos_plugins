@@ -9,7 +9,8 @@ that changes game balance should be optional and off by default.
 
 ## In progress
 
-- **Lite config (no confogl)**: a plain-SourceMod server set: the competitive repo's bug fixes
+- **Lite config (no confogl)**: **package built** (`python3 tools/build_lite.py`, see
+  [configs/lite/INSTALL.md](configs/lite/INSTALL.md)); needs testing on the server. A plain-SourceMod server set: the competitive repo's bug fixes
   (`generalfixes.cfg`), the teams panel, and the QoL plugins we like. Per-mode settings come from
   Harry Potter's `gamemode-based_configs` (`cfg/sourcemod/gamemode_cvars/<mode>.cfg`, run on map
   start and on mode change); every mode file should set the same cvars, since it never undoes the
@@ -252,6 +253,8 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
   teams panel (new syntax, Left4DHooks instead of private gamedata, translations).
 
 ## Done
+
+- **Lite config package**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows and Linux), our configs in `configs/lite/left4dead2/` (ZoneMod values, per-mode files, server messages). All tools moved to Python so they also run on Windows.
 
 - **lef_karma_sounds**: our own random sound on karma kills, waiting for the sound files.
 - **l4d2_tank_horde_monitor (patched)**: on/off switch and rule reminder.

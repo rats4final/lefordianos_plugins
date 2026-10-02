@@ -10,7 +10,8 @@ desactivada por defecto.
 
 ## En progreso
 
-- **Config lite (sin confogl)**: un servidor con SourceMod simple: las correcciones de bugs del repo
+- **Config lite (sin confogl)**: **paquete armado** (`python3 tools/build_lite.py`, ver
+  [configs/lite/INSTALL.es.md](configs/lite/INSTALL.es.md)); falta probarlo en el servidor. Un servidor con SourceMod simple: las correcciones de bugs del repo
   competitivo (`generalfixes.cfg`), el panel de equipos y los plugins de comodidad que nos gustan.
   La configuración por modo de juego viene del `gamemode-based_configs` de Harry Potter
   (`cfg/sourcemod/gamemode_cvars/<modo>.cfg`, se ejecuta al cargar el mapa y al cambiar de modo);
@@ -274,6 +275,8 @@ también lo usaría.
   el panel de equipos (sintaxis nueva, Left4DHooks en vez de gamedata propia, traducciones).
 
 ## Hecho
+
+- **Paquete de la config lite**: `configs/lite/manifest.txt` + `tools/build_lite.py` (170 plugins, Windows y Linux), nuestras configs en `configs/lite/left4dead2/` (valores de ZoneMod, archivos por modo, mensajes del servidor). Todas las herramientas pasaron a Python para que también corran en Windows.
 
 - **lef_karma_sounds**: nuestro propio sonido al azar en los karma kills, esperando los archivos de sonido.
 - **l4d2_tank_horde_monitor (parchado)**: interruptor y recordatorio de la regla.
