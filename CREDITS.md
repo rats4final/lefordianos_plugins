@@ -23,6 +23,8 @@ pinned in [`tools/refs.txt`](tools/refs.txt), so the setup can be rebuilt with o
 | [l4d2-karma-kill-system](https://github.com/eyal282/l4d2-karma-kill-system) | eyal282 (myGaming) | Karma kill announcements |
 | [l4dtoolz](https://github.com/lakwsh/l4dtoolz) | lakwsh (based on the original L4DToolZ) | More than 8 players, tickrate unlock, Steam logon workaround |
 | [sm-plugin-SMAC](https://github.com/srcdslab/sm-plugin-SMAC) | srcdslab, fork of SMAC by GoD-Tony, Silenci0 and contributors | Anti-cheat |
+| [sm-plugin-lilac](https://github.com/srcdslab/sm-plugin-lilac) | srcdslab, fork of Little Anti-Cheat by J-Tanzanite | Anti-cheat |
+| [Sourcemod-Plugins](https://github.com/fbef0102/Sourcemod-Plugins) | Harry Potter (fbef0102) | `cannounce` (connect messages), `smd_advertisements` (server messages) |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | SourceTV / demo recording fixes (planned) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Example of a match mode built on ZoneMod |
 
@@ -52,6 +54,7 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | `lef_score_info` | Idea from `l4d2_score_difference` by Forgetest and vikingo12 |
 | `lef_comeback_bonus` | Uses `l4d2_penalty_bonus` (Tabun, A1m`; competitive repo) |
 | `lef_admin_restore` | Improves `admin_hp` by Harry Potter |
+| `lef_t1_mode` | Weapon conversion stocks from l4d2util, as used by `l4d2_weaponrules` (ProdigySim); CS weapon precache idea from `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control by arti, with Sheo, Sir and Altair-Sossai (one line changed) |
 
 If something is missing or a credit is wrong, please tell us and we'll fix it.

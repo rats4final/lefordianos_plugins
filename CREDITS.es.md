@@ -23,6 +23,8 @@ en [`tools/refs.txt`](tools/refs.txt), así todo se puede rearmar con un solo co
 | [l4d2-karma-kill-system](https://github.com/eyal282/l4d2-karma-kill-system) | eyal282 (myGaming) | Anuncios de karma kill |
 | [l4dtoolz](https://github.com/lakwsh/l4dtoolz) | lakwsh (basado en el L4DToolZ original) | Más de 8 jugadores, desbloqueo de tickrate, arreglo del error de logon de Steam |
 | [sm-plugin-SMAC](https://github.com/srcdslab/sm-plugin-SMAC) | srcdslab, fork de SMAC de GoD-Tony, Silenci0 y colaboradores | Antitrampas |
+| [sm-plugin-lilac](https://github.com/srcdslab/sm-plugin-lilac) | srcdslab, fork de Little Anti-Cheat de J-Tanzanite | Antitrampas |
+| [Sourcemod-Plugins](https://github.com/fbef0102/Sourcemod-Plugins) | Harry Potter (fbef0102) | `cannounce` (mensajes de conexión), `smd_advertisements` (mensajes del servidor) |
 | [sourcetvsupport](https://github.com/shqke/sourcetvsupport) | shqke | Arreglos de SourceTV / grabación de demos (planeado) |
 | [Practiceogl-Rework](https://github.com/AoC-Gamers/Practiceogl-Rework) | AoC-Gamers | Ejemplo de un modo de partida hecho sobre ZoneMod |
 
@@ -52,6 +54,7 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | `lef_score_info` | Idea de `l4d2_score_difference` de Forgetest y vikingo12 |
 | `lef_comeback_bonus` | Usa `l4d2_penalty_bonus` (Tabun, A1m`; repo competitivo) |
 | `lef_admin_restore` | Mejora el `admin_hp` de Harry Potter |
+| `lef_t1_mode` | Funciones de conversión de armas de l4d2util, como las usa `l4d2_weaponrules` (ProdigySim); la idea de precargar armas de CS viene de `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d_tank_control_eq` | L4D2 Tank Control de arti, con Sheo, Sir y Altair-Sossai (una línea cambiada) |
 
 Si falta algo o un crédito está mal, avísennos y lo corregimos.
