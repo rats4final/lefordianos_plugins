@@ -209,8 +209,17 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: vigila el lerp de los jugadores; puede expulsar valores extremos.*
 - [x] `optional/ratemonitor`: tracks players' rate settings.
   *ES: vigila la configuración de rate de los jugadores.*
-
-  HEREE
+- [x] **SMAC** (srcdslab fork, `sm-plugin-SMAC`): SourceMod Anti-Cheat. Use the modules that support
+      L4D2 (aimbot, commands, eyetest, l4d2 fixes, cvars, client, rcon...). Includes the Feb 2025 fix
+      that stops false bans for `fog_enable` (Harry's SMAC fork doesn't have it).
+  *ES: (fork de srcdslab) SourceMod Anti-Cheat. Usar los módulos que soportan L4D2. Incluye el arreglo
+  de feb. de 2025 que evita baneos falsos por `fog_enable` (el fork de SMAC de Harry no lo tiene).*
+- [x] **Little Anti-Cheat** (srcdslab fork, `sm-plugin-lilac`): the most maintained fork (35 commits
+      ahead of the original: bug fixes, safer SQL, translations). **Start with `lilac_ban 0`** (log
+      only) for a couple of weeks to check for false positives, e.g. bunny-hop detection with `l4d2_nobhaps`.
+  *ES: (fork de srcdslab) el fork más mantenido (35 commits por delante del original). **Empezar con
+  `lilac_ban 0`** (solo registra) un par de semanas para ver falsos positivos, por ejemplo el detector
+  de bunny-hop junto con `l4d2_nobhaps`.*
 
 ## 4. Quality of life and info (no balance change) · Comodidad e información (sin cambiar el balance)
 - [x] `optional/l4d2_tank_props_glow`: hittables glow while a tank is alive, and don't fade. *ZoneMod tunes colour/range*
@@ -267,6 +276,25 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: (nuestro, parchado) todos los infectados tienen su turno de tank, en orden. El original no
   cargaba sin Ready-Up aunque nunca lo usa; nuestra copia en `plugins/l4d_tank_control_eq` quita
   ese requisito.*
+- [x] **Harry** `l4d_tank_pass`: the player who gets the tank can pass it to a teammate (`!pass`,
+      the other player must accept); admins can force it. Works alongside the tank rotation.
+      Suggested: `l4d_tank_pass_count 1`.
+  *ES: quien recibe el tank se lo puede pasar a un compañero (`!pass`, el otro tiene que aceptar);
+  los admins pueden forzarlo. Funciona junto con la rotación de tank. Sugerido: `l4d_tank_pass_count 1`.*
+- [x] **Ours** `lef_saferoom_doors`: announces who opened the start saferoom door and who closed the
+      end one with teammates still outside.
+  *ES: (nuestro) anuncia quién abrió la puerta del refugio inicial y quién cerró la final con
+  compañeros todavía afuera.*
+- [x] **Ours** `lef_t1_mode`: switchable T1-only weapons mode (cvar, admin or `!t1` vote); the list of
+      replaced weapons is configurable. Scout, AWP, grenade launcher and M60 stay by default.
+  *ES: (nuestro) modo solo armas T1 que se prende y apaga (cvar, admin o votación `!t1`); la lista de
+  armas reemplazadas se configura. Scout, AWP, lanzagranadas y M60 se quedan por defecto.*
+- [x] **Harry** `cannounce` (`Sourcemod-Plugins`): custom connect/disconnect messages (with country, if wanted).
+  *ES: mensajes propios de conexión/desconexión (con país, si se quiere).*
+- [x] **Harry** `smd_advertisements` (`Sourcemod-Plugins`): rotating server messages with translations
+      (rules, Discord, commands like `!teams`, `!t1`, `!bosses`).
+  *ES: mensajes del servidor que van rotando, con traducciones (reglas, Discord, comandos como
+  `!teams`, `!t1`, `!bosses`).*
 - [x] **Harry** `l4d2_spec_stays_spec` (MoYu has one too): spectators stay spectators on map change.
   *ES: (MoYu también tiene uno) los espectadores siguen siendo espectadores al cambiar de mapa.*
 - [x] **Ours** `lef_admin_restore`: `!heal` and `!restore` (undo team damage, incaps, team kills
@@ -479,6 +507,10 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
 
 ## 7. Gameplay and balance changes (ZoneMod's choices — off unless you want them) · Cambios de juego y balance (elecciones de ZoneMod; desactivados salvo que los quieras)
 
+> Decided 2026-10-02: the ones ticked here use **ZoneMod's values**, not each plugin's defaults.
+> *ES: Decidido el 2026-10-02: los que están marcados aquí usan **los valores de ZoneMod**, no los
+> valores por defecto de cada plugin.*
+
 **Survivors · Supervivientes**
 - [ ] `optional/l4d2_pickup`: picking up pills/melee doesn't switch your weapon; pick-ups get interrupted when incapped by spit/tank.
   *ES: agarrar pastillas/cuerpo a cuerpo no te cambia el arma; recoger se interrumpe si te derriba el ácido o el tank.*
@@ -577,8 +609,14 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: el tank pierde furia mientras los supervivientes se esconden en el cuarto seguro.*
 - [ ] `optional/l4d_tank_rush`: no distance points while a tank is alive.
   *ES: no se ganan puntos de distancia mientras hay un tank vivo.*
-- [ ] `optional/l4d2_tank_horde_monitor`: changes infinite hordes during tank.
-  *ES: cambia las hordas infinitas durante el tank.*
+- [ ] `optional/l4d2_tank_horde_monitor`: during infinite-horde events, the horde pauses while a tank
+      is up; if survivors push ahead to skip the tank it comes back, stronger the further they go.
+      **Undecided:** random players need it explained or they'll rush; idea: make it switchable and
+      announce the rule when it's on (see IDEAS).
+  *ES: en eventos de horda infinita, la horda se pausa mientras hay un tank; si los supervivientes
+  avanzan para saltarse el tank vuelve, más fuerte cuanto más avanzan. **Sin decidir:** hay que
+  explicárselo a los randoms o van a rushear; idea: que se pueda prender y apagar y que anuncie la
+  regla cuando está activo (ver IDEAS).*
 - [ ] `optional/l4d_tank_painfade`: tank's screen flashes red when hurt.
   *ES: la pantalla del tank se pone roja al recibir daño.*
 - [x] `optional/l4d_tankpunchstuckfix`: punched survivors don't get stuck in the ceiling. (Close to a pure fix.)
@@ -591,8 +629,11 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: los tanks de la IA no lanzan rocas por abajo que no pueden apuntar.*
 - [ ] `optional/l4d2_profitless_ai_tank`: passing the tank to AI doesn't give a free respawn.
   *ES: pasarle el tank a la IA no te da una reaparición gratis.*
-- [ ] `optional/boomer_horde_equalizer_refactored`: boomer hordes are the same size every time. *needs sourcescramble*
-  *ES: las hordas del boomer son siempre del mismo tamaño.*
+- [x] `optional/boomer_horde_equalizer_refactored`: the boomer's horde is a fixed size per survivor
+      vomited, instead of depending on how many zombies were already nearby (in vanilla the same
+      boom can bring 10 zombies to one team and 30 to the other). *needs sourcescramble*
+  *ES: la horda del boomer tiene un tamaño fijo por superviviente vomitado, en vez de depender de
+  cuántos zombis había cerca (en vanilla el mismo vómito puede traer 10 zombis a un equipo y 30 al otro).*
 - [x] `optional/l4d_equalise_alarm_cars`: the same cars are alarmed for both teams.
   *ES: los mismos autos tienen alarma para ambos equipos.*
 - [ ] `optional/l4d2_ledgeblock`: no ledge hanging on some maps.
