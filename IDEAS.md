@@ -32,6 +32,28 @@ that changes game balance should be optional and off by default.
 - **Comeback scoring for vanilla versus**: chose options A and C (see below), built as
   `lef_score_info` and `lef_comeback_bonus`. Needs testing on the server.
 
+## Undo griefing: admin restore (proposed 2026-10-01)
+
+Improves Harry Potter's `admin_hp` (`!hp` heals *every* survivor to full, root only, no menu).
+Working name `lef_admin_restore`.
+
+- **Heal**: `!heal <player|@survivors>`, with an admin menu entry. Replaces `!hp`.
+- **Team-damage ledger**: for each survivor, the plugin quietly keeps track of what *teammates*
+  did to them: HP lost, incaps caused (which push toward black-and-white), a team kill, and a
+  snapshot of their items taken right before the first teammate hit.
+- **Undo**: `!restore <player>` (or the menu, which lists who has something to undo, e.g.
+  "Nick: 45 HP, 1 incap, lost pills + molotov, by Troll") gives back exactly that:
+  the HP teammates took, the incap count, a revive if downed by a teammate, a respawn next to the
+  team if team-killed, and the items they had before.
+- **Admins get a heads-up** when someone takes heavy team damage: "Troll did 60 team damage to
+  Nick. !restore Nick to undo."
+- **Possible later**: a Yes/No vote (builtinvotes) so players can restore a victim when no admin
+  is online.
+
+**Already in the list**: ZoneMod's `despawn_health` gives SI back part of their missing health
+when they turn back into a ghost (`si_restore_ratio`, default 0.5 = half, 1.0 = full). It's in
+section 7 of the plugin list. Nothing to build; just tick it.
+
 ## Comeback scoring (discussion, 2026-10-01)
 
 **The problem:** vanilla versus scores mostly by distance (plus a 25-point tiebreak for the team
