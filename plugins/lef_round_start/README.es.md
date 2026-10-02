@@ -7,10 +7,11 @@ apretar F1 ni escribir `!ready`. Left 4 Dead 2.
 
 ## Panel de inicio
 
-Un panel chico con **dónde sale el tank y la witch** en este mapa, qué mitad de la ronda es, cuántos
-humanos tiene cada equipo y los comandos que conviene saber. Desaparece cuando los sobrevivientes salen
-del refugio, después de `lef_start_panel_time` segundos, o cuando el jugador aprieta **0**. Se hace a un
-lado si se abre otro menú.
+Un panel chico con **dónde sale el tank y la witch** en este mapa, las **clases iniciales del equipo
+infectado**, qué mitad de la ronda es, cuántos humanos tiene cada equipo y los comandos que conviene
+saber. Desaparece `lef_start_panel_after_leave` segundos (15) después de que los sobrevivientes salen del
+refugio, con el primer golpe de un infectado a un sobreviviente, después de `lef_start_panel_time`
+segundos (60), o cuando el jugador aprieta **0**. Se hace a un lado si se abre otro menú.
 
 ## Esperar a un amigo (`!wait`)
 
@@ -36,7 +37,8 @@ Después, `lef_teams_panel` le dice al que entra a qué equipo unirse para empar
 | Cvar | Por defecto | Qué hace |
 |---|---|---|
 | `lef_start_panel` | 1 | Mostrar el panel de inicio |
-| `lef_start_panel_time` | 40 | Esconderlo después de estos segundos |
+| `lef_start_panel_time` | 60 | Esconderlo después de estos segundos como máximo |
+| `lef_start_panel_after_leave` | 15 | Segundos que se queda después de que los sobrevivientes salen del refugio |
 | `lef_start_wait_time` | 90 | Segundos de espera cuando pasa una votación de `!wait` |
 | `lef_start_extend_time` | 60 | Segundos que agrega una votación de `!extend` |
 | `lef_start_max_extends` | 2 | Alargues por ronda |

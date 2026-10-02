@@ -7,10 +7,11 @@ type `!ready`. Left 4 Dead 2.
 
 ## Start panel
 
-A small panel with this map's **tank and witch spots**, which half of the round it is, how many
-humans each team has, and the commands to know. It disappears when survivors leave the saferoom,
-after `lef_start_panel_time` seconds, or when the player presses **0**. It steps aside when another
-menu opens.
+A small panel with this map's **tank and witch spots**, the **infected team's starting classes**,
+which half of the round it is, how many humans each team has, and the commands to know. It disappears
+`lef_start_panel_after_leave` seconds (15) after survivors leave the saferoom, at the first infected
+hit on a survivor, after `lef_start_panel_time` seconds (60), or when the player presses **0**. It
+steps aside when another menu opens.
 
 ## Waiting for a friend (`!wait`)
 
@@ -36,7 +37,8 @@ The newcomer is then told by `lef_teams_panel` which team to join to even things
 | Cvar | Default | What it does |
 |---|---|---|
 | `lef_start_panel` | 1 | Show the start panel |
-| `lef_start_panel_time` | 40 | Hide it after this many seconds |
+| `lef_start_panel_time` | 60 | Hide it after this many seconds at most |
+| `lef_start_panel_after_leave` | 15 | Seconds it stays after survivors leave the saferoom |
 | `lef_start_wait_time` | 90 | Seconds to wait after a `!wait` vote passes |
 | `lef_start_extend_time` | 60 | Seconds an `!extend` vote adds |
 | `lef_start_max_extends` | 2 | Extensions per round |

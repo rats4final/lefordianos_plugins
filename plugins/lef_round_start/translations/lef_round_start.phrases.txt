@@ -155,4 +155,33 @@
 		"#format"	"{1:d}"
 		"en"		"{1} players"
 	}
+	"Panel Infected"
+	{
+		"#format"	"{1:s}"
+		"en"		"Infected: {1}"
+	}
+	"Class 1"
+	{
+		"en"		"Smoker"
+	}
+	"Class 2"
+	{
+		"en"		"Boomer"
+	}
+	"Class 3"
+	{
+		"en"		"Hunter"
+	}
+	"Class 4"
+	{
+		"en"		"Spitter"
+	}
+	"Class 5"
+	{
+		"en"		"Jockey"
+	}
+	"Class 6"
+	{
+		"en"		"Charger"
+	}
 }

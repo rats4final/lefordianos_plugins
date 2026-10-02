@@ -4,9 +4,10 @@
  * Two things for the moments before survivors leave the saferoom, without Ready-Up (no F1, no
  * !ready, nothing new for randoms to learn):
  *
- *  1. Start panel: a small panel with this map's tank and witch spots, how many humans each team
- *     has and the commands to know. It goes away when survivors leave the saferoom, after
- *     lef_start_panel_time seconds, or when the player closes it.
+ *  1. Start panel: a small panel with this map's tank and witch spots, the infected team's starting
+ *     classes, how many humans each team has and the commands to know. It stays up to
+ *     lef_start_panel_time seconds, goes away lef_start_panel_after_leave seconds after survivors
+ *     leave the saferoom or as soon as an infected hurts a survivor, or when the player closes it.
  *
  *  2. Waiting for players ("+1"): !wait opens a small menu (1-4 players), then a vote asks
  *     "Wait for 1 more player?". If it passes, nobody can leave the saferoom (anyone who tries
@@ -56,6 +57,7 @@ public Plugin myinfo =
 ConVar
 	g_cvPanel,
 	g_cvPanelTime,
+	g_cvPanelAfterLeave,
 	g_cvWaitTime,
 	g_cvExtendTime,
 	g_cvMaxExtends,
@@ -63,6 +65,8 @@ ConVar
 
 bool  g_bLive;              // survivors have left the saferoom this round
 float g_fRoundStart;
+float g_fPanelUntil;        // the panel hides at this time (moves earlier when survivors leave)
+bool  g_bFirstHit;          // an infected has hurt a survivor this round: hide the panel
 bool  g_bHolding;
 int   g_iWaitTarget;        // humans on teams needed to stop waiting
 float g_fHoldEnd;
@@ -92,7 +96,8 @@ public void OnPluginStart()
 
 	CreateConVar("lef_round_start_version", PLUGIN_VERSION, "Lefordianos Round Start version", FCVAR_NOTIFY | FCVAR_DONTRECORD);
 	g_cvPanel       = CreateConVar("lef_start_panel", "1", "Show the start panel (tank/witch spots, teams, commands) until survivors leave the saferoom.", _, true, 0.0, true, 1.0);
-	g_cvPanelTime   = CreateConVar("lef_start_panel_time", "40", "Hide the start panel after this many seconds even if nobody has left.", _, true, 5.0);
+	g_cvPanelTime   = CreateConVar("lef_start_panel_time", "60", "Hide the start panel after this many seconds at most.", _, true, 5.0);
+	g_cvPanelAfterLeave = CreateConVar("lef_start_panel_after_leave", "15", "Keep the start panel this many seconds after survivors leave the saferoom (it also hides at the first infected hit).", _, true, 0.0);
 	g_cvWaitTime    = CreateConVar("lef_start_wait_time", "90", "Seconds to wait for players after a '+1' vote passes.", _, true, 10.0);
 	g_cvExtendTime  = CreateConVar("lef_start_extend_time", "60", "Seconds an !extend vote adds.", _, true, 10.0);
 	g_cvMaxExtends  = CreateConVar("lef_start_max_extends", "2", "How many times a wait can be extended per round.", _, true, 0.0);
@@ -105,6 +110,7 @@ public void OnPluginStart()
 
 	HookEvent("round_start", Event_RoundStart, EventHookMode_PostNoCopy);
 	HookEvent("player_left_start_area", Event_LeftStartArea, EventHookMode_PostNoCopy);
+	HookEvent("player_hurt", Event_PlayerHurt);
 
 	CreateTimer(1.0, Timer_Tick, _, TIMER_REPEAT);
 }
@@ -130,6 +136,8 @@ void ResetRound()
 	g_bHolding    = false;
 	g_iExtends    = 0;
 	g_fRoundStart = GetGameTime();
+	g_fPanelUntil = g_fRoundStart + g_cvPanelTime.FloatValue;
+	g_bFirstHit   = false;
 	for (int i = 1; i <= MaxClients; i++)
 	{
 		g_bPanelClosed[i]      = false;
@@ -137,8 +145,28 @@ void ResetRound()
 	}
 }
 
+void Event_PlayerHurt(Event event, const char[] name, bool dontBroadcast)
+{
+	if (g_bFirstHit)
+	{
+		return;
+	}
+	int victim   = GetClientOfUserId(event.GetInt("userid"));
+	int attacker = GetClientOfUserId(event.GetInt("attacker"));
+	if (victim > 0 && attacker > 0 && GetClientTeam(victim) == TEAM_SURVIVOR && GetClientTeam(attacker) == TEAM_INFECTED)
+	{
+		g_bFirstHit = true;
+	}
+}
+
 void Event_LeftStartArea(Event event, const char[] name, bool dontBroadcast)
 {
+	float until = GetGameTime() + g_cvPanelAfterLeave.FloatValue;
+	if (until < g_fPanelUntil)
+	{
+		g_fPanelUntil = until;
+	}
+
 	if (!g_bHolding)
 	{
 		g_bLive = true;
@@ -232,7 +260,7 @@ Action Timer_Tick(Handle timer)
 		}
 	}
 
-	if (!g_bLive && g_cvPanel.BoolValue && GetGameTime() - g_fRoundStart < g_cvPanelTime.FloatValue)
+	if (g_cvPanel.BoolValue && !g_bFirstHit && GetGameTime() < g_fPanelUntil)
 	{
 		for (int i = 1; i <= MaxClients; i++)
 		{
@@ -274,6 +302,13 @@ void ShowStartPanel(int client)
 		panel.DrawText(line);
 	}
 
+	char classes[96];
+	if (DescribeInfected(client, classes, sizeof(classes)))
+	{
+		FormatEx(line, sizeof(line), "%T", "Panel Infected", client, classes);
+		panel.DrawText(line);
+	}
+
 	FormatEx(line, sizeof(line), "%T", "Panel Teams", client, CountHumansOn(TEAM_SURVIVOR), CountHumansOn(TEAM_INFECTED), CountHumansOn(TEAM_SPECTATOR));
 	panel.DrawText(line);
 
@@ -311,6 +346,31 @@ int Panel_Handler(Menu menu, MenuAction action, int client, int param)
 		g_fPanelPausedUntil[client] = GetGameTime() + 15.0;   // another menu opened: don't cover it
 	}
 	return 0;
+}
+
+// The infected team's classes right now (ghosts count; tanks don't), e.g. "Hunter, Smoker, Boomer".
+// Survivors see the same thing si_class_announce prints when they leave the saferoom.
+bool DescribeInfected(int client, char[] buffer, int maxlength)
+{
+	buffer[0] = '\0';
+	char phrase[16], name[24];
+	int count;
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (!IsClientInGame(i) || GetClientTeam(i) != TEAM_INFECTED || !IsPlayerAlive(i))
+		{
+			continue;
+		}
+		int zclass = GetEntProp(i, Prop_Send, "m_zombieClass");
+		if (zclass < 1 || zclass > 6)
+		{
+			continue;   // tank, witch or not chosen yet
+		}
+		FormatEx(phrase, sizeof(phrase), "Class %d", zclass);
+		FormatEx(name, sizeof(name), "%T", phrase, client);
+		Format(buffer, maxlength, "%s%s%s", buffer, count++ > 0 ? ", " : "", name);
+	}
+	return count > 0;
 }
 
 void DescribeBoss(int client, bool spawns, float flow, char[] buffer, int maxlength)
