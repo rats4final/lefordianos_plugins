@@ -8,6 +8,14 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Corrección (primera noche con jugadores):**
+  - El aviso de witch de Harry no tenía su archivo de traducción en el paquete: el armador no entendía
+    nombres de archivo unidos con el operador `...` de SourcePawn. Ahora sí (ningún otro plugin estaba
+    afectado).
+  - El recordatorio del tank horde monitor usaba dos colores de equipo (`{red}` y `{blue}`), y la
+    librería de colores no lo permite; ahora `{red}` y `{olive}`.
+  - `l4d2_playstats` se pasaba de su espacio para la consola después de una sesión larga con muchos
+    jugadores entrando y saliendo. Copia parchada con lugar para 32 bloques en vez de 10.
 - **Vómito del boomer:** `vomit_collide_strict 0`. `l4d_vomit_trace_patch` hacía que el vómito necesitara
   el hitbox exacto del sobreviviente (elección de ZoneMod); los jugadores sentían que llegaba menos lejos.
   Su arreglo de los infectados que bloqueaban el vómito se mantiene.

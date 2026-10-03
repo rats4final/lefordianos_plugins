@@ -65,6 +65,7 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | `lef_game_hints` | Idea de medir la distancia como parte del mapa, del `no-rushing` de Harry Potter |
 | `lef_steam_bans` | Idea del VAC Status Checker de StevoTVR ([t=80942](https://forums.alliedmods.net/showthread.php?t=80942)), que Harry Potter tiene como `vacbans` |
 | `lef_t1_mode` | Funciones de conversión de armas de l4d2util, como las usa `l4d2_weaponrules` (ProdigySim); la idea de precargar armas de CS viene de `l4d2_sniper_precache` (Visor, A1m`) |
+| `l4d2_playstats` (parchado) | Player Statistics de Tabun y A1m` (repo competitivo) |
 | `pause` (parchado) | Pause plugin de CanadaRox, Sir, Forgetest y A1m` (repo competitivo) |
 | `si_class_announce` (parchado) | Special Infected Class Announce de Tabun y Forgetest (repo competitivo) |
 | `l4d_tank_control_eq` | L4D2 Tank Control de arti, con Sheo, Sir y Altair-Sossai (una línea cambiada) |

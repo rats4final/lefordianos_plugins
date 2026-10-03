@@ -7,6 +7,13 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Fix (first night with players):**
+  - Harry's witch notifier had no translation file in the package: the packager didn't understand file
+    names joined with SourcePawn's `...` operator. Now it does (no other plugin was affected).
+  - The tank horde monitor's rule hint used two team colors (`{red}` and `{blue}`), which the color
+    library refuses; now `{red}` and `{olive}`.
+  - `l4d2_playstats` overflowed its console buffer after a long session with many players coming and
+    going. Patched copy with room for 32 blocks instead of 10.
 - **Boomer vomit:** `vomit_collide_strict 0`. `l4d_vomit_trace_patch` made the vomit need a survivor's exact
   hitbox (ZoneMod's choice); players felt the range was shorter. Its teammate-blocking fix stays.
 - **Turned off** `boomer_horde_equalizer_refactored` for now: the owner suspects it misbehaves.
