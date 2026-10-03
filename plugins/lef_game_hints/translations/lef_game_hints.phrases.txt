@@ -81,4 +81,16 @@
 	{
 		"en"		"{green}[Tank tip]{default} If you go too long without hitting survivors, your control meter runs out and the tank passes to someone else."
 	}
+	"Tank Controls"
+	{
+		"en"		"{green}[Tank]{default} Rocks: {olive}right click{default} = one-hand overhand, {olive}E{default} = underhand, {olive}R{default} = two-hand overhand."
+	}
+	"Tank Meter Pass"
+	{
+		"en"		"{green}[Tank]{default} Your {olive}control meter{default} drains while you don't hit survivors: when it runs out the tank goes to a teammate (the second time, to a bot). Type {olive}!pass{default} to give it to a teammate yourself."
+	}
+	"Tank Meter"
+	{
+		"en"		"{green}[Tank]{default} Your {olive}control meter{default} drains while you don't hit survivors: when it runs out the tank goes to a teammate (the second time, to a bot)."
+	}
 }

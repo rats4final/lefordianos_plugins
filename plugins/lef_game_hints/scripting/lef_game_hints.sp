@@ -23,7 +23,7 @@
 #include <left4dhooks>
 #include <colors>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
 
 #define TEAM_SURVIVOR 2
 #define TEAM_INFECTED 3
@@ -87,7 +87,7 @@ public void OnPluginStart()
 	g_cvGhostTime      = CreateConVar("lef_hints_ghost_time", "60", "Seconds as a ghost able to spawn before the reminder.", _, true, 10.0);
 	g_cvHoldTellTeam   = CreateConVar("lef_hints_hold_tell_team", "0", "Also tell the infected team.", _, true, 0.0, true, 1.0);
 	g_cvTankTips       = CreateConVar("lef_hints_tank_tips", "1", "Give tips to whoever becomes the tank.", _, true, 0.0, true, 1.0);
-	g_cvTankTipCount   = CreateConVar("lef_hints_tank_tip_count", "2", "How many random tips the tank gets.", _, true, 0.0, true, float(TANK_TIPS));
+	g_cvTankTipCount   = CreateConVar("lef_hints_tank_tip_count", "1", "How many random tips the tank gets (after the controls and the control meter / !pass lines).", _, true, 0.0, true, float(TANK_TIPS));
 	g_cvCooldown       = CreateConVar("lef_hints_cooldown", "30", "Seconds between warnings to the same player.", _, true, 5.0);
 	AutoExecConfig(true, "lef_game_hints");
 
@@ -373,8 +373,10 @@ void GiveTankTips(int tank)
 		}
 	}
 
-	// The tank: the situation first, then a few random tips.
+	// The tank: the situation first, then the controls, the control meter and !pass, then random tips.
 	CPrintToChat(tank, "%T", teammatesUp == 0 ? "Tank Team Respawning" : "Tank Team Up", tank);
+	CPrintToChat(tank, "%T", "Tank Controls", tank);
+	CPrintToChat(tank, "%T", CommandExists("sm_pass") ? "Tank Meter Pass" : "Tank Meter", tank);
 
 	int order[TANK_TIPS];
 	for (int i = 0; i < TANK_TIPS; i++)

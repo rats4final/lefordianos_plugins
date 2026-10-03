@@ -76,4 +76,16 @@
 	{
 		"es"		"{green}[Consejo]{default} Si pasas mucho tiempo sin golpear a nadie, se acaba tu medidor de control y el tank pasa a otro jugador."
 	}
+	"Tank Controls"
+	{
+		"es"		"{green}[Tank]{default} Rocas: {olive}clic derecho{default} = por arriba con una mano, {olive}E{default} = por abajo, {olive}R{default} = por arriba con las dos manos."
+	}
+	"Tank Meter Pass"
+	{
+		"es"		"{green}[Tank]{default} Tu {olive}barra de control{default} baja mientras no golpeas a nadie: si se acaba, el tank pasa a un compañero (la segunda vez, a un bot). Escribe {olive}!pass{default} para pasárselo tú a un compañero."
+	}
+	"Tank Meter"
+	{
+		"es"		"{green}[Tank]{default} Tu {olive}barra de control{default} baja mientras no golpeas a nadie: si se acaba, el tank pasa a un compañero (la segunda vez, a un bot)."
+	}
 }
