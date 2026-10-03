@@ -6,6 +6,17 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-10-04
+
+- **`!wait`:** cuenta regresiva 3-2-1 con los pitidos de Ready-Up al terminar la espera; en el primer mapa
+  de una campaña (sin refugio) los sobrevivientes quedan congelados mientras se espera, por eso ahí no
+  funcionaba.
+- **Recordatorios del tank** (`lef_boss_spawns`): cada 2 minutos mientras falta el tank, y un aviso
+  cuando los sobrevivientes están a 5% o menos.
+- **Sonido de aparición de la witch** cambiado por su propia música: usaba el mismo sonido que el aviso
+  del tank.
+- **Todas las jugadas destacadas** (skeets, crowns, deadstops, pops...) se muestran en el chat.
+
 ## 2026-10-03
 
 - **Corrección (primera noche con jugadores):**

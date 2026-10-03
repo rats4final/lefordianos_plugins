@@ -52,7 +52,11 @@ Silvers. Algunas que los jugadores van a notar:
 - Reporte de daño al tank, MVP de sobrevivientes y estadísticas al final de cada ronda.
 - **Quién hizo qué**: quién tiró una molotov o una bilis, quién explotó un bidón, quién desplegó munición,
   quién abrió el refugio y quién lo cerró dejando compañeros afuera, karma kills.
-- **Aparición de witches**: se anuncia en el chat con un sonido, como los tanks.
+- **Aparición de witches**: se anuncia en el chat con su propio sonido (la música de la witch), distinto
+  al del tank.
+- **Recordatorios del tank**: mientras falta el tank, el chat recuerda dónde aparece cada 2 minutos, y
+  avisa cuando los sobrevivientes se acercan.
+- **Jugadas destacadas** en el chat: skeets, crowns, deadstops, pops, levels, death charges y más.
 - **Quién votó**: después de cada votación, la lista de quién votó Sí y quién votó No.
 - **Avisos, nunca castigos**: avisos a los que rushean, a los que se quedan atrás y a los infectados
   guardados mucho tiempo, y consejos para los que juegan de tank.

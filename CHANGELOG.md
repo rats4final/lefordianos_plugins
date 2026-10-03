@@ -5,6 +5,15 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-10-04
+
+- **`!wait`:** 3-2-1 countdown with Ready-Up's beeps when the wait ends; on a campaign's first map
+  (no saferoom box) survivors are frozen while waiting, which is why the hold didn't work there.
+- **Tank reminders** (`lef_boss_spawns`): every 2 minutes while a tank is still to come, and a warning
+  when survivors get within 5% of it.
+- **Witch spawn sound** changed to the witch's own tune: it used the same sound as the tank notice.
+- **Every skill report** (skeets, crowns, deadstops, pops...) is shown in chat.
+
 ## 2026-10-03
 
 - **Fix (first night with players):**

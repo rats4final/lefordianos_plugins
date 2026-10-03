@@ -48,7 +48,10 @@ Silvers. Some players will notice:
 - Tank damage report, survivor MVP and round stats at the end of each round.
 - **Who did what**: who threw a molotov or bile, who blew up a gascan, who deployed ammo, who opened
   the saferoom and who closed it on teammates, karma kills.
-- **Witch spawns** are announced in chat with a sound, like tanks.
+- **Witch spawns** are announced in chat with their own sound (the witch's tune), different from the tank's.
+- **Tank reminders**: while a tank is still to come, chat reminds where it spawns every 2 minutes, and
+  warns when survivors are getting close.
+- **Skill reports** in chat: skeets, crowns, deadstops, pops, level charges, death charges and more.
 - **Who voted**: after every vote, the list of who voted Yes and who voted No.
 - **Hints, never punishments**: warnings to rushers, to players left behind and to infected held
   too long, and tips for new tank players.
