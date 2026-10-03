@@ -137,7 +137,8 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_tankpunchstuc
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/rock_stumble_block.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/rock_stumble_block.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_bw_rock_hit.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_bw_rock_hit.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/smart_ai_rock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/smart_ai_rock.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/boomer_horde_equalizer_refactored.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/boomer_horde_equalizer_refactored.sp
+# Disabled 2026-10-03 (owner suspects it misbehaves; re-enable by removing the '# '):
+# smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/boomer_horde_equalizer_refactored.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/boomer_horde_equalizer_refactored.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_equalise_alarm_cars.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_equalise_alarm_cars.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_antibaiter.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_antibaiter.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_collision_adjustments.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_collision_adjustments.sp

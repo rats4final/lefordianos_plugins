@@ -678,7 +678,7 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: los tanks de la IA no lanzan rocas por abajo que no pueden apuntar.*
 - [ ] `optional/l4d2_profitless_ai_tank`: passing the tank to AI doesn't give a free respawn.
   *ES: pasarle el tank a la IA no te da una reaparición gratis.*
-- [x] `optional/boomer_horde_equalizer_refactored`: the boomer's horde is a fixed size per survivor
+- [ ] `optional/boomer_horde_equalizer_refactored` (**off since 2026-10-03**: the owner suspects it misbehaves; to check): the boomer's horde is a fixed size per survivor
       vomited, instead of depending on how many zombies were already nearby (in vanilla the same
       boom can bring 10 zombies to one team and 30 to the other). *needs sourcescramble*
   *ES: la horda del boomer tiene un tamaño fijo por superviviente vomitado, en vez de depender de
