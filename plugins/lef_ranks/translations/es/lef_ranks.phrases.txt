@@ -1,0 +1,31 @@
+"Phrases"
+{
+	"Points Up"
+	{
+		"es"		"{green}[Ranking]{default} Mapa ganado: {olive}+{1}{default} puntos (ahora {olive}{2}{default})."
+	}
+	"Points Down"
+	{
+		"es"		"{green}[Ranking]{default} Mapa perdido: {olive}-{1}{default} puntos (ahora {olive}{2}{default})."
+	}
+	"No Games"
+	{
+		"es"		"{green}[Ranking]{default} {olive}{1}{default} todavía no jugó un mapa que cuente."
+	}
+	"Rank Line"
+	{
+		"es"		"{green}[Ranking]{default} {olive}{1}{default}: {olive}{2}{default} puntos, {3} mapas ({4} ganados, {5} perdidos). Puesto: {olive}{6}{default} (0 = todavía no está en la tabla)."
+	}
+	"Top Title"
+	{
+		"es"		"{green}[Ranking]{default} Top 10 (al menos {1} mapas):"
+	}
+	"Top Line"
+	{
+		"es"		"{olive}{1}.{default} {2} - {olive}{3}{default} puntos, {4} mapas, {5} ganados"
+	}
+	"Top Empty"
+	{
+		"es"		"{green}[Ranking]{default} Nadie tiene {1} mapas que cuenten todavía."
+	}
+}
