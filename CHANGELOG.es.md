@@ -8,6 +8,9 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Vómito del boomer:** `vomit_collide_strict 0`. `l4d_vomit_trace_patch` hacía que el vómito necesitara
+  el hitbox exacto del sobreviviente (elección de ZoneMod); los jugadores sentían que llegaba menos lejos.
+  Su arreglo de los infectados que bloqueaban el vómito se mantiene.
 - **Apagado** por ahora `boomer_horde_equalizer_refactored`: el dueño sospecha que algo hace mal.
 - **Quitado** el `Dynamic_Light` de Silvers (la luz extra donde apuntan las linternas de los
   sobrevivientes), a pedido del dueño.

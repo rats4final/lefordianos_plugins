@@ -7,6 +7,8 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Boomer vomit:** `vomit_collide_strict 0`. `l4d_vomit_trace_patch` made the vomit need a survivor's exact
+  hitbox (ZoneMod's choice); players felt the range was shorter. Its teammate-blocking fix stays.
 - **Turned off** `boomer_horde_equalizer_refactored` for now: the owner suspects it misbehaves.
 - **Removed** Silvers' `Dynamic_Light` (the extra light where survivors point their flashlights), at the
   owner's request.
