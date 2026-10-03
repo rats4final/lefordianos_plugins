@@ -106,7 +106,8 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/coinflip.smx L4D2
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/teamflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/teamflip.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_skill_detect.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_skill_detect.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/survivor_mvp.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/survivor_mvp.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_playstats.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_playstats.sp
+# l4d2_playstats: our patched copy (more console buffer chunks; see plugins/l4d2_playstats)
+ours l4d2_playstats
 # si_class_announce and pause: our patched copies (see plugins/si_class_announce, plugins/pause)
 ours si_class_announce
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_common_ragdolls_be_gone.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_common_ragdolls_be_gone.sp
