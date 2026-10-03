@@ -8,6 +8,8 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Quitado** el `Dynamic_Light` de Silvers (la luz extra donde apuntan las linternas de los
+  sobrevivientes), a pedido del dueño.
 - **Tus propios ajustes:** `cfg/lefordianos/custom.cfg` se ejecuta al final de `common.cfg` en cada mapa,
   así sus valores ganan sobre server.cfg y las configs de los plugins; las actualizaciones solo traen
   `custom.example.cfg`.

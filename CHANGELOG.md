@@ -7,6 +7,8 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Removed** Silvers' `Dynamic_Light` (the extra light where survivors point their flashlights), at the
+  owner's request.
 - **Your own settings:** `cfg/lefordianos/custom.cfg` runs at the end of `common.cfg` every map, so its
   values win over server.cfg and plugin configs; updates only ship `custom.example.cfg`.
 - **Map transitions** (Harry Potter's `l4d2_map_transitions` + `l4d2_transition_info_fix`) to join
