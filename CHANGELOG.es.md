@@ -8,6 +8,16 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **`lef_campaigns` reemplaza a ACS:** la próxima campaña se vota en `!votes` en la pantalla de votación
+  del juego (en cualquier momento), `!next` la muestra; sin votación, la siguiente de la lista.
+- **Votación de modo de juego** en la pantalla de votación del juego (`!votes` > Cambiar modo de juego),
+  con la lista de Vote_Mode; su votación vieja por el chat queda solo para admins.
+- **Quad caps** posibles (`l4d2_dominators 0`, como en ZoneMod), a pedido del dueño.
+- **Tecla M** (menú de equipos) vuelve a funcionar (`l4d_afk_commands_pressM_block 0`); sigue las mismas
+  reglas de balance que `!survivors`/`!infected`.
+- **Consejos para el tank:** controles de las rocas (clic derecho / E / R), la barra de control y `!pass`.
+- **Mensajes del servidor** reescritos: `!menu`, `!votes`, `!wait`, `!rank`, estadísticas, el panel de
+  inicio, consejos del tank.
 - **`lef_ranks`:** un ranking por mapas ganados (Elo para equipos), `!rank` y `!top`; la mezcla
   balanceada usa sus puntos cuando un jugador tiene 5 mapas que cuenten (antes, los niveles del roster).
 - **c5m5 (puente de The Parish):** ya no aparecen 4 botiquines en el camión junto al tank (ZoneMod los

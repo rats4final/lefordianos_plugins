@@ -7,6 +7,15 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **`lef_campaigns` replaces ACS:** the next campaign is voted in `!votes` on the game's vote screen
+  (any time), `!next` shows it; without a vote, the next one in the list.
+- **Game mode votes** on the game's vote screen (`!votes` > Change game mode), using Vote_Mode's list;
+  its old chat vote is admin-only.
+- **Quad caps** possible (`l4d2_dominators 0`, like ZoneMod), at the owner's request.
+- **M key** (team menu) works again (`l4d_afk_commands_pressM_block 0`); it follows the same balance
+  rules as `!survivors`/`!infected`.
+- **Tank tips:** rock controls (right click / E / R), the control meter and `!pass`.
+- **Server messages** rewritten: `!menu`, `!votes`, `!wait`, `!rank`, stats, the start panel, tank tips.
 - **`lef_ranks`:** a ranking from map wins (Elo for teams), `!rank` and `!top`; the balanced shuffle
   uses its points once a player has 5 ranked maps (roster levels before that).
 - **c5m5 (The Parish bridge):** no more 4 medkits in the truck by the tank (ZoneMod meant them as pills,

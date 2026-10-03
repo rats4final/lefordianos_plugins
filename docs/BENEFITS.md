@@ -74,7 +74,9 @@ Silvers. Some players will notice:
   - pausing (only by vote, so randoms can't abuse it).
 - **Joining teams**: `!survivors`, `!infected`, `!afk` with sensible anti-abuse rules. Spectators
   stay spectators across maps.
-- **No intro cutscenes** on first maps; **automatic campaign rotation** with a vote for the next one.
+- **No intro cutscenes** on first maps; **campaign rotation**, with the next campaign voted on the
+  game's vote screen (`!votes`) and shown with `!next`.
+- **Quad caps** are possible (four capping infected at once), like in ZoneMod: a chosen change.
 - Pass pills with Reload; hittables glow while a tank is up; dead commons' ragdolls disappear.
 
 ## For admins
@@ -108,6 +110,7 @@ These change vanilla, so they're listed honestly. Each can be turned off in `PLU
   - no bunny-hopping, louder jockeys, fixed SI spawn order, no spitter while a tank is up;
   - SI regain health when they despawn;
   - equal alarm cars;
+  - quad caps possible (`l4d2_dominators 0`);
   - a forced horde if infected wait too long to attack;
   - a few tank tweaks.
 - **Map changes**: ZoneMod's Stripper map fixes (blocked exploits, stuck spots, a few props and

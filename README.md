@@ -37,6 +37,7 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_round_start`](plugins/lef_round_start/) | Start panel (tank/witch spots, teams) and `!wait`: a vote keeps the saferoom closed until a friend joins. No Ready-Up needed. |
 | [`lef_game_hints`](plugins/lef_game_hints/) | Warnings only: rushing, falling behind, holding an infected too long; tips for the tank. |
 | [`lef_bot_protect`](plugins/lef_bot_protect/) | Survivor bots take 15% less damage from infected players, so they aren't free kills. |
+| [`lef_campaigns`](plugins/lef_campaigns/) | Campaign rotation (replaces ACS): the next campaign is voted in `!votes`; `!next` shows it. |
 | [`lef_ranks`](plugins/lef_ranks/) | Ranking from map wins (Elo, adapted to teams): `!rank`, `!top`; feeds the balanced shuffle. |
 | [`lef_steam_bans`](plugins/lef_steam_bans/) | Tells admins when a joining player has VAC, game or community bans (bans only, nothing else). Needs REST in Pawn and a Steam API key. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |

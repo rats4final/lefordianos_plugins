@@ -79,8 +79,9 @@ Silvers. Algunas que los jugadores van a notar:
   - pausar (solo por votación, así los randoms no abusan).
 - **Unirse a equipos**: `!survivors`, `!infected`, `!afk` con reglas razonables contra abusos. Los
   espectadores siguen de espectadores entre mapas.
-- **Sin escenas de introducción** en los primeros mapas; **rotación automática de campañas** con
-  votación de la siguiente.
+- **Sin escenas de introducción** en los primeros mapas; **rotación de campañas**, con la próxima
+  campaña votada en la pantalla de votación del juego (`!votes`) y mostrada con `!next`.
+- **Quad caps** posibles (cuatro infectados que agarran a la vez), como en ZoneMod: un cambio elegido.
 - Pasar pastillas con Recargar; los objetos golpeables brillan mientras hay tank; los cadáveres de los
   comunes desaparecen.
 
@@ -121,6 +122,7 @@ su config:
     tank;
   - los infectados recuperan vida al desaparecer;
   - autos con alarma iguales;
+  - quad caps posibles (`l4d2_dominators 0`);
   - una horda forzada si los infectados esperan demasiado para atacar;
   - algunos ajustes del tank.
 - **Cambios de mapas**: las correcciones de mapas de Stripper de ZoneMod (exploits bloqueados, lugares

@@ -19,7 +19,7 @@ en [`tools/refs.txt`](tools/refs.txt), así todo se puede rearmar con un solo co
 | [Various_Scripts_Collection](https://github.com/SilvDev/Various_Scripts_Collection) | Silvers | Correcciones de exploits, `l4d_heartbeat`, verificador de actualizaciones, extras visuales |
 | [Vote_Mode](https://github.com/SilvDev/Vote_Mode), [Console_Spam_Patches](https://github.com/SilvDev/Console_Spam_Patches), [Dissolve_Infected](https://github.com/SilvDev/Dissolve_Infected), [Dynamic_Light](https://github.com/SilvDev/Dynamic_Light) | Silvers | Votación de modo de juego, consola, visuales |
 | [Left-4-fix](https://github.com/LuxLuma/Left-4-fix), [Enhanced Throwables](https://github.com/LuxLuma/-L4D-L4D2-Enhanced-Throwables) | Lux (LuxLuma) | Correcciones del desfibrilador y la witch, exploits |
-| [l4d2_mission_manager](https://github.com/rikka0w0/l4d2_mission_manager) | rikka0w0 | API de la lista de mapas y cambio automático de campaña |
+| [l4d2_mission_manager](https://github.com/rikka0w0/l4d2_mission_manager) | rikka0w0 | API de la lista de mapas; su cambio automático de campaña se usó hasta el 2026-10-04 (reemplazado por `lef_campaigns`) |
 | [l4d2-karma-kill-system](https://github.com/eyal282/l4d2-karma-kill-system) | eyal282 (myGaming) | Anuncios de karma kill |
 | [l4dtoolz](https://github.com/lakwsh/l4dtoolz) | lakwsh (basado en el L4DToolZ original) | Más de 8 jugadores, desbloqueo de tickrate, arreglo del error de logon de Steam |
 | [sm-plugin-SMAC](https://github.com/srcdslab/sm-plugin-SMAC) | srcdslab, fork de SMAC de GoD-Tony, Silenci0 y colaboradores | Antitrampas |
