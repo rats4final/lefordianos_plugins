@@ -7,6 +7,7 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Turned off** `boomer_horde_equalizer_refactored` for now: the owner suspects it misbehaves.
 - **Removed** Silvers' `Dynamic_Light` (the extra light where survivors point their flashlights), at the
   owner's request.
 - **Your own settings:** `cfg/lefordianos/custom.cfg` runs at the end of `common.cfg` every map, so its

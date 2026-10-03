@@ -8,6 +8,7 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Apagado** por ahora `boomer_horde_equalizer_refactored`: el dueño sospecha que algo hace mal.
 - **Quitado** el `Dynamic_Light` de Silvers (la luz extra donde apuntan las linternas de los
   sobrevivientes), a pedido del dueño.
 - **Tus propios ajustes:** `cfg/lefordianos/custom.cfg` se ejecuta al final de `common.cfg` en cada mapa,

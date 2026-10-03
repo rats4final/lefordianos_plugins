@@ -102,7 +102,6 @@ These change vanilla, so they're listed honestly. Each can be turned off in `PLU
 - **ZoneMod gameplay picks**:
   - no bunny-hopping, louder jockeys, fixed SI spawn order, no spitter while a tank is up;
   - SI regain health when they despawn;
-  - a fixed boomer horde size;
   - equal alarm cars;
   - a forced horde if infected wait too long to attack;
   - a few tank tweaks.

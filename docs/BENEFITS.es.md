@@ -114,7 +114,6 @@ su config:
   - sin bunny-hop, jockeys más ruidosos, orden fijo de aparición de infectados, sin spitter mientras hay
     tank;
   - los infectados recuperan vida al desaparecer;
-  - tamaño fijo de la horda del boomer;
   - autos con alarma iguales;
   - una horda forzada si los infectados esperan demasiado para atacar;
   - algunos ajustes del tank.

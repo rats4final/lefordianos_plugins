@@ -131,6 +131,9 @@ package was copied there on 2026-10-03 with rsync (backup in `F:\L4D2SERVER2026\
 `l4d2_chainsaw_fix` (Linux-only). Its `cfg/server.cfg` is our example, not yet customised. The owner's own
 settings are in its `cfg/lefordianos/custom.cfg` (tv_autorecord, map transitions, z_ghost_delay 16,
 bot cvars); two lines are commented out pending a decision: `sm_onlyforce 1` (would break the pause
-vote) and `auto_all_bot_game_enable` (no plugin we know creates it).
+vote) and `auto_all_bot_game_enable` (no plugin we know creates it). Turned off on 2026-10-03 at the
+owner's request (moved to `plugins/disabled` on the server, out of the package): `l4d_dynamic_light`, and
+`boomer_horde_equalizer_refactored` (suspected of misbehaving; not yet diagnosed). Friends are root
+admins in the server's `admins.cfg` (SteamIDs only there, never in the repo).
 
 **Next step:** the owner tests with more players and reports the error log and what felt wrong.
