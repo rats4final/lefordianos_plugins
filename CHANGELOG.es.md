@@ -8,6 +8,8 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **c5m5 (puente de The Parish):** ya no aparecen 4 botiquines en el camión junto al tank (ZoneMod los
+  pensó como pastillas, con confogl); vuelven los objetos al azar normales del mapa.
 - **`!wait`:** cuenta regresiva 3-2-1 con los pitidos de Ready-Up al terminar la espera; en el primer mapa
   de una campaña (sin refugio) los sobrevivientes quedan congelados mientras se espera, por eso ahí no
   funcionaba.
