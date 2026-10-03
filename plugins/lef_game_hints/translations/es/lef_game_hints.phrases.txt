@@ -74,7 +74,7 @@
 	}
 	"Tank Tip 8"
 	{
-		"es"		"{green}[Consejo]{default} Si pasas mucho tiempo sin golpear a nadie, se acaba tu medidor de control y el tank pasa a otro jugador."
+		"es"		"{green}[Consejo]{default} ¿Se te acaba la barra? Golpear a los sobrevivientes la recarga."
 	}
 	"Tank Controls"
 	{
@@ -82,10 +82,10 @@
 	}
 	"Tank Meter Pass"
 	{
-		"es"		"{green}[Tank]{default} Tu {olive}barra de control{default} baja mientras no golpeas a nadie: si se acaba, el tank pasa a un compañero (la segunda vez, a un bot). Escribe {olive}!pass{default} para pasárselo tú a un compañero."
+		"es"		"{green}[Tank]{default} Tienes {olive}2 barras de control{default}: bajan mientras no golpeas a nadie. La primera se recarga una vez; cuando se acaba la segunda, el tank pasa a un bot. Escribe {olive}!pass{default} para pasárselo a un compañero."
 	}
 	"Tank Meter"
 	{
-		"es"		"{green}[Tank]{default} Tu {olive}barra de control{default} baja mientras no golpeas a nadie: si se acaba, el tank pasa a un compañero (la segunda vez, a un bot)."
+		"es"		"{green}[Tank]{default} Tienes {olive}2 barras de control{default}: bajan mientras no golpeas a nadie. La primera se recarga una vez; cuando se acaba la segunda, el tank pasa a un bot."
 	}
 }

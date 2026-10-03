@@ -79,7 +79,7 @@
 	}
 	"Tank Tip 8"
 	{
-		"en"		"{green}[Tank tip]{default} If you go too long without hitting survivors, your control meter runs out and the tank passes to someone else."
+		"en"		"{green}[Tank tip]{default} Losing control? Hitting survivors refills your control bar."
 	}
 	"Tank Controls"
 	{
@@ -87,10 +87,10 @@
 	}
 	"Tank Meter Pass"
 	{
-		"en"		"{green}[Tank]{default} Your {olive}control meter{default} drains while you don't hit survivors: when it runs out the tank goes to a teammate (the second time, to a bot). Type {olive}!pass{default} to give it to a teammate yourself."
+		"en"		"{green}[Tank]{default} You have {olive}2 control bars{default}: they drain while you don't hit survivors. The first one refills once; when the second runs out the tank goes to a bot. Type {olive}!pass{default} to give it to a teammate."
 	}
 	"Tank Meter"
 	{
-		"en"		"{green}[Tank]{default} Your {olive}control meter{default} drains while you don't hit survivors: when it runs out the tank goes to a teammate (the second time, to a bot)."
+		"en"		"{green}[Tank]{default} You have {olive}2 control bars{default}: they drain while you don't hit survivors. The first one refills once; when the second runs out the tank goes to a bot."
 	}
 }
