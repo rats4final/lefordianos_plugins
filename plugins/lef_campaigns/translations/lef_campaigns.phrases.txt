@@ -1,0 +1,28 @@
+"Phrases"
+{
+	"Changing"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{green}[Campaigns]{default} Campaign over. Next: {olive}{1}{default} in {2} seconds."
+	}
+	"Finale Next"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Campaigns]{default} Last map. Next campaign: {olive}{1}{default}. Want another one? {olive}!votes{default} > Maps > Next campaign."
+	}
+	"Next Voted"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Campaigns]{default} Next campaign (voted): {olive}{1}{default}."
+	}
+	"Next List"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Campaigns]{default} Next campaign: {olive}{1}{default}. Vote another with {olive}!votes{default}."
+	}
+	"Next Set"
+	{
+		"#format"	"{1:s}"
+		"en"		"{green}[Campaigns]{default} Next campaign set to {olive}{1}{default}."
+	}
+}

@@ -1,0 +1,23 @@
+"Phrases"
+{
+	"Changing"
+	{
+		"es"		"{green}[Campañas]{default} Terminó la campaña. Sigue: {olive}{1}{default} en {2} segundos."
+	}
+	"Finale Next"
+	{
+		"es"		"{green}[Campañas]{default} Último mapa. Próxima campaña: {olive}{1}{default}. ¿Quieren otra? {olive}!votes{default} > Mapas > Próxima campaña."
+	}
+	"Next Voted"
+	{
+		"es"		"{green}[Campañas]{default} Próxima campaña (votada): {olive}{1}{default}."
+	}
+	"Next List"
+	{
+		"es"		"{green}[Campañas]{default} Próxima campaña: {olive}{1}{default}. Vota otra con {olive}!votes{default}."
+	}
+	"Next Set"
+	{
+		"es"		"{green}[Campañas]{default} Próxima campaña: {olive}{1}{default}."
+	}
+}
