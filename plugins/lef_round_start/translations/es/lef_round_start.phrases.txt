@@ -168,4 +168,8 @@
 	{
 		"es"		"Charger"
 	}
+	"Hint Countdown"
+	{
+		"es"		"Empieza en {1}..."
+	}
 }

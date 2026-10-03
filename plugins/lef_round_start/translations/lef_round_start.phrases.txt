@@ -184,4 +184,9 @@
 	{
 		"en"		"Charger"
 	}
+	"Hint Countdown"
+	{
+		"#format"	"{1:d}"
+		"en"		"Starting in {1}..."
+	}
 }

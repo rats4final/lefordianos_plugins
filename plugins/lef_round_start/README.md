@@ -22,7 +22,7 @@ connecting:
 2. A Yes/No vote asks "Wait for 1 more player before leaving the saferoom?".
 3. If it passes, **nobody can leave the saferoom**: anyone who tries is sent back. A countdown shows
    in the hint box.
-4. The wait ends when that many more humans are on the teams, when time runs out
+4. The wait ends (after a 3-2-1 countdown) when that many more humans are on the teams, when time runs out
    (`lef_start_wait_time`, 90 s), or when `!go` passes a vote (admins: instantly).
    `!extend` votes for more time (`lef_start_extend_time`, up to `lef_start_max_extends` times).
 
@@ -43,6 +43,8 @@ The newcomer is then told by `lef_teams_panel` which team to join to even things
 | `lef_start_extend_time` | 60 | Seconds an `!extend` vote adds |
 | `lef_start_max_extends` | 2 | Extensions per round |
 | `lef_start_chat_trigger` | 1 | `+1` in chat: 0 = nothing, 1 = private tip, 2 = start the vote |
+| `lef_start_countdown` | 3 | Seconds of 3-2-1 countdown (Ready-Up's beeps) before the wait ends. 0 = none |
+| `lef_start_freeze` | 1 | Freeze survivors while waiting: 0 = never, 1 = only on a campaign's first map (no saferoom box to keep them in), 2 = always |
 
 ## Ready-Up
 

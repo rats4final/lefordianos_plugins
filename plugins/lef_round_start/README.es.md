@@ -22,7 +22,7 @@ se está conectando:
 2. Una votación Sí/No pregunta "¿Esperar a 1 jugador más antes de salir del refugio?".
 3. Si pasa, **nadie puede salir del refugio**: quien lo intenta vuelve adentro. Una cuenta regresiva se
    muestra en el cuadro de avisos.
-4. La espera termina cuando entran esos jugadores a los equipos, cuando se acaba el tiempo
+4. La espera termina (después de una cuenta regresiva 3-2-1) cuando entran esos jugadores a los equipos, cuando se acaba el tiempo
    (`lef_start_wait_time`, 90 s), o cuando pasa una votación de `!go` (los admins: al instante).
    `!extend` vota más tiempo (`lef_start_extend_time`, hasta `lef_start_max_extends` veces).
 
@@ -43,6 +43,8 @@ Después, `lef_teams_panel` le dice al que entra a qué equipo unirse para empar
 | `lef_start_extend_time` | 60 | Segundos que agrega una votación de `!extend` |
 | `lef_start_max_extends` | 2 | Alargues por ronda |
 | `lef_start_chat_trigger` | 1 | `+1` en el chat: 0 = nada, 1 = consejo privado, 2 = iniciar la votación |
+| `lef_start_countdown` | 3 | Segundos de cuenta regresiva 3-2-1 (con los pitidos de Ready-Up) antes de terminar la espera. 0 = nada |
+| `lef_start_freeze` | 1 | Congelar a los sobrevivientes mientras se espera: 0 = nunca, 1 = solo en el primer mapa de una campaña (no hay refugio que los retenga), 2 = siempre |
 
 ## Ready-Up
 

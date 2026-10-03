@@ -12,7 +12,10 @@
  *  2. Waiting for players ("+1"): !wait opens a small menu (1-4 players), then a vote asks
  *     "Wait for 1 more player?". If it passes, nobody can leave the saferoom (anyone who tries
  *     is sent back) until that many more humans are on the teams, or the countdown runs out.
- *     !extend votes for more time, !go votes to start now (admins: instantly).
+ *     !extend votes for more time, !go votes to start now (admins: instantly). When the wait ends,
+ *     a 3-2-1 countdown with Ready-Up's beeps plays before anyone can leave.
+ *     First maps of a campaign have no saferoom box to keep people in, so there survivors are frozen
+ *     in place while waiting (lef_start_freeze).
  *     In versus one survivor leaving starts the round for everyone, so this stops an impatient
  *     player from starting without the friend who's still connecting.
  *     Typing "+1", "+2"... in chat (our usual habit) doesn't start a vote by itself, so nobody gets
@@ -31,7 +34,10 @@
 #include <colors>
 #include <builtinvotes>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
+
+#define COUNTDOWN_SOUND "weapons/hegrenade/beep.wav"   // same sounds as Ready-Up
+#define LIVE_SOUND      "ui/survival_medal.wav"
 
 #define TEAM_SPECTATOR 1
 #define TEAM_SURVIVOR  2
@@ -61,7 +67,12 @@ ConVar
 	g_cvWaitTime,
 	g_cvExtendTime,
 	g_cvMaxExtends,
-	g_cvChatTrigger;
+	g_cvChatTrigger,
+	g_cvFreeze,
+	g_cvCountdown;
+
+int  g_iCountdown;          // seconds left in the 3-2-1 before the hold ends (0 = not counting)
+bool g_bFrozen;             // survivors are frozen by us right now
 
 bool  g_bLive;              // survivors have left the saferoom this round
 float g_fRoundStart;
@@ -102,6 +113,8 @@ public void OnPluginStart()
 	g_cvExtendTime  = CreateConVar("lef_start_extend_time", "60", "Seconds an !extend vote adds.", _, true, 10.0);
 	g_cvMaxExtends  = CreateConVar("lef_start_max_extends", "2", "How many times a wait can be extended per round.", _, true, 0.0);
 	g_cvChatTrigger = CreateConVar("lef_start_chat_trigger", "1", "Typing '+1', '+2'... in chat before the round starts: 0 = nothing, 1 = private tip about !wait, 2 = start the wait vote.", _, true, 0.0, true, 2.0);
+	g_cvFreeze      = CreateConVar("lef_start_freeze", "1", "Freeze survivors while waiting for players: 0 = never, 1 = only on a campaign's first map (no saferoom to keep them in), 2 = always.", _, true, 0.0, true, 2.0);
+	g_cvCountdown   = CreateConVar("lef_start_countdown", "3", "Seconds of countdown before the wait ends. 0 = none.", _, true, 0.0, true, 10.0);
 	AutoExecConfig(true, "lef_round_start");
 
 	RegConsoleCmd("sm_wait", Cmd_Wait, "sm_wait [players] - vote to keep the saferoom closed until more players join");
@@ -122,6 +135,8 @@ bool ReadyUpLoaded()
 
 public void OnMapStart()
 {
+	PrecacheSound(COUNTDOWN_SOUND);
+	PrecacheSound(LIVE_SOUND);
 	ResetRound();
 }
 
@@ -134,6 +149,8 @@ void ResetRound()
 {
 	g_bLive       = false;
 	g_bHolding    = false;
+	g_iCountdown  = 0;
+	g_bFrozen     = false;
 	g_iExtends    = 0;
 	g_fRoundStart = GetGameTime();
 	g_fPanelUntil = g_fRoundStart + g_cvPanelTime.FloatValue;
@@ -226,13 +243,75 @@ int CountTeamHumans()
 
 void StopHolding(const char[] phrase)
 {
-	if (!g_bHolding)
+	if (!g_bHolding || g_iCountdown > 0)
 	{
 		return;
 	}
-	g_bHolding = false;
 	CPrintToChatAll("%t", phrase);
+
+	g_iCountdown = g_cvCountdown.IntValue;
+	if (g_iCountdown <= 0)
+	{
+		ReleaseHold();
+		return;
+	}
+	// Still holding during the countdown: 3, 2, 1, go.
+	CountdownStep();
+	CreateTimer(1.0, Timer_Countdown, _, TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
+}
+
+Action Timer_Countdown(Handle timer)
+{
+	if (!g_bHolding || g_iCountdown <= 0)
+	{
+		return Plugin_Stop;
+	}
+	g_iCountdown--;
+	if (g_iCountdown <= 0)
+	{
+		ReleaseHold();
+		return Plugin_Stop;
+	}
+	CountdownStep();
+	return Plugin_Continue;
+}
+
+void CountdownStep()
+{
+	PrintHintTextToAll("%t", "Hint Countdown", g_iCountdown);
+	EmitSoundToAll(COUNTDOWN_SOUND);
+}
+
+void ReleaseHold()
+{
+	g_bHolding   = false;
+	g_iCountdown = 0;
+	SetSurvivorsFrozen(false);
 	PrintHintTextToAll("%t", "Hint Go");
+	EmitSoundToAll(LIVE_SOUND);
+}
+
+bool ShouldFreeze()
+{
+	int mode = g_cvFreeze.IntValue;
+	return mode == 2 || (mode == 1 && L4D_IsFirstMapInScenario());
+}
+
+// Same as Ready-Up's freeze: no movement, but players can still look around and talk.
+void SetSurvivorsFrozen(bool freeze)
+{
+	if (!freeze && !g_bFrozen)
+	{
+		return;
+	}
+	g_bFrozen = freeze;
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && GetClientTeam(i) == TEAM_SURVIVOR && IsPlayerAlive(i))
+		{
+			SetEntityMoveType(i, freeze ? MOVETYPE_NONE : MOVETYPE_WALK);
+		}
+	}
 }
 
 Action Timer_Tick(Handle timer)
@@ -242,7 +321,12 @@ Action Timer_Tick(Handle timer)
 		return Plugin_Continue;
 	}
 
-	if (g_bHolding)
+	if (g_bHolding && ShouldFreeze())
+	{
+		SetSurvivorsFrozen(true);   // every second, so new or respawned survivors are caught too
+	}
+
+	if (g_bHolding && g_iCountdown == 0)
 	{
 		int missing = g_iWaitTarget - CountTeamHumans();
 		int left    = RoundToCeil(g_fHoldEnd - GetGameTime());
@@ -643,7 +727,12 @@ void VoteResult_Handler(Handle vote, int num_votes, int num_clients, const int[]
 		case Vote_Wait:
 		{
 			g_bHolding    = true;
+			g_iCountdown  = 0;
 			g_iWaitTarget = CountTeamHumans() + g_iVoteAmount;
+			if (ShouldFreeze())
+			{
+				SetSurvivorsFrozen(true);
+			}
 			g_fHoldEnd    = GetGameTime() + g_cvWaitTime.FloatValue;
 			CPrintToChatAll("%t", "Wait Started", g_iVoteAmount, g_cvWaitTime.IntValue);
 		}
