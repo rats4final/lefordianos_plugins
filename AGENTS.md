@@ -100,7 +100,7 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
 
 ## Status (2026-10-03)
 
-**Built, compiled, in the lite package (179 plugins), in use on the owner's server since 2026-10-03:**
+**Built, compiled, in the lite package (180 plugins), in use on the owner's server since 2026-10-03:**
 `lef_teams_panel` (teams panel, balanced shuffle with roster, balance hints), `lef_boss_spawns`,
 `lef_score_info`, `lef_admin_restore`, `lef_saferoom_doors`, `lef_t1_mode`, `lef_karma_sounds`,
 `lef_client_cvars`, `lef_votes` (config-driven votes, vanilla-like kick, pause by vote, who voted,
@@ -109,8 +109,7 @@ ACS finale vote, admin category), `lef_menu`, `lef_round_start` (start panel, `!
 `l4d_tank_control_eq` and `l4d2_tank_horde_monitor` (installed off). `lef_comeback_bonus` exists but is
 not in the lite package.
 
-**Waiting on the owner:** Steam Web API key (goes in the server's `cfg/sourcemod/lef_steam_bans.cfg`),
-SteamIDs for `lef_roster.cfg`, Steam group ID, survivor bot AI plugins, karma sound files, FastDL host.
+**Waiting on the owner:** survivor bot AI plugins, karma sound files, FastDL host.
 
 **Parked:** tickrate, l4dtoolz (lakwsh's likely, plus Harry's `l4d_unreservelobby` for 9+ players),
 demo recording (the owner's server already has shqke's sourcetvsupport + disable_cameras installed by hand, not from our package; still missing: an auto-recorder, e.g. shqke's autorecorder or AoC's Lilac-SourceTV), Vanilla+ confogl mode,
@@ -150,5 +149,11 @@ horde equalizer stays off (owner blames it for "endless hordes"; `l4d2_antibaite
 Steam group ID. Dropped: the second VAC plugin, the c1m3 stripper_dump. Built the same day: `lef_ranks` (team Elo from map
 wins, SQLite via storage-local, `!rank`/`!top`), used by the balanced shuffle after 5 ranked maps;
 `!wait` on first maps now teleports wanderers back (leash 300 units) instead of freezing.
+
+**2026-10-04 (later):** `lef_campaigns` replaced rikka's ACS (moved to `plugins/disabled` on the server);
+next campaign and game mode are voted on the F1/F2 screen through `!votes` (game mode via Vote_Mode's
+`sm_forcemode`, its own vote admin-only). Quad caps on (`l4d2_dominators 0`), M key unblocked
+(`l4d_afk_commands_pressM_block 0`: same balance rules). Server got `sv_steamgroup` + exclusive 1 and the
+Steam API key (only in its `custom.cfg`). Harry's `sm_l4d_mapchanger` is private (no code), not an option.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
