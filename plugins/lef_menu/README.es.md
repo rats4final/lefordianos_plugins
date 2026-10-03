@@ -12,7 +12,7 @@ Las herramientas de admin siguen en `!admin` (la categoría *Lefordianos* está 
 | Grupo | Opciones |
 |---|---|
 | Equipos | Quién está en cada equipo, equipos de la ronda pasada, cambiar de lugar con un jugador, unirse a sobrevivientes / infectados, ir AFK |
-| Votaciones | Iniciar una votación (`!votes`), elegir la próxima campaña (`!mapvote`), votar armas T1, votar modo de juego |
+| Votaciones | Iniciar una votación (`!votes`: mapa, próxima campaña, modo de juego, equipos...), qué campaña sigue (`!next`), votar armas T1 |
 | Info de la partida | Puntajes, tank y witch en este mapa, quién será el tank, bono de remontada |
 | Partida | Esperar a un amigo antes de empezar (`!wait`), pausar (inicia una votación), listos para quitar la pausa, ajustes del cliente que revisa el servidor |
 

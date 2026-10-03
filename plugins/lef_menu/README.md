@@ -10,7 +10,7 @@ Admin tools stay in `!admin` (see [lef_votes](../lef_votes/) for the *Lefordiano
 | Group | Entries |
 |---|---|
 | Teams | Who is on each team, last round's teams, trade places with a player, join survivors / infected, go AFK |
-| Votes | Start a vote (`!votes`), pick the next campaign (`!mapvote`), T1 weapons vote, game mode vote |
+| Votes | Start a vote (`!votes`: map, next campaign, game mode, teams...), which campaign comes next (`!next`), T1 weapons vote |
 | Match info | Scores, tank and witch on this map, who becomes the tank, comeback bonus |
 | Game | Wait for a friend before starting (`!wait`), pause (starts a vote), ready to unpause, client settings the server checks |
 
