@@ -15,7 +15,7 @@ agregar una entrada con un comando del servidor, sin programar. Se recarga con `
 |---|---|
 | Mapas | Cambiar mapa (campaña → lista de mapas del mission manager), reiniciar este mapa, próxima campaña (se juega después de esta, con `lef_campaigns`), cambiar modo de juego (lista de Vote_Mode) |
 | Equipos | Mezclar, mezcla balanceada (niveles del roster), intercambiar sobrevivientes e infectados, volver a los equipos de la ronda pasada (`lef_teams_panel`) |
-| Jugadores | Expulsar, mover a espectadores (AFK), silenciar voz y chat por el resto del mapa |
+| Jugadores | Expulsar, mover a espectadores (AFK), silenciar voz y chat por el resto del mapa, **elegir el tank** (solo el equipo infectado: el compañero elegido recibe el próximo tank, o el actual si ya hay un tank en juego) |
 | Reglas | Probabilidad de tank y witch 0 / 50 / 100 %, solo armas T1 sí/no, tank horde monitor sí/no |
 | Partida | Pausar, voz entre equipos sí/no |
 

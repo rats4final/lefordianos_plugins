@@ -14,7 +14,7 @@ means adding an entry with a server command, no code. Reload with `sm_votes_relo
 |---|---|
 | Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (played after this one, via `lef_campaigns`), change game mode (Vote_Mode's list) |
 | Teams | Shuffle, balanced shuffle (roster levels), swap survivors and infected, restore last round's teams (`lef_teams_panel`) |
-| Players | Kick, move to spectators (AFK), mute voice and chat for the rest of the map |
+| Players | Kick, move to spectators (AFK), mute voice and chat for the rest of the map, **choose the tank** (infected team only: the picked teammate gets the next tank, or the current one if a tank is already in play) |
 | Rules | Tank and witch chance 0 / 50 / 100 %, T1 weapons only on/off, tank horde monitor on/off |
 | Game | Pause, all talk on/off |
 

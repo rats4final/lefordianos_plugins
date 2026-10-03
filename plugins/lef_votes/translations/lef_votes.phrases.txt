@@ -148,4 +148,9 @@
 	{
 		"en"		"{green}[Votes]{default} The game mode list isn't available (Vote_Mode isn't installed)."
 	}
+	"Next Tank Set"
+	{
+		"#format"	"{1:N}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} gets the next tank."
+	}
 }

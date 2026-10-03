@@ -136,4 +136,8 @@
 	{
 		"es"		"{green}[Votos]{default} La lista de modos de juego no está disponible (falta Vote_Mode)."
 	}
+	"Next Tank Set"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} será el próximo tank."
+	}
 }

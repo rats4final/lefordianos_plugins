@@ -16,6 +16,9 @@
  *   kick     pick a player; kick plus a short ban (lef_votes_kick_ban_minutes, like vanilla's vote kick)
  *   spec     pick a player; move them to spectators (AFK)
  *   mute     pick a player; mute their voice and chat for the rest of the map
+ *   tank     infected only: pick a teammate, the infected team votes; they get the next tank, or the
+ *            current one if a tank is already in play (l4d_tank_control_eq's sm_givetank / Harry
+ *            Potter's l4d_tank_pass sm_forcepass)
  *   pause    pause the game (pause.smx); while lef_votes_pause_by_vote is 1, players can't
  *            !pause directly: typing !pause starts this vote instead
  *
@@ -51,10 +54,12 @@
 #include <basecomm>
 #include <l4d2_mission_manager>
 
-#define PLUGIN_VERSION "1.3.0"
+#define PLUGIN_VERSION "1.4.0"
 #define CONFIG_FILE    "configs/lef_votes.cfg"
 
 #define TEAM_SPECTATOR 1
+#define TEAM_INFECTED_SIDE 3
+#define ZC_TANK_CLASS  8
 #define VOTE_NONE      0
 #define VOTE_YES       1
 #define VOTE_NO        2
@@ -442,6 +447,11 @@ bool IsItemVisible(VoteItem item, int client)
 	{
 		return false;
 	}
+	// Tank choice: the infected team only (admins always), and needs the tank plugins.
+	if (StrEqual(item.type, "tank") && (!CommandExists("sm_givetank") || (!g_bAdminMode[client] && GetClientTeam(client) != TEAM_INFECTED_SIDE)))
+	{
+		return false;
+	}
 	// Game mode votes need Vote_Mode (its list and its sm_forcemode).
 	if (StrEqual(item.type, "mode") && !CommandExists("sm_forcemode"))
 	{
@@ -540,6 +550,10 @@ void ChooseItem(int client, int index)
 	{
 		ShowPlayers(client);
 	}
+	else if (StrEqual(item.type, "tank"))
+	{
+		ShowTankPlayers(client);
+	}
 	else
 	{
 		Proceed(client, index, 0, "", "");
@@ -606,6 +620,63 @@ int Players_Handler(Menu menu, MenuAction action, int client, int param)
 		Proceed(client, g_iMenuItem[client], GetClientUserId(target), "", name);
 	}
 	return 0;
+}
+
+// --- Tank picker: human infected players ---
+
+void ShowTankPlayers(int client)
+{
+	Menu menu = new Menu(Players_Handler);
+	char title[96], name[MAX_NAME_LENGTH], info[16];
+	ItemTitle(g_iMenuItem[client], client, title, sizeof(title));
+	menu.SetTitle(title);
+	menu.ExitBackButton = true;
+
+	int tank = FindHumanTank();
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (!IsClientInGame(i) || IsFakeClient(i) || GetClientTeam(i) != TEAM_INFECTED_SIDE)
+		{
+			continue;
+		}
+		GetClientName(i, name, sizeof(name));
+		IntToString(GetClientUserId(i), info, sizeof(info));
+		menu.AddItem(info, name, i == tank ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);   // already the tank
+	}
+
+	if (menu.ItemCount == 0)
+	{
+		CPrintToChat(client, "%T", "No Players", client);
+		delete menu;
+		return;
+	}
+	menu.Display(client, MENU_TIME_FOREVER);
+}
+
+// The human player controlling a living tank right now, or 0.
+int FindHumanTank()
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && !IsFakeClient(i) && GetClientTeam(i) == TEAM_INFECTED_SIDE && IsPlayerAlive(i)
+			&& GetEntProp(i, Prop_Send, "m_zombieClass") == ZC_TANK_CLASS)
+		{
+			return i;
+		}
+	}
+	return 0;
+}
+
+bool AnyTankAlive()
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && GetClientTeam(i) == TEAM_INFECTED_SIDE && IsPlayerAlive(i) && GetEntProp(i, Prop_Send, "m_zombieClass") == ZC_TANK_CLASS)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 bool IsImmune(int client)
@@ -889,11 +960,19 @@ bool StartVote(int client, int index, int targetUserId, const char[] map, const 
 		return false;
 	}
 
+	VoteItem voteItem;
+	g_aItems.GetArray(index, voteItem);
+	bool infectedOnly = StrEqual(voteItem.type, "tank");   // the infected team decides its own tank
+
 	int[] voters = new int[MaxClients];
 	int count;
 	for (int i = 1; i <= MaxClients; i++)
 	{
-		if (IsClientInGame(i) && !IsFakeClient(i) && (GetClientTeam(i) > TEAM_SPECTATOR || g_cvSpecJoin.BoolValue))
+		if (!IsClientInGame(i) || IsFakeClient(i))
+		{
+			continue;
+		}
+		if (infectedOnly ? GetClientTeam(i) == TEAM_INFECTED_SIDE : (GetClientTeam(i) > TEAM_SPECTATOR || g_cvSpecJoin.BoolValue))
 		{
 			voters[count++] = i;
 		}
@@ -1012,6 +1091,27 @@ void Execute(int index, int initiator, int targetUserId, const char[] map)
 	else if (StrEqual(item.type, "mode"))
 	{
 		ServerCommand("sm_forcemode %s", map);   // Vote_Mode changes the mode and restarts the map
+	}
+	else if (StrEqual(item.type, "tank"))
+	{
+		if (target == 0 || GetClientTeam(target) != TEAM_INFECTED_SIDE)
+		{
+			return;
+		}
+		int current = FindHumanTank();
+		if (current == target)
+		{
+			return;
+		}
+		if (AnyTankAlive() && CommandExists("sm_forcepass"))
+		{
+			ServerCommand("sm_forcepass #%d", targetUserId);   // pass the tank in play (l4d_tank_pass)
+		}
+		else
+		{
+			ServerCommand("sm_givetank #%d", targetUserId);    // queue them for the next tank
+			CPrintToChatAll("%t", "Next Tank Set", target);
+		}
 	}
 	else if (StrEqual(item.type, "nextcampaign"))
 	{
