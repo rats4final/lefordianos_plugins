@@ -141,13 +141,14 @@ boomer horde equalizer), Crash Course c9m2 transition vs ACS, Big Wat Night (`ad
 Workshop 3122417079) with `l4d2_addons_eclipse 0`, jockey stagger, votes and `!wait`.
 
 **2026-10-04:** on the server: `ServerLang "es"`, `sv_region 2`, RCON set, `sm_onlyforce 0`
-(decided), roster with the owner + 6 friends (no levels; not Wilson) in its `configs/lef_roster.cfg`.
+(decided), roster with the owner + 6 friends (no levels; Wilson was a random, not in any file) in its `configs/lef_roster.cfg`.
 `auto_all_bot_game_enable` doesn't exist in the game. Built: `!wait` countdown + first-map freeze,
 tank reminders, all skill reports, distinct witch sound, vanilla items on c5m5. ZoneMod's Stripper
 changes stay (owner: "more good than harm"); only remove specific blocks when reported. The boomer
 horde equalizer stays off (owner blames it for "endless hordes"; `l4d2_antibaiter` with
 `l4d2_antibaiter_horde_timer 30` is the other suspect). Still waiting on the owner: Steam API key and
-Steam group ID. Dropped: the second VAC plugin, the c1m3 stripper_dump. Idea: a leaderboard / stats-based
-ranking that feeds the balanced shuffle (AoC Player-Stats or l4d2_playstats data).
+Steam group ID. Dropped: the second VAC plugin, the c1m3 stripper_dump. Built the same day: `lef_ranks` (team Elo from map
+wins, SQLite via storage-local, `!rank`/`!top`), used by the balanced shuffle after 5 ranked maps;
+`!wait` on first maps now teleports wanderers back (leash 300 units) instead of freezing.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
