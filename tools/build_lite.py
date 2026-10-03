@@ -84,14 +84,30 @@ def plugin_sources(sp):
 def wanted_names(sp, call_regex):
     """Quoted names passed to the calls matched by call_regex, resolving simple #defines."""
     text = "".join(open(f, encoding="utf-8", errors="replace").read() for f in plugin_sources(sp))
-    defines = dict(re.findall(r'#define\s+(\w+)\s+"([^"]+)"', text))
+    # #defines, including ones joined with SourcePawn's "..." operator:
+    #   #define PLUGIN_NAME "x"   #define TRANSLATION_FILE PLUGIN_NAME ... ".phrases"
+    raw = dict(re.findall(r'#define\s+(\w+)[ \t]+([^\n]+)', text))
+
+    def resolve(expr, depth=0):
+        out = ""
+        for part in expr.split("..."):
+            part = part.split("//")[0].strip()
+            if part.startswith('"') and part.endswith('"') and len(part) >= 2:
+                out += part[1:-1]
+            elif part in raw and depth < 5:
+                value = resolve(raw[part], depth + 1)
+                if value is None:
+                    return None
+                out += value
+            else:
+                return None
+        return out
+
     names = set()
     for arg in re.findall(call_regex + r'\(\s*([^,)]+)', text):
-        arg = arg.strip()
-        if arg.startswith('"') and arg.endswith('"'):
-            names.add(arg.strip('"'))
-        elif arg in defines:
-            names.add(defines[arg])
+        value = resolve(arg.strip())
+        if value:
+            names.add(value)
     return names
 
 
