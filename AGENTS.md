@@ -156,4 +156,8 @@ next campaign and game mode are voted on the F1/F2 screen through `!votes` (game
 (`l4d_afk_commands_pressM_block 0`: same balance rules). Server got `sv_steamgroup` + exclusive 1 and the
 Steam API key (only in its `custom.cfg`). Harry's `sm_l4d_mapchanger` is private (no code), not an option.
 
+Also 2026-10-04: infected-team "choose the tank" vote (sm_givetank / sm_forcepass), tank tip fixed
+(tank_control_eq refills one player's bar once, then AI), mute vote now voice/chat/both until round end.
+The owner will look for survivor bot AI plugins.
+
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
