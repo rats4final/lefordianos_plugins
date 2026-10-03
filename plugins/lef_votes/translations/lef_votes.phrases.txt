@@ -153,4 +153,29 @@
 		"#format"	"{1:N}"
 		"en"		"{green}[Votes]{default} {olive}{1}{default} gets the next tank."
 	}
+	"Mute Kind Title"
+	{
+		"en"		"Mute what, until the round ends?"
+	}
+	"Mute Voice"
+	{
+		"en"		"Voice"
+	}
+	"Mute Chat"
+	{
+		"en"		"Chat"
+	}
+	"Mute Both"
+	{
+		"en"		"Voice and chat"
+	}
+	"Muted Round"
+	{
+		"#format"	"{1:N},{2:t}"
+		"en"		"{green}[Votes]{default} {olive}{1}{default} is muted ({2}) until the end of the round, as a warning."
+	}
+	"Unmuted Round End"
+	{
+		"en"		"{green}[Votes]{default} Round over: you can talk again."
+	}
 }

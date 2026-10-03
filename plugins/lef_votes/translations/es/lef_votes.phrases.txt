@@ -140,4 +140,28 @@
 	{
 		"es"		"{green}[Votos]{default} {olive}{1}{default} será el próximo tank."
 	}
+	"Mute Kind Title"
+	{
+		"es"		"¿Silenciar qué, hasta que termine la ronda?"
+	}
+	"Mute Voice"
+	{
+		"es"		"Voz"
+	}
+	"Mute Chat"
+	{
+		"es"		"Chat"
+	}
+	"Mute Both"
+	{
+		"es"		"Voz y chat"
+	}
+	"Muted Round"
+	{
+		"es"		"{green}[Votos]{default} {olive}{1}{default} no podrá hablar ({2}) hasta que termine la ronda, como advertencia."
+	}
+	"Unmuted Round End"
+	{
+		"es"		"{green}[Votos]{default} Terminó la ronda: puedes volver a hablar."
+	}
 }

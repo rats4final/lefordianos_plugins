@@ -15,7 +15,7 @@
  *   restart  restart the current map, like the game's own vote
  *   kick     pick a player; kick plus a short ban (lef_votes_kick_ban_minutes, like vanilla's vote kick)
  *   spec     pick a player; move them to spectators (AFK)
- *   mute     pick a player; mute their voice and chat for the rest of the map
+ *   mute     pick a player, then voice, chat or both; muted until the round ends (a warning)
  *   tank     infected only: pick a teammate, the infected team votes; they get the next tank, or the
  *            current one if a tank is already in play (l4d_tank_control_eq's sm_givetank / Harry
  *            Potter's l4d_tank_pass sm_forcepass)
@@ -54,7 +54,7 @@
 #include <basecomm>
 #include <l4d2_mission_manager>
 
-#define PLUGIN_VERSION "1.4.0"
+#define PLUGIN_VERSION "1.5.0"
 #define CONFIG_FILE    "configs/lef_votes.cfg"
 
 #define TEAM_SPECTATOR 1
@@ -131,6 +131,10 @@ bool g_bAdminMode[MAXPLAYERS + 1];   // true = run instantly (admin menu), false
 int  g_iMenuItem[MAXPLAYERS + 1];
 int  g_iMenuMission[MAXPLAYERS + 1];
 char g_sMenuModeGroup[MAXPLAYERS + 1][64];
+int  g_iMenuTarget[MAXPLAYERS + 1];   // userid picked in the mute menu
+
+// Muted by vote this round (lifted when the round ends): userid -> 1 voice, 2 chat, 3 both.
+StringMap g_smRoundMutes;
 bool g_bPauseAllowed[MAXPLAYERS + 1];
 
 TopMenu       g_hTopMenu;
@@ -179,6 +183,8 @@ public void OnPluginStart()
 	g_aGroups = new ArrayList(sizeof(VoteGroup));
 	g_aItems  = new ArrayList(sizeof(VoteItem));
 	g_smSession = new StringMap();
+	g_smRoundMutes = new StringMap();
+	HookEvent("round_end", Event_RoundEndUnmute, EventHookMode_PostNoCopy);
 	LoadConfig();
 
 	TopMenu topmenu;
@@ -615,11 +621,91 @@ int Players_Handler(Menu menu, MenuAction action, int client, int param)
 			return 0;
 		}
 
+		VoteItem item;
+		g_aItems.GetArray(g_iMenuItem[client], item);
+		if (StrEqual(item.type, "mute"))
+		{
+			g_iMenuTarget[client] = GetClientUserId(target);
+			ShowMuteKinds(client);
+			return 0;
+		}
+
 		char name[MAX_NAME_LENGTH];
 		GetClientName(target, name, sizeof(name));
 		Proceed(client, g_iMenuItem[client], GetClientUserId(target), "", name);
 	}
 	return 0;
+}
+
+// --- Mute: voice, chat or both, until the round ends ---
+
+void ShowMuteKinds(int client)
+{
+	Menu menu = new Menu(MuteKinds_Handler);
+	char text[64];
+	FormatEx(text, sizeof(text), "%T", "Mute Kind Title", client);
+	menu.SetTitle(text);
+	menu.ExitBackButton = true;
+	FormatEx(text, sizeof(text), "%T", "Mute Voice", client);
+	menu.AddItem("voice", text);
+	FormatEx(text, sizeof(text), "%T", "Mute Chat", client);
+	menu.AddItem("chat", text);
+	FormatEx(text, sizeof(text), "%T", "Mute Both", client);
+	menu.AddItem("both", text);
+	menu.Display(client, MENU_TIME_FOREVER);
+}
+
+int MuteKinds_Handler(Menu menu, MenuAction action, int client, int param)
+{
+	if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+	else if (action == MenuAction_Cancel && param == MenuCancel_ExitBack)
+	{
+		ShowPlayers(client);
+	}
+	else if (action == MenuAction_Select)
+	{
+		int target = GetClientOfUserId(g_iMenuTarget[client]);
+		if (target == 0)
+		{
+			CPrintToChat(client, "%T", "Player Gone", client);
+			return 0;
+		}
+		char kind[8], kindText[32], detail[96];
+		menu.GetItem(param, kind, sizeof(kind));
+		FormatEx(kindText, sizeof(kindText), "%T", StrEqual(kind, "voice") ? "Mute Voice" : StrEqual(kind, "chat") ? "Mute Chat" : "Mute Both", LANG_SERVER);
+		FormatEx(detail, sizeof(detail), "%N (%s)", target, kindText);
+		Proceed(client, g_iMenuItem[client], g_iMenuTarget[client], kind, detail);
+	}
+	return 0;
+}
+
+void Event_RoundEndUnmute(Event event, const char[] name, bool dontBroadcast)
+{
+	if (GetFeatureStatus(FeatureType_Native, "BaseComm_SetClientMute") != FeatureStatus_Available)
+	{
+		g_smRoundMutes.Clear();
+		return;
+	}
+	StringMapSnapshot snap = g_smRoundMutes.Snapshot();
+	char key[16];
+	for (int i = 0; i < snap.Length; i++)
+	{
+		snap.GetKey(i, key, sizeof(key));
+		int kinds, client = GetClientOfUserId(StringToInt(key));
+		g_smRoundMutes.GetValue(key, kinds);
+		if (client == 0 || !IsClientInGame(client))
+		{
+			continue;
+		}
+		if (kinds & 1) BaseComm_SetClientMute(client, false);
+		if (kinds & 2) BaseComm_SetClientGag(client, false);
+		CPrintToChat(client, "%T", "Unmuted Round End", client);
+	}
+	delete snap;
+	g_smRoundMutes.Clear();
 }
 
 // --- Tank picker: human infected players ---
@@ -1156,8 +1242,17 @@ void Execute(int index, int initiator, int targetUserId, const char[] map)
 	{
 		if (target != 0 && GetFeatureStatus(FeatureType_Native, "BaseComm_SetClientMute") == FeatureStatus_Available)
 		{
-			BaseComm_SetClientMute(target, true);
-			BaseComm_SetClientGag(target, true);
+			// map holds the kind picked: voice, chat or both (older configs: both).
+			int kinds = StrEqual(map, "voice") ? 1 : StrEqual(map, "chat") ? 2 : 3;
+			if (kinds & 1) BaseComm_SetClientMute(target, true);
+			if (kinds & 2) BaseComm_SetClientGag(target, true);
+
+			char key[16];
+			IntToString(targetUserId, key, sizeof(key));
+			int previous;
+			g_smRoundMutes.GetValue(key, previous);
+			g_smRoundMutes.SetValue(key, previous | kinds);
+			CPrintToChatAll("%t", "Muted Round", target, kinds == 1 ? "Mute Voice" : kinds == 2 ? "Mute Chat" : "Mute Both");
 		}
 	}
 	else if (StrEqual(item.type, "pause"))
