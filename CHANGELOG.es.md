@@ -8,11 +8,13 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **`lef_ranks`:** un ranking por mapas ganados (Elo para equipos), `!rank` y `!top`; la mezcla
+  balanceada usa sus puntos cuando un jugador tiene 5 mapas que cuenten (antes, los niveles del roster).
 - **c5m5 (puente de The Parish):** ya no aparecen 4 botiquines en el camión junto al tank (ZoneMod los
   pensó como pastillas, con confogl); vuelven los objetos al azar normales del mapa.
 - **`!wait`:** cuenta regresiva 3-2-1 con los pitidos de Ready-Up al terminar la espera; en el primer mapa
-  de una campaña (sin refugio) los sobrevivientes quedan congelados mientras se espera, por eso ahí no
-  funcionaba.
+  de una campaña (sin refugio) quien se aleja mientras se espera vuelve teletransportado a donde estaba
+  (congelar es una opción), por eso ahí no funcionaba.
 - **Recordatorios del tank** (`lef_boss_spawns`): cada 2 minutos mientras falta el tank, y un aviso
   cuando los sobrevivientes están a 5% o menos.
 - **Sonido de aparición de la witch** cambiado por su propia música: usaba el mismo sonido que el aviso

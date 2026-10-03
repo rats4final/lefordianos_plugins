@@ -25,6 +25,8 @@ changes we chose on purpose are listed at the end.
   - newcomers and spectators are told where they're needed;
   - `!wait` keeps the saferoom closed until a friend joins;
   - a **balanced shuffle** splits our regulars evenly.
+- **A ranking** (`!rank`, `!top`) from map wins, which the balanced shuffle uses once players have
+  a few maps.
 - **Bots aren't free kills**: survivor bots take 15% less damage from infected players.
 
 ## Fewer bugs and exploits

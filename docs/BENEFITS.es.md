@@ -25,6 +25,8 @@ balance que elegimos a propósito están al final.
   - a los que entran y a los espectadores se les dice dónde hacen falta;
   - `!wait` mantiene cerrado el refugio hasta que entre un amigo;
   - una **mezcla balanceada** reparte a los habituales por igual.
+- **Un ranking** (`!rank`, `!top`) por mapas ganados, que la mezcla balanceada usa cuando los jugadores
+  tienen algunos mapas.
 - **Los bots no son muertes gratis**: los bots sobrevivientes reciben 15% menos daño de los jugadores
   infectados.
 

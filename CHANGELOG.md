@@ -7,10 +7,13 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **`lef_ranks`:** a ranking from map wins (Elo for teams), `!rank` and `!top`; the balanced shuffle
+  uses its points once a player has 5 ranked maps (roster levels before that).
 - **c5m5 (The Parish bridge):** no more 4 medkits in the truck by the tank (ZoneMod meant them as pills,
   via confogl); the map's normal random items are back.
 - **`!wait`:** 3-2-1 countdown with Ready-Up's beeps when the wait ends; on a campaign's first map
-  (no saferoom box) survivors are frozen while waiting, which is why the hold didn't work there.
+  (no saferoom box) survivors who wander off while waiting are teleported back to where they stood
+  (freezing is an option), which is why the hold didn't work there.
 - **Tank reminders** (`lef_boss_spawns`): every 2 minutes while a tank is still to come, and a warning
   when survivors get within 5% of it.
 - **Witch spawn sound** changed to the witch's own tune: it used the same sound as the tank notice.
