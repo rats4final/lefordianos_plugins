@@ -9,4 +9,19 @@
 	{
 		"en"		"none this map"
 	}
+	"Tank Reminder"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"{green}[Bosses]{default} A {red}tank{default} is coming at {olive}{1}%%{default} (you are at {2}%%). Stay together."
+	}
+	"Tank Close"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"{green}[Bosses]{default} {red}Tank{default} close! It spawns at {olive}{1}%%{default} and you are at {2}%%. Get ready."
+	}
+	"Tank Close Hint"
+	{
+		"#format"	"{1:d}"
+		"en"		"Tank close: it spawns at {1}%%. Get ready!"
+	}
 }

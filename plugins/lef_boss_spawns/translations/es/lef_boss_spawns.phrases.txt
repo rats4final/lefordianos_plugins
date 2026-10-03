@@ -8,4 +8,16 @@
 	{
 		"es"		"no hay en este mapa"
 	}
+	"Tank Reminder"
+	{
+		"es"		"{green}[Jefes]{default} Viene un {red}tank{default} en el {olive}{1}%%{default} (van en el {2}%%). Manténganse juntos."
+	}
+	"Tank Close"
+	{
+		"es"		"{green}[Jefes]{default} ¡{red}Tank{default} cerca! Aparece en el {olive}{1}%%{default} y van en el {2}%%. Prepárense."
+	}
+	"Tank Close Hint"
+	{
+		"es"		"Tank cerca: aparece en el {1}%%. ¡Prepárense!"
+	}
 }

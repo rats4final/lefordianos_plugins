@@ -10,7 +10,10 @@
  *     drop for one team and after it for the other.
  *  3. Announced: everyone is told when survivors leave the saferoom, e.g.
  *     "Tank: 63% | Witch: none this map", so the first team isn't surprised by a tank
- *     the second team knows is coming.
+ *     the second team knows is coming. While a tank is still to come, a chat reminder repeats every
+ *     lef_boss_remind_interval seconds ("Tank at 63%, you're at 41%"), and a warning shows when the
+ *     survivors get within lef_boss_warn_distance percent of it. Progress is measured like !current
+ *     (furthest survivor + versus_boss_buffer), which is what triggers the tank.
  *
  * Works with or without these (they make it better):
  *  - witch_and_tankifier (+ l4d2lib): picks good flows, avoiding bad spots per map.
@@ -32,7 +35,7 @@
 #undef REQUIRE_PLUGIN
 #include <l4d2_boss_percents>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
 
 #define MAX_TRACKED 5
 
@@ -50,7 +53,17 @@ ConVar
 	g_cvWitchChance,
 	g_cvSkipFinales,
 	g_cvLockSpawns,
-	g_cvAnnounce;
+	g_cvAnnounce,
+	g_cvRemindInterval,
+	g_cvWarnDistance;
+
+ConVar g_cvBossBuffer;
+
+// Tank reminders, per round.
+bool  g_bLeftStart;
+bool  g_bTankSpawned;
+bool  g_bWarnedClose;
+float g_fNextRemind;
 
 bool g_bBossPercent;
 
@@ -90,7 +103,13 @@ public void OnPluginStart()
 	g_cvSkipFinales = CreateConVar("lef_boss_skip_finales", "1", "Leave finale maps alone (their tanks are scripted by the finale).", _, true, 0.0, true, 1.0);
 	g_cvLockSpawns  = CreateConVar("lef_boss_lock_spawns", "1", "Second-half tanks and witches spawn on the same spot as in the first half.", _, true, 0.0, true, 1.0);
 	g_cvAnnounce    = CreateConVar("lef_boss_announce", "1", "Announce tank/witch flows when survivors leave the saferoom (skipped if l4d_boss_percent is loaded, which announces instead).", _, true, 0.0, true, 1.0);
+	g_cvRemindInterval = CreateConVar("lef_boss_remind_interval", "120", "Seconds between chat reminders of the tank's spot while it's still to come. 0 = off.", _, true, 0.0);
+	g_cvWarnDistance   = CreateConVar("lef_boss_warn_distance", "5", "Warn when survivors are within this many percent of the tank's spot. 0 = off.", _, true, 0.0, true, 50.0);
 	AutoExecConfig(true, "lef_boss_spawns");
+
+	g_cvBossBuffer = FindConVar("versus_boss_buffer");
+	HookEvent("tank_spawn", Event_TankSpawn, EventHookMode_PostNoCopy);
+	CreateTimer(2.0, Timer_TankReminder, _, TIMER_REPEAT);
 
 	RegConsoleCmd("sm_bosses", Cmd_Bosses, "Show this map's tank and witch flow");
 
@@ -140,6 +159,9 @@ public void OnMapStart()
 void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 {
 	g_bFinaleStarted = false;
+	g_bLeftStart     = false;
+	g_bTankSpawned   = false;
+	g_bWarnedClose   = false;
 
 	// witch_and_tankifier picks flows at 0.5s and l4d_boss_percent reads them at 5s,
 	// so 1s lands in between.
@@ -201,8 +223,68 @@ Action Timer_ApplyRoll(Handle timer)
 // 3. Announcing
 // ---------------------------------------------------------------------------
 
+void Event_TankSpawn(Event event, const char[] name, bool dontBroadcast)
+{
+	g_bTankSpawned = true;
+}
+
+// Reminders and the "getting close" warning while this round's flow tank is still to come.
+Action Timer_TankReminder(Handle timer)
+{
+	if (!g_bLeftStart || g_bTankSpawned || g_bFinaleStarted || !IsVersus())
+	{
+		return Plugin_Continue;
+	}
+
+	int half = InSecondHalf() ? 1 : 0;
+	if (!L4D2Direct_GetVSTankToSpawnThisRound(half))
+	{
+		return Plugin_Continue;
+	}
+
+	float maxFlow = L4D2Direct_GetMapMaxFlowDistance();
+	if (maxFlow <= 0.0)
+	{
+		return Plugin_Continue;
+	}
+
+	float tank     = L4D2Direct_GetVSTankFlowPercent(half);
+	float progress = (L4D2_GetFurthestSurvivorFlow() + (g_cvBossBuffer != null ? g_cvBossBuffer.FloatValue : 0.0)) / maxFlow;
+	if (progress >= tank)
+	{
+		return Plugin_Continue;   // about to spawn
+	}
+
+	int tankPct = RoundToNearest(tank * 100.0), nowPct = RoundToFloor(progress * 100.0);
+	float warn = g_cvWarnDistance.FloatValue / 100.0;
+	if (!g_bWarnedClose && warn > 0.0 && tank - progress <= warn)
+	{
+		g_bWarnedClose = true;
+		for (int i = 1; i <= MaxClients; i++)
+		{
+			if (IsClientInGame(i) && !IsFakeClient(i))
+			{
+				CPrintToChat(i, "%T", "Tank Close", i, tankPct, nowPct);
+				PrintHintText(i, "%T", "Tank Close Hint", i, tankPct);
+			}
+		}
+		return Plugin_Continue;
+	}
+
+	float interval = g_cvRemindInterval.FloatValue;
+	if (interval > 0.0 && GetGameTime() >= g_fNextRemind)
+	{
+		g_fNextRemind = GetGameTime() + interval;
+		CPrintToChatAll("%t", "Tank Reminder", tankPct, nowPct);
+	}
+	return Plugin_Continue;
+}
+
 void Event_LeftStartArea(Event event, const char[] name, bool dontBroadcast)
 {
+	g_bLeftStart = true;
+	// The first reminder comes one interval after the announcement.
+	g_fNextRemind = GetGameTime() + g_cvRemindInterval.FloatValue;
 	if (g_cvAnnounce.BoolValue && !g_bBossPercent && IsVersus())
 	{
 		AnnounceBosses(0);

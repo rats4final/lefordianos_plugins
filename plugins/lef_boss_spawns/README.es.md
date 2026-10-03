@@ -39,6 +39,8 @@ Ninguno necesita Ready-Up.
 | `lef_boss_witch_chance` | `100` | % de probabilidad de que un mapa tenga witch. |
 | `lef_boss_skip_finales` | `1` | No tocar los mapas finales (sus tanks los maneja el final). |
 | `lef_boss_lock_spawns` | `1` | Los jefes de la segunda mitad aparecen en el lugar de la primera. |
+| `lef_boss_remind_interval` | `120` | Mientras falta el tank, recordar dónde sale en el chat cada estos segundos ("Tank en el 63%, van en el 41%"). `0` = no. |
+| `lef_boss_warn_distance` | `5` | Avisar (chat + cuadro de avisos) cuando los sobrevivientes están a este porcentaje o menos del tank. El avance se mide como `!current`. `0` = no. |
 | `lef_boss_announce` | `1` | Anunciar los % cuando los supervivientes salen del cuarto seguro (solo si `l4d_boss_percent` no está cargado). |
 
 Pongan los cvars vanilla `versus_tank_chance` / `versus_witch_chance` en `1` para que el sorteo de

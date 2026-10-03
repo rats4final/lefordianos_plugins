@@ -38,6 +38,8 @@ None of them need Ready-Up.
 | `lef_boss_witch_chance` | `100` | % chance a map has a flow witch. |
 | `lef_boss_skip_finales` | `1` | Don't touch finale maps (their tanks are scripted). |
 | `lef_boss_lock_spawns` | `1` | Second-half bosses spawn on the first half's spot. |
+| `lef_boss_remind_interval` | `120` | While a tank is still to come, remind its spot in chat every this many seconds ("Tank at 63%, you're at 41%"). `0` = off. |
+| `lef_boss_warn_distance` | `5` | Warn (chat + hint) when survivors are within this many percent of the tank. Progress is measured like `!current`. `0` = off. |
 | `lef_boss_announce` | `1` | Announce flows when survivors leave the saferoom (only when `l4d_boss_percent` isn't loaded). |
 
 Set the vanilla `versus_tank_chance` / `versus_witch_chance` cvars to `1` so this plugin's roll is
