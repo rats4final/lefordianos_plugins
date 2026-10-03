@@ -7,6 +7,9 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **Choose the tank** in `!votes` (infected team only): the picked teammate gets the next tank, or the
+  current one if a tank is in play. Admins already had `sm_forcepass`, `sm_taketank`, `sm_givetank`.
+- **Tank tip fixed:** with our tank control, one player gets 2 control bars, then the tank goes to a bot.
 - **`lef_campaigns` replaces ACS:** the next campaign is voted in `!votes` on the game's vote screen
   (any time), `!next` shows it; without a vote, the next one in the list.
 - **Game mode votes** on the game's vote screen (`!votes` > Change game mode), using Vote_Mode's list;
