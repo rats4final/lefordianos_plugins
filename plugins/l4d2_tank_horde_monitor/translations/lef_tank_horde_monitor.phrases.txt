@@ -2,6 +2,6 @@
 {
 	"LefRulesHint"
 	{
-		"en"		"Rule: if a {red}tank{default} appears during a horde event, the horde {blue}pauses{default}. Pushing ahead to skip the tank brings it back, stronger the further you go."
+		"en"		"Rule: if a {red}tank{default} appears during a horde event, the horde {olive}pauses{default}. Pushing ahead to skip the tank brings it back, stronger the further you go."
 	}
 }
