@@ -7,6 +7,8 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **Mute vote:** pick voice, chat or both; it lasts until the round ends, as a warning (was voice and chat
+  for the rest of the map).
 - **Choose the tank** in `!votes` (infected team only): the picked teammate gets the next tank, or the
   current one if a tank is in play. Admins already had `sm_forcepass`, `sm_taketank`, `sm_givetank`.
 - **Tank tip fixed:** with our tank control, one player gets 2 control bars, then the tank goes to a bot.

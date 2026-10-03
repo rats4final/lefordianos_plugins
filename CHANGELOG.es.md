@@ -8,6 +8,8 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **Votación de silenciar:** eliges voz, chat o ambos; dura hasta que termina la ronda, como advertencia
+  (antes era voz y chat por el resto del mapa).
 - **Elegir el tank** en `!votes` (solo el equipo infectado): el compañero elegido recibe el próximo tank, o
   el actual si ya hay uno en juego. Los admins ya tenían `sm_forcepass`, `sm_taketank`, `sm_givetank`.
 - **Consejo del tank corregido:** con nuestro control del tank, un jugador tiene 2 barras de control y

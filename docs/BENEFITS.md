@@ -68,7 +68,7 @@ Silvers. Some players will notice:
   - changing the map, restarting, picking the next campaign;
   - shuffling or balancing teams;
   - kicking a troll (with a 5-minute ban, like vanilla);
-  - moving an AFK player, muting someone;
+  - moving an AFK player, muting someone's voice, chat or both until the round ends;
   - turning T1-only mode or the tank/witch chance up or down;
   - all talk;
   - pausing (only by vote, so randoms can't abuse it).

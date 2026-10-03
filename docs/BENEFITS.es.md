@@ -73,7 +73,7 @@ Silvers. Algunas que los jugadores van a notar:
   - cambiar de mapa, reiniciar, elegir la próxima campaña;
   - mezclar o balancear equipos;
   - expulsar a un troll (con baneo de 5 minutos, como en vanilla);
-  - mover a un AFK, silenciar a alguien;
+  - mover a un AFK, silenciar la voz, el chat o ambos de alguien hasta que termine la ronda;
   - prender o apagar el modo T1, subir o bajar la probabilidad de tank/witch;
   - la voz entre equipos;
   - pausar (solo por votación, así los randoms no abusan).
