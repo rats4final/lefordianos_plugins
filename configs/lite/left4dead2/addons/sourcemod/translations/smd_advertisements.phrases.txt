@@ -2,32 +2,52 @@
 // Mensajes del servidor de Lefordianos para smd_advertisements de Harry Potter (reemplaza su archivo de ejemplo).
 // One message per number, shown in order every smd_advertisements_interval seconds (set in lefordianos/common.cfg).
 // Un mensaje por número, se muestran en orden cada smd_advertisements_interval segundos (en lefordianos/common.cfg).
-// Colors / Colores: {default} {green} {olive} {lightgreen} {red} {blue}
+// Colors / Colores: {default} {green} {olive} {lightgreen} {red} {blue} (only one of red/blue/lightgreen per message)
 "Phrases"
 {
 	"1"
 	{
-		"en"	"{green}!teams{default}: see the teams and switch. {green}!swapwith{default}: ask someone on the other team to swap."
-		"es"	"{green}!teams{default}: ver los equipos y cambiarte. {green}!swapwith{default}: pedirle a alguien del otro equipo cambiar de lugar."
+		"en"	"{green}!menu{default}: every command on the server in one menu."
+		"es"	"{green}!menu{default}: todos los comandos del servidor en un menú."
 	}
 	"2"
 	{
-		"en"	"{green}!bosses{default}: where the tank and witch are on this map. {green}!score{default}: scores and maps won."
-		"es"	"{green}!bosses{default}: dónde están el tank y la witch en este mapa. {green}!score{default}: puntajes y mapas ganados."
+		"en"	"{green}!votes{default}: call a vote (map, teams, kick, rules, all talk...). {green}!pause{default} starts a pause vote."
+		"es"	"{green}!votes{default}: llamar a votación (mapa, equipos, expulsar, reglas, voz entre equipos...). {green}!pause{default} inicia una votación de pausa."
 	}
 	"3"
 	{
-		"en"	"{green}!spec{default} / {green}!survivors{default} / {green}!infected{default}: change team."
-		"es"	"{green}!spec{default} / {green}!survivors{default} / {green}!infected{default}: cambiar de equipo."
+		"en"	"Friend joining? Type {green}!wait{default} before leaving the saferoom and nobody can start until they arrive."
+		"es"	"¿Entra un amigo? Escribe {green}!wait{default} antes de salir del refugio y nadie podrá empezar hasta que llegue."
 	}
 	"4"
 	{
-		"en"	"{green}!t1{default}: vote for T1-only weapons. {green}!pause{default}: pause (both teams ready up to continue)."
-		"es"	"{green}!t1{default}: votar el modo solo armas T1. {green}!pause{default}: pausar (ambos equipos se ponen listos para seguir)."
+		"en"	"{green}!rank{default}: your ranking points. {green}!top{default}: the top 10. Win maps to climb; the balanced shuffle uses them."
+		"es"	"{green}!rank{default}: tus puntos de ranking. {green}!top{default}: los 10 mejores. Gana mapas para subir; la mezcla balanceada los usa."
 	}
 	"5"
 	{
-		"en"	"Got the tank but want a teammate to play it? {green}!pass{default}"
-		"es"	"¿Te tocó el tank y prefieres que lo juegue un compañero? {green}!pass{default}"
+		"en"	"{green}!mvp{default}, {green}!stats{default}, {green}!skill{default}, {green}!acc{default}: round stats. {green}!score{default}: scores and maps won."
+		"es"	"{green}!mvp{default}, {green}!stats{default}, {green}!skill{default}, {green}!acc{default}: estadísticas de la ronda. {green}!score{default}: puntajes y mapas ganados."
+	}
+	"6"
+	{
+		"en"	"At the start of each round the panel shows the tank and witch spots and the infected team's classes. {green}!bosses{default} shows them again."
+		"es"	"Al empezar cada ronda el panel muestra dónde salen el tank y la witch y las clases del equipo infectado. {green}!bosses{default} los muestra de nuevo."
+	}
+	"7"
+	{
+		"en"	"{green}!teams{default}: see the teams. {green}!survivors{default} / {green}!infected{default} / {green}!spec{default} (or the M key): change team. {green}!swapwith{default}: trade places."
+		"es"	"{green}!teams{default}: ver los equipos. {green}!survivors{default} / {green}!infected{default} / {green}!spec{default} (o la tecla M): cambiar de equipo. {green}!swapwith{default}: cambiar de lugar."
+	}
+	"8"
+	{
+		"en"	"Tank: {olive}right click{default}, {olive}E{default} or {olive}R{default} pick the rock throw. Got the tank but want a teammate to play it? {green}!pass{default}"
+		"es"	"Tank: {olive}clic derecho{default}, {olive}E{default} o {olive}R{default} eligen el tiro de roca. ¿Te tocó el tank y prefieres que lo juegue un compañero? {green}!pass{default}"
+	}
+	"9"
+	{
+		"en"	"{green}!t1{default}: vote for T1-only weapons. {green}!clientcvars{default}: client settings this server checks."
+		"es"	"{green}!t1{default}: votar el modo solo armas T1. {green}!clientcvars{default}: ajustes del cliente que revisa el servidor."
 	}
 }

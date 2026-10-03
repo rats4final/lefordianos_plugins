@@ -172,9 +172,8 @@ dir  L4D1_2-Plugins/l4d2_mission_manager/missions.cache missions.cache
 smx  Sourcemod-Plugins/cannounce/plugins/cannounce.smx Sourcemod-Plugins/cannounce/scripting/cannounce.sp
 smx  Sourcemod-Plugins/smd_advertisements/plugins/smd_advertisements.smx Sourcemod-Plugins/smd_advertisements/scripting/smd_advertisements.sp
 
-# --- Automatic Campaign Switcher (rikka0w0), compiled against Harry's mission manager ---
-sp   l4d2_mission_manager/scripting/acs.sp
-dir  l4d2_mission_manager/translations addons/sourcemod/translations
+# --- Campaign rotation: our lef_campaigns (in "Ours" below) replaced rikka0w0's Automatic Campaign
+# Switcher on 2026-10-04 (next campaign voted on the F1/F2 screen through !votes). ---
 
 # --- MoYu / Forgetest (compiled) ---
 sp   "MoYu_Server_Stupid_Plugins/The Last Stand/l4d2_fix_common_flee/scripting/l4d2_fix_common_flee.sp" fixes
@@ -247,6 +246,7 @@ ours lef_game_hints
 ours lef_bot_protect
 ours lef_steam_bans
 ours lef_ranks
+ours lef_campaigns
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 

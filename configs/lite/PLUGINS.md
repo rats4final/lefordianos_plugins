@@ -373,8 +373,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
       `cfg/lefordianos/custom.cfg`. *Added 2026-10-03 at the owner's request.*
   *ES: unir campañas en versus, ej. `sm_add_map_transition c6m2_bedlam c7m1_docks` (los puntajes se
   mantienen). Pon las líneas en `cfg/lefordianos/custom.cfg`. Agregado el 2026-10-03 a pedido del dueño.*
-- [x] **Harry** `l4d2_mission_manager` + ACS: automatic campaign rotation, with a vote for the next campaign at the finale.
-  *ES: rotación automática de campañas, con votación de la siguiente campaña en el final.*
+- [x] **Harry** `l4d2_mission_manager` + **Ours** `lef_campaigns`: campaign rotation; the next campaign is
+      voted in `!votes` (game's vote screen). `lef_campaigns` replaced rikka0w0's ACS on 2026-10-04.
+  *ES: rotación de campañas; la próxima se vota en `!votes` (pantalla de votación del juego).
+  `lef_campaigns` reemplazó al ACS de rikka0w0 el 2026-10-04.*
 
 ## 5b. Tank and witch every map, with flow % announced · Tank y witch en cada mapa, con el % anunciado
 
@@ -537,8 +539,9 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: muestra la vida de a quien curas, levantas, le pasas pastillas o apuntas.*
 - [x] **AM** `l4d_pipebomb_ignore` (Silvers): bots keep shooting while a pipe bomb is out (better bots).
   *ES: los bots siguen disparando mientras hay una bomba casera (bots mejores).*
-- [x] **Silvers** `Vote_Mode`: vote to switch game mode (coop, realism, versus, mutations). Uses a menu
-      vote, not the game's vote screen. Pairs well with `gamemode-based_configs` (section 5).
+- [x] **Silvers** `Vote_Mode`: switch game mode (coop, realism, versus, mutations). Since 2026-10-04 the
+      vote is `!votes` > Change game mode (on the game's vote screen), which uses Vote_Mode's list and
+      `sm_forcemode`; Vote_Mode's own menu vote is admin-only. Pairs well with `gamemode-based_configs`.
   *ES: votación para cambiar el modo de juego (coop, realismo, versus, mutaciones). Usa una votación
   por menú, no la pantalla de votación del juego. Combina bien con `gamemode-based_configs` (sección 5).*
 
