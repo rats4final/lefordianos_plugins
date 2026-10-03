@@ -49,3 +49,10 @@ c4m2_sugarmill_a: Fix multiple unwanted witches
 c4m3_sugarmill_b: Fix multiple unwanted witches
 # c7m1 (train car tank: door opens by itself, no fake tank sounds) is KEPT: good QoL, otherwise the tank gets burned in the car.
 # c7m1 (tank del vagón: la puerta se abre sola, sin sonidos falsos de tank) SE QUEDA: buena comodidad, si no queman al tank en el vagón.
+
+# c5m5: ZoneMod removes the map's random item spots and adds 4 medkits in the truck by the flow tank
+# (pills under confogl, which converts medkits; real medkits without it). Back to vanilla items (2026-10-04).
+# c5m5: ZoneMod quita los lugares de objetos al azar del mapa y agrega 4 botiquines en el camión junto al
+# tank (pastillas con confogl, que convierte los botiquines; botiquines de verdad sin él). Vuelven los
+# objetos de vanilla (2026-10-04).
+c5m5_bridge: Remove various item spawns to add our own | 4 pill spawns in the truck by the flow tank
