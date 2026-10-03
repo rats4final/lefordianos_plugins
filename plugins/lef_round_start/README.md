@@ -44,7 +44,8 @@ The newcomer is then told by `lef_teams_panel` which team to join to even things
 | `lef_start_max_extends` | 2 | Extensions per round |
 | `lef_start_chat_trigger` | 1 | `+1` in chat: 0 = nothing, 1 = private tip, 2 = start the vote |
 | `lef_start_countdown` | 3 | Seconds of 3-2-1 countdown (Ready-Up's beeps) before the wait ends. 0 = none |
-| `lef_start_freeze` | 1 | Freeze survivors while waiting: 0 = never, 1 = only on a campaign's first map (no saferoom box to keep them in), 2 = always |
+| `lef_start_leash` | 300 | On a campaign's first map (no saferoom box), survivors who wander this many units from where they stood when the wait started are teleported back. 0 = off |
+| `lef_start_freeze` | 0 | Freeze survivors instead: 0 = never (use the leash), 1 = only on first maps, 2 = always |
 
 ## Ready-Up
 

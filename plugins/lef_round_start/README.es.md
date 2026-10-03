@@ -44,7 +44,8 @@ Después, `lef_teams_panel` le dice al que entra a qué equipo unirse para empar
 | `lef_start_max_extends` | 2 | Alargues por ronda |
 | `lef_start_chat_trigger` | 1 | `+1` en el chat: 0 = nada, 1 = consejo privado, 2 = iniciar la votación |
 | `lef_start_countdown` | 3 | Segundos de cuenta regresiva 3-2-1 (con los pitidos de Ready-Up) antes de terminar la espera. 0 = nada |
-| `lef_start_freeze` | 1 | Congelar a los sobrevivientes mientras se espera: 0 = nunca, 1 = solo en el primer mapa de una campaña (no hay refugio que los retenga), 2 = siempre |
+| `lef_start_leash` | 300 | En el primer mapa de una campaña (sin refugio), quien se aleja estas unidades de donde estaba al empezar la espera vuelve teletransportado. 0 = no |
+| `lef_start_freeze` | 0 | Congelarlos en vez de eso: 0 = nunca (usa la correa), 1 = solo en primeros mapas, 2 = siempre |
 
 ## Ready-Up
 

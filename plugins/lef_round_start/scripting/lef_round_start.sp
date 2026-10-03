@@ -14,8 +14,9 @@
  *     is sent back) until that many more humans are on the teams, or the countdown runs out.
  *     !extend votes for more time, !go votes to start now (admins: instantly). When the wait ends,
  *     a 3-2-1 countdown with Ready-Up's beeps plays before anyone can leave.
- *     First maps of a campaign have no saferoom box to keep people in, so there survivors are frozen
- *     in place while waiting (lef_start_freeze).
+ *     First maps of a campaign have no saferoom box to keep people in, so there each survivor's spot
+ *     is saved when the wait starts and anyone who wanders more than lef_start_leash units away is
+ *     teleported back (like Ready-Up does with its freeze off). lef_start_freeze can freeze them instead.
  *     In versus one survivor leaving starts the round for everyone, so this stops an impatient
  *     player from starting without the friend who's still connecting.
  *     Typing "+1", "+2"... in chat (our usual habit) doesn't start a vote by itself, so nobody gets
@@ -34,7 +35,7 @@
 #include <colors>
 #include <builtinvotes>
 
-#define PLUGIN_VERSION "1.1.0"
+#define PLUGIN_VERSION "1.2.0"
 
 #define COUNTDOWN_SOUND "weapons/hegrenade/beep.wav"   // same sounds as Ready-Up
 #define LIVE_SOUND      "ui/survival_medal.wav"
@@ -69,7 +70,11 @@ ConVar
 	g_cvMaxExtends,
 	g_cvChatTrigger,
 	g_cvFreeze,
+	g_cvLeash,
 	g_cvCountdown;
+
+float g_vAnchor[MAXPLAYERS + 1][3];   // where each survivor was when the wait started (first maps)
+bool  g_bAnchored[MAXPLAYERS + 1];
 
 int  g_iCountdown;          // seconds left in the 3-2-1 before the hold ends (0 = not counting)
 bool g_bFrozen;             // survivors are frozen by us right now
@@ -113,7 +118,8 @@ public void OnPluginStart()
 	g_cvExtendTime  = CreateConVar("lef_start_extend_time", "60", "Seconds an !extend vote adds.", _, true, 10.0);
 	g_cvMaxExtends  = CreateConVar("lef_start_max_extends", "2", "How many times a wait can be extended per round.", _, true, 0.0);
 	g_cvChatTrigger = CreateConVar("lef_start_chat_trigger", "1", "Typing '+1', '+2'... in chat before the round starts: 0 = nothing, 1 = private tip about !wait, 2 = start the wait vote.", _, true, 0.0, true, 2.0);
-	g_cvFreeze      = CreateConVar("lef_start_freeze", "1", "Freeze survivors while waiting for players: 0 = never, 1 = only on a campaign's first map (no saferoom to keep them in), 2 = always.", _, true, 0.0, true, 2.0);
+	g_cvFreeze      = CreateConVar("lef_start_freeze", "0", "Freeze survivors while waiting for players: 0 = never (use the leash), 1 = only on a campaign's first map, 2 = always.", _, true, 0.0, true, 2.0);
+	g_cvLeash       = CreateConVar("lef_start_leash", "300", "On a campaign's first map (no saferoom), survivors who wander this many units from where they were when the wait started are teleported back. 0 = off.", _, true, 0.0);
 	g_cvCountdown   = CreateConVar("lef_start_countdown", "3", "Seconds of countdown before the wait ends. 0 = none.", _, true, 0.0, true, 10.0);
 	AutoExecConfig(true, "lef_round_start");
 
@@ -126,6 +132,7 @@ public void OnPluginStart()
 	HookEvent("player_hurt", Event_PlayerHurt);
 
 	CreateTimer(1.0, Timer_Tick, _, TIMER_REPEAT);
+	CreateTimer(0.2, Timer_Leash, _, TIMER_REPEAT);
 }
 
 bool ReadyUpLoaded()
@@ -151,6 +158,7 @@ void ResetRound()
 	g_bHolding    = false;
 	g_iCountdown  = 0;
 	g_bFrozen     = false;
+	ClearAnchors();
 	g_iExtends    = 0;
 	g_fRoundStart = GetGameTime();
 	g_fPanelUntil = g_fRoundStart + g_cvPanelTime.FloatValue;
@@ -287,8 +295,55 @@ void ReleaseHold()
 	g_bHolding   = false;
 	g_iCountdown = 0;
 	SetSurvivorsFrozen(false);
+	ClearAnchors();
 	PrintHintTextToAll("%t", "Hint Go");
 	EmitSoundToAll(LIVE_SOUND);
+}
+
+// ---------------------------------------------------------------------------
+// Leash on first maps: teleport survivors back to where they were when the wait started
+// ---------------------------------------------------------------------------
+
+void ClearAnchors()
+{
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		g_bAnchored[i] = false;
+	}
+}
+
+Action Timer_Leash(Handle timer)
+{
+	float leash = g_cvLeash.FloatValue;
+	if (!g_bHolding || leash <= 0.0 || ShouldFreeze() || !L4D_IsFirstMapInScenario() || ReadyUpLoaded())
+	{
+		return Plugin_Continue;
+	}
+
+	float pos[3];
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (!IsClientInGame(i) || GetClientTeam(i) != TEAM_SURVIVOR || !IsPlayerAlive(i))
+		{
+			g_bAnchored[i] = false;
+			continue;
+		}
+		GetClientAbsOrigin(i, pos);
+		if (!g_bAnchored[i])
+		{
+			g_vAnchor[i]   = pos;   // newcomers and bots are anchored where they first show up
+			g_bAnchored[i] = true;
+		}
+		else if (GetVectorDistance(pos, g_vAnchor[i]) > leash)
+		{
+			TeleportEntity(i, g_vAnchor[i], NULL_VECTOR, view_as<float>({ 0.0, 0.0, 0.0 }));
+			if (!IsFakeClient(i))
+			{
+				PrintHintText(i, "%T", "Hint Held", i);
+			}
+		}
+	}
+	return Plugin_Continue;
 }
 
 bool ShouldFreeze()
@@ -728,6 +783,7 @@ void VoteResult_Handler(Handle vote, int num_votes, int num_clients, const int[]
 		{
 			g_bHolding    = true;
 			g_iCountdown  = 0;
+			ClearAnchors();   // the leash anchors everyone where they stand right now
 			g_iWaitTarget = CountTeamHumans() + g_iVoteAmount;
 			if (ShouldFreeze())
 			{
