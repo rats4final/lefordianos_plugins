@@ -199,8 +199,7 @@ sp   Various_Scripts_Collection/l4d_heartbeat.sp
 sp   Various_Scripts_Collection/l4d_fire_glow.sp
 sp   Various_Scripts_Collection/l4d_explosive_flash.sp
 sp   Various_Scripts_Collection/l4d_dsp_effects.sp
-sp   Dynamic_Light/scripting/l4d_dynamic_light.sp
-dir  Dynamic_Light/translations addons/sourcemod/translations
+# Dynamic_Light (Silvers) removed 2026-10-03 at the owner's request
 sp   Vote_Mode/scripting/l4d_votemode.sp
 dir  Vote_Mode/translations addons/sourcemod/translations
 file Vote_Mode/data/l4d_votemode.cfg addons/sourcemod/data/l4d_votemode.cfg

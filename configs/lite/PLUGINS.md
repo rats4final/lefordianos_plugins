@@ -512,8 +512,9 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: te dice qué plugins tienen versiones más nuevas. *Mantenimiento del servidor.**
 - [ ] **Silvers** `sm_configs`: keeps your config values when a plugin update changes its cfg file.
   *ES: conserva tus valores cuando una actualización de plugin cambia su archivo cfg.*
-- [x] Silvers' visual extras (`l4d_fire_glow`, `l4d_explosive_flash`, `l4d_glare`, `Dynamic_Light`,
-      `l4d_dsp_effects`, ...) and Lux's `Enhanced_Throwables`: lights and effects. Nice, but extra
+- [x] Silvers' visual extras (`l4d_fire_glow`, `l4d_explosive_flash`, `l4d_glare`,
+      `l4d_dsp_effects`, ...; `Dynamic_Light`, the flashlight light, was removed on 2026-10-03 at the
+      owner's request) and Lux's `Enhanced_Throwables`: lights and effects. Nice, but extra
       light changes what both teams can see.
   *ES: extras visuales de Silvers y el `Enhanced_Throwables` de Lux: luces y efectos. Lindos, pero
   más luz cambia lo que ambos equipos pueden ver.*
