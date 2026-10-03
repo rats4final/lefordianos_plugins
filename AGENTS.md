@@ -115,7 +115,7 @@ name of the AlliedModders VAC plugin at `showthread.php?p=1335581` (the forum bl
 karma sound files, FastDL host.
 
 **Parked:** tickrate, l4dtoolz (lakwsh's likely, plus Harry's `l4d_unreservelobby` for 9+ players),
-demo recording (sourcetvsupport + an auto-recorder; AoC's Lilac-SourceTV fits), Vanilla+ confogl mode,
+demo recording (the owner's server already has shqke's sourcetvsupport + disable_cameras installed by hand, not from our package; still missing: an auto-recorder, e.g. shqke's autorecorder or AoC's Lilac-SourceTV), Vanilla+ confogl mode,
 stats-based balance levels (AoC Player-Stats/Skills), Family Sharing detection (AoC Family-Share).
 
 **Testing (2026-10-03):** first runs on the owner's Windows server, alone with bots. Fixed so far:
@@ -124,5 +124,10 @@ lerp limit, Latin American Spanish, panel timing, witch notice, finale-only camp
 with more players: the jockey "longer stagger" report (probably vanilla: jockey/hunter landings stagger
 nearby survivors; suspects if not: l4d2_getup_slide_fix, l4d2_godframes_control_merge), votes and
 `!wait` with real people, session persistence across map changes.
+
+**Owner's server:** Windows, `F:\L4D2SERVER2026\l4d2-server` (WSL: `/mnt/f/...`), game folder
+`l4d2/left4dead2`, started by `start-server.bat` (versus, c2m1_highway, `+tv_enable 1 -hltv`). The lite
+package was copied there on 2026-10-03 with rsync (backup in `F:\L4D2SERVER2026\backups\`), leaving out
+`l4d2_chainsaw_fix` (Linux-only). Its `cfg/server.cfg` is our example, not yet customised.
 
 **Next step:** the owner tests with more players and reports the error log and what felt wrong.
