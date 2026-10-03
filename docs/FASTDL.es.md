@@ -113,9 +113,11 @@ New-NetFirewallRule -DisplayName "L4D2 FastDL" -Direction Inbound -Protocol TCP 
 En el `cfg/server.cfg` del servidor del juego:
 
 ```
-sv_allowdownload 1                              // los jugadores pueden descargar archivos
-sv_downloadurl "http://203.0.113.5:27080/"      // tu IP o nombre DNS; deja la / al final
+sm_cvar sv_allowdownload 1                      // los jugadores pueden descargar archivos
+sm_cvar sv_downloadurl "http://203.0.113.5:27080/" // tu IP o nombre DNS; deja la / al final
 ```
+
+Usa `sm_cvar`: L4D2 esconde estos dos de los cfg y sin eso responde "Unknown command".
 
 Usa **`http://`**: los juegos Source viejos no descargan bien por `https://`.
 

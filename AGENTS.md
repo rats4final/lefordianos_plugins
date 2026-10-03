@@ -61,6 +61,12 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
 
 - colors.inc already defines `CReplyToCommandEx` and `CheckAccess`: don't reuse those names.
 - In translation phrases a literal percent sign must be `%%`.
+- **Game cfg files (`cfg/`, exec'd by the engine) must be ASCII only**, comments included: the engine
+  breaks a line at an accent, so `// Contraseña de RCON` runs `a de RCON` as a command. Spanish in cfg
+  comments goes without accents; `build_lite.py` warns. Stripper map files and SourceMod KeyValues
+  configs (`addons/sourcemod/configs`) are fine with UTF-8.
+- Some cvars are hidden from cfg files in L4D2 ("Unknown command"), e.g. `sv_allowdownload`,
+  `sv_downloadurl`: set them with `sm_cvar`.
 - l4d2util defines `TEAM_SPECTATOR`/`TEAM_SURVIVOR`; don't redefine them when including it.
 - Folders starting with `-` or containing spaces (`-L4D-L4D2-Enhanced-Throwables`, `left 4 fix`,
   `The Last Stand`) need `./` or quotes in shell commands and the manifest.

@@ -7,6 +7,9 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **Config files without accents:** the game cut cfg lines at accents, so Spanish comments ran as
+  commands ("Unknown command" spam in the console). All game cfg files are plain ASCII now and
+  `build_lite.py` warns if an accent comes back. `sv_allowdownload` goes through `sm_cvar` (L4D2 hides it).
 - **Mute vote:** pick voice, chat or both; it lasts until the round ends, as a warning (was voice and chat
   for the rest of the map).
 - **Choose the tank** in `!votes` (infected team only): the picked teammate gets the next tank, or the

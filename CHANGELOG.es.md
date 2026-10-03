@@ -8,6 +8,10 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **Archivos cfg sin tildes:** el juego cortaba las líneas de los cfg en las tildes, así que los
+  comentarios en español se ejecutaban como comandos (montones de "Unknown command" en la consola). Todos
+  los cfg del juego quedan en ASCII y `build_lite.py` avisa si vuelve una tilde. `sv_allowdownload` va con
+  `sm_cvar` (L4D2 lo esconde).
 - **Votación de silenciar:** eliges voz, chat o ambos; dura hasta que termina la ronda, como advertencia
   (antes era voz y chat por el resto del mapa).
 - **Elegir el tank** en `!votes` (solo el equipo infectado): el compañero elegido recibe el próximo tank, o
