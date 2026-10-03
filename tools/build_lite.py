@@ -240,6 +240,24 @@ def check_platforms():
                 warn(f"extension {ext} has no {suffix} build")
 
 
+def check_cfg_ascii():
+    """
+    The game's own cfg reader (exec, server.cfg, autoexec) breaks a line at any non-ASCII byte, so an
+    accent inside a // comment turns the rest of that comment into a command ("Unknown command" spam,
+    and a real command if the words happen to match one). Stripper's map files are read by Stripper,
+    not the game, so they may keep accents.
+    """
+    for path in sorted(glob.glob(os.path.join(OUT, "cfg", "**", "*.cfg"), recursive=True)):
+        rel = os.path.relpath(path, OUT)
+        if rel.split(os.sep)[1] == "stripper":
+            continue
+        with open(path, "rb") as f:
+            for number, line in enumerate(f, 1):
+                if not line.isascii():
+                    warn(f"{rel}:{number} has non-ASCII characters (accents break game cfg files)")
+                    break
+
+
 LANG_ES_LINE = re.compile(r'^(\s*)"es"(\s+)(".*")\s*$')
 
 
@@ -296,6 +314,7 @@ def main():
 
     add_latam_spanish()
     check_platforms()
+    check_cfg_ascii()
 
     listing = os.path.join(os.path.dirname(OUT), "CONTENTS.txt")
     with open(listing, "w", encoding="utf-8") as f:
