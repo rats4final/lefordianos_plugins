@@ -100,7 +100,7 @@ python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod'
 
 ## Status (2026-10-03)
 
-**Built, compiled, in the lite package (179 plugins), not yet tested in game:**
+**Built, compiled, in the lite package (179 plugins), in use on the owner's server since 2026-10-03:**
 `lef_teams_panel` (teams panel, balanced shuffle with roster, balance hints), `lef_boss_spawns`,
 `lef_score_info`, `lef_admin_restore`, `lef_saferoom_doors`, `lef_t1_mode`, `lef_karma_sounds`,
 `lef_client_cvars`, `lef_votes` (config-driven votes, vanilla-like kick, pause by vote, who voted,
@@ -136,4 +136,10 @@ owner's request (moved to `plugins/disabled` on the server, out of the package):
 `boomer_horde_equalizer_refactored` (suspected of misbehaving; not yet diagnosed). Friends are root
 admins in the server's `admins.cfg` (SteamIDs only there, never in the repo).
 
-**Next step:** the owner tests with more players and reports the error log and what felt wrong.
+**First night with players (2026-10-03):** 8 humans, many maps. Log errors fixed: witch notifier
+translation (packager `...` defines), horde monitor two team colors, playstats buffer overflow
+(patched copy). Still to verify: boomer vomit after `vomit_collide_strict 0` (then maybe re-enable the
+boomer horde equalizer), Crash Course c9m2 transition vs ACS, Big Wat Night (`addons/bwnight.vpk`,
+Workshop 3122417079) with `l4d2_addons_eclipse 0`, jockey stagger, votes and `!wait`.
+
+**Next step:** the owner keeps playing and reports the error log and what felt wrong.
