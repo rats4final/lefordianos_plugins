@@ -154,6 +154,10 @@ smx  L4D1_2-Plugins/l4d2_gascan_flame_fix/plugins/l4d2_gascan_flame_fix.smx L4D1
 smx  L4D1_2-Plugins/l4d_witch_retreat_panic_fix/plugins/l4d_witch_retreat_panic_fix.smx L4D1_2-Plugins/l4d_witch_retreat_panic_fix/scripting/l4d_witch_retreat_panic_fix.sp
 smx  L4D1_2-Plugins/l4d_ghost_spawn_exploit/plugins/l4d_ghost_spawn_exploit.smx L4D1_2-Plugins/l4d_ghost_spawn_exploit/scripting/l4d_ghost_spawn_exploit.sp
 smx  L4D1_2-Plugins/l4d_exploit_dmg_block/plugins/l4d_exploit_dmg_block.smx L4D1_2-Plugins/l4d_exploit_dmg_block/scripting/l4d_exploit_dmg_block.sp
+# Harry: map transitions to join campaigns in versus (sm_add_map_transition, in cfg/lefordianos/custom.cfg),
+# plus his fix for leftover transition info after a forced map change (needs l4d2_fix_changelevel, included)
+smx  L4D1_2-Plugins/l4d2_map_transitions/plugins/l4d2_map_transitions.smx L4D1_2-Plugins/l4d2_map_transitions/scripting/l4d2_map_transitions.sp
+smx  L4D1_2-Plugins/l4d2_transition_info_fix/plugins/l4d2_transition_info_fix.smx L4D1_2-Plugins/l4d2_transition_info_fix/scripting/l4d2_transition_info_fix.sp
 smx  L4D1_2-Plugins/l4d2_survivor_mourn_fix/plugins/l4d2_survivor_mourn_fix.smx L4D1_2-Plugins/l4d2_survivor_mourn_fix/scripting/l4d2_survivor_mourn_fix.sp
 # Scene Processor (Mr. Zero; fork by cravenge and Dragokas), needed by the mourn fix
 sp   @repo/alliedmodders/Dragokas/sceneprocessor/sceneprocessor.sp

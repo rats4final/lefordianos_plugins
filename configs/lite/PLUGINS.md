@@ -364,6 +364,11 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los admins pueden entrar aunque el servidor esté lleno.*
 - [ ] **Harry** `savechat`: logs chat to a file.
   *ES: guarda el chat en un archivo.*
+- [x] **Harry** `l4d2_map_transitions` + `l4d2_transition_info_fix`: join campaigns in versus, e.g.
+      `sm_add_map_transition c6m2_bedlam c7m1_docks` (scores carry over). Put the lines in
+      `cfg/lefordianos/custom.cfg`. *Added 2026-10-03 at the owner's request.*
+  *ES: unir campañas en versus, ej. `sm_add_map_transition c6m2_bedlam c7m1_docks` (los puntajes se
+  mantienen). Pon las líneas en `cfg/lefordianos/custom.cfg`. Agregado el 2026-10-03 a pedido del dueño.*
 - [x] **Harry** `l4d2_mission_manager` + ACS: automatic campaign rotation, with a vote for the next campaign at the finale.
   *ES: rotación automática de campañas, con votación de la siguiente campaña en el final.*
 
