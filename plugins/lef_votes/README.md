@@ -12,7 +12,7 @@ means adding an entry with a server command, no code. Reload with `sm_votes_relo
 
 | Group | Votes |
 |---|---|
-| Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (opens ACS's `!mapvote`; only shown on finale maps, the only place ACS allows it), change game mode (opens Vote_Mode's `!votemode`) |
+| Maps | Change map (campaign → map list from the mission manager), restart this map, next campaign (played after this one, via `lef_campaigns`), change game mode (Vote_Mode's list) |
 | Teams | Shuffle, balanced shuffle (roster levels), swap survivors and infected, restore last round's teams (`lef_teams_panel`) |
 | Players | Kick, move to spectators (AFK), mute voice and chat for the rest of the map |
 | Rules | Tank and witch chance 0 / 50 / 100 %, T1 weapons only on/off, tank horde monitor on/off |
@@ -50,14 +50,13 @@ plugins'), chat lists who voted Yes and who voted No. `lef_votes_show_voters 2` 
 as it comes in; `0` turns it off. No extra plugin needed: players send "Vote Yes" / "Vote No" for every
 vote, and we listen to that.
 
-## Next campaign at the finale
+## Next campaign and game mode
 
-ACS (Automatic Campaign Switcher, in the lite package) has its own vote for the next campaign: each
-player picks one with `!mapvote`, `!mapvotes` shows the count, and the most picked plays next. The
-game's Yes/No screen can't do "pick one of many", so we keep ACS's vote and just **open its menu for
-everyone on the finale map**, 15 seconds after the survivors leave the saferoom
-(`lef_votes_finale_mapvote`). The lite config sets `acs_voting_ad_mode 2` so ACS no longer opens it on
-every map.
+- **Next campaign:** pick a campaign, then Yes/No on F1/F2. If it passes, [`lef_campaigns`](../lef_campaigns/)
+  plays it when the current campaign ends. Works any time, not only on the finale.
+- **Change game mode:** pick a category and a mode from Vote_Mode's own list
+  (`data/l4d_votemode.cfg`), then Yes/No on F1/F2; if it passes, Vote_Mode applies it (`sm_forcemode`)
+  and restarts the map. Vote_Mode's old chat vote (`!votemode`) is admin-only in the lite config.
 
 ## Admin menu
 
@@ -80,7 +79,6 @@ every map.
 | `lef_votes_immune_flags` | b | Admin flags that can't be vote-kicked, moved or muted |
 | `lef_votes_pause_by_vote` | 1 | Players can only pause through a vote |
 | `lef_votes_show_voters` | 1 | List who voted: 0 = off, 1 = at the end, 2 = also each vote |
-| `lef_votes_finale_mapvote` | 1 | Open ACS's next-campaign vote on finale maps |
 
 The vote screen shows one text for everyone, in the server's language; the menus follow each
 player's language (English or Spanish).

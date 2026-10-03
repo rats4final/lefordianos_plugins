@@ -9,6 +9,9 @@
  *   command  run "command" on the server if the vote passes (e.g. sm_forcet1 on)
  *   client   open another plugin's command for the player, no vote here (e.g. sm_votemode)
  *   map      pick a campaign and map (from the mission manager), then vote
+ *   nextcampaign  pick a campaign, then vote; it's played after this one (needs lef_campaigns)
+ *   mode     pick a game mode from Vote_Mode's list (data/l4d_votemode.cfg), then vote on the F1/F2
+ *            screen; if it passes, Vote_Mode applies it (sm_forcemode). Hidden without Vote_Mode.
  *   restart  restart the current map, like the game's own vote
  *   kick     pick a player; kick plus a short ban (lef_votes_kick_ban_minutes, like vanilla's vote kick)
  *   spec     pick a player; move them to spectators (AFK)
@@ -28,9 +31,8 @@
  * again once the configs have run. Entries that replace each other share a "persist" key in the
  * config, so the latest one wins. Everything goes back to the configs once the server is empty.
  *
- * Next campaign: ACS (Automatic Campaign Switcher) has its own vote for the next campaign, where
- * each player picks one and the most picked wins. On a finale map we open that menu for everyone a
- * little after the survivors leave the saferoom, so nobody forgets to vote.
+ * Next campaign: "nextcampaign" entries pick a campaign and vote it on the F1/F2 screen; if it passes,
+ * lef_campaigns plays it after the current campaign (sm_setnextcampaign).
  *
  * Inspired by Harry Potter's archived l4d_votes_5 and the README of his private l4d2_vote_change
  * (custom votes defined in a config file).
@@ -49,7 +51,7 @@
 #include <basecomm>
 #include <l4d2_mission_manager>
 
-#define PLUGIN_VERSION "1.1.0"
+#define PLUGIN_VERSION "1.3.0"
 #define CONFIG_FILE    "configs/lef_votes.cfg"
 
 #define TEAM_SPECTATOR 1
@@ -100,8 +102,7 @@ ConVar
 	g_cvKickBanMinutes,
 	g_cvImmuneFlags,
 	g_cvPauseByVote,
-	g_cvShowVoters,
-	g_cvFinaleMapVote;
+	g_cvShowVoters;
 
 // Settings changed by vote or admin, re-applied after each map's configs: persist key -> command.
 StringMap g_smSession;
@@ -110,7 +111,6 @@ StringMap g_smSession;
 bool  g_bTrackingVote;
 float g_fTrackingSince;
 int   g_iVoteChoice[MAXPLAYERS + 1];
-bool  g_bFinaleVoteOpened;
 
 // The vote on screen right now (ours).
 Handle g_hVote;
@@ -125,6 +125,7 @@ bool   g_bAdminPassed;       // an admin passed it: show "passed" instead of "fa
 bool g_bAdminMode[MAXPLAYERS + 1];   // true = run instantly (admin menu), false = start a vote
 int  g_iMenuItem[MAXPLAYERS + 1];
 int  g_iMenuMission[MAXPLAYERS + 1];
+char g_sMenuModeGroup[MAXPLAYERS + 1][64];
 bool g_bPauseAllowed[MAXPLAYERS + 1];
 
 TopMenu       g_hTopMenu;
@@ -157,7 +158,6 @@ public void OnPluginStart()
 	g_cvImmuneFlags    = CreateConVar("lef_votes_immune_flags", "b", "Admins with any of these flags can't be vote-kicked, moved or muted.");
 	g_cvPauseByVote    = CreateConVar("lef_votes_pause_by_vote", "1", "Players (not admins) can only pause through a vote; typing !pause starts it.", _, true, 0.0, true, 1.0);
 	g_cvShowVoters     = CreateConVar("lef_votes_show_voters", "1", "After every vote on the vote screen, list who voted Yes and No. 0 = off, 1 = at the end, 2 = also each vote as it comes in.", _, true, 0.0, true, 2.0);
-	g_cvFinaleMapVote  = CreateConVar("lef_votes_finale_mapvote", "1", "On a finale map, open ACS's next-campaign vote (!mapvote) for everyone after leaving the saferoom.", _, true, 0.0, true, 1.0);
 	AutoExecConfig(true, "lef_votes");
 
 	RegConsoleCmd("sm_votes", Cmd_Votes, "Open the vote menu");
@@ -170,7 +170,6 @@ public void OnPluginStart()
 	HookUserMessage(GetUserMessageId("VoteStart"), Message_VoteStart);
 	HookUserMessage(GetUserMessageId("VotePass"), Message_VoteEnd);
 	HookUserMessage(GetUserMessageId("VoteFail"), Message_VoteEnd);
-	HookEvent("player_left_start_area", Event_LeftStartArea, EventHookMode_PostNoCopy);
 
 	g_aGroups = new ArrayList(sizeof(VoteGroup));
 	g_aItems  = new ArrayList(sizeof(VoteItem));
@@ -202,7 +201,6 @@ public void OnClientDisconnect(int client)
 public void OnMapStart()
 {
 	g_bTrackingVote     = false;
-	g_bFinaleVoteOpened = false;
 }
 
 // ---------------------------------------------------------------------------
@@ -439,6 +437,16 @@ bool IsItemVisible(VoteItem item, int client)
 	{
 		return false;
 	}
+	// Next campaign votes need lef_campaigns.
+	if (StrEqual(item.type, "nextcampaign") && !CommandExists("sm_setnextcampaign"))
+	{
+		return false;
+	}
+	// Game mode votes need Vote_Mode (its list and its sm_forcemode).
+	if (StrEqual(item.type, "mode") && !CommandExists("sm_forcemode"))
+	{
+		return false;
+	}
 	// In the admin menu, the pause entry is replaced by force pause/unpause. Hidden without pause.smx.
 	if (StrEqual(item.type, "pause") && (g_bAdminMode[client] || !CommandExists("sm_pause")))
 	{
@@ -520,9 +528,13 @@ void ChooseItem(int client, int index)
 	{
 		FakeClientCommand(client, item.command);
 	}
-	else if (StrEqual(item.type, "map"))
+	else if (StrEqual(item.type, "map") || StrEqual(item.type, "nextcampaign"))
 	{
 		ShowMissions(client);
+	}
+	else if (StrEqual(item.type, "mode"))
+	{
+		ShowModeGroups(client);
 	}
 	else if (StrEqual(item.type, "kick") || StrEqual(item.type, "spec") || StrEqual(item.type, "mute"))
 	{
@@ -604,6 +616,117 @@ bool IsImmune(int client)
 	return bits != 0 && (GetUserFlagBits(client) & (bits | ADMFLAG_ROOT)) != 0;
 }
 
+// --- Game mode picker (Vote_Mode's list) ---
+
+KeyValues LoadModeList()
+{
+	char path[PLATFORM_MAX_PATH];
+	BuildPath(Path_SM, path, sizeof(path), "data/l4d_votemode.cfg");
+	KeyValues kv = new KeyValues("gamemodes");
+	if (!kv.ImportFromFile(path))
+	{
+		delete kv;
+		return null;
+	}
+	return kv;
+}
+
+void ShowModeGroups(int client)
+{
+	KeyValues kv = LoadModeList();
+	if (kv == null)
+	{
+		CPrintToChat(client, "%T", "No Mode List", client);
+		return;
+	}
+
+	Menu menu = new Menu(ModeGroups_Handler);
+	char title[96], group[64];
+	ItemTitle(g_iMenuItem[client], client, title, sizeof(title));
+	menu.SetTitle(title);
+	menu.ExitBackButton = true;
+	if (kv.GotoFirstSubKey())
+	{
+		do
+		{
+			kv.GetSectionName(group, sizeof(group));
+			menu.AddItem(group, group);
+		}
+		while (kv.GotoNextKey());
+	}
+	delete kv;
+	menu.Display(client, MENU_TIME_FOREVER);
+}
+
+int ModeGroups_Handler(Menu menu, MenuAction action, int client, int param)
+{
+	if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+	else if (action == MenuAction_Cancel && param == MenuCancel_ExitBack)
+	{
+		VoteItem item;
+		g_aItems.GetArray(g_iMenuItem[client], item);
+		ShowItems(client, item.group);
+	}
+	else if (action == MenuAction_Select)
+	{
+		menu.GetItem(param, g_sMenuModeGroup[client], sizeof(g_sMenuModeGroup[]));
+		ShowModes(client);
+	}
+	return 0;
+}
+
+void ShowModes(int client)
+{
+	KeyValues kv = LoadModeList();
+	if (kv == null || !kv.JumpToKey(g_sMenuModeGroup[client]))
+	{
+		delete kv;
+		return;
+	}
+
+	Menu menu = new Menu(Modes_Handler);
+	menu.SetTitle(g_sMenuModeGroup[client]);
+	menu.ExitBackButton = true;
+
+	char display[64], code[64], current[64];
+	FindConVar("mp_gamemode").GetString(current, sizeof(current));
+	if (kv.GotoFirstSubKey(false))
+	{
+		do
+		{
+			kv.GetSectionName(display, sizeof(display));
+			kv.GetString(NULL_STRING, code, sizeof(code));
+			// The current mode can't be picked.
+			menu.AddItem(code, display, StrEqual(code, current, false) ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT);
+		}
+		while (kv.GotoNextKey(false));
+	}
+	delete kv;
+	menu.Display(client, MENU_TIME_FOREVER);
+}
+
+int Modes_Handler(Menu menu, MenuAction action, int client, int param)
+{
+	if (action == MenuAction_End)
+	{
+		delete menu;
+	}
+	else if (action == MenuAction_Cancel && param == MenuCancel_ExitBack)
+	{
+		ShowModeGroups(client);
+	}
+	else if (action == MenuAction_Select)
+	{
+		char code[64], display[64];
+		menu.GetItem(param, code, sizeof(code), _, display, sizeof(display));
+		Proceed(client, g_iMenuItem[client], 0, code, display);
+	}
+	return 0;
+}
+
 // --- Map picker (mission manager) ---
 
 bool MissionManagerReady()
@@ -660,7 +783,22 @@ int Missions_Handler(Menu menu, MenuAction action, int client, int param)
 		char info[8];
 		menu.GetItem(param, info, sizeof(info));
 		g_iMenuMission[client] = StringToInt(info);
-		ShowMaps(client);
+
+		VoteItem item;
+		g_aItems.GetArray(g_iMenuItem[client], item);
+		if (StrEqual(item.type, "nextcampaign"))
+		{
+			// The whole campaign: its first map, named by its title.
+			char map[64], title[128];
+			LMM_GAMEMODE mode = CurrentMode();
+			LMM_GetMapName(mode, g_iMenuMission[client], 0, map, sizeof(map));
+			LMM_GetMissionLocalizedDisplayTitle(mode, g_iMenuMission[client], title, sizeof(title), LANG_SERVER);
+			Proceed(client, g_iMenuItem[client], 0, map, title);
+		}
+		else
+		{
+			ShowMaps(client);
+		}
 	}
 	return 0;
 }
@@ -870,6 +1008,14 @@ void Execute(int index, int initiator, int targetUserId, const char[] map)
 	else if (StrEqual(item.type, "map"))
 	{
 		L4D_RestartScenarioFromVote(map);
+	}
+	else if (StrEqual(item.type, "mode"))
+	{
+		ServerCommand("sm_forcemode %s", map);   // Vote_Mode changes the mode and restarts the map
+	}
+	else if (StrEqual(item.type, "nextcampaign"))
+	{
+		ServerCommand("sm_setnextcampaign %s", map);   // lef_campaigns plays it after this campaign
 	}
 	else if (StrEqual(item.type, "kick"))
 	{
@@ -1095,34 +1241,6 @@ void Frame_PrintVoters()
 		strcopy(no, sizeof(no), "-");
 	}
 	CPrintToChatAll("%t", "Voters", yesCount, yes, noCount, no);
-}
-
-// ---------------------------------------------------------------------------
-// Next campaign (ACS) on finale maps
-// ---------------------------------------------------------------------------
-
-void Event_LeftStartArea(Event event, const char[] name, bool dontBroadcast)
-{
-	if (!g_cvFinaleMapVote.BoolValue || g_bFinaleVoteOpened || !L4D_IsMissionFinalMap() || !CommandExists("mapvote"))
-	{
-		return;
-	}
-	g_bFinaleVoteOpened = true;   // once per map: the first team's round is enough
-	CreateTimer(15.0, Timer_OpenMapVote, _, TIMER_FLAG_NO_MAPCHANGE);
-}
-
-Action Timer_OpenMapVote(Handle timer)
-{
-	for (int i = 1; i <= MaxClients; i++)
-	{
-		// Don't cover a menu someone is already using.
-		if (IsClientInGame(i) && !IsFakeClient(i) && GetClientMenu(i) == MenuSource_None)
-		{
-			CPrintToChat(i, "%T", "Next Campaign Vote", i);
-			FakeClientCommand(i, "mapvote");
-		}
-	}
-	return Plugin_Stop;
 }
 
 // ---------------------------------------------------------------------------

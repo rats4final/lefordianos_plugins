@@ -132,8 +132,8 @@
 	{
 		"es"		"{green}[Votos]{default} {olive}{1}{default} votó No."
 	}
-	"Next Campaign Vote"
+	"No Mode List"
 	{
-		"es"		"{green}[Votos]{default} Último mapa de la campaña: elige la próxima campaña (escribe {olive}!mapvote{default} para cambiar tu elección)."
+		"es"		"{green}[Votos]{default} La lista de modos de juego no está disponible (falta Vote_Mode)."
 	}
 }

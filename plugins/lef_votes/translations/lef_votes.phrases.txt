@@ -144,8 +144,8 @@
 		"#format"	"{1:s}"
 		"en"		"{green}[Votes]{default} {olive}{1}{default} voted No."
 	}
-	"Next Campaign Vote"
+	"No Mode List"
 	{
-		"en"		"{green}[Votes]{default} Last map of the campaign: pick the next campaign (type {olive}!mapvote{default} to change your pick)."
+		"en"		"{green}[Votes]{default} The game mode list isn't available (Vote_Mode isn't installed)."
 	}
 }
