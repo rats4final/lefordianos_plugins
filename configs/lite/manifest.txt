@@ -246,6 +246,7 @@ ours lef_round_start
 ours lef_game_hints
 ours lef_bot_protect
 ours lef_steam_bans
+ours lef_ranks
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 

@@ -334,6 +334,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
       *Small balance change, chosen 2026-10-02; 0 = vanilla.*
   *ES: (nuestro) los bots sobrevivientes reciben 15% menos daño de los jugadores infectados. Cambio de
   balance chico, elegido el 2026-10-02; 0 = vanilla.*
+- [x] **Ours** `lef_ranks`: ranking (Elo from map wins) with `!rank` and `!top`; feeds the balanced
+      shuffle. SQLite through SourceMod, practically no cost.
+  *ES: (nuestro) ranking (Elo por mapas ganados) con `!rank` y `!top`; alimenta la mezcla balanceada.
+  SQLite a través de SourceMod, prácticamente sin costo.*
 - [x] **Ours** `lef_steam_bans`: tells admins about VAC/game/community bans of joining players (bans
       only). Needs REST in Pawn (included) and a Steam Web API key.
   *ES: (nuestro) avisa a los admins de baneos VAC/de juego/de comunidad de quien entra (solo baneos).
