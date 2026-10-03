@@ -258,11 +258,11 @@
 	}
 	"Menu balance"
 	{
-		"es"		"Mezcla balanceada (niveles del roster)"
+		"es"		"Mezcla balanceada (ranking / roster)"
 	}
 	"Admin Balanced"
 	{
-		"es"		"{olive}{1}{default} balanceó los equipos (niveles: sobrevivientes {2}, infectados {3})."
+		"es"		"{olive}{1}{default} balanceó los equipos (puntos: sobrevivientes {2}, infectados {3})."
 	}
 	"Too Many To Balance"
 	{

@@ -85,7 +85,9 @@ spectator restore (use `l4d2_spec_stays_spec`), and the debug-logging menu.
 ## Balanced shuffle and the roster
 
 Random shuffles often put all the regulars on one team. The balanced shuffle gives each player a
-level and splits the players so both teams' levels add up as close as possible.
+strength in points and splits the players so both teams add up as close as possible. A player's
+points come from [`lef_ranks`](../lef_ranks/) once they have 5 ranked maps (`lef_teams_ranked_games`);
+until then, from their roster level (level 3 = 1000 points, each level `lef_teams_level_points` = 100).
 
 - Our regulars go in `addons/sourcemod/configs/lef_roster.cfg` (copy it from `lef_roster.example.cfg`
   the first time; updates only ship the example, so your list is never overwritten): SteamID (any format: `STEAM_1:…`,

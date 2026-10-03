@@ -305,12 +305,12 @@
 	}
 	"Menu balance"
 	{
-		"en"		"Balanced shuffle (roster levels)"
+		"en"		"Balanced shuffle (ranking / roster)"
 	}
 	"Admin Balanced"
 	{
 		"#format"	"{1:s},{2:d},{3:d}"
-		"en"		"{olive}{1}{default} balanced the teams (levels: survivors {2}, infected {3})."
+		"en"		"{olive}{1}{default} balanced the teams (points: survivors {2}, infected {3})."
 	}
 	"Too Many To Balance"
 	{

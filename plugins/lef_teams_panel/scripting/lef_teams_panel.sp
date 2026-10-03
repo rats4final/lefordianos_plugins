@@ -14,9 +14,10 @@
  *    swap, flip, shuffle, balance and restore teams.
  *  - Balance hints: a player who joins the team that already has 2+ more humans is told
  *    how to switch, and spectators are told when there's a free spot (a bot) to take.
- *  - Balanced shuffle: splits the players so both teams are as even as possible,
- *    using a level per player from configs/lef_roster.cfg (our regulars) and a
- *    default level for everyone else.
+ *  - Balanced shuffle: splits the players so both teams are as even as possible.
+ *    A player's strength is their lef_ranks points once they have enough ranked maps;
+ *    otherwise their level from configs/lef_roster.cfg (our regulars) or the default
+ *    level, turned into points (level 3 = 1000, each level = lef_teams_level_points).
  *
  * What it deliberately leaves to other plugins (see README.md):
  *  - Join/spectate commands  -> l4d_afk_commands or playermanagement.
@@ -37,7 +38,7 @@
 #undef REQUIRE_PLUGIN
 #include <adminmenu>
 
-#define PLUGIN_VERSION "2.1.0"
+#define PLUGIN_VERSION "2.2.0"
 
 #define TEAM_NONE      0
 #define TEAM_SPECTATOR 1
@@ -95,6 +96,8 @@ ConVar
 	g_cvBalanceHints,
 	g_cvSpecHintInterval,
 	g_cvRosterLevel,
+	g_cvLevelPoints,
+	g_cvRankedGames,
 	g_cvRandomLevel,
 	g_cvSurvivorLimit,
 	g_cvMaxInfected;
@@ -120,8 +123,12 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 		return APLRes_SilentFailure;
 	}
 
+	MarkNativeAsOptional("LefRanks_GetRating");
 	return APLRes_Success;
 }
+
+// From lef_ranks (optional): points and ranked maps played.
+native int LefRanks_GetRating(int client, int &games);
 
 public void OnPluginStart()
 {
@@ -137,6 +144,8 @@ public void OnPluginStart()
 	g_cvRandomLevel     = CreateConVar("lef_teams_random_level", "2", "Balanced shuffle: level of a player who isn't in the roster.", _, true, 0.0, true, 10.0);
 	g_cvBalanceHints     = CreateConVar("lef_teams_balance_hints", "1", "Versus: tell a player who joins the team with 2+ more humans how to switch, and tell spectators about free spots.", _, true, 0.0, true, 1.0);
 	g_cvSpecHintInterval = CreateConVar("lef_teams_spec_hint_interval", "60", "Seconds between free-spot reminders to spectators. 0 = off.", _, true, 0.0);
+	g_cvLevelPoints     = CreateConVar("lef_teams_level_points", "100", "Balanced shuffle: points per roster level (level 3 = 1000, the lef_ranks starting points).", _, true, 1.0);
+	g_cvRankedGames     = CreateConVar("lef_teams_ranked_games", "5", "Balanced shuffle: use a player's lef_ranks points once they have this many ranked maps.", _, true, 0.0);
 	AutoExecConfig(true, "lef_teams_panel");
 
 	g_cvSurvivorLimit = FindConVar("survivor_limit");
@@ -914,7 +923,7 @@ Action Cmd_BalanceTeams(int client, int args)
 
 Action Cmd_Roster(int client, int args)
 {
-	ReplyToCommand(client, "[Teams] %d player(s) in the roster. Levels of the players here:", g_smRoster.Size);
+	ReplyToCommand(client, "[Teams] %d player(s) in the roster. Strength of the players here (balanced shuffle):", g_smRoster.Size);
 
 	bool inRoster;
 	char name[MAX_NAME_LENGTH], rosterName[MAX_NAME_LENGTH];
@@ -924,16 +933,12 @@ Action Cmd_Roster(int client, int args)
 		{
 			continue;
 		}
-		int level = GetPlayerLevel(i, inRoster, rosterName, sizeof(rosterName));
+		bool ranked;
+		int  level;
+		int  points = GetPlayerStrength(i, inRoster, ranked, level, rosterName, sizeof(rosterName));
 		GetClientName(i, name, sizeof(name));
-		if (inRoster)
-		{
-			ReplyToCommand(client, "  %s: %d (roster: %s)", name, level, rosterName);
-		}
-		else
-		{
-			ReplyToCommand(client, "  %s: %d (not in roster)", name, level);
-		}
+		ReplyToCommand(client, "  %s: %d points (%s; level %d, %s)", name, points,
+			ranked ? "from the ranking" : "from the level", level, inRoster ? rosterName : "not in roster");
 	}
 	return Plugin_Handled;
 }
@@ -1112,6 +1117,25 @@ void NormalizeSteamId(char[] id)
 }
 
 // A player's level for the balanced shuffle: from the roster (by any SteamID format), else the default.
+// A player's strength for the balanced shuffle, in lef_ranks points: their ranking once they have
+// enough ranked maps, else their roster (or default) level turned into points.
+int GetPlayerStrength(int client, bool &inRoster, bool &ranked, int &level, char[] rosterName = "", int nameLength = 0)
+{
+	level  = GetPlayerLevel(client, inRoster, rosterName, nameLength);
+	ranked = false;
+	if (GetFeatureStatus(FeatureType_Native, "LefRanks_GetRating") == FeatureStatus_Available)
+	{
+		int games;
+		int rating = LefRanks_GetRating(client, games);
+		if (games >= g_cvRankedGames.IntValue)
+		{
+			ranked = true;
+			return rating;
+		}
+	}
+	return 1000 + (level - 3) * g_cvLevelPoints.IntValue;
+}
+
 int GetPlayerLevel(int client, bool &inRoster, char[] rosterName = "", int nameLength = 0)
 {
 	static const AuthIdType types[] = { AuthId_Steam2, AuthId_Steam3, AuthId_SteamID64 };
@@ -1159,7 +1183,9 @@ void AdminBalanceTeams(int admin)
 				return;
 			}
 			players[count] = i;
-			levels[count]  = GetPlayerLevel(i, inRoster[count]);
+			bool ranked;
+			int  level;
+			levels[count]  = GetPlayerStrength(i, inRoster[count], ranked, level);
 			count++;
 		}
 	}
@@ -1237,7 +1263,7 @@ void AdminBalanceTeams(int admin)
 	}
 
 	ApplyAssignment(want, admin);
-	LogAction(admin, -1, "\"%L\" balanced the teams (levels %d vs %d)", admin, bestSurvivors, bestInfected);
+	LogAction(admin, -1, "\"%L\" balanced the teams (points %d vs %d)", admin, bestSurvivors, bestInfected);
 	CPrintToChatAll("%t %t", "Tag", "Admin Balanced", AdminName(admin), bestSurvivors, bestInfected);
 }
 

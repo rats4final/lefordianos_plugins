@@ -85,8 +85,10 @@ restauración automática de espectadores (usar `l4d2_spec_stays_spec`) y el men
 ## Mezcla balanceada y el roster
 
 Las mezclas al azar muchas veces dejan a todos los habituales en un mismo equipo. La mezcla balanceada le
-da un nivel a cada jugador y reparte a los jugadores para que los niveles de los dos equipos sumen lo más
-parecido posible.
+da una fuerza en puntos a cada jugador y reparte a los jugadores para que los dos equipos sumen lo más
+parecido posible. Los puntos vienen de [`lef_ranks`](../lef_ranks/README.es.md) cuando el jugador tiene 5
+mapas que cuenten (`lef_teams_ranked_games`); antes, de su nivel del roster (nivel 3 = 1000 puntos, cada
+nivel `lef_teams_level_points` = 100).
 
 - Nuestros habituales van en `addons/sourcemod/configs/lef_roster.cfg` (cópialo de
   `lef_roster.example.cfg` la primera vez; las actualizaciones solo traen el ejemplo, así tu lista nunca
