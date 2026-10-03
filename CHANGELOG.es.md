@@ -8,6 +8,11 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-03
 
+- **Tus propios ajustes:** `cfg/lefordianos/custom.cfg` se ejecuta al final de `common.cfg` en cada mapa,
+  así sus valores ganan sobre server.cfg y las configs de los plugins; las actualizaciones solo traen
+  `custom.example.cfg`.
+- **Transiciones de mapas** (`l4d2_map_transitions` + `l4d2_transition_info_fix` de Harry Potter) para
+  unir campañas en versus.
 - **Corrección (primera prueba en el servidor):** 20 plugins de correcciones no cargaban porque sus
   archivos de gamedata no estaban en el paquete: el armador solo encontraba la gamedata cargada a la
   antigua (`LoadGameConfigFile`), no la forma nueva `new GameData(...)`. Ahora encuentra las dos.

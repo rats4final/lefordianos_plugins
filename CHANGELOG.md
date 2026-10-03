@@ -7,6 +7,10 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-03
 
+- **Your own settings:** `cfg/lefordianos/custom.cfg` runs at the end of `common.cfg` every map, so its
+  values win over server.cfg and plugin configs; updates only ship `custom.example.cfg`.
+- **Map transitions** (Harry Potter's `l4d2_map_transitions` + `l4d2_transition_info_fix`) to join
+  campaigns in versus.
 - **Fix (first server test):** 20 fix plugins failed to load on the server because their gamedata files
   weren't in the package: the packager only found gamedata loaded the old way (`LoadGameConfigFile`),
   not the newer `new GameData(...)`. Now it finds both.

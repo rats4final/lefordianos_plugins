@@ -128,6 +128,9 @@ nearby survivors; suspects if not: l4d2_getup_slide_fix, l4d2_godframes_control_
 **Owner's server:** Windows, `F:\L4D2SERVER2026\l4d2-server` (WSL: `/mnt/f/...`), game folder
 `l4d2/left4dead2`, started by `start-server.bat` (versus, c2m1_highway, `+tv_enable 1 -hltv`). The lite
 package was copied there on 2026-10-03 with rsync (backup in `F:\L4D2SERVER2026\backups\`), leaving out
-`l4d2_chainsaw_fix` (Linux-only). Its `cfg/server.cfg` is our example, not yet customised.
+`l4d2_chainsaw_fix` (Linux-only). Its `cfg/server.cfg` is our example, not yet customised. The owner's own
+settings are in its `cfg/lefordianos/custom.cfg` (tv_autorecord, map transitions, z_ghost_delay 16,
+bot cvars); two lines are commented out pending a decision: `sm_onlyforce 1` (would break the pause
+vote) and `auto_all_bot_game_enable` (no plugin we know creates it).
 
 **Next step:** the owner tests with more players and reports the error log and what felt wrong.
