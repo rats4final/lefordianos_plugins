@@ -27,6 +27,9 @@ file L4D2-Competitive-Rework/addons/sourcemod/extensions/sourcescramble.ext.so a
 dir  @repo/tools/extensions/actions/package .
 # REST in Pawn (HTTP + JSON), Windows and Linux, from tools/get_extensions.py. Used by lef_steam_bans.
 dir  @repo/tools/extensions/ripext/package .
+# lakwsh's l4dtoolz 2.5.1 (engine plugin: addons/l4dtoolz.vdf + .dll/.so), from tools/get_extensions.py.
+# Used for sv_steam_bypass ("No Steam logon"); its other features stay off by default.
+dir  @repo/tools/extensions/l4dtoolz/package .
 file L4D2-Competitive-Rework/addons/sourcemod/gamedata/collisionhook.txt addons/sourcemod/gamedata/collisionhook.txt
 dir  L4D2-Competitive-Rework/addons/stripper/bin addons/stripper/bin
 file L4D2-Competitive-Rework/addons/metamod/stripper.vdf addons/metamod/stripper.vdf

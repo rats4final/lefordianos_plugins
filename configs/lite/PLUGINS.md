@@ -278,6 +278,16 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los bots no pueden usar pastillas (así no las desperdician).*
 
 ## 5. Admin and server management · Administración del servidor
+- [x] **lakwsh** `l4dtoolz` 2.5.1 (engine plugin, from `tools/get_extensions.py`): used only for
+      `sv_steam_bypass 1` (in `server.cfg`), so players stop getting kicked with "No Steam logon" /
+      "STEAM validation rejected". **Trade-off, chosen 2026-10-04:** the server then trusts the SteamID
+      the game sends without asking Steam, so a hacked client could pose as an admin, and Family Sharing
+      blocks and Steam ban checks can be fooled. Its other features (more slots, tickrate) stay off.
+  *ES: usado solo para `sv_steam_bypass 1` (en `server.cfg`), así nadie más es echado con "No Steam
+  logon" / "STEAM validation rejected". **Compromiso, elegido el 2026-10-04:** el servidor cree el
+  SteamID que manda el juego sin preguntarle a Steam, así que un cliente trucho podría hacerse pasar por
+  un admin, y se pueden engañar los bloqueos de Family Sharing y los chequeos de baneos de Steam. Sus
+  otras funciones (más lugares, tickrate) quedan apagadas.*
 - [x] `optional/pause` (**our patched copy**: works without l4dtoolz): `!pause` with both teams readying up to unpause, admin force-pause. *needs builtinvotes*
   *ES: `!pause`; para reanudar ambos equipos tienen que estar listos; los admins pueden forzar la pausa.*
 - [x] `l4d_pause_message`: blocks pause commands when the server can't pause.
