@@ -8,6 +8,8 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **Avisos de la puerta del refugio arreglados** (`lef_saferoom_doors` 1.0.1): decía "se abrió sola"
+  siempre y nunca avisaba de la puerta final; ahora nombra al jugador, con los eventos de puertas del juego.
 - **Arreglo de "No Steam logon":** el l4dtoolz 2.5.1 de lakwsh viene en el paquete lite con
   `sv_steam_bypass 1`, así los tropiezos de Steam ya no echan a los amigos. Mientras está prendido, los
   SteamID no se verifican con Steam (ver `server.example.cfg`). Sus funciones de lugares y tickrate

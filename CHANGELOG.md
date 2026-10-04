@@ -7,6 +7,8 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **Saferoom door messages fixed** (`lef_saferoom_doors` 1.0.1): it said "opened by itself" every time
+  and never reported the end door; now it names the player, from the game's door events.
 - **"No Steam logon" fix:** lakwsh's l4dtoolz 2.5.1 ships in the lite package with `sv_steam_bypass 1`,
   so Steam hiccups no longer kick friends. SteamIDs aren't checked with Steam while it's on (see
   `server.example.cfg`). Its slot and tickrate features stay off.
