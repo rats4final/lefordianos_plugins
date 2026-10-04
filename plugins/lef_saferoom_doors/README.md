@@ -23,6 +23,11 @@ admins can check afterwards who shut the team out.
 Needs [Left4DHooks](https://forums.alliedmods.net/showthread.php?t=321696), which tells the start
 door from the end door.
 
+Who used the door comes from the game's `door_open`/`door_close` events (the same ones Harry Potter's
+`lockdown_system` and the competitive scoremod use). Version 1.0.0 read the door's own OnOpen output,
+which always names the door itself, so it said "opened by itself" every time and never reported the
+end door.
+
 ## Not tested in-game yet
 
 Compiles. Check: the start message shows once per round, the "opened by itself" case, and that a

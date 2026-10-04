@@ -23,6 +23,11 @@ servidor, así los admins pueden revisar después quién le cerró la puerta al 
 Necesita [Left4DHooks](https://forums.alliedmods.net/showthread.php?t=321696), que distingue la
 puerta inicial de la final.
 
+Quién usó la puerta sale de los eventos `door_open`/`door_close` del juego (los mismos que usan el
+`lockdown_system` de Harry Potter y el scoremod competitivo). La versión 1.0.0 leía la salida OnOpen de
+la propia puerta, que siempre nombra a la puerta misma, así que decía "se abrió sola" cada vez y nunca
+avisaba de la puerta final.
+
 ## Todavía no probado en el juego
 
 Compila. Revisar: que el mensaje inicial salga una sola vez por ronda, el caso "se abrió sola", y que
