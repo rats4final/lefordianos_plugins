@@ -172,4 +172,11 @@ with `sv_steam_bypass 1` always on: the owner's choice, knowing SteamIDs (root a
 Steam ban checks) are then unverified. On the server it's set in `custom.cfg`. Slots/tickrate stay off;
 `l4d2_a2s_fix` not added (only if the server browser shows wrong info).
 
+Also 2026-10-04: "bogus payload data" when the owner starts the lobby (server on the owner's PC).
+Read from `engine.dll`: the reservation is ICE-encrypted with the challenge the server keeps per IP
+(port ignored); mismatch = `0xFEEDBEEF` missing. Strong suspicion, **not confirmed**: the owner's game
+reaches the server both locally and through the public IP (hairpin) and mixes them. A Windows
+outbound block to `<public IP>:27016` on the owner's PC removed it in the first test. Keep watching;
+details in [docs/CONNECTION.md](docs/CONNECTION.md). saferoom doors 1.0.1 (door events) deployed.
+
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

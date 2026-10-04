@@ -8,6 +8,10 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **Guía de conexión** ([docs/CONNECTION.es.md](docs/CONNECTION.es.md)): "No Steam logon", conexiones
+  duplicadas y "bogus payload data" cuando el dueño inicia la sala desde la PC del server (sospecha
+  fuerte: el juego llega al server por dos caminos; una regla de firewall en la PC del dueño parece
+  arreglarlo; falta confirmar).
 - **Avisos de la puerta del refugio arreglados** (`lef_saferoom_doors` 1.0.1): decía "se abrió sola"
   siempre y nunca avisaba de la puerta final; ahora nombra al jugador, con los eventos de puertas del juego.
 - **Arreglo de "No Steam logon":** el l4dtoolz 2.5.1 de lakwsh viene en el paquete lite con

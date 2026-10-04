@@ -74,6 +74,8 @@ server console:
 - `sm plugins list`: look for plugins marked as failed.
   - **On Windows**, `l4d2_chainsaw_fix` fails on purpose: it fixes a Linux-only crash.
 - Errors are logged in `addons/sourcemod/logs/errors_<date>.log`.
+- Players can't join ("No Steam logon", "bogus payload data", "session no longer available"):
+  see [docs/CONNECTION.md](../../docs/CONNECTION.md).
 
 ## 5. Settings you may want to change
 
