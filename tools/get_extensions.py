@@ -42,6 +42,14 @@ EXTENSIONS = {
                 ("actions.ext/extensions/actions.ext.2.l4d2.", "addons/sourcemod/extensions/actions.ext.2.l4d2."),
                 ("actions.ext/gamedata/", "addons/sourcemod/gamedata/")],
     },
+    # lakwsh's l4dtoolz (https://github.com/lakwsh/l4dtoolz): an engine plugin (loaded by its .vdf in
+    # addons/, not by SourceMod). Used for sv_steam_bypass ("No Steam logon"). The "main" build is for
+    # the current game; "2155" is for an old game version. One zip has .dll, .so and .vdf.
+    "l4dtoolz": {
+        "version": "2.5.1",
+        "urls": ["https://github.com/lakwsh/l4dtoolz/releases/download/{version}/l4dtoolz-{version}-main.zip"],
+        "map": [("l4dtoolz.", "addons/l4dtoolz.")],
+    },
 }
 
 ROOT = os.path.join(HERE, "extensions")
