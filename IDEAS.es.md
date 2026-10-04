@@ -126,6 +126,11 @@ fuentes difieren: el `server.cfg` competitivo usa `0`; el tutorial de Harry sugi
 `l4d_unreservelobby` para servidores de 5+ lugares. A probar en nuestro servidor.
 **Decisión (2026-10-02):** por ahora ningún l4dtoolz. El de lakwsh es el probable, una vez que lo
 probemos en nuestro servidor y no cause problemas.
+**Actualización (2026-10-04):** a los amigos los seguía echando "No Steam logon" / "STEAM validation
+rejected", así que el l4dtoolz 2.5.1 de lakwsh ahora viene con `sv_steam_bypass 1` **siempre prendido**
+(lo eligió el dueño, sabiendo que un cliente trucho podría hacerse pasar por un admin root). Lugares y
+tickrate siguen apagados. No agregado: `l4d2_a2s_fix` de lakwsh (parcha memoria del motor); agregarlo
+solo si el buscador de servidores muestra info rara.
 
 **9 o más jugadores y matchmaking (investigado 2026-10-02, del README de `l4d_unreservelobby` de Harry y
 su tutorial de servidores):**
@@ -425,6 +430,7 @@ también lo usaría.
 
 ## Hecho
 
+- **l4dtoolz (lakwsh) para `sv_steam_bypass`** (2026-10-04): en el paquete lite, bypass siempre prendido.
 - **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), más la lista de votantes y la votación de final de ACS en `lef_votes` y los avisos de balance en `lef_teams_panel`. REST in Pawn viene de `tools/get_extensions.py`. Falta probarlos en el juego.
 - **Mezcla balanceada** (2026-10-02): `sm_balanceteams`, roster en `configs/lef_roster.cfg`. Esperando los SteamID.
 - **lef_votes** y **lef_menu**: `!votes` desde un archivo de config (la lista de arriba, expulsar con baneo de 5 minutos, pausa solo por votación, categoría *Lefordianos* de admin con forzar pausa/quitar pausa y aprobar/cancelar) y `!menu` para jugadores. Falta probarlos en el juego. Pendiente: la votación de final estilo ACS, la mezcla balanceada (espera el roster) y mostrar quién votó.

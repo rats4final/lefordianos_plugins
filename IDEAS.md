@@ -112,6 +112,10 @@ two sources differ: the competitive `server.cfg` uses `0`; Harry's tutorial sugg
 `l4d_unreservelobby` for servers with 5+ slots. To test on our server.
 **Decision (2026-10-02):** no l4dtoolz for now. lakwsh's is the likely choice once we've tested it
 on our server and it causes no problems.
+**Update (2026-10-04):** friends kept getting kicked with "No Steam logon" / "STEAM validation rejected",
+so lakwsh's l4dtoolz 2.5.1 now ships with `sv_steam_bypass 1` **always on** (the owner's choice, knowing
+a hacked client could pose as a root admin). Slots and tickrate stay off. Not added: lakwsh's
+`l4d2_a2s_fix` (patches engine memory); add it only if the server browser shows wrong info.
 
 **9+ players and matchmaking (researched 2026-10-02, from Harry's `l4d_unreservelobby` README and his
 server tutorial):**
@@ -389,6 +393,7 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **l4dtoolz (lakwsh) for `sv_steam_bypass`** (2026-10-04): in the lite package, bypass always on.
 - **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), plus voter list and ACS finale vote in `lef_votes` and balance hints in `lef_teams_panel`. REST in Pawn comes from `tools/get_extensions.py`. Not yet tested in game.
 - **Balanced shuffle** (2026-10-02): `sm_balanceteams`, roster in `configs/lef_roster.cfg`. Waiting for the SteamIDs.
 - **lef_votes** and **lef_menu**: `!votes` from a config file (the list above, kick with a 5-minute ban, pause only by vote, admin *Lefordianos* category with force pause/unpause and pass/cancel) and `!menu` for players. Not yet tested in game. Still to do: the ACS-style finale vote, the balanced shuffle (waits for the roster) and showing who voted.

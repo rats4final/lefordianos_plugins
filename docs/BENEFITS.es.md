@@ -109,6 +109,10 @@ Silvers. Algunas que los jugadores van a notar:
   claros, props transparentes). Los jugadores pierden sus skins en este servidor.
 - **Baneos de Steam**: avisa a los admins cuando alguien que entra tiene baneos VAC, de juego o de
   comunidad. Solo mira baneos: ni horas ni perfil.
+- **Sin más expulsiones por "No Steam logon"**: `sv_steam_bypass 1` de l4dtoolz deja entrar a los
+  jugadores cuando Steam no logra confirmarlos. El precio: los SteamID no se verifican con Steam, así
+  que un cliente trucho podría hacerse pasar por un admin, y los chequeos de baneos de arriba se pueden
+  engañar.
 
 ## Cambios de balance que elegimos a propósito
 

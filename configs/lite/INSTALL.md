@@ -22,7 +22,7 @@ From this repo's folder:
 ```bash
 python3 tools/fetch_refs.py      # first time: clones the reference repos next to this one
 python3 tools/get_sourcemod.py   # first time: downloads our pinned SourceMod compiler
-python3 tools/get_extensions.py  # first time: downloads extensions we ship (REST in Pawn)
+python3 tools/get_extensions.py  # first time: downloads extensions we ship (REST in Pawn, Actions, l4dtoolz)
 python3 tools/build_lite.py      # builds the package
 ```
 
@@ -69,6 +69,7 @@ Start the server (extensions and Stripper need a full start, not just a map chan
 server console:
 
 - `meta list`: shows **Stripper**.
+- `plugin_print`: shows **L4DToolZ** (needed for `sv_steam_bypass`).
 - `sm exts list`: shows **Actions**, **BuiltinVotes**, **CollisionHook**, **REST in Pawn**, **Source Scramble**, all running.
 - `sm plugins list`: look for plugins marked as failed.
   - **On Windows**, `l4d2_chainsaw_fix` fails on purpose: it fixes a Linux-only crash.
@@ -88,6 +89,7 @@ server console:
 | Steam ban checks: the Steam Web API key (keep it private) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Bot damage reduction (15%), pace/holding warnings, start panel and `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Server name, RCON, region, lobby/matchmaking, addons | `cfg/server.cfg` (start from `cfg/server.example.cfg`) |
+| Steam check off (`sv_steam_bypass 1`, against "No Steam logon"; read the trade-off in `server.example.cfg`). A `server.cfg` copied before 2026-10-04 lacks it: add the line there or in `custom.cfg` | `cfg/server.cfg` |
 | Language of the vote screen (one text for everyone) and of server messages | `addons/sourcemod/configs/core.cfg`: `"ServerLang" "es"` (default `"en"`). Menus and chat already follow each player's language |
 | **Your own settings** (any cvar, map transitions...), never overwritten by updates | `cfg/lefordianos/custom.cfg` (copy it from `custom.example.cfg` once; runs last, so it wins) |
 | Stripper changes | edit `configs/lite/stripper_rules.txt` here, run `python3 tools/make_stripper.py`, rebuild |
@@ -109,7 +111,7 @@ changes in this repo (or re-apply them).
 ## Not included (on purpose)
 
 - `lef_comeback_bonus` and `l4d2_penalty_bonus`: unticked in the picker.
-- l4dtoolz (more than 8 players, tickrate): on hold until we test lakwsh's version.
+- l4dtoolz's more than 8 players and tickrate: on hold. l4dtoolz itself ships, only for `sv_steam_bypass`.
 - Silvers' `plugin_updates_checker` (needs an HTTP extension we don't have) and `l4d_glare`
   (needs two more plugins).
 - The tank horde monitor **is** included, but switched off (`l4d2_tank_horde_monitor_enable 0`).

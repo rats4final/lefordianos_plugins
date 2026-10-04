@@ -51,7 +51,7 @@ Todas las herramientas son de Python 3 y funcionan en Windows y Linux (en Window
 ```bash
 python3 tools/fetch_refs.py       # una vez: clona los repos de referencia al lado de este (commits fijados)
 python3 tools/get_sourcemod.py    # una vez: descarga nuestro compilador fijo de SourceMod 1.12 en tools/sourcemod/
-python3 tools/get_extensions.py   # una vez: descarga las extensiones que incluimos (REST in Pawn) en tools/extensions/
+python3 tools/get_extensions.py   # una vez: descarga las extensiones que incluimos (REST in Pawn, Actions, l4dtoolz) en tools/extensions/
 python3 tools/build.py            # compila nuestros plugins en build/   (./build.sh es un atajo)
 python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # arma el paquete completo de la config lite en build/lite/

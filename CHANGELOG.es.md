@@ -8,6 +8,10 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-04
 
+- **Arreglo de "No Steam logon":** el l4dtoolz 2.5.1 de lakwsh viene en el paquete lite con
+  `sv_steam_bypass 1`, así los tropiezos de Steam ya no echan a los amigos. Mientras está prendido, los
+  SteamID no se verifican con Steam (ver `server.example.cfg`). Sus funciones de lugares y tickrate
+  siguen apagadas.
 - **Archivos cfg sin tildes:** el juego cortaba las líneas de los cfg en las tildes, así que los
   comentarios en español se ejecutaban como comandos (montones de "Unknown command" en la consola). Todos
   los cfg del juego quedan en ASCII y `build_lite.py` avisa si vuelve una tilde. `sv_allowdownload` va con

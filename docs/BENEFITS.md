@@ -100,6 +100,9 @@ Silvers. Some players will notice:
   maps, see-through props). Players lose their skins on this server.
 - **Steam bans**: tells admins when a joining player has VAC, game or community bans. It only looks
   at bans: no hours, no profile.
+- **No more "No Steam logon" kicks**: l4dtoolz's `sv_steam_bypass 1` lets players in when Steam fails
+  to confirm them. The price: SteamIDs aren't checked with Steam, so a hacked client could pose as an
+  admin, and the Steam ban checks above can be fooled.
 
 ## Balance changes we chose on purpose
 

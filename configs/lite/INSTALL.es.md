@@ -22,7 +22,7 @@ Desde la carpeta de este repo:
 ```bash
 python3 tools/fetch_refs.py      # la primera vez: clona los repos de referencia al lado de este
 python3 tools/get_sourcemod.py   # la primera vez: descarga nuestro compilador fijo de SourceMod
-python3 tools/get_extensions.py  # la primera vez: descarga las extensiones que incluimos (REST in Pawn)
+python3 tools/get_extensions.py  # la primera vez: descarga las extensiones que incluimos (REST in Pawn, Actions, l4dtoolz)
 python3 tools/build_lite.py      # arma el paquete
 ```
 
@@ -69,6 +69,7 @@ Arranca el servidor (las extensiones y Stripper necesitan un arranque completo, 
 y en la consola del servidor:
 
 - `meta list`: aparece **Stripper**.
+- `plugin_print`: aparece **L4DToolZ** (hace falta para `sv_steam_bypass`).
 - `sm exts list`: aparecen **Actions**, **BuiltinVotes**, **CollisionHook**, **REST in Pawn** y **Source Scramble**, todas
   funcionando.
 - `sm plugins list`: busca plugins marcados como fallidos.
@@ -89,6 +90,7 @@ y en la consola del servidor:
 | Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Nombre del servidor, RCON, región, lobby/matchmaking, addons | `cfg/server.cfg` (empieza desde `cfg/server.example.cfg`) |
+| Verificación de Steam apagada (`sv_steam_bypass 1`, contra "No Steam logon"; lee el compromiso en `server.example.cfg`). Un `server.cfg` copiado antes del 2026-10-04 no la tiene: agrega la línea ahí o en `custom.cfg` | `cfg/server.cfg` |
 | Idioma de la pantalla de votación (un texto para todos) y de los mensajes del servidor | `addons/sourcemod/configs/core.cfg`: `"ServerLang" "es"` (por defecto `"en"`). Los menús y el chat ya siguen el idioma de cada jugador |
 | **Tus propios ajustes** (cualquier cvar, transiciones de mapas...), nunca sobrescritos por actualizaciones | `cfg/lefordianos/custom.cfg` (cópialo de `custom.example.cfg` una vez; se ejecuta al final, así gana) |
 | Cambios de Stripper | edita `configs/lite/stripper_rules.txt` acá, corre `python3 tools/make_stripper.py` y vuelve a armar |
@@ -110,7 +112,7 @@ que guarda tus cambios en este repo (o vuelve a aplicarlos).
 ## No incluido (a propósito)
 
 - `lef_comeback_bonus` y `l4d2_penalty_bonus`: desmarcados en la lista.
-- l4dtoolz (más de 8 jugadores, tickrate): en espera hasta probar la versión de lakwsh.
+- Más de 8 jugadores y tickrate de l4dtoolz: en espera. l4dtoolz en sí viene incluido, solo para `sv_steam_bypass`.
 - El `plugin_updates_checker` de Silvers (necesita una extensión HTTP que no tenemos) y `l4d_glare`
   (necesita otros dos plugins).
 - El tank horde monitor **sí** está incluido, pero apagado (`l4d2_tank_horde_monitor_enable 0`).

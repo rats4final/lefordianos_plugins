@@ -7,6 +7,9 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-04
 
+- **"No Steam logon" fix:** lakwsh's l4dtoolz 2.5.1 ships in the lite package with `sv_steam_bypass 1`,
+  so Steam hiccups no longer kick friends. SteamIDs aren't checked with Steam while it's on (see
+  `server.example.cfg`). Its slot and tickrate features stay off.
 - **Config files without accents:** the game cut cfg lines at accents, so Spanish comments ran as
   commands ("Unknown command" spam in the console). All game cfg files are plain ASCII now and
   `build_lite.py` warns if an accent comes back. `sv_allowdownload` goes through `sm_cvar` (L4D2 hides it).

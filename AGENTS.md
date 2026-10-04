@@ -117,7 +117,7 @@ not in the lite package.
 
 **Waiting on the owner:** survivor bot AI plugins, karma sound files, FastDL host.
 
-**Parked:** tickrate, l4dtoolz (lakwsh's likely, plus Harry's `l4d_unreservelobby` for 9+ players),
+**Parked:** tickrate, 9+ players (l4dtoolz's slots plus Harry's `l4d_unreservelobby`),
 demo recording (the owner's server already has shqke's sourcetvsupport + disable_cameras installed by hand, not from our package; still missing: an auto-recorder, e.g. shqke's autorecorder or AoC's Lilac-SourceTV), Vanilla+ confogl mode,
 stats-based balance levels (AoC Player-Stats/Skills), Family Sharing detection (AoC Family-Share).
 
@@ -165,5 +165,11 @@ Steam API key (only in its `custom.cfg`). Harry's `sm_l4d_mapchanger` is private
 Also 2026-10-04: infected-team "choose the tank" vote (sm_givetank / sm_forcepass), tank tip fixed
 (tank_control_eq refills one player's bar once, then AI), mute vote now voice/chat/both until round end.
 The owner will look for survivor bot AI plugins.
+
+Also 2026-10-04: friends got "No Steam logon" / "Duplicate client connection ... STEAM validation
+rejected". lakwsh's l4dtoolz 2.5.1 now ships (`get_extensions.py`, engine plugin `addons/l4dtoolz.vdf`)
+with `sv_steam_bypass 1` always on: the owner's choice, knowing SteamIDs (root admins, roster, ranks,
+Steam ban checks) are then unverified. On the server it's set in `custom.cfg`. Slots/tickrate stay off;
+`l4d2_a2s_fix` not added (only if the server browser shows wrong info).
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
