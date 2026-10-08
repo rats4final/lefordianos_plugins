@@ -1,0 +1,46 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"en"		"{green}[Match]{default}"
+	}
+	"Restart Soon"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{olive}{1}{default} restarts this chapter in {2} seconds. Scores are kept."
+	}
+	"Lobby Soon"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{olive}{1}{default} sends everyone back to the lobby in {2} seconds."
+	}
+	"Scores Kept"
+	{
+		"#format"	"{1:d},{2:d}"
+		"en"		"The map was changed by an admin: scores kept. Survivors {olive}{1}{default}, infected {olive}{2}{default}."
+	}
+	"Teams Put Back"
+	{
+		"en"		"Teams put back in this chapter's order."
+	}
+	"No Lobby Message"
+	{
+		"en"		"This game version has no way to send players to the lobby."
+	}
+	"Menu Restart"
+	{
+		"en"		"Restart this chapter (keeps scores)"
+	}
+	"Menu Lobby"
+	{
+		"en"		"Return everyone to the lobby"
+	}
+	"Confirm Restart"
+	{
+		"en"		"Restart this chapter? Scores are kept."
+	}
+	"Confirm Lobby"
+	{
+		"en"		"Send everyone back to the lobby?"
+	}
+}

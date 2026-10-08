@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"es"		"{green}[Partida]{default}"
+	}
+	"Restart Soon"
+	{
+		"es"		"{olive}{1}{default} reinicia este capítulo en {2} segundos. Los puntajes se mantienen."
+	}
+	"Lobby Soon"
+	{
+		"es"		"{olive}{1}{default} manda a todos al lobby en {2} segundos."
+	}
+	"Scores Kept"
+	{
+		"es"		"Un admin cambió el mapa: puntajes mantenidos. Supervivientes {olive}{1}{default}, infectados {olive}{2}{default}."
+	}
+	"Teams Put Back"
+	{
+		"es"		"Equipos devueltos al orden de este capítulo."
+	}
+	"No Lobby Message"
+	{
+		"es"		"Esta versión del juego no tiene forma de mandar a los jugadores al lobby."
+	}
+	"Menu Restart"
+	{
+		"es"		"Reiniciar este capítulo (mantiene puntajes)"
+	}
+	"Menu Lobby"
+	{
+		"es"		"Volver todos al lobby"
+	}
+	"Confirm Restart"
+	{
+		"es"		"¿Reiniciar este capítulo? Los puntajes se mantienen."
+	}
+	"Confirm Lobby"
+	{
+		"es"		"¿Mandar a todos al lobby?"
+	}
+}
