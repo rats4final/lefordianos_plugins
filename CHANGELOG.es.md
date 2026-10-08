@@ -16,6 +16,9 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 - **Base de conocimientos** ([docs/KNOWLEDGE.es.md](docs/KNOWLEDGE.es.md)): cada problema que encontramos, si la
   causa está confirmada o es sospecha, y el arreglo. Nuevo: el kick "Server is enforcing consistency for this
   file", que se arregla teniendo la campaña en la misma ruta en el servidor y en el juego de los jugadores.
+- **"No Steam logon" estudiado** ([docs/CONNECTION.es.md](docs/CONNECTION.es.md)): por el código del motor y
+  nuestros logs, fue Steam contestando "ticket inválido" para muchos jugadores a la vez, en una ventana de 52
+  minutos; lo más probable, la conexión del propio server con Steam. `-condebug` lo mostraría la próxima vez.
 
 ## 2026-10-04
 

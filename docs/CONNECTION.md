@@ -17,6 +17,50 @@ are then not checked with Steam.
 
 **Check it's on:** server console `plugin_print` lists **L4DToolZ**, and `sv_steam_bypass` says `1`.
 
+### What the game's code and our logs say (2026-10-08)
+
+**Status: the cause is still a suspicion; the bypass stops the kicks.**
+
+**How it works** (read from the server's `engine.dll`): when a player joins, the server checks the
+player's Steam ticket on the spot (the log says `STEAM USERID validated`) and asks Steam's servers to
+confirm it. Steam's answer comes later. If it's a "no", the server writes
+`STEAMAUTH: Client <name> received failure code <N>` and kicks the player. Four different answers all
+give the same kick message, "No Steam logon":
+
+| Code | Steam's answer |
+|---|---|
+| 1 | The player isn't connected to Steam |
+| 6 | The player's game canceled the ticket |
+| 7 | The ticket was already used |
+| 8 | The ticket isn't valid (not from a Steam session that's online now) |
+
+(Code 2 = "does not own this game", 3 = "VAC banned", 4 = "being used in another location", 5 =
+"Client timed out".) The only way the engine skips the kick is LAN mode (`sv_lan 1`, or Steam failing
+to load). `-insecure` doesn't help: it only turns VAC off, players are still checked.
+
+**What our logs show** (`left4dead2/logs/`, 2026-10-02 to 10-05):
+- 14 kicks, **all in one 52-minute window** (2026-10-03 23:13 to 10-04 00:05). Before it: none (a whole
+  night on the old ZoneMod setup, 16 maps, plus the afternoon tests). After it: none either, but
+  l4dtoolz was copied to the server at 00:02, so from then on the bypass may be what hides them.
+- 13 of 14 were **code 8**, one code 6.
+- They came in **waves: up to 6 players in the same second, 1.5 to 2 minutes after a map started**
+  (map at 23:13:00, kicks 23:14:32; 23:49:56 → 23:51:47; 23:55:22 → 23:56:53; 00:03:28 → 00:05:20).
+- Friends in different places got code 8 at the same moment, and so did the owner, who plays on the
+  server's own PC.
+
+**What it points to (suspicion):** when many unrelated players get "invalid ticket" at once, the
+problem is on the **server's side of the conversation with Steam**: the server's connection to Steam
+(the owner's PC and internet) dropped or reconnected during that window, and Steam stopped accepting
+the tickets the server had. A short Steam outage would look the same. It's not a plugin (none of ours
+touch Steam authentication) and not the players' internet.
+
+**Why we can't see it any more:** with `sv_steam_bypass 1`, l4dtoolz takes the SteamID from the
+player's ticket and tells the game it's valid without asking Steam, so there's no answer to log. The
+one thing that still shows the server losing Steam is the console: the engine prints
+`Connection to Steam servers lost.` and then `Connection to Steam servers successful.` These lines go
+to the console only, not to `logs/`. To keep them, start the server with `-condebug` (writes
+`left4dead2/console.log`) and search it for "Steam servers" after a bad night.
+
 ## "Duplicate client connection" then "STEAM validation rejected"
 
 The server still holds an old connection of that account (the game crashed, or the player reconnected

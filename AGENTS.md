@@ -190,4 +190,10 @@ and skips plugins in `plugins/disabled/` (chainsaw_fix lives there). Secrets (RC
 moved to the server's ignored `cfg/secrets_server.cfg`, exec'd at the end of `custom.cfg`. That repo has
 its own short `AGENTS.md`.
 
+Also 2026-10-08: "No Steam logon" studied in `engine.dll` + logs (CONNECTION.md): codes 1/6/7/8 all give that
+kick; ours were 13x code 8 in waves 1.5-2 min after map start, 23:13-00:05 on 10-03 only. Suspect the server's
+Steam link; unconfirmable with the bypass on (`-condebug` console would show "Connection to Steam servers lost").
+Found on the way, not fixed: `cannounce` lacks `es` phrases, and with `ServerLang es` its LANG_SERVER/SourceTV
+messages error (~220 times in errors_2026100{3,4,5}.log).
+
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

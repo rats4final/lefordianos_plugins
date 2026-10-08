@@ -19,6 +19,52 @@ servidor deja de preguntarle a Steam. Desde entonces no volvió. El costo está 
 **Revisar que esté prendido:** en la consola del server, `plugin_print` muestra **L4DToolZ** y
 `sv_steam_bypass` dice `1`.
 
+### Lo que dicen el código del juego y nuestros logs (2026-10-08)
+
+**Estado: la causa sigue siendo sospecha; el bypass evita los kicks.**
+
+**Cómo funciona** (leído del `engine.dll` del server): cuando entra un jugador, el server revisa su
+ticket de Steam en el momento (el log dice `STEAM USERID validated`) y le pide a los servidores de Steam
+que lo confirmen. La respuesta de Steam llega después. Si es un "no", el server escribe
+`STEAMAUTH: Client <nombre> received failure code <N>` y echa al jugador. Cuatro respuestas distintas
+dan el mismo mensaje, "No Steam logon":
+
+| Código | Respuesta de Steam |
+|---|---|
+| 1 | El jugador no está conectado a Steam |
+| 6 | El juego del jugador canceló el ticket |
+| 7 | El ticket ya se usó |
+| 8 | El ticket no es válido (no es de una sesión de Steam que esté en línea ahora) |
+
+(Código 2 = "does not own this game", 3 = "VAC banned", 4 = "being used in another location", 5 =
+"Client timed out".) La única forma en que el motor no echa es el modo LAN (`sv_lan 1`, o si Steam no
+carga). `-insecure` no ayuda: solo apaga VAC, a los jugadores se los sigue revisando.
+
+**Lo que muestran nuestros logs** (`left4dead2/logs/`, del 2026-10-02 al 10-05):
+- 14 kicks, **todos en una ventana de 52 minutos** (2026-10-03 23:13 a 10-04 00:05). Antes: ninguno
+  (una noche entera con la instalación vieja de ZoneMod, 16 mapas, más las pruebas de la tarde).
+  Después: tampoco, pero l4dtoolz se copió al server a las 00:02, así que desde ahí puede ser el bypass
+  lo que los esconde.
+- 13 de 14 fueron **código 8**, uno código 6.
+- Llegaron en **tandas: hasta 6 jugadores en el mismo segundo, 1.5 a 2 minutos después de que empezaba
+  un mapa** (mapa a las 23:13:00, kicks 23:14:32; 23:49:56 → 23:51:47; 23:55:22 → 23:56:53;
+  00:03:28 → 00:05:20).
+- Amigos en lugares distintos recibieron código 8 en el mismo momento, y también el dueño, que juega en
+  la misma PC del server.
+
+**Hacia dónde apunta (sospecha):** cuando a muchos jugadores sin relación entre sí les dicen "ticket
+inválido" a la vez, el problema está **del lado del server en la conversación con Steam**: la conexión
+del server con Steam (la PC y el internet del dueño) se cortó o se reconectó en esa ventana, y Steam dejó
+de aceptar los tickets que tenía el server. Una caída corta de Steam se vería igual. No es un plugin
+(ninguno de los nuestros toca la autenticación de Steam) ni el internet de los jugadores.
+
+**Por qué ya no se puede ver:** con `sv_steam_bypass 1`, l4dtoolz toma el SteamID del ticket del jugador
+y le dice al juego que es válido sin preguntarle a Steam, así que no hay respuesta que anotar. Lo único
+que todavía muestra que el server perdió Steam es la consola: el motor escribe
+`Connection to Steam servers lost.` y después `Connection to Steam servers successful.` Esas líneas van
+solo a la consola, no a `logs/`. Para guardarlas, arranca el server con `-condebug` (escribe
+`left4dead2/console.log`) y busca "Steam servers" ahí después de una noche con problemas.
+
 ## "Duplicate client connection" y después "STEAM validation rejected"
 
 El servidor todavía tiene una conexión vieja de esa cuenta (se cerró el juego o el jugador volvió a
