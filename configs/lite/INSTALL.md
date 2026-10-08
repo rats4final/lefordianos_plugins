@@ -110,6 +110,23 @@ python3 tools/build_lite.py
 Then copy again (step 3). Settings files you edited on the server get overwritten, so keep your
 changes in this repo (or re-apply them).
 
+## Our server: the l4d2-server repo
+
+The owner's server lives in its own private repo, [l4d2-server](https://github.com/rats4final/l4d2-server):
+MetaMod, SourceMod and this package already installed for Windows, plus the server's own files
+(`server.cfg`, `custom.cfg`, admins, roster). Its README explains how to run it on a new machine.
+To update it, with that repo cloned next to this one:
+
+```bash
+python3 tools/build_lite.py
+python3 tools/sync_server.py      # or: python3 tools/sync_server.py <path to l4d2-server>
+```
+
+`sync_server.py` copies the package in and removes files that left the package since the last sync
+(it keeps the list in `lefordianos-package.txt` there). It never touches files the package doesn't
+ship, and skips plugins the owner moved to `addons/sourcemod/plugins/disabled/`. Then commit and push
+in l4d2-server, and on the server machine: stop the server, `git pull`, start it.
+
 ## Not included (on purpose)
 
 - `lef_comeback_bonus` and `l4d2_penalty_bonus`: unticked in the picker.

@@ -7,7 +7,8 @@ SourceMod plugins and server configs for our Left 4 Dead 2 versus server. The go
 competitive balance changes.
 
 What it gives players and admins: [docs/BENEFITS.md](docs/BENEFITS.md). What was built when:
-[CHANGELOG.md](CHANGELOG.md). Context for AI assistants: [AGENTS.md](AGENTS.md).
+[CHANGELOG.md](CHANGELOG.md). Known problems and their fixes: [docs/KNOWLEDGE.md](docs/KNOWLEDGE.md).
+Context for AI assistants: [AGENTS.md](AGENTS.md).
 
 ## Layout
 
@@ -56,6 +57,7 @@ python3 tools/build.py            # build our plugins into build/   (./build.sh 
 python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # build the full lite config package into build/lite/
 python3 tools/make_stripper.py    # regenerate the lite Stripper files from ZoneMod's
+python3 tools/sync_server.py      # copy the lite package into the server repo (../l4d2-server)
 ```
 
 The compiler version is pinned in `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`
@@ -63,6 +65,10 @@ updates it). Third-party include files (Left4DHooks, colors, builtinvotes, multi
 reference repos next to this one. Set `REFS=/some/path` if they live elsewhere.
 
 **Lite config:** see [configs/lite/INSTALL.md](configs/lite/INSTALL.md) to build and install it on a server.
+
+**Our own server** is a separate, private repo, [l4d2-server](https://github.com/rats4final/l4d2-server):
+the lite config already installed on a Windows server, with its own settings, so a new machine only needs
+`git clone`, `setup.ps1` and `start-server.bat`. `tools/sync_server.py` keeps it up to date with this repo.
 
 ## Reference repos and credits
 

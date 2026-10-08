@@ -7,7 +7,8 @@ es **versus vanilla con las mejoras de comodidad y correcciones de bugs** de Zon
 los cambios de balance competitivo.
 
 Qué les da a jugadores y admins: [docs/BENEFITS.es.md](docs/BENEFITS.es.md). Qué se hizo y cuándo:
-[CHANGELOG.es.md](CHANGELOG.es.md). Contexto para asistentes de IA: [AGENTS.md](AGENTS.md) (en inglés).
+[CHANGELOG.es.md](CHANGELOG.es.md). Problemas conocidos y cómo se arreglan:
+[docs/KNOWLEDGE.es.md](docs/KNOWLEDGE.es.md). Contexto para asistentes de IA: [AGENTS.md](AGENTS.md) (en inglés).
 
 ## Estructura
 
@@ -56,6 +57,7 @@ python3 tools/build.py            # compila nuestros plugins en build/   (./buil
 python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # arma el paquete completo de la config lite en build/lite/
 python3 tools/make_stripper.py    # regenera los archivos de Stripper lite desde los de ZoneMod
+python3 tools/sync_server.py      # copia el paquete lite al repo del servidor (../l4d2-server)
 ```
 
 La versión del compilador está fijada en `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`
@@ -63,6 +65,10 @@ la actualiza). Los archivos include de terceros (Left4DHooks, colors, builtinvot
 los repos de referencia que están al lado de este. Usa `REFS=/alguna/ruta` si están en otro lugar.
 
 **Config lite:** ver [configs/lite/INSTALL.es.md](configs/lite/INSTALL.es.md) para armarla e instalarla en un servidor.
+
+**Nuestro propio servidor** está en un repo aparte y privado, [l4d2-server](https://github.com/rats4final/l4d2-server):
+la config lite ya instalada en un servidor Windows, con sus propios ajustes, así una PC nueva solo necesita
+`git clone`, `setup.ps1` y `start-server.bat`. `tools/sync_server.py` lo mantiene al día con este repo.
 
 ## Repos de referencia y créditos
 

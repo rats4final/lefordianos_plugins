@@ -25,7 +25,7 @@ marked in [configs/lite/PLUGINS.md](configs/lite/PLUGINS.md)).
 | `alliedmodders/` | Plugins imported from AlliedModders authors (credited) |
 | `configs/lite/` | The lite config (`left4dead2/cfg/server.example.cfg`, `lefordianos/test_bots.cfg` for solo testing): `PLUGINS.md` (bilingual picker), `manifest.txt` (what goes in the package), `stripper_rules.txt`, `left4dead2/` (our cfg files), `INSTALL.md` |
 | `tools/` | Python build tools (see below); `refs.txt` pins the reference repos |
-| `docs/` | FastDL guide, benefits overview |
+| `docs/` | FastDL guide, benefits overview, connection problems, `KNOWLEDGE.md` (known problems: symptom, status, cause, fix; add new ones there) |
 | `IDEAS.md`, `CHANGELOG.md`, `CREDITS.md`, `README.md` | Each with a Spanish twin `*.es.md` |
 
 Reference repos live **next to** this one (`../`, pinned in `tools/refs.txt`, fetched with
@@ -40,6 +40,7 @@ python3 tools/get_extensions.py   # pinned extensions (REST in Pawn) -> tools/ex
 python3 tools/build.py [plugin]   # compile ours -> build/ (prints compiler output only if any)
 python3 tools/build_lite.py       # the full lite package -> build/lite/ (+ CONTENTS.txt); warns on missing files or one-platform files
 python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod's, minus stripper_rules.txt
+python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2-server (see Status)
 ```
 
 ## Conventions
@@ -178,5 +179,15 @@ Read from `engine.dll`: the reservation is ICE-encrypted with the challenge the 
 reaches the server both locally and through the public IP (hairpin) and mixes them. A Windows
 outbound block to `<public IP>:27016` on the owner's PC removed it in the first test. Keep watching;
 details in [docs/CONNECTION.md](docs/CONNECTION.md). saferoom doors 1.0.1 (door events) deployed.
+
+**2026-10-08: the server is a git repo.** The owner's private repo
+[rats4final/l4d2-server](https://github.com/rats4final/l4d2-server) (cloned at `../l4d2-server`) is the
+ready-to-run Windows server: SourceMod/MetaMod, the lite package, and the server's own files. The live
+server on `F:` is a clone of it. **Deploy = `build_lite.py`, `sync_server.py`, commit + push in
+l4d2-server, then `git pull` in the F: clone with the server stopped** (no more rsync straight to F:).
+`sync_server.py` tracks package files in `lefordianos-package.txt` (removes ones that left the package)
+and skips plugins in `plugins/disabled/` (chainsaw_fix lives there). Secrets (RCON, Steam API key)
+moved to the server's ignored `cfg/secrets_server.cfg`, exec'd at the end of `custom.cfg`. That repo has
+its own short `AGENTS.md`.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
