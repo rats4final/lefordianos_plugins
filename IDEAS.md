@@ -393,6 +393,7 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Done
 
+- **lef_match** (2026-10-08): scores kept when an admin changes the map inside the campaign, restart chapter and return to lobby in `!admin`; `!admin` sorted with the useful items first; SI break doors in one hit (`z_door_pound_damage 160`). Not yet tested in game.
 - **l4dtoolz (lakwsh) for `sv_steam_bypass`** (2026-10-04): in the lite package, bypass always on.
 - **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), plus voter list and ACS finale vote in `lef_votes` and balance hints in `lef_teams_panel`. REST in Pawn comes from `tools/get_extensions.py`. Not yet tested in game.
 - **Balanced shuffle** (2026-10-02): `sm_balanceteams`, roster in `configs/lef_roster.cfg`. Waiting for the SteamIDs.

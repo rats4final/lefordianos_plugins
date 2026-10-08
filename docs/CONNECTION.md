@@ -59,7 +59,9 @@ player's ticket and tells the game it's valid without asking Steam, so there's n
 one thing that still shows the server losing Steam is the console: the engine prints
 `Connection to Steam servers lost.` and then `Connection to Steam servers successful.` These lines go
 to the console only, not to `logs/`. To keep them, start the server with `-condebug` (writes
-`left4dead2/console.log`) and search it for "Steam servers" after a bad night.
+`left4dead2/console.log`; the server repo's `start-server.bat` does it since 2026-10-08) and search it
+for "Steam servers" after a bad night. **`console.log` only grows** (everything the console prints,
+every night): delete it every few weeks with the server stopped.
 
 ## "Duplicate client connection" then "STEAM validation rejected"
 

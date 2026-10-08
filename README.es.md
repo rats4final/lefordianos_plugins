@@ -39,6 +39,7 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 | [`lef_game_hints`](plugins/lef_game_hints/README.es.md) | Solo avisos: rushear, quedarse atrás, guardar un infectado mucho tiempo; consejos para el tank. |
 | [`lef_bot_protect`](plugins/lef_bot_protect/README.es.md) | Los bots sobrevivientes reciben 15% menos daño de los jugadores infectados, para que no sean muertes gratis. |
 | [`lef_campaigns`](plugins/lef_campaigns/README.es.md) | Rotación de campañas (reemplaza a ACS): la próxima campaña se vota en `!votes`; `!next` la muestra. |
+| [`lef_match`](plugins/lef_match/README.es.md) | Admin: mantiene los puntajes cuando se cambia el mapa dentro de la campaña, reiniciar capítulo, volver al lobby. |
 | [`lef_ranks`](plugins/lef_ranks/README.es.md) | Ranking por mapas ganados (Elo, adaptado a equipos): `!rank`, `!top`; alimenta la mezcla balanceada. |
 | [`lef_steam_bans`](plugins/lef_steam_bans/README.es.md) | Avisa a los admins cuando alguien que entra tiene baneos VAC, de juego o de la comunidad (solo baneos, nada más). Necesita REST in Pawn y una clave de la API de Steam. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/README.es.md) | Nuestro propio sonido al azar en los karma kills (necesita FastDL, ver [docs/FASTDL.es.md](docs/FASTDL.es.md)). |

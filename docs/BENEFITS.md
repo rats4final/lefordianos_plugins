@@ -83,7 +83,10 @@ Silvers. Some players will notice:
 
 - **`!admin`** gets:
   - *Team Management*: move, swap, flip, shuffle, balanced shuffle, restore last round's teams;
-  - *Lefordianos*: run any vote option instantly, force pause/unpause, pass or cancel a vote.
+  - *Lefordianos*: run any vote option instantly, force pause/unpause, pass or cancel a vote;
+  - *Server Commands*: restart the chapter or send everyone back to the lobby;
+  - the useful items first (kick, ban, heal, undo team damage, gag...), the fun ones (blind, drug...) last.
+- **Changing the map inside the campaign keeps the scores** (restart chapter, *Change map*, mission manager).
 - **`!heal` / `!restore`** undo griefing: team damage, incaps, team kills and lost items.
 - Per-game-mode settings in plain files (`cfg/sourcemod/gamemode_cvars/<mode>.cfg`), without confogl.
 - Server messages and connect messages, with translations.
@@ -114,6 +117,7 @@ These change vanilla, so they're listed honestly. Each can be turned off in `PLU
   - SI regain health when they despawn;
   - equal alarm cars;
   - quad caps possible (`l4d2_dominators 0`);
+  - special infected break a door with one hit (`z_door_pound_damage 160`);
   - a forced horde if infected wait too long to attack;
   - a few tank tweaks.
 - **Map changes**: ZoneMod's Stripper map fixes (blocked exploits, stuck spots, a few props and

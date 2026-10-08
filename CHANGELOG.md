@@ -7,6 +7,16 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-08
 
+- **Scores kept when an admin changes the map** (new `lef_match`): restarting the chapter or picking a map of
+  the same campaign (SourceMod's *Change map*, the mission manager, `!votes`) used to put both teams at 0. Now
+  each team gets back its points from the start of that chapter. `!admin` > Server Commands gets **Restart
+  chapter** and **Return to lobby** (the same message the game's lobby vote sends). Not yet tested with players.
+- **`!admin` sorted**: kick, ban, heal, undo team damage, gag first; blind, drug and the other fun ones last.
+- **Doors break with one hit** from special infected, like ZoneMod (`z_door_pound_damage 160`, game default 60).
+- **cannounce in Spanish**: with the server in Spanish it logged an error on every join/leave (~220 so far).
+- **Quad caps looked into**: our settings already match ZoneMod; see [docs/KNOWLEDGE.md](docs/KNOWLEDGE.md) for
+  how to check in a game.
+- Server repo: `start-server.bat` saves the console to `console.log` (`-condebug`); delete it now and then.
 - **The server repo uses the lite config:** the owner's private [l4d2-server](https://github.com/rats4final/l4d2-server)
   repo (clone, `setup.ps1`, `start-server.bat`) now holds the lite package and the server's own settings,
   instead of the old ZoneMod setup. New `tools/sync_server.py` copies a fresh build into it, removing files

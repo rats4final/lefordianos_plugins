@@ -193,7 +193,13 @@ its own short `AGENTS.md`.
 Also 2026-10-08: "No Steam logon" studied in `engine.dll` + logs (CONNECTION.md): codes 1/6/7/8 all give that
 kick; ours were 13x code 8 in waves 1.5-2 min after map start, 23:13-00:05 on 10-03 only. Suspect the server's
 Steam link; unconfirmable with the bypass on (`-condebug` console would show "Connection to Steam servers lost").
-Found on the way, not fixed: `cannounce` lacks `es` phrases, and with `ServerLang es` its LANG_SERVER/SourceTV
-messages error (~220 times in errors_2026100{3,4,5}.log).
+`cannounce` got `es` phrases (configs/lite translations/es) after ~220 LANG_SERVER errors with `ServerLang es`.
+
+Also 2026-10-08: `lef_match` (keeps versus scores on forced map changes inside a campaign, restart chapter,
+return to lobby via the `DisconnectToLobby` usermessage, from server.dll's Director::FinishScenarioExit);
+`adminmenu_sorting.txt` ships (useful items first); `z_door_pound_damage 160`. Quads: settings equal ZoneMod
+(class limits 1 = game default); `sackorder_debug 1` is the in-game check. The owner dropped TankTime 1.2.3
+(Merc1less, mutation19 for versus) in `../from_alliedmodders/`: only active in mutation19, Windows signatures
+still match, ships its own Stripper files (would need merging into ours); not added yet.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

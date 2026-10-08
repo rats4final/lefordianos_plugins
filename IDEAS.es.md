@@ -430,6 +430,7 @@ también lo usaría.
 
 ## Hecho
 
+- **lef_match** (2026-10-08): los puntajes se mantienen cuando un admin cambia el mapa dentro de la campaña, reiniciar capítulo y volver al lobby en `!admin`; `!admin` ordenado con lo útil primero; los SI rompen puertas de un golpe (`z_door_pound_damage 160`). Todavía sin probar en juego.
 - **l4dtoolz (lakwsh) para `sv_steam_bypass`** (2026-10-04): en el paquete lite, bypass siempre prendido.
 - **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), más la lista de votantes y la votación de final de ACS en `lef_votes` y los avisos de balance en `lef_teams_panel`. REST in Pawn viene de `tools/get_extensions.py`. Falta probarlos en el juego.
 - **Mezcla balanceada** (2026-10-02): `sm_balanceteams`, roster en `configs/lef_roster.cfg`. Esperando los SteamID.

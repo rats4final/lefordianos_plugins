@@ -90,6 +90,8 @@ y en la consola del servidor:
 | Qué pueden votar los jugadores (`!votes`) y qué muestra `!menu` | `addons/sourcemod/configs/lef_votes.cfg`, `addons/sourcemod/configs/lef_menu.cfg` |
 | Duración del baneo al expulsar por votación, pausa solo por votación, quién puede iniciar votaciones | `cfg/sourcemod/lef_votes.cfg` (se crea al cargar la primera vez) |
 | Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
+| Mantener puntajes cuando un admin cambia el mapa dentro de la campaña (`lef_match_keep_scores`), segundos de aviso | `cfg/sourcemod/lef_match.cfg` |
+| Orden del menú `!admin` | `addons/sourcemod/configs/adminmenu_sorting.txt` |
 | Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Nombre del servidor, RCON, región, lobby/matchmaking, addons | `cfg/server.cfg` (empieza desde `cfg/server.example.cfg`) |
 | Verificación de Steam apagada (`sv_steam_bypass 1`, contra "No Steam logon"; lee el compromiso en `server.example.cfg`). Un `server.cfg` copiado antes del 2026-10-04 no la tiene: agrega la línea ahí o en `custom.cfg` | `cfg/server.cfg` |

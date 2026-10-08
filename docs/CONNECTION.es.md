@@ -63,7 +63,9 @@ y le dice al juego que es válido sin preguntarle a Steam, así que no hay respu
 que todavía muestra que el server perdió Steam es la consola: el motor escribe
 `Connection to Steam servers lost.` y después `Connection to Steam servers successful.` Esas líneas van
 solo a la consola, no a `logs/`. Para guardarlas, arranca el server con `-condebug` (escribe
-`left4dead2/console.log`) y busca "Steam servers" ahí después de una noche con problemas.
+`left4dead2/console.log`; el `start-server.bat` del repo del servidor lo hace desde el 2026-10-08) y
+busca "Steam servers" ahí después de una noche con problemas. **`console.log` solo crece** (todo lo que
+escribe la consola, cada noche): bórralo cada algunas semanas con el server apagado.
 
 ## "Duplicate client connection" y después "STEAM validation rejected"
 

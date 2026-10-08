@@ -91,7 +91,12 @@ Silvers. Algunas que los jugadores van a notar:
   - *Team Management*: mover, intercambiar, invertir, mezclar, mezcla balanceada, restaurar los equipos
     de la ronda pasada;
   - *Lefordianos*: hacer cualquier opción de votación al instante, forzar pausa/quitar pausa, aprobar o
-    cancelar una votación.
+    cancelar una votación;
+  - *Comandos de servidor*: reiniciar el capítulo o mandar a todos al lobby;
+  - lo útil primero (expulsar, banear, curar, deshacer daño de equipo, silenciar...), lo de diversión (cegar,
+    drogar...) al final.
+- **Cambiar el mapa dentro de la campaña mantiene los puntajes** (reiniciar capítulo, *Cambiar mapa*,
+  mission manager).
 - **`!heal` / `!restore`** deshacen el griefing: daño de equipo, derribos, muertes por compañeros y
   objetos perdidos.
 - Ajustes por modo de juego en archivos simples (`cfg/sourcemod/gamemode_cvars/<modo>.cfg`), sin
@@ -127,6 +132,7 @@ su config:
   - los infectados recuperan vida al desaparecer;
   - autos con alarma iguales;
   - quad caps posibles (`l4d2_dominators 0`);
+  - los infectados especiales rompen una puerta de un golpe (`z_door_pound_damage 160`);
   - una horda forzada si los infectados esperan demasiado para atacar;
   - algunos ajustes del tank.
 - **Cambios de mapas**: las correcciones de mapas de Stripper de ZoneMod (exploits bloqueados, lugares

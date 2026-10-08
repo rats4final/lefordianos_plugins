@@ -8,6 +8,19 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-08
 
+- **Puntajes mantenidos cuando un admin cambia el mapa** (nuevo `lef_match`): reiniciar el capítulo o elegir un
+  mapa de la misma campaña (*Cambiar mapa* de SourceMod, el mission manager, `!votes`) dejaba a los dos equipos
+  en 0. Ahora cada equipo recupera sus puntos del inicio de ese capítulo. `!admin` > Comandos de servidor tiene
+  **Reiniciar capítulo** y **Volver al lobby** (el mismo mensaje que manda el voto de lobby del juego). Sin probar
+  con jugadores todavía.
+- **`!admin` ordenado**: expulsar, banear, curar, deshacer daño de equipo, silenciar primero; cegar, drogar y lo
+  demás de diversión al final.
+- **Las puertas se rompen de un golpe** de los infectados especiales, como en ZoneMod (`z_door_pound_damage 160`,
+  por defecto 60).
+- **cannounce en español**: con el servidor en español anotaba un error en cada entrada/salida (~220 hasta ahora).
+- **Quad caps investigados**: nuestros ajustes ya son iguales a ZoneMod; ver [docs/KNOWLEDGE.es.md](docs/KNOWLEDGE.es.md)
+  para revisarlo en una partida.
+- Repo del servidor: `start-server.bat` guarda la consola en `console.log` (`-condebug`); hay que borrarlo cada tanto.
 - **El repo del servidor usa la config lite:** el repo privado del dueño, [l4d2-server](https://github.com/rats4final/l4d2-server)
   (clonar, `setup.ps1`, `start-server.bat`), ahora tiene el paquete lite y los ajustes propios del servidor,
   en vez de la instalación vieja de ZoneMod. La nueva `tools/sync_server.py` copia un armado nuevo ahí,
