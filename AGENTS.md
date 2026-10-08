@@ -205,5 +205,8 @@ Later the same day: versus end screen read from server.dll: vote `sv_pz_endgame_
 common.cfg) + post 5; then rematch (option 1 won) or `DisconnectToLobby`. `lef_campaigns` 1.1.0 blocks that
 message and changes campaign unless lobby votes > rematch votes (`PZEndGameVoteStatsMsg`: per team players,
 opt1, opt2, ?), a ReturnToLobby vote passed, or `lef_campaigns_allow_lobby` (lef_match's !lobby).
+New public repo `rats4final/lefordianos-motd` (`../lefordianos-motd`, Next.js 16.4, plain CSS for the game's old
+browser): `/motd` and `/host`. The owner deploys it on Vercel; then the server's `left4dead2/mymotd.txt` and
+`myhost.txt` (not tracked by l4d2-server yet) get one line each with the URL.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

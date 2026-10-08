@@ -70,6 +70,8 @@ reference repos next to this one. Set `REFS=/some/path` if they live elsewhere.
 **Our own server** is a separate, private repo, [l4d2-server](https://github.com/rats4final/l4d2-server):
 the lite config already installed on a Windows server, with its own settings, so a new machine only needs
 `git clone`, `setup.ps1` and `start-server.bat`. `tools/sync_server.py` keeps it up to date with this repo.
+The pages shown when joining (MOTD and banner) are a small Next.js site:
+[lefordianos-motd](https://github.com/rats4final/lefordianos-motd).
 
 ## Reference repos and credits
 
