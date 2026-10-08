@@ -1,0 +1,60 @@
+/**
+ * Lefordianos: order of the !admin menu. Categories in this order, and inside each one the items
+ * listed here first (most used first); anything not listed comes after, sorted by name.
+ * Lefordianos: orden del menu !admin. Las categorias en este orden, y dentro de cada una primero
+ * los items listados aca (los mas usados primero); lo que no esta listado va despues, por nombre.
+ */
+
+"Menu"
+{
+	"PlayerCommands"
+	{
+		"item"		"sm_kick"
+		"item"		"sm_ban"
+		"item"		"lef_heal_player"
+		"item"		"lef_restore_player"
+		"item"		"sm_gag"
+		"item"		"sm_slay"
+		"item"		"sm_forcepass"
+		"item"		"sm_taketank"
+		"item"		"sm_who"
+		"item"		"sm_forcemode_menu"
+		"item"		"sm_rename"
+		"item"		"sm_slap"
+		"item"		"sm_noclip"
+		"item"		"sm_freeze"
+		"item"		"sm_beacon"
+		"item"		"sm_burn"
+		"item"		"sm_timebomb"
+		"item"		"sm_firebomb"
+		"item"		"sm_freezebomb"
+		"item"		"sm_gravity"
+		"item"		"sm_blind"
+		"item"		"sm_drug"
+	}
+
+	"lefordianos"
+	{
+	}
+
+	"lef_teams"
+	{
+	}
+
+	"ServerCommands"
+	{
+		"item"		"lef_match_restart"
+		"item"		"lef_match_lobby"
+		"item"		"sm_map"
+		"item"		"sm_execcfg"
+		"item"		"sm_reloadadmins"
+	}
+
+	"VotingCommands"
+	{
+		"item"		"sm_cancelvote"
+		"item"		"sm_votemap"
+		"item"		"sm_votekick"
+		"item"		"sm_voteban"
+	}
+}

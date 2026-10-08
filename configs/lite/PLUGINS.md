@@ -387,6 +387,12 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
       voted in `!votes` (game's vote screen). `lef_campaigns` replaced rikka0w0's ACS on 2026-10-04.
   *ES: rotación de campañas; la próxima se vota en `!votes` (pantalla de votación del juego).
   `lef_campaigns` reemplazó al ACS de rikka0w0 el 2026-10-04.*
+- [x] **Ours** `lef_match`: an admin changing the map inside the campaign (restart chapter, *Change map*,
+      mission manager) no longer wipes the scores; `!admin` gets "Restart chapter" and "Return to lobby".
+      *Added 2026-10-08 at the owner's request.*
+  *ES: (nuestro) si un admin cambia el mapa dentro de la campaña (reiniciar capítulo, *Cambiar mapa*,
+  mission manager) ya no se borran los puntajes; `!admin` tiene "Reiniciar capítulo" y "Volver al lobby".
+  Agregado el 2026-10-08 a pedido del dueño.*
 
 ## 5b. Tank and witch every map, with flow % announced · Tank y witch en cada mapa, con el % anunciado
 
@@ -642,6 +648,10 @@ carpeta de repo); **AM** = `from_alliedmodders`. `dhooks` ya viene incluido en S
   *ES: permite "quad caps" en el orden nativo.*
 - [x] `optional/l4d2_fix_spawn_order`: fixed SI spawn rotation.
   *ES: rotación fija de aparición de SI.*
+- [x] ZoneMod's `z_door_pound_damage 160` (game default 60): SI break a door with one hit. A cvar, set in
+  `lefordianos/common.cfg`; chosen 2026-10-08.
+  *ES: los SI rompen una puerta de un golpe (por defecto 60). Es un cvar, en `lefordianos/common.cfg`;
+  elegido el 2026-10-08.*
 - [x] `optional/l4d2_nospitterduringtank`: no spitter while a tank is up.
   *ES: no hay spitter mientras hay un tank.*
 - [x] `optional/despawn_health`: SI get health back when they despawn.

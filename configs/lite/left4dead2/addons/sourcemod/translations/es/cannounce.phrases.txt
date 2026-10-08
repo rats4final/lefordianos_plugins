@@ -1,0 +1,71 @@
+// Spanish for cannounce (join/leave messages). Without it, with "ServerLang" "es" SourceMod finds no
+// phrase for the server's own copy of the message (SourceTV, log) and logs an error every time.
+// Espanol para cannounce (avisos de entrada/salida). Sin esto, con "ServerLang" "es" SourceMod no
+// encuentra la frase para la copia del servidor (SourceTV, log) y anota un error cada vez.
+"Phrases"
+{
+	"messages_playerjoin"
+	{
+		"es"		"[{olive}TS{default}] {blue}Entró {green}{PLAYERNAME}{default}. ({green}{PLAYERCOUNTRY}, {PLAYERCITY}{default})"
+	}
+	"messages_playerdisc"
+	{
+		"es"		"[{olive}TS{default}] {red}Se fue {green}{PLAYERNAME}{default}. ({green}{DISC_REASON}{default})"
+	}
+	"messages_admin_playerjoin"
+	{
+		"es"		"[{olive}TS{default}] {blue}Entró {green}{PLAYERNAME}{default}. ({green}{PLAYERCOUNTRY}, {PLAYERCITY}{default}) IP: {green}{PLAYERIP}{default} {olive}<ID:{STEAMID}>"
+	}
+	"messages_admin_playerdisc"
+	{
+		"es"		"[{olive}TS{default}] {red}Se fue {green}{PLAYERNAME}{default}. ({green}{DISC_REASON}{default}) IP: {green}{PLAYERIP}{default} {olive}<ID:{STEAMID}>"
+	}
+	"CA Admin"
+	{
+		"es"		"Admin"
+	}
+	"CA Public"
+	{
+		"es"		"Jugador"
+	}
+	"LAN City Desc"
+	{
+		"es"		"una dirección IP"
+	}
+	"LAN Region Desc"
+	{
+		"es"		"una subred local"
+	}
+	"LAN Country Desc"
+	{
+		"es"		"una red local"
+	}
+	"LAN Country Short"
+	{
+		"es"		"LAN"
+	}
+	"LAN Country Short 3"
+	{
+		"es"		"LAN"
+	}
+	"Unknown City Desc"
+	{
+		"es"		"algún lugar"
+	}
+	"Unknown Region Desc"
+	{
+		"es"		"una región desconocida"
+	}
+	"Unknown Country Desc"
+	{
+		"es"		"un país desconocido"
+	}
+	"Unknown Country Short"
+	{
+		"es"		"??"
+	}
+	"Unknown Country Short 3"
+	{
+		"es"		"???"
+	}
+}
