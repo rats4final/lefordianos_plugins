@@ -80,3 +80,25 @@ The router's DMZ is not needed for this; leave it off.
 Probably the server is still held ("reserved") by a lobby that failed to join. Wait about a minute,
 or type `sv_cookie 0` in the server console (an l4dtoolz command that drops the reservation). Always
 include the port: `connect <IP>:27016`; without it the game tries 27015.
+
+## "Server is enforcing consistency for this file: addons/..."
+
+**Status: found by the owner (2026-10), fix works.**
+
+**Symptom:** a player is kicked while joining with a message like
+`Server is enforcing consistency for this file: addons/bigwatnight.vpk` (the name changes with the
+campaign).
+
+**Why:** the server runs with `sv_consistency 1` (in `server.cfg`), so it compares the add-on files
+the player loads with its own. The comparison goes by **path**: if the server has the campaign at one
+path and the player at another (for example `addons/workshop/3122417079.vpk` from the Workshop on one
+side, and a hand-copied `addons/bigwatnight.vpk` on the other), it doesn't match and the player is
+kicked, even if it's the same campaign.
+
+**Fix:** use the **same path for the add-on on the server and on every player's game**. The easy way
+is for both to use the Workshop copy (`addons/workshop/<id>.vpk`): the players subscribe on the
+Workshop, and the server gets the same file in `addons/workshop/`. If a player copied the file by
+hand, they delete it and subscribe instead (or both use the same file name in `addons/`).
+
+`sv_consistency 0` would also stop the kick, but then nobody's files are checked (modified models or
+materials, e.g. see-through walls, get in). Not recommended.

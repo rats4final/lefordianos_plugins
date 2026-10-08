@@ -84,3 +84,25 @@ El DMZ del router no hace falta para esto; dejarlo apagado.
 Probablemente el server sigue apartado ("reservado") por una sala que no logró entrar. Espera más o
 menos un minuto, o escribe `sv_cookie 0` en la consola del server (un comando de l4dtoolz que suelta
 la reserva). Pon siempre el puerto: `connect <IP>:27016`; sin él, el juego busca el 27015.
+
+## "Server is enforcing consistency for this file: addons/..."
+
+**Estado: lo encontró el dueño (2026-10), el arreglo funciona.**
+
+**Síntoma:** a un jugador lo echan al entrar con un mensaje como
+`Server is enforcing consistency for this file: addons/bigwatnight.vpk` (el nombre cambia según la
+campaña).
+
+**Por qué:** el servidor corre con `sv_consistency 1` (en `server.cfg`), así que compara los archivos
+de addons que carga el jugador con los suyos. La comparación va por **ruta**: si el servidor tiene la
+campaña en una ruta y el jugador en otra (por ejemplo `addons/workshop/3122417079.vpk` del Workshop de
+un lado, y un `addons/bigwatnight.vpk` copiado a mano del otro), no coincide y echa al jugador, aunque
+sea la misma campaña.
+
+**Arreglo:** usar **la misma ruta para el addon en el servidor y en el juego de cada jugador**. Lo más
+fácil es que los dos usen la copia del Workshop (`addons/workshop/<id>.vpk`): los jugadores se
+suscriben en el Workshop, y el servidor tiene el mismo archivo en `addons/workshop/`. Si un jugador
+copió el archivo a mano, lo borra y se suscribe (o los dos usan el mismo nombre de archivo en `addons/`).
+
+`sv_consistency 0` también evitaría que lo echen, pero entonces no se revisan los archivos de nadie
+(entran modelos o materiales modificados, por ejemplo paredes transparentes). No recomendado.

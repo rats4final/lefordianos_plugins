@@ -5,6 +5,17 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-10-08
+
+- **The server repo uses the lite config:** the owner's private [l4d2-server](https://github.com/rats4final/l4d2-server)
+  repo (clone, `setup.ps1`, `start-server.bat`) now holds the lite package and the server's own settings,
+  instead of the old ZoneMod setup. New `tools/sync_server.py` copies a fresh build into it, removing files
+  that left the package and leaving plugins the owner turned off alone. The RCON password and Steam API
+  key moved to a file git never uploads (`cfg/secrets_server.cfg`).
+- **Knowledge base** ([docs/KNOWLEDGE.md](docs/KNOWLEDGE.md)): every problem we've hit, whether the cause is
+  confirmed or suspected, and the fix. New: the "Server is enforcing consistency for this file" kick, fixed
+  by having the campaign at the same path on the server and on the players' games.
+
 ## 2026-10-04
 
 - **Connection guide** ([docs/CONNECTION.md](docs/CONNECTION.md)): "No Steam logon", duplicate

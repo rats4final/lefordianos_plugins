@@ -6,6 +6,17 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-10-08
+
+- **El repo del servidor usa la config lite:** el repo privado del dueño, [l4d2-server](https://github.com/rats4final/l4d2-server)
+  (clonar, `setup.ps1`, `start-server.bat`), ahora tiene el paquete lite y los ajustes propios del servidor,
+  en vez de la instalación vieja de ZoneMod. La nueva `tools/sync_server.py` copia un armado nuevo ahí,
+  borra los archivos que salieron del paquete y deja en paz los plugins que el dueño apagó. La contraseña
+  de RCON y la clave de la API de Steam pasaron a un archivo que git nunca sube (`cfg/secrets_server.cfg`).
+- **Base de conocimientos** ([docs/KNOWLEDGE.es.md](docs/KNOWLEDGE.es.md)): cada problema que encontramos, si la
+  causa está confirmada o es sospecha, y el arreglo. Nuevo: el kick "Server is enforcing consistency for this
+  file", que se arregla teniendo la campaña en la misma ruta en el servidor y en el juego de los jugadores.
+
 ## 2026-10-04
 
 - **Guía de conexión** ([docs/CONNECTION.es.md](docs/CONNECTION.es.md)): "No Steam logon", conexiones
