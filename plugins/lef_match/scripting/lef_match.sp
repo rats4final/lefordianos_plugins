@@ -449,6 +449,13 @@ Action Timer_ReturnToLobby(Handle timer)
 {
 	Forget();
 
+	// lef_campaigns turns the end-of-campaign lobby into the next campaign; tell it this one is wanted.
+	if (CommandExists("lef_campaigns_allow_lobby"))
+	{
+		ServerCommand("lef_campaigns_allow_lobby");
+		ServerExecute();
+	}
+
 	// What the game does when its "Return to lobby" vote passes (Director::FinishScenarioExit).
 	Handle msg = StartMessageAll("DisconnectToLobby", USERMSG_RELIABLE);
 	if (msg != null)

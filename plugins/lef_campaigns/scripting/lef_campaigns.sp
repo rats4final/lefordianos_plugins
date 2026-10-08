@@ -10,8 +10,17 @@
  *   !next                          which campaign comes next
  *   sm_setnextcampaign <map>       set it (server/admin; what the vote runs). "clear" forgets it.
  *
- * If another plugin changes the map first (e.g. l4d2_map_transitions on c9m2), that wins: our change
- * waits lef_campaigns_delay seconds and is cancelled by any map change.
+ * Versus: at the end of a campaign the game opens its own end panel, where players vote for 30 s
+ * (sv_pz_endgame_vote_period, set in lefordianos/common.cfg; the game's default is 12) plus 5. Then
+ * the game either plays the campaign again (rematch won) or sends everyone to the lobby with a
+ * DisconnectToLobby message (read from server.dll). We let the rematch happen; instead of the lobby
+ * we change to the next campaign, unless players chose the lobby: more votes for the panel's second
+ * option than for "play again" (counted from the game's PZEndGameVoteStatsMsg), a passed "Return to
+ * lobby" vote, or lef_match's !lobby (it runs lef_campaigns_allow_lobby first).
+ * Coop: lef_campaigns_delay seconds after the survivors escape.
+ *
+ * If another plugin changes the map first (e.g. l4d2_map_transitions on c9m2), that wins: our timers
+ * are cancelled by any map change.
  * Needs Harry Potter's l4d2_mission_manager for the list of campaigns.
  */
 
@@ -23,7 +32,7 @@
 #include <colors>
 #include <l4d2_mission_manager>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
 
 public Plugin myinfo =
 {
@@ -35,8 +44,12 @@ public Plugin myinfo =
 };
 
 ConVar g_cvDelay, g_cvAnnounce;
+ConVar g_cvVotePeriod, g_cvVotePost;   // the game's end panel vote
 char   g_sNextMap[64];     // first map of the voted campaign ("" = follow the list)
 bool   g_bChanging;
+bool   g_bCampaignOver;    // versus: the end panel is up
+bool   g_bLobbyAllowed;    // players chose the lobby
+int    g_iRematchVotes, g_iLobbyVotes;
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
@@ -61,13 +74,33 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_nextcampaign", Cmd_Next, "Which campaign comes next");
 	RegAdminCmd("sm_setnextcampaign", Cmd_SetNext, ADMFLAG_CHANGEMAP, "sm_setnextcampaign <first map of a campaign | clear>");
 
+	RegServerCmd("lef_campaigns_allow_lobby", Cmd_AllowLobby, "Let the next return to the lobby through (lef_match runs it before !lobby)");
+
 	HookEvent("finale_win", Event_FinaleWin, EventHookMode_PostNoCopy);
 	HookEvent("player_left_start_area", Event_LeftStartArea, EventHookMode_PostNoCopy);
+
+	g_cvVotePeriod = FindConVar("sv_pz_endgame_vote_period");
+	g_cvVotePost   = FindConVar("sv_pz_endgame_vote_post_period");
+
+	UserMsg msg = GetUserMessageId("DisconnectToLobby");
+	if (msg != INVALID_MESSAGE_ID)
+	{
+		HookUserMessage(msg, Message_Lobby, true);
+	}
+	if ((msg = GetUserMessageId("PZEndGameVoteStatsMsg")) != INVALID_MESSAGE_ID)
+	{
+		HookUserMessage(msg, Message_VoteStats);
+	}
+	HookUserMessage(GetUserMessageId("VotePass"), Message_VotePass);
 }
 
 public void OnMapStart()
 {
 	g_bChanging = false;
+	g_bCampaignOver = false;
+	g_bLobbyAllowed = false;
+	g_iRematchVotes = 0;
+	g_iLobbyVotes = 0;
 }
 
 bool MissionManagerReady()
@@ -126,8 +159,86 @@ public void L4D2_OnEndVersusModeRound_Post()
 	}
 	if (L4D_IsMissionFinalMap())
 	{
-		ScheduleChange();
+		VersusCampaignOver();
 	}
+}
+
+void VersusCampaignOver()
+{
+	if (g_bCampaignOver)
+	{
+		return;
+	}
+	g_bCampaignOver = true;
+
+	int voteTime = g_cvVotePeriod != null ? g_cvVotePeriod.IntValue : 12;
+	int postTime = g_cvVotePost != null ? g_cvVotePost.IntValue : 5;
+
+	char map[64], title[128];
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && !IsFakeClient(i) && GetNext(i, map, sizeof(map), title, sizeof(title)))
+		{
+			CPrintToChat(i, "%T", "Versus Over", i, title, voteTime);
+		}
+	}
+
+	// In case the game's panel never sends anyone to the lobby: change a bit after it should have.
+	CreateTimer(float(voteTime + postTime + 5), Timer_Change, _, TIMER_FLAG_NO_MAPCHANGE);
+}
+
+// The game is sending everyone back to the lobby (end panel without a rematch, or a lobby vote).
+Action Message_Lobby(UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init)
+{
+	if (!g_bCampaignOver || g_bChanging || g_bLobbyAllowed || g_iLobbyVotes > g_iRematchVotes)
+	{
+		return Plugin_Continue;
+	}
+
+	// Can't change map from inside a message hook; do it next frame.
+	RequestFrame(Frame_Change);
+	return Plugin_Handled;
+}
+
+void Frame_Change()
+{
+	Timer_Change(null);
+}
+
+// The end panel's tally, per team: players, votes for option 1 ("play again"), for option 2, and one
+// more number. Read from server.dll: options are stored as 1 and 2, and 1 winning means rematch.
+Action Message_VoteStats(UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init)
+{
+	int rematch, lobby;
+	for (int team = 0; team < 2; team++)
+	{
+		msg.ReadByte();
+		rematch += msg.ReadByte();
+		lobby += msg.ReadByte();
+		msg.ReadByte();
+	}
+	g_iRematchVotes = rematch;
+	g_iLobbyVotes = lobby;
+	return Plugin_Continue;
+}
+
+// A "Return to lobby" vote passed (the game's vote menu).
+Action Message_VotePass(UserMsg msg_id, BfRead msg, const int[] players, int playersNum, bool reliable, bool init)
+{
+	char details[64];
+	msg.ReadByte();
+	msg.ReadString(details, sizeof(details));
+	if (StrContains(details, "return_to_lobby", false) != -1)
+	{
+		g_bLobbyAllowed = true;
+	}
+	return Plugin_Continue;
+}
+
+Action Cmd_AllowLobby(int args)
+{
+	g_bLobbyAllowed = true;
+	return Plugin_Handled;
 }
 
 void Event_FinaleWin(Event event, const char[] name, bool dontBroadcast)
@@ -166,6 +277,15 @@ void ScheduleChange()
 
 Action Timer_Change(Handle timer)
 {
+	if (g_bCampaignOver)
+	{
+		if (g_bChanging)
+		{
+			return Plugin_Stop;
+		}
+		g_bChanging = true;
+	}
+
 	char map[64], title[128];
 	if (GetNext(LANG_SERVER, map, sizeof(map), title, sizeof(title)) && IsMapValid(map))
 	{

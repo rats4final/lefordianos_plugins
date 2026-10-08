@@ -1,5 +1,9 @@
 "Phrases"
 {
+	"Versus Over"
+	{
+		"es"		"{green}[Campañas]{default} Terminó la campaña. Voten en la pantalla final ({2} s): jugar de nuevo, o volver al lobby. Si nadie elige el lobby, sigue: {olive}{1}{default}."
+	}
 	"Changing"
 	{
 		"es"		"{green}[Campañas]{default} Terminó la campaña. Sigue: {olive}{1}{default} en {2} segundos."

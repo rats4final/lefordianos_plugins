@@ -5,6 +5,11 @@
 		"#format"	"{1:s},{2:d}"
 		"en"		"{green}[Campaigns]{default} Campaign over. Next: {olive}{1}{default} in {2} seconds."
 	}
+	"Versus Over"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"{green}[Campaigns]{default} Campaign over. Vote on the end screen ({2} s): play again, or back to the lobby. If nobody picks the lobby, next: {olive}{1}{default}."
+	}
 	"Finale Next"
 	{
 		"#format"	"{1:s}"
