@@ -200,6 +200,10 @@ return to lobby via the `DisconnectToLobby` usermessage, from server.dll's Direc
 `adminmenu_sorting.txt` ships (useful items first); `z_door_pound_damage 160`. Quads: settings equal ZoneMod
 (class limits 1 = game default); `sackorder_debug 1` is the in-game check. The owner dropped TankTime 1.2.3
 (Merc1less, mutation19 for versus) in `../from_alliedmodders/`: only active in mutation19, Windows signatures
-still match, ships its own Stripper files (would need merging into ours); not added yet.
+still match, ships its own Stripper files (would need merging into ours); not added yet (idea in IDEAS).
+Later the same day: versus end screen read from server.dll: vote `sv_pz_endgame_vote_period` (12, now 30 in
+common.cfg) + post 5; then rematch (option 1 won) or `DisconnectToLobby`. `lef_campaigns` 1.1.0 blocks that
+message and changes campaign unless lobby votes > rematch votes (`PZEndGameVoteStatsMsg`: per team players,
+opt1, opt2, ?), a ReturnToLobby vote passed, or `lef_campaigns_allow_lobby` (lef_match's !lobby).
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

@@ -393,6 +393,20 @@ también lo usaría.
 
 ## Más adelante
 
+- **Tank!Time! para versus (mutation19, "Taaannnk!!")** (idea, 2026-10-08): el TankTime 1.2.3 de
+  Merc1less (2024, [AlliedModders](https://forums.alliedmods.net/showthread.php?t=248745)), que el dueño
+  guardó en `../from_alliedmodders/TankTime_v1_2_3-20-03-2024.zip`. Balancea la mutación de solo tanks para
+  versus (tiempos de reaparición, vida del tank, "modo escopetas", spawns fijos, un HUD). Lo que sabemos: el
+  plugin solo actúa cuando `mp_gamemode` es `mutation19`, y sus tres firmas de Windows todavía coinciden
+  con el `server.dll` de hoy. Pero también trae **sus propios archivos de Stripper** (28 mapas) y
+  **VScripts** (scripts de finales de c1, c6, c7, c9), que se aplicarían en todos los modos. Plan si lo
+  hacemos:
+  - que los cambios de mapas sean solo de ese modo: Stripper y VScripts cargados solo en mutation19,
+    combinados con los nuestros (cómo, falta ver: Stripper lee sus archivos al cargar el mapa, antes de que
+    corra la config del modo);
+  - **reescribirlo** con sintaxis nueva y Left4DHooks en vez de su propia gamedata (TakeOverZombieBot,
+    ReplaceTank, ZombieManager), colors.inc, convenciones `lef_`, traducciones en/es;
+  - ofrecerlo como modo de juego en `!votes` (la lista de Vote_Mode).
 - **Grabación de demos** para ambas configs (en pausa desde el 2026-10-01, volveremos a esto):
   - la extensión [sourcetvsupport](https://github.com/shqke/sourcetvsupport) (arregla SourceTV en
     L4D2; hay que descargar el binario de sus releases de GitHub o compilarlo desde el código);

@@ -7,6 +7,10 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-10-08
 
+- **30 seconds to vote at the end of a versus campaign** (`lef_campaigns` 1.1.0): the game's end screen
+  (play again / lobby) had 12 seconds and our campaign change came at 12, so nobody could vote. Now the vote
+  lasts 30 s; a rematch is left to the game, a lobby choice (end screen, lobby vote, `!lobby`) is respected,
+  and otherwise the next campaign starts. Read from `server.dll`; not yet tested with players.
 - **Scores kept when an admin changes the map** (new `lef_match`): restarting the chapter or picking a map of
   the same campaign (SourceMod's *Change map*, the mission manager, `!votes`) used to put both teams at 0. Now
   each team gets back its points from the start of that chapter. `!admin` > Server Commands gets **Restart

@@ -8,6 +8,11 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-10-08
 
+- **30 segundos para votar al final de una campaña de versus** (`lef_campaigns` 1.1.0): la pantalla final
+  del juego (jugar de nuevo / lobby) tenía 12 segundos y nuestro cambio de campaña llegaba a los 12, así que
+  nadie podía votar. Ahora el voto dura 30 s; la revancha la hace el juego, elegir el lobby (pantalla final,
+  voto de lobby, `!lobby`) se respeta, y si no, empieza la próxima campaña. Leído del `server.dll`; sin probar
+  con jugadores todavía.
 - **Puntajes mantenidos cuando un admin cambia el mapa** (nuevo `lef_match`): reiniciar el capítulo o elegir un
   mapa de la misma campaña (*Cambiar mapa* de SourceMod, el mission manager, `!votes`) dejaba a los dos equipos
   en 0. Ahora cada equipo recupera sus puntos del inicio de ese capítulo. `!admin` > Comandos de servidor tiene

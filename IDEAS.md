@@ -356,6 +356,18 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Later
 
+- **Tank!Time! for versus (mutation19, "Taaannnk!!")** (idea, 2026-10-08): Merc1less' TankTime 1.2.3
+  (2024, [AlliedModders](https://forums.alliedmods.net/showthread.php?t=248745)), saved by the owner in
+  `../from_alliedmodders/TankTime_v1_2_3-20-03-2024.zip`. It balances the all-tanks mutation for versus
+  (respawn times, tank health, "shotgun mode", fixed spawns, a HUD). What we know: the plugin only acts
+  when `mp_gamemode` is `mutation19`, and its three Windows signatures still match today's `server.dll`.
+  But it also ships **its own Stripper files** (28 maps) and **VScripts** (finale scripts for c1, c6, c7,
+  c9), which would apply in every mode. Plan if we do it:
+  - make the map changes mode-only: Stripper files and VScripts loaded only in mutation19, merged with
+    ours (how is still open: Stripper reads its files when the map loads, before the mode's config runs);
+  - **rewrite it** in new syntax with Left4DHooks instead of its own gamedata (TakeOverZombieBot,
+    ReplaceTank, ZombieManager), colors.inc, `lef_` conventions, en/es translations;
+  - offer it as a game mode in `!votes` (Vote_Mode's list).
 - **Demo recording** for both configs (parked 2026-10-01, we'll come back to it):
   - the [sourcetvsupport](https://github.com/shqke/sourcetvsupport) extension (fixes SourceTV
     in L4D2; the binary has to be downloaded from its GitHub releases or built from source);
