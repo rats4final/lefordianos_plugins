@@ -39,7 +39,7 @@ CORE_GAMEDATA = {"sdktools.games", "sdkhooks.games", "core.games", "funcommands.
 
 # Gamedata that only exists for one platform on purpose (the plugin fixes a one-platform bug and
 # simply doesn't load on the other).
-ONE_PLATFORM_GAMEDATA = {"chainsaw_fix"}  # Harry's l4d2_chainsaw_fix: Linux-only crash
+ONE_PLATFORM_GAMEDATA = set()  # none since l4d2_chainsaw_fix got Windows signatures (2026-11)
 
 # Where our patched copies of other people's plugins keep their gamedata/translations.
 FALLBACK_ROOTS = ["L4D2-Competitive-Rework"]
