@@ -93,4 +93,12 @@
 	{
 		"en"		"{green}[Tank]{default} You have {olive}2 control bars{default}: they drain while you don't hit survivors. The first one refills once; when the second runs out the tank goes to a bot."
 	}
+	"Attack Together"
+	{
+		"en"		"{green}[Hint]{default} Infected: attack together. One alone rarely gets anything; two or three at once break the survivors. (Sacrificing a boomer or spitter to rotate is fine.)"
+	}
+	"Died Alone"
+	{
+		"en"		"{green}[Hint]{default} You went in alone and died fast. Wait for your teammates and hit together."
+	}
 }

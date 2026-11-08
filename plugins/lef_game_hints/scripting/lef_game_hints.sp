@@ -14,6 +14,13 @@
  *
  *  3. Tank tips: whoever becomes (or is passed) the tank gets a couple of tips, plus one about their team when
  *     it's still respawning. The infected team is told who the tank is.
+ *
+ *  4. Attack together (versus): once per map the infected team gets the tip, and a smoker, hunter,
+ *     jockey or charger who attacked alone and died fast gets a private reminder (once per round).
+ *     "Alone and fast": killed by a survivor within lef_hints_solo_time seconds of spawning, with less
+ *     than lef_hints_solo_damage damage done, nobody pinned, no infected teammate fighting nearby,
+ *     no survivor down or pinned, no tank up. Boomers and spitters never count: sacrificing them to
+ *     rotate the spawn order is a real tactic.
  */
 
 #pragma semicolon 1
@@ -23,10 +30,14 @@
 #include <left4dhooks>
 #include <colors>
 
-#define PLUGIN_VERSION "1.1.0"
+#define PLUGIN_VERSION "1.2.0"
 
 #define TEAM_SURVIVOR 2
 #define TEAM_INFECTED 3
+#define ZC_SMOKER     1
+#define ZC_HUNTER     3
+#define ZC_JOCKEY     5
+#define ZC_CHARGER    6
 #define ZC_TANK       8
 #define TANK_TIPS     8
 
@@ -51,6 +62,10 @@ ConVar
 	g_cvHoldTellTeam,
 	g_cvTankTips,
 	g_cvTankTipCount,
+	g_cvSolo,
+	g_cvSoloTime,
+	g_cvSoloDamage,
+	g_cvSoloRange,
 	g_cvCooldown;
 
 bool  g_bLive;
@@ -61,6 +76,11 @@ float g_fNextWarn[MAXPLAYERS + 1];
 float g_fLastAction[MAXPLAYERS + 1];   // infected: last attack/ability, or when they spawned
 float g_fGhostReady[MAXPLAYERS + 1];   // infected: seconds spent as a ghost able to spawn
 bool  g_bTankTipped[MAXPLAYERS + 1];   // this player already got tips for their current tank
+float g_fSpawnedAt[MAXPLAYERS + 1];    // infected: when they left ghost mode
+int   g_iSoloDamage[MAXPLAYERS + 1];   // infected: damage to survivors this life
+bool  g_bPinnedSomeone[MAXPLAYERS + 1];
+bool  g_bSoloWarned[MAXPLAYERS + 1];   // got the attack-alone reminder this round
+float g_fLastHit[MAXPLAYERS + 1];      // infected: last hit on a survivor, pin or ability
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
@@ -88,6 +108,10 @@ public void OnPluginStart()
 	g_cvHoldTellTeam   = CreateConVar("lef_hints_hold_tell_team", "0", "Also tell the infected team.", _, true, 0.0, true, 1.0);
 	g_cvTankTips       = CreateConVar("lef_hints_tank_tips", "1", "Give tips to whoever becomes the tank.", _, true, 0.0, true, 1.0);
 	g_cvTankTipCount   = CreateConVar("lef_hints_tank_tip_count", "1", "How many random tips the tank gets (after the controls and the control meter / !pass lines).", _, true, 0.0, true, float(TANK_TIPS));
+	g_cvSolo           = CreateConVar("lef_hints_solo", "1", "Versus: once per map tell the infected to attack together, and remind an infected who attacked alone and died fast.", _, true, 0.0, true, 1.0);
+	g_cvSoloTime       = CreateConVar("lef_hints_solo_time", "15", "Attack alone: died within this many seconds of spawning.", _, true, 1.0);
+	g_cvSoloDamage     = CreateConVar("lef_hints_solo_damage", "10", "Attack alone: did less than this much damage to survivors.", _, true, 0.0);
+	g_cvSoloRange      = CreateConVar("lef_hints_solo_range", "1200", "Attack alone: no living infected teammate (or one that attacked in the last 5 s) within this distance.", _, true, 0.0);
 	g_cvCooldown       = CreateConVar("lef_hints_cooldown", "30", "Seconds between warnings to the same player.", _, true, 5.0);
 	AutoExecConfig(true, "lef_game_hints");
 
@@ -99,6 +123,11 @@ public void OnPluginStart()
 	HookEvent("player_hurt", Event_PlayerHurt);
 	HookEvent("ability_use", Event_AbilityUse);
 	HookEvent("player_death", Event_PlayerDeath);
+	HookEvent("lunge_pounce", Event_Pin);
+	HookEvent("tongue_grab", Event_Pin);
+	HookEvent("jockey_ride", Event_Pin);
+	HookEvent("charger_carry_start", Event_Pin);
+	HookEvent("charger_pummel_start", Event_Pin);
 
 	CreateTimer(1.0, Timer_Check, _, TIMER_REPEAT);
 }
@@ -119,6 +148,7 @@ void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 	{
 		g_fNextWarn[i] = 0.0;
 		g_fGhostReady[i] = 0.0;
+		g_bSoloWarned[i] = false;
 	}
 }
 
@@ -129,6 +159,18 @@ void Event_LeftStartArea(Event event, const char[] name, bool dontBroadcast)
 	for (int i = 1; i <= MaxClients; i++)
 	{
 		g_fLastAction[i] = now;   // nobody could attack before this
+	}
+
+	// Once per map (first half): the attack-together tip for the infected team.
+	if (g_cvSolo.BoolValue && IsVersus() && GameRules_GetProp("m_bInSecondHalfOfRound") == 0)
+	{
+		for (int i = 1; i <= MaxClients; i++)
+		{
+			if (IsClientInGame(i) && !IsFakeClient(i) && GetClientTeam(i) == TEAM_INFECTED)
+			{
+				CPrintToChat(i, "%T", "Attack Together", i);
+			}
+		}
 	}
 }
 
@@ -159,6 +201,11 @@ void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast)
 	if (client > 0)
 	{
 		g_bTankTipped[client] = false;
+		if (g_cvSolo.BoolValue && g_bLive && IsVersus() && DiedAloneFast(client, GetClientOfUserId(event.GetInt("attacker"))))
+		{
+			g_bSoloWarned[client] = true;
+			Warn(client, "Died Alone", "", TEAM_INFECTED, false);
+		}
 	}
 }
 
@@ -168,7 +215,91 @@ void Event_PlayerHurt(Event event, const char[] name, bool dontBroadcast)
 	if (attacker > 0)
 	{
 		g_fLastAction[attacker] = GetGameTime();
+		int victim = GetClientOfUserId(event.GetInt("userid"));
+		if (victim > 0 && GetClientTeam(victim) == TEAM_SURVIVOR && GetClientTeam(attacker) == TEAM_INFECTED)
+		{
+			g_iSoloDamage[attacker] += event.GetInt("dmg_health");
+			g_fLastHit[attacker] = GetGameTime();
+		}
 	}
+}
+
+// ---------------------------------------------------------------------------
+// 4. Attack together
+// ---------------------------------------------------------------------------
+
+public void L4D_OnMaterializeFromGhost(int client)
+{
+	g_fSpawnedAt[client] = GetGameTime();
+	g_iSoloDamage[client] = 0;
+	g_bPinnedSomeone[client] = false;
+}
+
+void Event_Pin(Event event, const char[] name, bool dontBroadcast)
+{
+	int client = GetClientOfUserId(event.GetInt("userid"));
+	if (client > 0)
+	{
+		g_bPinnedSomeone[client] = true;
+		g_fLastHit[client] = GetGameTime();
+	}
+}
+
+bool DiedAloneFast(int client, int killer)
+{
+	if (g_bSoloWarned[client] || IsFakeClient(client) || GetClientTeam(client) != TEAM_INFECTED || g_fSpawnedAt[client] <= 0.0)
+	{
+		return false;
+	}
+	int zclass = GetEntProp(client, Prop_Send, "m_zombieClass");
+	if (zclass != ZC_SMOKER && zclass != ZC_HUNTER && zclass != ZC_JOCKEY && zclass != ZC_CHARGER)
+	{
+		return false;   // boomers and spitters are fine to sacrifice; tanks are their own thing
+	}
+	// Killed by a survivor (a fall or a suicide to rotate the class doesn't count).
+	if (killer <= 0 || killer > MaxClients || !IsClientInGame(killer) || GetClientTeam(killer) != TEAM_SURVIVOR)
+	{
+		return false;
+	}
+	float now = GetGameTime();
+	if (now - g_fSpawnedAt[client] > g_cvSoloTime.FloatValue || g_iSoloDamage[client] >= g_cvSoloDamage.IntValue
+		|| g_bPinnedSomeone[client] || IsTankUp())
+	{
+		return false;
+	}
+	// A survivor down or pinned: going in alone to keep them there makes sense.
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i) && GetClientTeam(i) == TEAM_SURVIVOR && IsPlayerAlive(i)
+			&& (L4D_IsPlayerIncapacitated(i) || L4D_IsPlayerPinned(i)))
+		{
+			return false;
+		}
+	}
+	// A teammate fighting nearby, or attacking anywhere in the last 5 seconds: not alone.
+	float pos[3], other[3];
+	GetClientAbsOrigin(client, pos);
+	float range = g_cvSoloRange.FloatValue;
+	for (int i = 1; i <= MaxClients; i++)
+	{
+		if (i == client || !IsClientInGame(i) || GetClientTeam(i) != TEAM_INFECTED)
+		{
+			continue;
+		}
+		if (now - g_fLastHit[i] < 5.0)
+		{
+			return false;
+		}
+		if (IsPlayerAlive(i) && !L4D_IsPlayerGhost(i))
+		{
+			GetClientAbsOrigin(i, other);
+			if (GetVectorDistance(pos, other) <= range)
+			{
+				return false;
+			}
+		}
+	}
+	return true;
 }
 
 void Event_AbilityUse(Event event, const char[] name, bool dontBroadcast)
@@ -177,6 +308,7 @@ void Event_AbilityUse(Event event, const char[] name, bool dontBroadcast)
 	if (client > 0)
 	{
 		g_fLastAction[client] = GetGameTime();
+		g_fLastHit[client] = GetGameTime();
 	}
 }
 
@@ -404,7 +536,11 @@ void Warn(int client, const char[] selfPhrase, const char[] teamPhrase, int team
 {
 	g_fNextWarn[client] = GetGameTime() + g_cvCooldown.FloatValue;
 	CPrintToChat(client, "%T", selfPhrase, client);
-	PrintHintText(client, "%T", selfPhrase, client);
+	// The hint box doesn't understand color tags ({green}...): it showed them as text.
+	char text[256];
+	FormatEx(text, sizeof(text), "%T", selfPhrase, client);
+	CRemoveTags(text, sizeof(text));
+	PrintHintText(client, "%s", text);
 
 	if (!tellTeam)
 	{

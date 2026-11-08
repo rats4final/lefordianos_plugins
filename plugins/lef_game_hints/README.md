@@ -26,10 +26,22 @@ No warnings:
 - `lef_hints_hold_tell_team 1` also tells the infected team (off by default: holding for a team hit
   is fine).
 
+## Attack together (versus)
+
+- Once per map, when the survivors leave the saferoom (first half), the infected team gets the tip:
+  attack together, one alone rarely gets anything.
+- A **smoker, hunter, jockey or charger** that went in alone and died fast gets a private reminder,
+  at most once per round. "Alone and fast" means all of: killed by a survivor within
+  `lef_hints_solo_time` (15 s) of spawning, less than `lef_hints_solo_damage` (10) damage done, nobody
+  pinned, no infected teammate alive within `lef_hints_solo_range` (1200 units) or hitting a survivor
+  in the last 5 s, no survivor down or pinned, and no tank up.
+- **Boomers and spitters never count**, nor deaths not caused by a survivor (falls, suicides):
+  sacrificing one to rotate the spawn order ("kill boom") is a real tactic.
+
 ## Tank tips (versus)
 
 Whoever becomes the tank gets a line about their team (still respawning → hold back; up → call the
-hit in chat) and 2 random tips: avoid open areas, punch hittables, rocks for far survivors, don't
+hit in chat) and random tips: avoid open areas, punch hittables, rocks for far survivors, don't
 chase into the saferoom... The infected team is told who the tank is.
 
 ## Settings
@@ -45,8 +57,12 @@ chase into the saferoom... The infected team is told who the tank is.
 | `lef_hints_hold_time` | 60 | Seconds alive without attacking |
 | `lef_hints_ghost_time` | 60 | Seconds as a ghost able to spawn |
 | `lef_hints_hold_tell_team` | 0 | Also tell the infected team |
+| `lef_hints_solo` | 1 | Attack-together tip and reminder |
+| `lef_hints_solo_time` | 15 | Alone: died within this many seconds of spawning |
+| `lef_hints_solo_damage` | 10 | Alone: did less damage than this |
+| `lef_hints_solo_range` | 1200 | Alone: no infected teammate this close |
 | `lef_hints_tank_tips` | 1 | Tank tips |
-| `lef_hints_tank_tip_count` | 2 | Random tips per tank |
+| `lef_hints_tank_tip_count` | 1 | Random tips per tank |
 | `lef_hints_cooldown` | 30 | Seconds between warnings to the same player |
 
 The tips and warnings are in `translations/lef_game_hints.phrases.txt` (English and Spanish), easy to

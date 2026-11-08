@@ -28,10 +28,22 @@ Sin avisos:
 - `lef_hints_hold_tell_team 1` también avisa al equipo infectado (apagado por defecto: guardarlo para un
   ataque en equipo está bien).
 
+## Ataquen juntos (versus)
+
+- Una vez por mapa, cuando los supervivientes salen del refugio (primera mitad), el equipo infectado
+  recibe el consejo: ataquen juntos, uno solo casi nunca logra nada.
+- Un **smoker, hunter, jockey o charger** que entró solo y murió rápido recibe un aviso privado, como
+  máximo una vez por ronda. "Solo y rápido" es todo esto junto: lo mató un superviviente antes de
+  `lef_hints_solo_time` (15 s) desde que apareció, hizo menos de `lef_hints_solo_damage` (10) de daño, no
+  agarró a nadie, ningún compañero infectado vivo a menos de `lef_hints_solo_range` (1200 unidades) ni
+  golpeando a un superviviente en los últimos 5 s, ningún superviviente caído ni atrapado, y ningún tank.
+- **Los boomers y spitters nunca cuentan**, ni las muertes que no causó un superviviente (caídas,
+  suicidios): sacrificar uno para rotar el orden de aparición ("kill boom") es una táctica de verdad.
+
 ## Consejos para el tank (versus)
 
 Quien pasa a ser tank recibe una línea sobre su equipo (todavía reapareciendo → esperar; listo → avisar el
-ataque en el chat) y 2 consejos al azar: evitar zonas abiertas, golpear objetos, rocas para los que están
+ataque en el chat) y consejos al azar: evitar zonas abiertas, golpear objetos, rocas para los que están
 lejos, no perseguir dentro del refugio... El equipo infectado se entera de quién es el tank.
 
 ## Ajustes
@@ -47,8 +59,12 @@ lejos, no perseguir dentro del refugio... El equipo infectado se entera de quié
 | `lef_hints_hold_time` | 60 | Segundos vivo sin atacar |
 | `lef_hints_ghost_time` | 60 | Segundos como fantasma pudiendo aparecer |
 | `lef_hints_hold_tell_team` | 0 | También avisar al equipo infectado |
+| `lef_hints_solo` | 1 | Consejo y aviso de atacar juntos |
+| `lef_hints_solo_time` | 15 | Solo: murió antes de estos segundos desde que apareció |
+| `lef_hints_solo_damage` | 10 | Solo: hizo menos daño que esto |
+| `lef_hints_solo_range` | 1200 | Solo: ningún compañero infectado tan cerca |
 | `lef_hints_tank_tips` | 1 | Consejos para el tank |
-| `lef_hints_tank_tip_count` | 2 | Consejos al azar por tank |
+| `lef_hints_tank_tip_count` | 1 | Consejos al azar por tank |
 | `lef_hints_cooldown` | 30 | Segundos entre avisos al mismo jugador |
 
 Los consejos y avisos están en `translations/lef_game_hints.phrases.txt` (inglés y español), fáciles de

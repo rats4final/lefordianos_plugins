@@ -88,4 +88,12 @@
 	{
 		"es"		"{green}[Tank]{default} Tienes {olive}2 barras de control{default}: bajan mientras no golpeas a nadie. La primera se recarga una vez; cuando se acaba la segunda, el tank pasa a un bot."
 	}
+	"Attack Together"
+	{
+		"es"		"{green}[Aviso]{default} Infectados: ataquen juntos. Uno solo casi nunca logra nada; dos o tres a la vez rompen a los supervivientes. (Sacrificar un boomer o spitter para rotar vale.)"
+	}
+	"Died Alone"
+	{
+		"es"		"{green}[Aviso]{default} Entraste solo y moriste rápido. Espera a tus compañeros y ataquen juntos."
+	}
 }
