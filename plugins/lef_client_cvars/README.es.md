@@ -44,8 +44,18 @@ propósito, para que los dos puedan estar cargados sin chocar.
 | `lef_clientcvars_interval` | `5.0` | Segundos entre revisiones. |
 | `lef_clientcvars_kick_missing` | `1` | Expulsar cuando el juego se niega a informar una cvar. |
 
-## Todavía no probado en el juego
+## Mensaje propio para una cvar
 
-Compila. Para probar: `mat_fullbright` no se puede poner sin trampas, así que conviene probar con una
-cvar de la lista que sí se pueda cambiar en consola, como `cl_bob`; el jugador debería ser expulsado con
-un mensaje claro.
+Agrega `"Kicked Value <cvar>"` (chat) y/o `"Kick Reason Value <cvar>"` (pantalla de expulsión) en
+`translations/lef_client_cvars.phrases.txt` (y `es/`), con los mismos argumentos que las frases generales
+(nombre/cvar/valor, cvar/valor/permitido). `mat_fullbright` tiene uno: dice que eso es trampa y cómo volver.
+
+## En uso
+
+En el servidor del dueño desde el 2026-10-03. Expulsiones hasta ahora (al 2026-11-08): `mat_fullbright`
+10, `cl_survivor_light_enable 0` 5, `r_flashlightmuzzleflash 0` 2, `cl_max_shadow_renderable_dist 0` 2,
+`sv_consistency 0` 1. Hasta la 1.1.0 el mensaje de expulsión decía "permitido: g" en vez del valor
+(SourceMod no tiene `%g`).
+
+La tercera persona (`c_thirdpersonshoulder`) es otro plugin, `l4d_thirdpersonshoulderblock`: manda al
+jugador a espectadores (`l4d_tpsblock_action 1`).

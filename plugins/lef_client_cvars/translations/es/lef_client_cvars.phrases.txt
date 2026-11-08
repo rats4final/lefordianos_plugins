@@ -16,4 +16,12 @@
 	{
 		"es"		"Tu juego no informó {1} (protegido o faltante)."
 	}
+	"Kicked Value mat_fullbright"
+	{
+		"es"		"{green}[Cvars]{default} {olive}{1}{default} fue expulsado por usar {red}mat_fullbright{default} (todo iluminado, sin sombras): eso es trampa."
+	}
+	"Kick Reason Value mat_fullbright"
+	{
+		"es"		"Expulsado por mat_fullbright {2} (todo iluminado, sin sombras): en este servidor eso es trampa. Escribe mat_fullbright 0 en la consola para volver."
+	}
 }

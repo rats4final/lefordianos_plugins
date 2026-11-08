@@ -43,7 +43,19 @@ so both can be loaded without clashing.
 | `lef_clientcvars_interval` | `5.0` | Seconds between checks. |
 | `lef_clientcvars_kick_missing` | `1` | Kick when the game refuses to report a cvar. |
 
-## Not tested in-game yet
+## Own message for one cvar
 
-Compiles. To test: `mat_fullbright` can't be set without cheats, so change a listed cvar you *can*
-change in the console, like `cl_bob`; the player should be kicked with a clear message.
+Add `"Kicked Value <cvar>"` (chat) and/or `"Kick Reason Value <cvar>"` (kick screen) to
+`translations/lef_client_cvars.phrases.txt` (and `es/`), with the same arguments as the general
+phrases (name/cvar/value, cvar/value/allowed). `mat_fullbright` has one: it says that's cheating and how
+to come back.
+
+## In use
+
+On the owner's server since 2026-10-03. Kicks so far (to 2026-11-08): `mat_fullbright` 10,
+`cl_survivor_light_enable 0` 5, `r_flashlightmuzzleflash 0` 2, `cl_max_shadow_renderable_dist 0` 2,
+`sv_consistency 0` 1. Until 1.1.0 the kick message said "allowed: g" instead of the value (SourceMod has
+no `%g`).
+
+Third person (`c_thirdpersonshoulder`) is a different plugin, `l4d_thirdpersonshoulderblock`: it moves
+the player to spectators (`l4d_tpsblock_action 1`).

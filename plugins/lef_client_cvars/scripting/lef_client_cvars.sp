@@ -24,7 +24,7 @@
 #include <sourcemod>
 #include <colors>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.1.0"
 #define CVAR_MAXLEN    64
 
 enum
@@ -153,28 +153,57 @@ void QueryReply(QueryCookie cookie, int client, ConVarQueryResult result, const 
 		}
 
 		LogMessage("Kicking %L for %s = %s (allowed: %s)", client, cvarName, cvarValue, range);
-		CPrintToChatAll("%t", "Kicked Value", name, cvarName, cvarValue);
-		KickClient(client, "%T", "Kick Reason Value", client, cvarName, cvarValue, range);
+
+		// A cvar can have its own messages: "Kicked Value <cvar>" / "Kick Reason Value <cvar>" in the
+		// translations (same arguments as the general ones), e.g. mat_fullbright says it's cheating.
+		char chatPhrase[96], reasonPhrase[96];
+		FormatEx(chatPhrase, sizeof(chatPhrase), "Kicked Value %s", cvarName);
+		FormatEx(reasonPhrase, sizeof(reasonPhrase), "Kick Reason Value %s", cvarName);
+		CPrintToChatAll("%t", TranslationPhraseExists(chatPhrase) ? chatPhrase : "Kicked Value", name, cvarName, cvarValue);
+		KickClient(client, "%T", TranslationPhraseExists(reasonPhrase) ? reasonPhrase : "Kick Reason Value", client, cvarName, cvarValue, range);
 	}
 }
 
+// SourceMod has no "%g": it printed a literal "g" ("allowed: g") until 2026-11-08.
 void FormatRange(Tracked t, char[] buffer, int maxlength)
 {
+	char lo[24], hi[24];
+	ShortFloat(t.min, lo, sizeof(lo));
+	ShortFloat(t.max, hi, sizeof(hi));
 	if (t.hasMin && t.hasMax && t.min == t.max)
 	{
-		FormatEx(buffer, maxlength, "%g", t.min);
+		strcopy(buffer, maxlength, lo);
 	}
 	else if (t.hasMin && t.hasMax)
 	{
-		FormatEx(buffer, maxlength, "%g - %g", t.min, t.max);
+		FormatEx(buffer, maxlength, "%s - %s", lo, hi);
 	}
 	else if (t.hasMin)
 	{
-		FormatEx(buffer, maxlength, ">= %g", t.min);
+		FormatEx(buffer, maxlength, ">= %s", lo);
 	}
 	else
 	{
-		FormatEx(buffer, maxlength, "<= %g", t.max);
+		FormatEx(buffer, maxlength, "<= %s", hi);
+	}
+}
+
+// 3000.000000 -> "3000", 0.002000 -> "0.002"
+void ShortFloat(float value, char[] buffer, int maxlength)
+{
+	FormatEx(buffer, maxlength, "%.4f", value);
+	int len = strlen(buffer);
+	while (len > 0 && buffer[len - 1] == '0')
+	{
+		buffer[--len] = '\0';
+	}
+	if (len > 0 && buffer[len - 1] == '.')
+	{
+		buffer[--len] = '\0';
+	}
+	if (StrEqual(buffer, "-0"))
+	{
+		strcopy(buffer, maxlength, "0");
 	}
 }
 

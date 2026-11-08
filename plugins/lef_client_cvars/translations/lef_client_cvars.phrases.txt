@@ -20,4 +20,17 @@
 		"#format"	"{1:s}"
 		"en"		"Your game didn't report {1} (protected or missing)."
 	}
+
+	// Own messages for one cvar: "Kicked Value <cvar>" (chat) and "Kick Reason Value <cvar>" (kick screen),
+	// same arguments as above. Any cvar can get them.
+	"Kicked Value mat_fullbright"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"{green}[Client Cvars]{default} {olive}{1}{default} was kicked for using {red}mat_fullbright{default} (everything lit up, no shadows): that's cheating."
+	}
+	"Kick Reason Value mat_fullbright"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"en"		"Kicked for mat_fullbright {2} (everything lit up, no shadows): that's cheating on this server. Type mat_fullbright 0 in your console to come back."
+	}
 }
