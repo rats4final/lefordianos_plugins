@@ -7,6 +7,9 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-11-08
 
+- **Third person notice**: a player moved to spectators for the third person camera is told why, what to
+  type (`c_thirdpersonshoulder 0`) and how to come back, in chat and on screen (patched
+  `l4d_thirdpersonshoulderblock`).
 - **Client cvar kicks** (`lef_client_cvars` 1.1.0): the kick message said "allowed: g" instead of the
   allowed value; fixed. Any cvar can now have its own message, and `mat_fullbright` says it's cheating.
 - **Reference repos updated** to their latest versions. Harry Potter now publishes his plugins only as

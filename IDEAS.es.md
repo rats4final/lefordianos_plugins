@@ -393,6 +393,11 @@ también lo usaría.
 
 ## Más adelante
 
+- **Expulsiones más amables para configs de rendimiento** (idea, 2026-11-08): `cl_survivor_light_enable 0`,
+  `r_flashlightmuzzleflash 0` y `cl_max_shadow_renderable_dist 0` (9 de nuestras 20 expulsiones por cvars
+  hasta ahora) suelen venir de configs para ganar FPS en PCs lentas, no de trampas. Darles sus propias frases
+  en `lef_client_cvars` ("Kicked Value <cvar>" / "Kick Reason Value <cvar>"): "tu config de rendimiento cambia
+  X; ponlo en Y para jugar aquí", sin el tono de trampa que tiene `mat_fullbright`.
 - **Ready-Up solo cuando lo queramos** (idea, 2026-11-08): Ready-Up (todos escriben `!ready` antes de que
   empiece la ronda) está bien en noches entre amigos, pero los randoms se asustan o se van. Idea: apagado
   por defecto, se prende con un voto o un admin cuando la mayoría son amigos, y se apaga solo cuando el

@@ -68,6 +68,7 @@ Kept unchanged in [`alliedmodders/`](alliedmodders/), one folder per author.
 | `lef_t1_mode` | Weapon conversion stocks from l4d2util, as used by `l4d2_weaponrules` (ProdigySim); CS weapon precache idea from `l4d2_sniper_precache` (Visor, A1m`) |
 | `l4d2_playstats` (patched) | Player Statistics by Tabun and A1m` (competitive repo) |
 | `pause` (patched) | Pause plugin by CanadaRox, Sir, Forgetest and A1m` (competitive repo) |
+| `l4d_thirdpersonshoulderblock` (patched) | Thirdpersonshoulder Block by Don (competitive repo) |
 | `si_class_announce` (patched) | Special Infected Class Announce by Tabun and Forgetest (competitive repo) |
 | `l4d_tank_control_eq` | L4D2 Tank Control by arti, with Sheo, Sir and Altair-Sossai (one line changed) |
 | `lef_tanktime` | Port of Tank!Time! by Merc1less: its game rules, map data, Stripper map changes and VScript changes. Spanish phrases partly from Torpedo's translation |

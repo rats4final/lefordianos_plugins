@@ -58,4 +58,4 @@ On the owner's server since 2026-10-03. Kicks so far (to 2026-11-08): `mat_fullb
 no `%g`).
 
 Third person (`c_thirdpersonshoulder`) is a different plugin, `l4d_thirdpersonshoulderblock`: it moves
-the player to spectators (`l4d_tpsblock_action 1`).
+the player to spectators (`l4d_tpsblock_action 1`); our patched copy tells them why and how to come back.

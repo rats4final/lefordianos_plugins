@@ -58,4 +58,4 @@ En el servidor del dueño desde el 2026-10-03. Expulsiones hasta ahora (al 2026-
 (SourceMod no tiene `%g`).
 
 La tercera persona (`c_thirdpersonshoulder`) es otro plugin, `l4d_thirdpersonshoulderblock`: manda al
-jugador a espectadores (`l4d_tpsblock_action 1`).
+jugador a espectadores (`l4d_tpsblock_action 1`); nuestra copia parchada le dice por qué y cómo volver.

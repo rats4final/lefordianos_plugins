@@ -356,6 +356,11 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Later
 
+- **Friendlier kicks for performance configs** (idea, 2026-11-08): `cl_survivor_light_enable 0`,
+  `r_flashlightmuzzleflash 0` and `cl_max_shadow_renderable_dist 0` (9 of our 20 client-cvar kicks so far)
+  usually come from FPS configs for slow PCs, not cheats. Give them their own `lef_client_cvars` phrases
+  ("Kicked Value <cvar>" / "Kick Reason Value <cvar>"): "your performance config changes X; set it to Y to
+  play here", without the cheating tone `mat_fullbright` gets.
 - **Ready-Up only when we want it** (idea, 2026-11-08): Ready-Up (everyone types `!ready` before the round
   starts) is good on friends' nights, but randoms get scared or leave. Idea: off by default, switched on
   by a vote or an admin when most players are friends, and off again when the server empties. Possible

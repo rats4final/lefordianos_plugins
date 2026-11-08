@@ -47,6 +47,7 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/README.es.md) | Nuestro propio sonido al azar en los karma kills (necesita FastDL, ver [docs/FASTDL.es.md](docs/FASTDL.es.md)). |
 | [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/README.es.md) | Copia parchada del tank horde monitor del repo competitivo, con interruptor y recordatorio de la regla. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/README.es.md) | Copia parchada de la rotación de tank del repo competitivo que ya no necesita Ready-Up. |
+| [`l4d_thirdpersonshoulderblock`](plugins/l4d_thirdpersonshoulderblock/README.es.md) | Copia parchada del bloqueo de tercera persona del repo competitivo: le dice al jugador por qué lo pasaron a espectadores y cómo volver. |
 
 ## Compilar
 

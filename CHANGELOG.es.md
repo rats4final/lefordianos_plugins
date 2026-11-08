@@ -8,6 +8,9 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-11-08
 
+- **Aviso de tercera persona**: a un jugador que pasan a espectadores por la cámara en tercera persona se le
+  dice por qué, qué escribir (`c_thirdpersonshoulder 0`) y cómo volver, en el chat y en pantalla (copia
+  parchada de `l4d_thirdpersonshoulderblock`).
 - **Expulsiones por cvars de cliente** (`lef_client_cvars` 1.1.0): el mensaje decía "permitido: g" en vez
   del valor permitido; arreglado. Cualquier cvar puede tener su propio mensaje, y `mat_fullbright` dice que
   es trampa.

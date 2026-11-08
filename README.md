@@ -47,6 +47,7 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |
 | [`l4d2_tank_horde_monitor`](plugins/l4d2_tank_horde_monitor/) | Patched copy of the competitive repo's tank horde monitor with an on/off switch and a rule reminder. |
 | [`l4d_tank_control_eq`](plugins/l4d_tank_control_eq/) | Patched copy of the competitive repo's tank rotation that no longer requires Ready-Up. |
+| [`l4d_thirdpersonshoulderblock`](plugins/l4d_thirdpersonshoulderblock/) | Patched copy of the competitive repo's third person block: tells the player why they were moved to spectators and how to come back. |
 
 ## Building
 
