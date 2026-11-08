@@ -19,6 +19,10 @@ ZoneMod's files are split into sections, each with a boxed header:
 and inside a section, changes ("blocks") start with a comment line like "; --- Fix the door".
 A rule removes a whole section (by its name) or a single block (by the start of its "; ---" title).
 
+Then it appends plugin-owned map changes: plugins/<plugin>/stripper/maps/<map>.cfg (e.g. lef_tanktime's
+entities for mutation19), each under a banner naming the plugin. They must start with their own
+"add:"/"modify:"/"filter:" line, so they never inherit the mode of what comes before them.
+
 Stripper detail this script takes care of: a "{...}" entry without its own "filter:", "add:" or
 "modify:" line uses the last one above it. Removing a section could silently change the mode of the
 next entries, so the script re-inserts the mode line wherever that would happen.
@@ -196,6 +200,39 @@ def check_braces(lines, path):
         sys.exit(f"{path}: unbalanced braces after filtering")
 
 
+def plugin_extras():
+    """{map name (lowercase): [(plugin, lines)]} from plugins/*/stripper/maps/*.cfg."""
+    extras = {}
+    for plugin in sorted(os.listdir(os.path.join(REPO, "plugins"))):
+        folder = os.path.join(REPO, "plugins", plugin, "stripper", "maps")
+        if not os.path.isdir(folder):
+            continue
+        for name in sorted(os.listdir(folder)):
+            if not name.lower().endswith(".cfg"):
+                continue
+            path = os.path.join(folder, name)
+            with open(path, encoding="utf-8", errors="replace", newline="") as f:
+                lines = [l.replace("\r\n", "\n") for l in f.readlines()]
+            first = next((l for l in lines if l.strip() and not l.strip().startswith(";")), "")
+            if not mode_of(first):
+                sys.exit(f"{path}: must start with its own add:/modify:/filter: line")
+            check_braces(lines, path)
+            extras.setdefault(name[:-4].lower(), []).append((plugin, lines))
+    return extras
+
+
+def append_extras(lines, chunks):
+    out = list(lines)
+    if out and not out[-1].endswith("\n"):
+        out[-1] += "\n"
+    for plugin, extra in chunks:
+        out.append("\n; ############  FROM PLUGIN " + plugin + "  ###########\n")
+        out.extend(extra)
+        if out and not out[-1].endswith("\n"):
+            out[-1] += "\n"
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--src", default=DEFAULT_SRC, help="ZoneMod stripper folder")
@@ -218,11 +255,15 @@ def main():
         jobs.append((name, os.path.join(src_maps, name), os.path.join(out_maps, name),
                      set(rules["map-exclude-sections"].get(key, [])), rules["map-exclude-blocks"].get(key, [])))
 
+    extras = plugin_extras()
     seen_maps = set()
     for name, src, dst, drop_sections, drop_blocks in jobs:
         with open(src, encoding="utf-8", errors="replace", newline="") as f:
             lines = f.readlines()
         new, removed = filter_file(lines, drop_sections, drop_blocks)
+        if name[:-4].lower() in extras:
+            new = append_extras(new, extras[name[:-4].lower()])
+            report.append(f"{name}: + " + ", ".join(p for p, _ in extras[name[:-4].lower()]))
         check_braces(new, dst)
         with open(dst, "w", encoding="utf-8", newline="") as f:
             f.writelines(new)
@@ -233,6 +274,16 @@ def main():
             report.append(f"{name}: removed " + ", ".join(removed))
         if found < wanted:
             report.append(f"WARNING {name}: {wanted} rule(s), only {found} matched - check the names in the rules file")
+
+    for key, chunks in extras.items():
+        if key in seen_maps:
+            continue
+        dst = os.path.join(out_maps, key + ".cfg")
+        new = append_extras([], chunks)
+        with open(dst, "w", encoding="utf-8", newline="") as f:
+            f.writelines(new)
+        report.append(f"{key}.cfg: only from " + ", ".join(p for p, _ in chunks))
+        jobs.append((key + ".cfg", None, dst, set(), []))
 
     for key in list(rules["map-exclude-sections"]) + list(rules["map-exclude-blocks"]):
         if key not in seen_maps:
