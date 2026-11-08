@@ -8,6 +8,9 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-11-08
 
+- **Expulsiones por cvars de cliente** (`lef_client_cvars` 1.1.0): el mensaje decía "permitido: g" en vez
+  del valor permitido; arreglado. Cualquier cvar puede tener su propio mensaje, y `mat_fullbright` dice que
+  es trampa.
 - **Repos de referencia actualizados** a sus últimas versiones. Harry Potter ahora publica sus plugins solo
   como código, así que 21 de ellos (`l4d_afk_commands`, `cannounce`, el mission manager, las transiciones de
   mapas...) los compila nuestro armado. De ZoneMod 2.9.2: un arreglo nuevo del vómito (los supervivientes

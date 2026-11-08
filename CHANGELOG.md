@@ -7,6 +7,8 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-11-08
 
+- **Client cvar kicks** (`lef_client_cvars` 1.1.0): the kick message said "allowed: g" instead of the
+  allowed value; fixed. Any cvar can now have its own message, and `mat_fullbright` says it's cheating.
 - **Reference repos updated** to their latest versions. Harry Potter now publishes his plugins only as
   source, so 21 of them (`l4d_afk_commands`, `cannounce`, the mission manager, map transitions...) are
   compiled by our build. From ZoneMod 2.9.2: a new vomit fix (downed or pinned survivors no longer block
