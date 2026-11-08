@@ -90,6 +90,8 @@ server console:
 | Vote kick ban length, pause only by vote, who can start votes | `cfg/sourcemod/lef_votes.cfg` (created on first load) |
 | Steam ban checks: the Steam Web API key (keep it private) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Keep scores when an admin changes the map inside the campaign (`lef_match_keep_scores`), warning seconds | `cfg/sourcemod/lef_match.cfg` |
+| Taaannnk!! mode (mutation19): spawn and respawn times, bot tanks, info panel, shotgun mode | `cfg/sourcemod/lef_tanktime.cfg` (per-map data: `addons/sourcemod/configs/lef_tanktime.cfg`) |
+| Plugins turned off in a game mode (mutation19: the versus tank/boss plugins) | `addons/sourcemod/configs/lef_mode_plugins.cfg` |
 | Order of the `!admin` menu | `addons/sourcemod/configs/adminmenu_sorting.txt` |
 | Bot damage reduction (15%), pace/holding warnings, start panel and `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Server name, RCON, region, lobby/matchmaking, addons | `cfg/server.cfg` (start from `cfg/server.example.cfg`) |

@@ -77,6 +77,9 @@ Silvers. Some players will notice:
 - **No intro cutscenes** on first maps; **campaign rotation**, with the next campaign voted on the
   game's vote screen (`!votes`) and shown with `!next`.
 - **Quad caps** are possible (four capping infected at once), like in ZoneMod: a chosen change.
+- **Taaannnk!! mode** (mutation19, voted in `!votes` > game mode): every infected is a tank, made playable
+  for versus (Tank!Time!): respawn timers, the same tank spots in both halves, `!slayme` when incapped.
+  The versus tank/boss plugins step aside while it runs.
 - Pass pills with Reload; hittables glow while a tank is up; dead commons' ragdolls disappear.
 
 ## For admins

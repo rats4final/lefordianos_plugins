@@ -91,6 +91,8 @@ y en la consola del servidor:
 | Duración del baneo al expulsar por votación, pausa solo por votación, quién puede iniciar votaciones | `cfg/sourcemod/lef_votes.cfg` (se crea al cargar la primera vez) |
 | Revisión de baneos de Steam: la clave de la API web de Steam (mantenla privada) | `cfg/sourcemod/lef_steam_bans.cfg`: `lef_bans_apikey "..."` |
 | Mantener puntajes cuando un admin cambia el mapa dentro de la campaña (`lef_match_keep_scores`), segundos de aviso | `cfg/sourcemod/lef_match.cfg` |
+| Modo Taaannnk!! (mutation19): tiempos de aparición y reaparición, bots tank, panel, modo escopetas | `cfg/sourcemod/lef_tanktime.cfg` (datos por mapa: `addons/sourcemod/configs/lef_tanktime.cfg`) |
+| Plugins que se apagan en un modo de juego (mutation19: los de tank/jefes de versus) | `addons/sourcemod/configs/lef_mode_plugins.cfg` |
 | Orden del menú `!admin` | `addons/sourcemod/configs/adminmenu_sorting.txt` |
 | Reducción de daño a bots (15%), avisos de ritmo/infectado guardado, panel de inicio y `!wait` | `cfg/sourcemod/lef_bot_protect.cfg`, `lef_game_hints.cfg`, `lef_round_start.cfg` |
 | Nombre del servidor, RCON, región, lobby/matchmaking, addons | `cfg/server.cfg` (empieza desde `cfg/server.example.cfg`) |

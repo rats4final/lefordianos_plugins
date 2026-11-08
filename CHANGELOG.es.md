@@ -6,6 +6,20 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-11-08
+
+- **Modo Taaannnk!! (mutation19)** con el nuevo `lef_tanktime`: un port del Tank!Time! de Merc1less que
+  hace jugable en versus la mutación de solo tanks (4 tanks con tiempos de reaparición, los mismos lugares
+  de aparición en las dos mitades, lugares malos corregidos, vida extra en finales, `!slayme`). Usa
+  Left4DHooks en vez de firmas que se rompían con las actualizaciones del juego, y arregla varios errores
+  suyos (se tragaba todos los `!comandos` del chat, entre otros). Sus cambios de mapas solo se activan en
+  mutation19, y sus scripts de finales se rehicieron sobre los scripts actuales de Valve para que los otros
+  modos queden exactamente como en el juego. Su cambio de c11m3 habría dejado la barricada de combustible
+  ardiendo para siempre en todos los modos; arreglado. Sin probar con jugadores todavía.
+- **`lef_mode_plugins`**: apaga los plugins de versus que eligen el tank, la clase o los jefes (y los avisos
+  de tank) mientras mutation19 está activo, y los vuelve a prender después.
+- `tools/make_stripper.py` agrega cambios de mapas que trae un plugin (`plugins/<plugin>/stripper/maps/`).
+
 ## 2026-10-08
 
 - **30 segundos para votar al final de una campaña de versus** (`lef_campaigns` 1.1.0): la pantalla final

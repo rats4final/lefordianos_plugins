@@ -82,6 +82,9 @@ Silvers. Algunas que los jugadores van a notar:
 - **Sin escenas de introducción** en los primeros mapas; **rotación de campañas**, con la próxima
   campaña votada en la pantalla de votación del juego (`!votes`) y mostrada con `!next`.
 - **Quad caps** posibles (cuatro infectados que agarran a la vez), como en ZoneMod: un cambio elegido.
+- **Modo Taaannnk!!** (mutation19, se vota en `!votes` > modo de juego): todos los infectados son tanks,
+  hecho jugable para versus (Tank!Time!): tiempos de reaparición, los mismos lugares de tank en las dos
+  mitades, `!slayme` estando caído. Los plugins de tank/jefes de versus se hacen a un lado mientras corre.
 - Pasar pastillas con Recargar; los objetos golpeables brillan mientras hay tank; los cadáveres de los
   comunes desaparecen.
 

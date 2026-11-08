@@ -27,6 +27,7 @@ Cuando aparezca algo nuevo, agrégalo acá (y en `KNOWLEDGE.md`).
 | "Unknown command" para `sv_allowdownload`, `sv_downloadurl` | confirmado | L4D2 esconde algunos cvars de los archivos cfg | Ponerlos con `sm_cvar` |
 | Un ajuste cambiado por voto o por un admin vuelve atrás al cambiar de mapa | confirmado | Cada cambio de mapa vuelve a correr todas las configs | Los cambios permanentes van en `cfg/lefordianos/custom.cfg` (corre al final); nuestros plugins vuelven a aplicar solos lo votado |
 | Un valor en el `cfg/sourcemod/<plugin>.cfg` de un plugin no hace efecto | confirmado | `lefordianos/common.cfg` y `custom.cfg` corren después y ganan | Cambiarlo en `custom.cfg` |
+| En mutation19, "Unknown command" para `static_tank_map`, `reset_static_maps`... | confirmado | `lef_mode_plugins` apaga `witch_and_tankifier` en ese modo, y `common.cfg` sigue teniendo sus comandos | No hace daño; nada que hacer |
 | `auto_all_bot_game_enable` da "Unknown command" | confirmado | Ese cvar no existe en L4D2 | Borrar la línea |
 | `sm_onlyforce 1` rompe el voto de pausa | confirmado | Solo permite pausas forzadas por un admin | Dejar `sm_onlyforce 0` |
 

@@ -40,6 +40,8 @@ Cada documento tiene su versión en español al lado (`*.es.md`); el selector de
 | [`lef_bot_protect`](plugins/lef_bot_protect/README.es.md) | Los bots sobrevivientes reciben 15% menos daño de los jugadores infectados, para que no sean muertes gratis. |
 | [`lef_campaigns`](plugins/lef_campaigns/README.es.md) | Rotación de campañas (reemplaza a ACS): la próxima campaña se vota en `!votes`; `!next` la muestra. |
 | [`lef_match`](plugins/lef_match/README.es.md) | Admin: mantiene los puntajes cuando se cambia el mapa dentro de la campaña, reiniciar capítulo, volver al lobby. |
+| [`lef_tanktime`](plugins/lef_tanktime/README.es.md) | La mutación Taaannnk!! (mutation19) en versus: port del Tank!Time! de Merc1less con Left4DHooks; no hace nada en otros modos. |
+| [`lef_mode_plugins`](plugins/lef_mode_plugins/README.es.md) | Apaga plugins mientras un modo de juego está activo (los de tank/jefes de versus en mutation19). |
 | [`lef_ranks`](plugins/lef_ranks/README.es.md) | Ranking por mapas ganados (Elo, adaptado a equipos): `!rank`, `!top`; alimenta la mezcla balanceada. |
 | [`lef_steam_bans`](plugins/lef_steam_bans/README.es.md) | Avisa a los admins cuando alguien que entra tiene baneos VAC, de juego o de la comunidad (solo baneos, nada más). Necesita REST in Pawn y una clave de la API de Steam. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/README.es.md) | Nuestro propio sonido al azar en los karma kills (necesita FastDL, ver [docs/FASTDL.es.md](docs/FASTDL.es.md)). |
@@ -59,6 +61,7 @@ python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # arma el paquete completo de la config lite en build/lite/
 python3 tools/make_stripper.py    # regenera los archivos de Stripper lite desde los de ZoneMod
 python3 tools/sync_server.py      # copia el paquete lite al repo del servidor (../l4d2-server)
+python3 tools/extract_vscript.py <carpeta del juego> <script>   # muestra un VScript de Valve (descifrado)
 ```
 
 La versión del compilador está fijada en `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`

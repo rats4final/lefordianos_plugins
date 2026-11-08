@@ -21,7 +21,7 @@ marked in [configs/lite/PLUGINS.md](configs/lite/PLUGINS.md)).
 
 | Path | What |
 |---|---|
-| `plugins/<name>/` | Our plugins: `scripting/`, `translations/` (+ `es/`), `configs/`, `README.md` + `README.es.md` |
+| `plugins/<name>/` | Our plugins: `scripting/`, `translations/` (+ `es/`), `configs/`, `README.md` + `README.es.md`; optionally `stripper/maps/` (appended to our Stripper files by `make_stripper.py`) and files the manifest ships (e.g. `lef_tanktime/vscripts/`) |
 | `alliedmodders/` | Plugins imported from AlliedModders authors (credited) |
 | `configs/lite/` | The lite config (`left4dead2/cfg/server.example.cfg`, `lefordianos/test_bots.cfg` for solo testing): `PLUGINS.md` (bilingual picker), `manifest.txt` (what goes in the package), `stripper_rules.txt`, `left4dead2/` (our cfg files), `INSTALL.md` |
 | `tools/` | Python build tools (see below); `refs.txt` pins the reference repos |
@@ -39,7 +39,8 @@ python3 tools/get_sourcemod.py    # pinned SourceMod 1.12 compiler -> tools/sour
 python3 tools/get_extensions.py   # pinned extensions (REST in Pawn) -> tools/extensions/
 python3 tools/build.py [plugin]   # compile ours -> build/ (prints compiler output only if any)
 python3 tools/build_lite.py       # the full lite package -> build/lite/ (+ CONTENTS.txt); warns on missing files or one-platform files
-python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod's, minus stripper_rules.txt
+python3 tools/make_stripper.py    # regenerate lite Stripper files from ZoneMod's, minus stripper_rules.txt, plus plugins/*/stripper/maps/
+python3 tools/extract_vscript.py <game dir> <script>   # print one of Valve's VScripts, decrypted (.nuc, ICE)
 python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2-server (see Status)
 ```
 
@@ -90,6 +91,12 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
 - Some competitive plugins assume l4dtoolz (`sv_maxplayers`) or Ready-Up natives; we don't run either,
   so check for them (`FindConVar` null, `GetFeatureStatus`). Patched copies live in `plugins/pause` and
   `plugins/si_class_announce`.
+- **Loose VScripts in `scripts/vscripts/` override the game's in every mode.** Ship a Valve script only
+  as today's version (`tools/extract_vscript.py`, `update/` wins) plus changes behind a mode check.
+  Mutations based on versus answer `GetGameModeBase() == "versus"` but `GetGameMode()` is `mutation19`.
+- Plugin paths on Windows use `\` (`lefordianos\x.smx`): compare plugin filenames slash-agnostic.
+- Settings a game-mode cfg changes (e.g. `mutation19.cfg`) must be set back in `common.cfg`, or they
+  stay changed in the next mode (each mode file only sets its own).
 - The Valve wiki and AlliedModders block scripted fetches (bot checks); the Internet Archive copy of
   the wiki's L4D2 cvar list works (`web.archive.org/web/2025/<url>`).
 
@@ -102,7 +109,7 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
 - Commit only when asked (they have approved "commit and push" for this repo's normal flow). Split
   commits by layer (tools / plugin / config / docs), stage explicit paths (never `git add -A`), no AI
   co-author trailers or "generated with" footers. Work happens on `main`.
-- WSL machine with a 10 GB cap shared with other work: check `free -g` before heavy runs.
+- WSL machine with 16 GB shared with other work: check `free -g` before heavy runs.
   Builds here are light.
 
 ## Status (2026-10-03)
@@ -208,5 +215,16 @@ opt1, opt2, ?), a ReturnToLobby vote passed, or `lef_campaigns_allow_lobby` (lef
 New public repo `rats4final/lefordianos-motd` (`../lefordianos-motd`, Next.js 16.4, plain CSS for the game's old
 browser): `/motd` and `/host`, live at https://lefordianos-motd.vercel.app (Vercel, deployed by the owner). The
 server's `left4dead2/mymotd.txt` and `myhost.txt` hold those URLs and are tracked in l4d2-server.
+
+**2026-11-08: Taaannnk!! (mutation19).** `lef_tanktime` ports Merc1less' Tank!Time! 1.2.3 (original kept in
+`alliedmodders/Merc1less/`): Left4DHooks `L4D_ReplaceTank`/`L4D_TakeOverZombieBot` instead of its gamedata,
+idle outside mutation19 (by design always loaded). Its Stripper files live in `plugins/lef_tanktime/stripper/`
+(only switch on via `relay_tt_mutation19`; fixed its c11m3 relay name that broke the fuel barricade in all modes,
+and a c5m2 target). Its VScripts were old Valve copies; ours = today's Valve + `GetGameMode()=="mutation19"`
+changes. `lef_mode_plugins` (configs/lef_mode_plugins.cfg) unloads 9 versus tank/boss/announce plugins in
+mutation19 and loads them back. The owner had dropped their own 2023 build in the server's
+`plugins/disabled/taaank/` with an `sm plugins load` in `mutation19.cfg`; it lacked its gamedata, so it couldn't
+have started. Their edits (relay at round start, no SetFailState) were read from the .smx debug info.
+Not yet tested with players.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

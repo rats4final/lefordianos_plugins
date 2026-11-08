@@ -40,6 +40,8 @@ Every doc has a Spanish version next to it (`*.es.md`); the plugin picker is a s
 | [`lef_bot_protect`](plugins/lef_bot_protect/) | Survivor bots take 15% less damage from infected players, so they aren't free kills. |
 | [`lef_campaigns`](plugins/lef_campaigns/) | Campaign rotation (replaces ACS): the next campaign is voted in `!votes`; `!next` shows it. |
 | [`lef_match`](plugins/lef_match/) | Admin: keeps the scores when the map is changed inside the campaign, restart chapter, return to lobby. |
+| [`lef_tanktime`](plugins/lef_tanktime/) | The Taaannnk!! mutation (mutation19) for versus: port of Merc1less' Tank!Time! with Left4DHooks; idle in other modes. |
+| [`lef_mode_plugins`](plugins/lef_mode_plugins/) | Turns plugins off while a game mode is on (versus tank/boss plugins in mutation19). |
 | [`lef_ranks`](plugins/lef_ranks/) | Ranking from map wins (Elo, adapted to teams): `!rank`, `!top`; feeds the balanced shuffle. |
 | [`lef_steam_bans`](plugins/lef_steam_bans/) | Tells admins when a joining player has VAC, game or community bans (bans only, nothing else). Needs REST in Pawn and a Steam API key. |
 | [`lef_karma_sounds`](plugins/lef_karma_sounds/) | Our own random sound on karma kills (needs FastDL, see [docs/FASTDL.md](docs/FASTDL.md)). |
@@ -59,6 +61,7 @@ python3 tools/build.py lef_t1_mode
 python3 tools/build_lite.py       # build the full lite config package into build/lite/
 python3 tools/make_stripper.py    # regenerate the lite Stripper files from ZoneMod's
 python3 tools/sync_server.py      # copy the lite package into the server repo (../l4d2-server)
+python3 tools/extract_vscript.py <game dir> <script>   # print one of Valve's VScripts (decrypted)
 ```
 
 The compiler version is pinned in `tools/SOURCEMOD_VERSION` (`python3 tools/get_sourcemod.py latest`

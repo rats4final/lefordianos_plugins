@@ -48,6 +48,7 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | SilverShot (Silvers) | Bots Ignore PipeBombs and Shoot (`l4d_pipebomb_ignore`) | 2.0 | [t=333464](https://forums.alliedmods.net/showthread.php?t=333464) |
 | Buster "Mr. Zero" Nielsen, fork de cravenge y Dragokas | Scene Processor (`sceneprocessor`) | 1.33.3 | [t=241585](https://forums.alliedmods.net/showthread.php?t=241585) |
 | pan0s | L4D2 Menu (`l4d2_menu`) | 1.2 | [t=332614](https://forums.alliedmods.net/showthread.php?t=332614) |
+| Merc1less | Tank!Time! (`l4d2_tanktime`, para mutation19), con sus cambios de mapas y VScripts | 1.2.3 | [t=248745](https://forums.alliedmods.net/showthread.php?t=248745) |
 | pan0s | Statistic And Ranking System (`l4d2_srs`) | 2.5 | Foros de AlliedModders; incluye HexTags (Hexah), Chat-Processor (Drixevel) y GeoResolver (Hattrick HKS) |
 
 ## Código que adaptamos
@@ -69,5 +70,6 @@ Guardados sin cambios en [`alliedmodders/`](alliedmodders/), una carpeta por aut
 | `pause` (parchado) | Pause plugin de CanadaRox, Sir, Forgetest y A1m` (repo competitivo) |
 | `si_class_announce` (parchado) | Special Infected Class Announce de Tabun y Forgetest (repo competitivo) |
 | `l4d_tank_control_eq` | L4D2 Tank Control de arti, con Sheo, Sir y Altair-Sossai (una línea cambiada) |
+| `lef_tanktime` | Port del Tank!Time! de Merc1less: sus reglas de juego, datos de mapas, cambios de mapas de Stripper y cambios de VScripts. Frases en español en parte de la traducción de Torpedo |
 
 Si falta algo o un crédito está mal, avísennos y lo corregimos.

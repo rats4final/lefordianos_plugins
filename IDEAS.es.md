@@ -393,20 +393,6 @@ también lo usaría.
 
 ## Más adelante
 
-- **Tank!Time! para versus (mutation19, "Taaannnk!!")** (idea, 2026-10-08): el TankTime 1.2.3 de
-  Merc1less (2024, [AlliedModders](https://forums.alliedmods.net/showthread.php?t=248745)), que el dueño
-  guardó en `../from_alliedmodders/TankTime_v1_2_3-20-03-2024.zip`. Balancea la mutación de solo tanks para
-  versus (tiempos de reaparición, vida del tank, "modo escopetas", spawns fijos, un HUD). Lo que sabemos: el
-  plugin solo actúa cuando `mp_gamemode` es `mutation19`, y sus tres firmas de Windows todavía coinciden
-  con el `server.dll` de hoy. Pero también trae **sus propios archivos de Stripper** (28 mapas) y
-  **VScripts** (scripts de finales de c1, c6, c7, c9), que se aplicarían en todos los modos. Plan si lo
-  hacemos:
-  - que los cambios de mapas sean solo de ese modo: Stripper y VScripts cargados solo en mutation19,
-    combinados con los nuestros (cómo, falta ver: Stripper lee sus archivos al cargar el mapa, antes de que
-    corra la config del modo);
-  - **reescribirlo** con sintaxis nueva y Left4DHooks en vez de su propia gamedata (TakeOverZombieBot,
-    ReplaceTank, ZombieManager), colors.inc, convenciones `lef_`, traducciones en/es;
-  - ofrecerlo como modo de juego en `!votes` (la lista de Vote_Mode).
 - **Grabación de demos** para ambas configs (en pausa desde el 2026-10-01, volveremos a esto):
   - la extensión [sourcetvsupport](https://github.com/shqke/sourcetvsupport) (arregla SourceTV en
     L4D2; hay que descargar el binario de sus releases de GitHub o compilarlo desde el código);
@@ -444,6 +430,7 @@ también lo usaría.
 
 ## Hecho
 
+- **lef_tanktime** + **lef_mode_plugins** (2026-11-08): Tank!Time! para mutation19, portado con Left4DHooks; sus cambios de Stripper los combina `make_stripper.py`, sus VScripts rehechos sobre los scripts actuales de Valve; los plugins de tank/jefes de versus apagados en ese modo. Sin probar con jugadores.
 - **lef_match** (2026-10-08): los puntajes se mantienen cuando un admin cambia el mapa dentro de la campaña, reiniciar capítulo y volver al lobby en `!admin`; `!admin` ordenado con lo útil primero; los SI rompen puertas de un golpe (`z_door_pound_damage 160`). Todavía sin probar en juego.
 - **l4dtoolz (lakwsh) para `sv_steam_bypass`** (2026-10-04): en el paquete lite, bypass siempre prendido.
 - **lef_round_start**, **lef_game_hints**, **lef_bot_protect**, **lef_steam_bans** (2026-10-02), más la lista de votantes y la votación de final de ACS en `lef_votes` y los avisos de balance en `lef_teams_panel`. REST in Pawn viene de `tools/get_extensions.py`. Falta probarlos en el juego.
