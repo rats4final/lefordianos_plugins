@@ -1,0 +1,99 @@
+"Phrases"
+{
+	"TankTimeInfo"
+	{
+		"en"		"The other team gets the same tank spawn points! Be as fast as the survivors, or the tanks could spawn in front of you."
+	}
+	"YouAreSpawningIn"
+	{
+		"#format"	"{1:d}"
+		"en"		"You are spawning in {1} second(s)"
+	}
+	"TanksAreSpawningIn"
+	{
+		"#format"	"{1:d}"
+		"en"		"The tanks are spawning in {1} second(s)..."
+	}
+	"TanksAreSpawningNow"
+	{
+		"en"		"! ! !  Spawn time  ! ! !"
+	}
+	"SurvivorSlayYourself"
+	{
+		"en"		"{green}You can kill yourself while incapacitated: type {olive}!slayme{green}. It can save your team time."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"en"		"{green}Or crawl to the saferoom to get more points for your team."
+	}
+	"SurvivorSlayedThemself"
+	{
+		"#format"	"{1:N}"
+		"en"		"{teamcolor}{1}{default} killed themself while incapacitated."
+	}
+	"SurvivorIsNotIncapped"
+	{
+		"en"		"You are not incapacitated."
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"{green}You were incapped by {teamcolor}{1}{green}, who had {teamcolor}{2} HP{green} left."
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"en"		"A regular tank is spawning now ! ! !"
+	}
+	"IsRegular"
+	{
+		"en"		"regular"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"en"		"The finale has begun: the tank team gets no more bot tanks (the game's spawn limit), but gets extra health!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"en"		"The round started while the intro was still running. Restarting the map..."
+	}
+	"StartedByTimeout"
+	{
+		"en"		"The round was started by the timeout!"
+	}
+	"ConfigInfo_Title"
+	{
+		"en"		"Configuration"
+	}
+	"ConfigInfo_Enabled"
+	{
+		"en"		"on"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"en"		"off"
+	}
+	"ConfigInfo_Bots"
+	{
+		"en"		"{green}Bot tanks{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"en"		"{green}Crawling{default}"
+	}
+	"ConfigInfo_InfoPanel"
+	{
+		"en"		"{green}Info panel{default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"en"		"{green}Tank health when incapped{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"en"		"{green}Regular tanks{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"en"		"{green}Shotgun mode{default}"
+	}
+}

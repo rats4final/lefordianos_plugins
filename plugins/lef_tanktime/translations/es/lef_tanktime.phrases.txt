@@ -1,0 +1,95 @@
+"Phrases"
+{
+	"TankTimeInfo"
+	{
+		"es"		"¡El otro equipo tendrá los mismos lugares de aparición de tanks! Sean tan rápidos como los supervivientes, o los tanks podrían aparecer delante de ustedes."
+	}
+	"YouAreSpawningIn"
+	{
+		"es"		"Apareces en {1} segundo(s)"
+	}
+	"TanksAreSpawningIn"
+	{
+		"es"		"Los tanks aparecen en {1} segundo(s)..."
+	}
+	"TanksAreSpawningNow"
+	{
+		"es"		"¡ ¡ ¡  A aparecer  ! ! !"
+	}
+	"SurvivorSlayYourself"
+	{
+		"es"		"{green}Puedes matarte mientras estás caído: escribe {olive}!slayme{green}. Le puede ahorrar tiempo a tu equipo."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"es"		"{green}O arrástrate hasta el refugio para sumar más puntos para tu equipo."
+	}
+	"SurvivorSlayedThemself"
+	{
+		"es"		"{teamcolor}{1}{default} se mató mientras estaba caído."
+	}
+	"SurvivorIsNotIncapped"
+	{
+		"es"		"No estás caído."
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"es"		"{green}Te derribó {teamcolor}{1}{green}, que tenía {teamcolor}{2} de vida{green}."
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"es"		"¡ ¡ ¡ Está apareciendo un tank normal ! ! !"
+	}
+	"IsRegular"
+	{
+		"es"		"normal"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"es"		"Empezó el final: el equipo de tanks ya no recibe bots tank (límite del juego), ¡pero tiene vida extra!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"es"		"La ronda empezó mientras corría la intro. Reiniciando el mapa..."
+	}
+	"StartedByTimeout"
+	{
+		"es"		"¡La ronda empezó por tiempo!"
+	}
+	"ConfigInfo_Title"
+	{
+		"es"		"Configuración"
+	}
+	"ConfigInfo_Enabled"
+	{
+		"es"		"sí"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"es"		"no"
+	}
+	"ConfigInfo_Bots"
+	{
+		"es"		"{green}Bots tank{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"es"		"{green}Arrastrarse{default}"
+	}
+	"ConfigInfo_InfoPanel"
+	{
+		"es"		"{green}Panel de información{default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"es"		"{green}Vida del tank al derribarte{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"es"		"{green}Tanks normales{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"es"		"{green}Modo escopetas{default}"
+	}
+}
