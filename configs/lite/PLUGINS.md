@@ -219,8 +219,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: quita la asistencia de apuntado del control y un exploit de autoaim.*
 - [x] `optional/l4d_texture_manager_block`: kicks players trying the "mat_hack" wallhack.
   *ES: expulsa a quien intente el wallhack "mat_hack".*
-- [x] `optional/l4d_thirdpersonshoulderblock`: kicks players using third-person to peek around corners.
-  *ES: expulsa a quien use tercera persona para mirar detrás de las esquinas.*
+- [x] `optional/l4d_thirdpersonshoulderblock` (**patched copy**, `plugins/l4d_thirdpersonshoulderblock`): moves players
+  using third person (peeking around corners) to spectators, and tells them why and how to come back.
+  *ES: (**copia parchada**) pasa a espectadores a quien usa tercera persona (mirar por encima de las esquinas), y
+  le dice por qué y cómo volver.*
 - [x] **Ours** `lef_client_cvars`: kicks players whose client cvars give an advantage (`mat_fullbright`,
       no fog, flashlight tweaks...). ZoneMod's list of 59 cvars, ported from confogl so it works without it.
   *ES: (nuestro) expulsa a quien tenga cvars de cliente que dan ventaja (`mat_fullbright`, sin niebla,

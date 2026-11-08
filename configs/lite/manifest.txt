@@ -99,7 +99,8 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_return_thrown
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/anticheat/l4d2_noghostcheat.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_noghostcheat.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_block_autoaim.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_block_autoaim.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_texture_manager_block.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_texture_manager_block.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_thirdpersonshoulderblock.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_thirdpersonshoulderblock.sp
+# l4d_thirdpersonshoulderblock: our patched copy (tells the player why they were moved; see plugins/l4d_thirdpersonshoulderblock)
+ours l4d_thirdpersonshoulderblock
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/lerpmonitor.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/lerpmonitor.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/ratemonitor.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/ratemonitor.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_props_glow.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_props_glow.sp
