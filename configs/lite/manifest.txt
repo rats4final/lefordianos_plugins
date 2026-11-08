@@ -64,7 +64,11 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockeyed_ladder
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockey_hitbox_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_jockey_hitbox_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_shenanigans.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_shenanigans.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_ladder_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_ladder_fix.sp fixes
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_vomit_trace_patch.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_vomit_trace_patch.sp fixes
+# ZoneMod 2.9.2 (2026-11): l4d2_vomit_collision_fix replaced l4d_vomit_trace_patch
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_vomit_collision_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_vomit_collision_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_ladder_collision.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_ladder_collision.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fullupdate_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fullupdate_fix.sp fixes
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_voice_mechanics_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_voice_mechanics_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_bend_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_bend_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_block_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_block_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d_tongue_float_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tongue_float_fix.sp fixes
@@ -102,8 +106,9 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_props_g
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d_tank_damage_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d_tank_damage_announce.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_tank_announce.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_tank_announce.sp
 # Harry: chat + sound when a witch spawns (its tank message is off in common.cfg)
-smx  L4D1_2-Plugins/tank_witch_spawn_notify/plugins/tank_witch_spawn_notify.smx L4D1_2-Plugins/tank_witch_spawn_notify/scripting/tank_witch_spawn_notify.sp
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/pill_passer.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/pill_passer.sp
+sp   L4D1_2-Plugins/tank_witch_spawn_notify/scripting/tank_witch_spawn_notify.sp
+# ZoneMod 2.9.2: fix_pill_pass replaced pill_passer (same Reload pass, plus two passing bugs fixed)
+smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/fix_pill_pass.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/fix_pill_pass.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/current.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/current.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/coinflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/coinflip.sp
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/teamflip.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/teamflip.sp
@@ -148,32 +153,32 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_antibaiter.s
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/optional/l4d2_collision_adjustments.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_collision_adjustments.sp
 
 # --- Harry Potter (prebuilt) ---
-smx  L4D1_2-Plugins/l4d_afk_commands/plugins/l4d_afk_commands.smx L4D1_2-Plugins/l4d_afk_commands/scripting/l4d_afk_commands.sp
-smx  L4D1_2-Plugins/l4d_tank_pass/plugins/l4d_tank_pass.smx L4D1_2-Plugins/l4d_tank_pass/scripting/l4d_tank_pass.sp
-smx  L4D1_2-Plugins/l4d2_spec_stays_spec/plugins/l4d2_spec_stays_spec.smx L4D1_2-Plugins/l4d2_spec_stays_spec/scripting/l4d2_spec_stays_spec.sp
-smx  L4D1_2-Plugins/l4d_revive_reload_interrupt/plugins/l4d_revive_reload_interrupt.smx L4D1_2-Plugins/l4d_revive_reload_interrupt/scripting/l4d_revive_reload_interrupt.sp
-smx  L4D1_2-Plugins/l4d_switch_team_survivor_dead_fix/plugins/l4d_switch_team_survivor_dead_fix.smx L4D1_2-Plugins/l4d_switch_team_survivor_dead_fix/scripting/l4d_switch_team_survivor_dead_fix.sp
-smx  L4D1_2-Plugins/jockey_ride_team_switch_teleport_fix/plugins/jockey_ride_team_switch_teleport_fix.smx L4D1_2-Plugins/jockey_ride_team_switch_teleport_fix/scripting/jockey_ride_team_switch_teleport_fix.sp
-smx  L4D1_2-Plugins/l4d_minigun_fly_fix/plugins/l4d_minigun_fly_fix.smx L4D1_2-Plugins/l4d_minigun_fly_fix/scripting/l4d_minigun_fly_fix.sp
-smx  L4D1_2-Plugins/l4d2_gascan_flame_fix/plugins/l4d2_gascan_flame_fix.smx L4D1_2-Plugins/l4d2_gascan_flame_fix/scripting/l4d2_gascan_flame_fix.sp
-smx  L4D1_2-Plugins/l4d_witch_retreat_panic_fix/plugins/l4d_witch_retreat_panic_fix.smx L4D1_2-Plugins/l4d_witch_retreat_panic_fix/scripting/l4d_witch_retreat_panic_fix.sp
-smx  L4D1_2-Plugins/l4d_ghost_spawn_exploit/plugins/l4d_ghost_spawn_exploit.smx L4D1_2-Plugins/l4d_ghost_spawn_exploit/scripting/l4d_ghost_spawn_exploit.sp
-smx  L4D1_2-Plugins/l4d_exploit_dmg_block/plugins/l4d_exploit_dmg_block.smx L4D1_2-Plugins/l4d_exploit_dmg_block/scripting/l4d_exploit_dmg_block.sp
+sp   L4D1_2-Plugins/l4d_afk_commands/scripting/l4d_afk_commands.sp
+sp   L4D1_2-Plugins/l4d_tank_pass/scripting/l4d_tank_pass.sp
+sp   L4D1_2-Plugins/l4d2_spec_stays_spec/scripting/l4d2_spec_stays_spec.sp
+sp   L4D1_2-Plugins/l4d_revive_reload_interrupt/scripting/l4d_revive_reload_interrupt.sp
+sp   L4D1_2-Plugins/l4d_switch_team_survivor_dead_fix/scripting/l4d_switch_team_survivor_dead_fix.sp
+sp   L4D1_2-Plugins/jockey_ride_team_switch_teleport_fix/scripting/jockey_ride_team_switch_teleport_fix.sp
+sp   L4D1_2-Plugins/l4d_minigun_fly_fix/scripting/l4d_minigun_fly_fix.sp
+sp   L4D1_2-Plugins/l4d2_gascan_flame_fix/scripting/l4d2_gascan_flame_fix.sp
+sp   L4D1_2-Plugins/l4d_witch_retreat_panic_fix/scripting/l4d_witch_retreat_panic_fix.sp
+sp   L4D1_2-Plugins/l4d_ghost_spawn_exploit/scripting/l4d_ghost_spawn_exploit.sp
+sp   L4D1_2-Plugins/l4d_exploit_dmg_block/scripting/l4d_exploit_dmg_block.sp
 # Harry: map transitions to join campaigns in versus (sm_add_map_transition, in cfg/lefordianos/custom.cfg),
 # plus his fix for leftover transition info after a forced map change (needs l4d2_fix_changelevel, included)
-smx  L4D1_2-Plugins/l4d2_map_transitions/plugins/l4d2_map_transitions.smx L4D1_2-Plugins/l4d2_map_transitions/scripting/l4d2_map_transitions.sp
-smx  L4D1_2-Plugins/l4d2_transition_info_fix/plugins/l4d2_transition_info_fix.smx L4D1_2-Plugins/l4d2_transition_info_fix/scripting/l4d2_transition_info_fix.sp
-smx  L4D1_2-Plugins/l4d2_survivor_mourn_fix/plugins/l4d2_survivor_mourn_fix.smx L4D1_2-Plugins/l4d2_survivor_mourn_fix/scripting/l4d2_survivor_mourn_fix.sp
+sp   L4D1_2-Plugins/l4d2_map_transitions/scripting/l4d2_map_transitions.sp
+sp   L4D1_2-Plugins/l4d2_transition_info_fix/scripting/l4d2_transition_info_fix.sp
+sp   L4D1_2-Plugins/l4d2_survivor_mourn_fix/scripting/l4d2_survivor_mourn_fix.sp
 # Scene Processor (Mr. Zero; fork by cravenge and Dragokas), needed by the mourn fix
 sp   @repo/alliedmodders/Dragokas/sceneprocessor/sceneprocessor.sp
-smx  L4D1_2-Plugins/l4d2_chainsaw_fix/plugins/l4d2_chainsaw_fix.smx L4D1_2-Plugins/l4d2_chainsaw_fix/scripting/l4d2_chainsaw_fix.sp
-smx  L4D1_2-Plugins/l4d2_karma_kill/plugins/l4d2_karma_kill.smx L4D1_2-Plugins/l4d2_karma_kill/scripting/l4d2_karma_kill.sp
-smx  L4D1_2-Plugins/gamemode-based_configs/addons/sourcemod/plugins/gamemode-based_configs.smx L4D1_2-Plugins/gamemode-based_configs/addons/sourcemod/scripting/gamemode-based_configs.sp
-smx  L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/plugins/l4d2_mission_manager.smx L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/scripting/l4d2_mission_manager.sp
+sp   L4D1_2-Plugins/l4d2_chainsaw_fix/scripting/l4d2_chainsaw_fix.sp
+sp   L4D1_2-Plugins/l4d2_karma_kill/scripting/l4d2_karma_kill.sp
+sp   L4D1_2-Plugins/gamemode-based_configs/addons/sourcemod/scripting/gamemode-based_configs.sp
+sp   L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/scripting/l4d2_mission_manager.sp
 dir  L4D1_2-Plugins/l4d2_mission_manager/addons/sourcemod/translations addons/sourcemod/translations
 dir  L4D1_2-Plugins/l4d2_mission_manager/missions.cache missions.cache
-smx  Sourcemod-Plugins/cannounce/plugins/cannounce.smx Sourcemod-Plugins/cannounce/scripting/cannounce.sp
-smx  Sourcemod-Plugins/smd_advertisements/plugins/smd_advertisements.smx Sourcemod-Plugins/smd_advertisements/scripting/smd_advertisements.sp
+sp   Sourcemod-Plugins/cannounce/scripting/cannounce.sp
+sp   Sourcemod-Plugins/smd_advertisements/scripting/smd_advertisements.sp
 
 # --- Campaign rotation: our lef_campaigns (in "Ours" below) replaced rikka0w0's Automatic Campaign
 # Switcher on 2026-10-04 (next campaign voted on the F1/F2 screen through !votes). ---

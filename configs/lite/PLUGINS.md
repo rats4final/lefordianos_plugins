@@ -126,8 +126,18 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los boomers no pueden vomitar mientras están aturdidos por un empujón.*
 - [x] `fixes/l4d2_boomer_ladder_fix`: boomer-on-ladder bug. *needs sourcescramble*
   *ES: bug del boomer en escaleras.*
-- [x] `fixes/l4d_vomit_trace_patch`: vomit isn't blocked by infected teammates. *needs sourcescramble*
-  *ES: el vómito no lo bloquean los compañeros infectados.*
+- [x] `fixes/l4d2_vomit_collision_fix`: downed or pinned survivors who are already covered don't block
+  vomit aimed past them. Replaced `l4d_vomit_trace_patch` in ZoneMod 2.9.2 (2026-11).
+  *ES: los supervivientes caídos o atrapados que ya están vomitados no bloquean el vómito que pasa de
+  largo. Reemplazó a `l4d_vomit_trace_patch` en ZoneMod 2.9.2.*
+- [x] `fixes/l4d2_fix_ladder_collision`: survivors don't collide with the infected-only ladders. *Added 2026-11-08.*
+  *ES: los supervivientes no chocan con las escaleras que son solo para infectados.*
+- [x] `fixes/l4d2_fullupdate_fix`: blocks a console trick (full update, also used by demo recording) that
+  showed hidden survivors' glows and cleared smoker clouds early. *Added 2026-11-08.*
+  *ES: bloquea un truco de consola (full update, que también usa la grabación de demos) que mostraba el
+  brillo de supervivientes escondidos y borraba antes la nube del smoker.*
+- [x] `fixes/l4d2_voice_mechanics_fix`: in-game voice chat stops affecting game mechanics and audio. *Added 2026-11-08.*
+  *ES: el chat de voz del juego deja de afectar mecánicas y sonidos.*
 - [x] `fixes/l4d_tongue_bend_fix`: tongues don't break for "bending too many times".
   *ES: las lenguas no se cortan por "doblarse demasiadas veces".*
 - [x] `fixes/l4d_tongue_block_fix`: infected teammates don't block a tongue. *needs collisionhook, sourcescramble*
@@ -242,8 +252,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
       off: `l4d2_tank_announce` does that). *Added 2026-10-03.*
   *ES: mensaje en el chat + sonido cuando aparece una witch (su aviso de tank está apagado: eso lo hace
   `l4d2_tank_announce`). Agregado el 2026-10-03.*
-- [x] `optional/pill_passer`: pass pills/adrenaline with Reload.
-  *ES: pasa pastillas/adrenalina con la tecla de recargar.*
+- [x] `optional/fix_pill_pass`: pass pills/adrenaline with Reload, and fixes not being able to pass to a
+  survivor "in combat" and pills being thrown away. Replaced `pill_passer` in ZoneMod 2.9.2 (2026-11).
+  *ES: pasa pastillas/adrenalina con la tecla de recargar, y arregla no poder pasarlas a alguien "en
+  combate" y que se tiren al suelo. Reemplazó a `pill_passer` en ZoneMod 2.9.2.*
 - [x] `optional/current`: `!current` shows how far the survivors are (flow %).
   *ES: `!current` muestra cuánto avanzaron los supervivientes (% del mapa).*
 - [x] `optional/coinflip`: `!coinflip` / `!roll`.
