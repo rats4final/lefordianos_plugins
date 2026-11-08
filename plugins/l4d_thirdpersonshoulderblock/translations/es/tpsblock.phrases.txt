@@ -1,0 +1,31 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"es"		"[{green}!{default}]"
+	}
+	"Moved_Value1"
+	{
+		"es"		"Te pasamos a espectadores porque tienes activada la {olive}cámara en tercera persona{default}. Escribe {olive}c_thirdpersonshoulder 0{default} en la consola y vuelve a entrar con {olive}!survivors{default} o {olive}!infected{default}."
+	}
+	"Hint_Value1"
+	{
+		"es"		"Tienes la tercera persona activada: escribe c_thirdpersonshoulder 0 en la consola y luego !survivors o !infected"
+	}
+	"Moved_Invalid"
+	{
+		"es"		"Te pasamos a espectadores porque tu juego oculta {olive}c_thirdpersonshoulder{default} (protegida o faltante), así que no se puede revisar la tercera persona."
+	}
+	"Hint_Invalid"
+	{
+		"es"		"Tu juego oculta c_thirdpersonshoulder: no se puede revisar la tercera persona"
+	}
+	"Cvar_Invalid_Nocolor"
+	{
+		"es"		"El comando c_thirdpersonshoulder es inválido o está protegido."
+	}
+	"Cvar_Value1_Nocolor"
+	{
+		"es"		"Para poder jugar escribe c_thirdpersonshoulder 0 en tu consola."
+	}
+}

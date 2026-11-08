@@ -1,0 +1,31 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"en"		"[{green}!{default}]"
+	}
+	"Moved_Value1"
+	{
+		"en"		"You were moved to spectators because your {olive}third person camera{default} is on. Type {olive}c_thirdpersonshoulder 0{default} in your console, then join again with {olive}!survivors{default} or {olive}!infected{default}."
+	}
+	"Hint_Value1"
+	{
+		"en"		"Third person camera is on: type c_thirdpersonshoulder 0 in your console, then !survivors or !infected"
+	}
+	"Moved_Invalid"
+	{
+		"en"		"You were moved to spectators because your game hides {olive}c_thirdpersonshoulder{default} (protected or missing), so third person can't be checked."
+	}
+	"Hint_Invalid"
+	{
+		"en"		"Your game hides c_thirdpersonshoulder: third person can't be checked"
+	}
+	"Cvar_Invalid_Nocolor"
+	{
+		"en"		"The command c_thirdpersonshoulder is invalid or protected."
+	}
+	"Cvar_Value1_Nocolor"
+	{
+		"en"		"In order to play enter c_thirdpersonshoulder 0 on your console."
+	}
+}
