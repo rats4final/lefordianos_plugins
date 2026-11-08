@@ -393,6 +393,12 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: (nuestro) si un admin cambia el mapa dentro de la campaña (reiniciar capítulo, *Cambiar mapa*,
   mission manager) ya no se borran los puntajes; `!admin` tiene "Reiniciar capítulo" y "Volver al lobby".
   Agregado el 2026-10-08 a pedido del dueño.*
+- [x] **Ours** `lef_tanktime` + `lef_mode_plugins`: the Taaannnk!! mutation (mutation19) playable in versus
+      (port of Merc1less' Tank!Time!), with its map changes and finale VScripts active only in that mode;
+      the versus tank/boss plugins are turned off while it runs. *Added 2026-11-08 at the owner's request.*
+  *ES: (nuestros) la mutación Taaannnk!! (mutation19) jugable en versus (port del Tank!Time! de
+  Merc1less), con sus cambios de mapas y VScripts de finales activos solo en ese modo; los plugins de
+  tank/jefes de versus se apagan mientras corre. Agregado el 2026-11-08 a pedido del dueño.*
 
 ## 5b. Tank and witch every map, with flow % announced · Tank y witch en cada mapa, con el % anunciado
 

@@ -251,6 +251,12 @@ ours lef_steam_bans
 ours lef_ranks
 ours lef_campaigns
 ours lef_match
+# Taaannnk!! (mutation19): port of Merc1less' Tank!Time!, idle in other modes. Its finale VScripts are
+# today's Valve scripts plus mutation19-only changes; its Stripper changes are merged by make_stripper.py.
+ours lef_tanktime
+dir  @repo/plugins/lef_tanktime/vscripts scripts/vscripts
+# Turns off versus plugins that fight lef_tanktime while mutation19 is on (configs/lef_mode_plugins.cfg).
+ours lef_mode_plugins
 ours l4d_tank_control_eq
 ours l4d2_tank_horde_monitor
 
