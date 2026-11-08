@@ -97,6 +97,9 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
 - Plugin paths on Windows use `\` (`lefordianos\x.smx`): compare plugin filenames slash-agnostic.
 - Settings a game-mode cfg changes (e.g. `mutation19.cfg`) must be set back in `common.cfg`, or they
   stay changed in the next mode (each mode file only sets its own).
+- Harry Potter's repos (L4D1_2-Plugins, Sourcemod-Plugins) stopped shipping compiled `.smx` (2026-10-26):
+  manifest lines for them are `sp`, and `build_lite.py` compiles them against his shared
+  `scripting_1.12/include/` (newer actions.inc, sceneprocessor, localizer...).
 - The Valve wiki and AlliedModders block scripted fetches (bot checks); the Internet Archive copy of
   the wiki's L4D2 cvar list works (`web.archive.org/web/2025/<url>`).
 
@@ -226,5 +229,11 @@ mutation19 and loads them back. The owner had dropped their own 2023 build in th
 `plugins/disabled/taaank/` with an `sm plugins load` in `mutation19.cfg`; it lacked its gamedata, so it couldn't
 have started. Their edits (relay at round start, no SetFailState) were read from the .smx debug info.
 Not yet tested with players.
+
+Later 2026-11-08: tank chance 60 (witch 50; also in the server's custom.cfg), `sm_skill_report_shove 0`,
+`lef_game_hints` 1.2.0 (attack-together tip + solo-death reminder; hint box strips color tags),
+`lef_votes` `!pause` votes for admins too (`lef_votes_pause_admin_direct 0`). All reference pins moved to
+latest; ZoneMod 2.9.2 swaps (vomit_collision_fix, fix_pill_pass) and 3 new fixes; pause 6.9.1 ported.
+Ready-Up on demand is an idea in IDEAS.
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

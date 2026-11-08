@@ -8,6 +8,16 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-11-08
 
+- **Repos de referencia actualizados** a sus últimas versiones. Harry Potter ahora publica sus plugins solo
+  como código, así que 21 de ellos (`l4d_afk_commands`, `cannounce`, el mission manager, las transiciones de
+  mapas...) los compila nuestro armado. De ZoneMod 2.9.2: un arreglo nuevo del vómito (los supervivientes
+  caídos o atrapados ya no bloquean el vómito que pasa de largo; reemplaza al viejo), pasar pastillas que
+  también funciona con supervivientes "en combate", los supervivientes ya no chocan con las escaleras de
+  infectados, el chat de voz ya no afecta los sonidos del juego, se bloquea un truco de consola que mostraba
+  supervivientes escondidos, en `!pause` los fantasmas no aparecen manteniendo ataque, y arreglos nuevos de
+  mapas (Haunted Forest, escaleras de c7m3, Downpour, Amid the Ruins). Sin probar con jugadores todavía.
+- **`!pause` siempre vota**, admins incluidos: nuestros amigos son todos admins, así que les pausaba al
+  instante sin esperar el voto. Los admins se saltan el voto con forzar pausa en `!admin`.
 - **Tank en el 60% de los mapas** (era 50%; la witch sigue en 50%), para partidas más interesantes. La opción
   del medio de `!votes` ahora es "tank 60%, witch 50% (normal)".
 - **Cuadro de avisos arreglado**: los avisos de `lef_game_hints` mostraban marcas de color como `{green}` como

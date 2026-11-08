@@ -7,6 +7,15 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-11-08
 
+- **Reference repos updated** to their latest versions. Harry Potter now publishes his plugins only as
+  source, so 21 of them (`l4d_afk_commands`, `cannounce`, the mission manager, map transitions...) are
+  compiled by our build. From ZoneMod 2.9.2: a new vomit fix (downed or pinned survivors no longer block
+  vomit aimed past them; replaces the old one), pill passing that also works on survivors "in combat",
+  survivors no longer bump into infected-only ladders, voice chat no longer affects game sounds, a
+  console trick that showed hidden survivors is blocked, `!pause` ghosts can't spawn by holding attack,
+  and new map fixes (Haunted Forest, c7m3 ladders, Downpour, Amid the Ruins). Not yet tested with players.
+- **`!pause` always votes**, admins included: our friends are all admins, so it paused at once for them
+  without waiting for the vote. Admins skip the vote with force pause in `!admin`.
 - **Tank on 60% of maps** (was 50%; witch stays 50%), for more interesting games. The `!votes` middle option
   is now "tank 60%, witch 50% (normal)".
 - **Hint box fixed**: `lef_game_hints` warnings showed color tags like `{green}` as text on screen.

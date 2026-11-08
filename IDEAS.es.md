@@ -393,29 +393,6 @@ también lo usaría.
 
 ## Más adelante
 
-- **Actualizaciones de los repos de referencia (revisado el 2026-11-08, todavía sin mover las versiones
-  fijadas).** 14 repos tienen commits nuevos.
-  - **Primero lo que bloquea:** Harry Potter borró todos los `.smx` compilados de L4D1_2-Plugins y
-    Sourcemod-Plugins (ahora salen en su página de Releases). 21 líneas `smx` de nuestro manifest apuntan a
-    esos archivos (`l4d_afk_commands`, `l4d_tank_pass`, `gamemode-based_configs`, mission manager,
-    `cannounce`, `smd_advertisements`, transiciones de mapas, varios arreglos...): pasarlas a `sp` (compilar
-    desde el código) antes de mover esas versiones.
-  - **Repo competitivo (35 commits, ZoneMod 2.9.2):** `l4d2_vomit_collision_fix` reemplaza a nuestro
-    `l4d_vomit_trace_patch` (los supervivientes caídos o atrapados dejan de bloquear el vómito que pasa de
-    largo; tiene que ver con el reporte de "vómito corto"); actualizaciones de plugins que usamos
-    (`l4d2_noghostcheat`, `l4d_pounceprotect`, `l4d2_tank_props_glow`, `pause` (no aparecen SI si se
-    mantiene +attack en pausa), `l4d2_spit_spread_patch`, `l4d2_nosecondchances`, arreglos de colisión y
-    escaleras, Left4DHooks); arreglos nuevos de Stripper (Haunted Forest, escaleras de c7m3, Downpour, Amid the
-    Ruins) que `make_stripper.py` tomaría. Plugins nuevos para mirar: `l4d2_voice_mechanics_fix` (el chat de
-    voz deja de afectar sonidos/mecánicas del juego), `l4d2_clipsize_reload_fix`, `l4d2_fix_ladder_collision`
-    (los supervivientes no chocan con las escaleras de infectados), parche de exploits de grabación de demos.
-    No para nosotros: `l4d2_weapon_spawn_variety` (balance), `plugin_manager` (confogl).
-  - **Left4DHooks** (9), **MoYu** (`l4d_tongue_float_fix`, arreglos al agacharse de `l4d_fix_common_shove`,
-    cvars de `l4d_fix_target_replace`), **SMAC/lilac** (methodmaps de SourceMod 1.12, arreglos chicos).
-  - El `l4d2_skill_detect` de Harry arregló cvars cambiados entre deadstop y hunter-deadpounce; nosotros usamos
-    la copia del repo competitivo, revisar si tiene el mismo error.
-  - Repos de ideas (AoC Player-Skills, CommSuite, CallVote-Manager, Family-Share, Player-Stats): refactors y
-    arreglos, nada que cambie nuestros planes.
 - **Ready-Up solo cuando lo queramos** (idea, 2026-11-08): Ready-Up (todos escriben `!ready` antes de que
   empiece la ronda) está bien en noches entre amigos, pero los randoms se asustan o se van. Idea: apagado
   por defecto, se prende con un voto o un admin cuando la mayoría son amigos, y se apaga solo cuando el
@@ -460,6 +437,7 @@ también lo usaría.
 
 ## Hecho
 
+- **Repos de referencia actualizados** (2026-11-08): todas las versiones fijadas pasaron a su último commit. Los 21 plugins de Harry Potter ahora se compilan desde el código (borró sus compilados; `build_lite.py` usa su `scripting_1.12/include/` común). ZoneMod 2.9.2: `l4d2_vomit_collision_fix` reemplaza a `l4d_vomit_trace_patch`, `fix_pill_pass` a `pill_passer`, nuevos `l4d2_fix_ladder_collision`, `l4d2_fullupdate_fix`, `l4d2_voice_mechanics_fix`, arreglos nuevos de mapas de Stripper; `pause` 6.9.1 pasado a nuestra copia. Ningún cvar que usamos cambió de nombre. Sin probar con jugadores.
 - **lef_tanktime** + **lef_mode_plugins** (2026-11-08): Tank!Time! para mutation19, portado con Left4DHooks; sus cambios de Stripper los combina `make_stripper.py`, sus VScripts rehechos sobre los scripts actuales de Valve; los plugins de tank/jefes de versus apagados en ese modo. Sin probar con jugadores.
 - **lef_match** (2026-10-08): los puntajes se mantienen cuando un admin cambia el mapa dentro de la campaña, reiniciar capítulo y volver al lobby en `!admin`; `!admin` ordenado con lo útil primero; los SI rompen puertas de un golpe (`z_door_pound_damage 160`). Todavía sin probar en juego.
 - **l4dtoolz (lakwsh) para `sv_steam_bypass`** (2026-10-04): en el paquete lite, bypass siempre prendido.
