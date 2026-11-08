@@ -76,7 +76,7 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
   `make_stripper.py` re-inserts modes when it removes sections.
 - Harry's `gamemode-based_configs` runs `cfg/sourcemod/gamemode_cvars/<mode>.cfg` *after* plugin
   autoexec configs, so values there (and in `lefordianos/common.cfg`, which each mode file execs) win.
-- `chainsaw_fix` is Linux-only by design and fails to load on Windows; harmless.
+- `l4d2_chainsaw_fix` was Linux-only until 2026-11; its new version has Windows signatures (checked against the server's server.dll).
 - You can't print to chat from inside a usermessage hook: defer with `RequestFrame`.
 - **Every map change re-runs the configs** (server.cfg, each plugin's `cfg/sourcemod/*.cfg`, and the
   game-mode cfg that execs `common.cfg`), so a setting changed at runtime (vote, admin) silently reverts.
@@ -196,7 +196,7 @@ ready-to-run Windows server: SourceMod/MetaMod, the lite package, and the server
 server on `F:` is a clone of it. **Deploy = `build_lite.py`, `sync_server.py`, commit + push in
 l4d2-server, then `git pull` in the F: clone with the server stopped** (no more rsync straight to F:).
 `sync_server.py` tracks package files in `lefordianos-package.txt` (removes ones that left the package)
-and skips plugins in `plugins/disabled/` (chainsaw_fix lives there). Secrets (RCON, Steam API key)
+and skips plugins in `plugins/disabled/` (chainsaw_fix lived there until it got Windows support). Secrets (RCON, Steam API key)
 moved to the server's ignored `cfg/secrets_server.cfg`, exec'd at the end of `custom.cfg`. That repo has
 its own short `AGENTS.md`.
 

@@ -473,8 +473,8 @@ Works **without Ready-Up and without confogl**. Ready-Up is optional for all of 
   `sceneprocessor` (incluido, de nuestra carpeta alliedmodders/).*
 - [ ] **Harry** `l4d_shotgun_sound_fix`: shotguns have sound in third person.
   *ES: las escopetas tienen sonido en tercera persona.*
-- [x] **Harry** `l4d2_chainsaw_fix`: fixes a Linux server crash with chainsaws.
-  *ES: corrige un crasheo de servidores Linux con la motosierra.*
+- [x] **Harry** `l4d2_chainsaw_fix`: fixes a server crash with chainsaws (Linux and, since 2026-11, Windows).
+  *ES: corrige un crasheo del servidor con la motosierra (Linux y, desde 2026-11, Windows).*
 - [x] **MoYu** `l4d2_fix_common_flee`: sitting/lying commons don't get stuck when fleeing.
   *ES: los comunes sentados/acostados no se traban al huir.*
 - [x] **MoYu** `l4d_fix_target_replace`: infected keep the right target when a survivor is replaced by a bot.

@@ -35,7 +35,7 @@ Cuando aparezca algo nuevo, agrégalo acá (y en `KNOWLEDGE.md`).
 
 | Síntoma | Estado | Causa | Qué hacer |
 |---|---|---|---|
-| `l4d2_chainsaw_fix` no carga en Windows | confirmado | Arregla un crash que solo pasa en Linux; no tiene gamedata de Windows a propósito | No hace daño; el repo del servidor lo deja en `plugins/disabled/` |
+| `l4d2_chainsaw_fix` no carga en Windows | arreglado | Hasta 2026-11 solo tenía gamedata de Linux | Su versión nueva (compilada del código, 2026-11-08) trae firmas de Windows que coinciden con nuestro servidor; está prendido |
 | Un plugin falla por gamedata o traducción faltante | confirmado | El empaquetador no encontró un archivo (los plugins cargan gamedata de varias formas) | Arreglado en `build_lite.py`; si vuelve a pasar, revisar cómo lo carga el plugin |
 | Un plugin ya compilado falla con "requires a newer Actions" | confirmado | Los `.smx` de otros repos piden extensiones más nuevas | Incluimos Actions 3.9.2 con `get_extensions.py` |
 | Los jugadores latinoamericanos ven inglés | confirmado | SourceMod le da a "Spanish - Latin America" el código `las`, sin caer en `es` | `build_lite.py` copia cada traducción `es` a `las` |
