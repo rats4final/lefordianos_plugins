@@ -1,0 +1,100 @@
+﻿"Phrases"
+{
+	"Info_PhrasesAuthor"
+	{
+		"es"		"Traducido por {olive}Torpedo - 'The Legend'"
+	}
+	"Info_TankTime"
+	{
+		"es"		"Los tanques de ambos equipos tendrán el mismo punto de generación. Sea tan rápido como el equipo de supervivientes o los tanques se generarán en frente de usted."
+	}
+	"YouAreSpawningIn"
+	{
+		"es"		"¡¡¡Te generarás en {1} segundos!!!"
+	}
+ 	"TanksAreSpawningIn"
+	{
+		"es"		"Los tanques se generarán en {1} segundos..."
+	}
+	"IsRegular"
+	{
+		"es"		"ordinario"
+	}
+  	"SurvivorSlayYourself"
+	{
+		"es"		"{yellow}Puedes asesinarte a ti mismo mientras estés incapacitado. Escribe {olive}!{1}{yellow} en el chat. Esto podría ahorrar tiempo."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"es"		"{yellow}O puedes arrastrarte hacia la habitación segura para obtener más puntos para tu equipo."
+	}
+ 	"SurvivorSlayedTheirself"
+	{
+		"es"		"{teamcolor}{1}{default} se asesinó a sí mismo mientras estaba incapacitado."
+	}
+  	"SurvivorIsNotIncapped"
+	{
+		"es"		"Ahora mismo no estás incapacitado"
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"eS"		"{yellow}You were incapped by {teamcolor}{1}{default} with {teamcolor}{2} HP{default} left"
+	}
+	"TanksAreSpawningNow"
+	{		
+		"es"		"¡ ¡ ¡ Generando ! ! !"
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"es"		"¡¡¡Un Tanque normal se está generando ahora!!!"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"es"		"El final ha comenzado: El equipo de Tanques no tendrá más la ayuda de Tanques-bot (límite de generación impuesto por Valve), ¡pero ellos tendrán vida extra!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"es"		"La ronda ha comenzado mientras la intro estaba ejecutándose. El servidor reiniciará el mapa ahora..."
+	}
+	"StartedByTimeout"
+	{
+		"es"		"¡La Ronda se ha iniciado por superar el limite de tiempo!"
+	}
+	"ConfigInfo_Enabled"
+	{
+		"es"		"Enabled"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"es"		"Disabled"
+	}
+	"ConfigInfo_Title"
+	{
+		"es"		"Configuration"
+	}
+	"ConfigInfo_Bots"
+	{
+		"es"		"{yellow}Bots{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"es"		"{yellow}Crawling{default}"
+	}
+	"ConfigInfo_InfoPanel"
+	{
+		"es"		"{yellow}Info panel{default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"es"		"{yellow}Tank's health info{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"es"		"{yellow}Regular Tanks{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"es"		"{yellow}Shotgun-Mode{default}"
+	}
+
+}

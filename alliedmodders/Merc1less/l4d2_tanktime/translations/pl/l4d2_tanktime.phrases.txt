@@ -1,0 +1,100 @@
+﻿"Phrases"
+{
+	"PhrasesAuthor"
+	{
+		"pl"		"Przetłumaczone przez : {olive}KurakDarcia"
+	}
+	"TankTimeInfo"
+	{
+		"pl"		"Drużyna przeciwna zdobędzie te same punkty odrodzenia, co wy. Bądźcie równie szybcy albo tanki będą się odradzały koło was."
+	}
+	"IsRegular"
+	{	
+		"pl"		"Zwykły"
+	}
+	"YouAreSpawningIn"
+	{
+		"pl"		"Odrodzisz się za {1} sekund"
+	}
+	"TanksAreSpawningIn"
+	{
+		"pl"		"Tanki odradzają się za {1} sekund"
+	}
+	"SurvivorSlayYourself"
+	{
+		"pl"		"{yellow}Możesz zabić się leżąc na ziemi. Wpisz na czacie {olive}!{1}{yellow}. Możesz zaoszczędzić czasu swojej drużynie."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"pl"		"{yellow}Możesz też czołgać się do schronu, by zdobyć więcej punktów dla swojej drużyny." 			     
+	}
+	"SurvivorSlayedHimself"
+	{
+		"pl"		"{teamcolor}{1}{default} Zabił(a) się sam(a) leżąc na ziemi"
+	}
+	"SurvivorIsNotIncapped"
+	{
+		"pl"		"{yellow}W tej chwili nie leżysz na ziemi"
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"pl"		"{yellow}Położył(a) cię {teamcolor}{1}{default} mając {teamcolor}{2} HP"
+	}
+	"TanksAreSpawningNow"
+	{		
+		"pl"		"! ! !   Odrodzenie   ! ! !"
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"pl"		"Zwykły Tank właśnie się odradza! ! !"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"pl"		"Zaczął się finał: drużyna tanków straciła wsparcie tanków-botów (limit odrodzeń od Valve), ale dostaje dodatkowe punkty życia!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"pl"		"Runda zaczęła się w trakcie trwania intra. Nastąpi restart serwera..."
+	}
+	"StartedByTimeout"
+	{
+		"pl"		"Runda zaczęła się z powodu upływu limitu czasu."
+	}
+	"ConfigInfo_Enabled"
+	{
+		"pl"		"Włączone"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"pl"		"Wyłączone"
+	}
+	"ConfigInfo_Title"
+	{
+		"pl"		"Konfiguracja"
+	}
+	"ConfigInfo_Bots"
+	{
+		"pl"		"{yellow} Boty{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"pl"		"{yellow} Czołganie{default}"
+	}	
+	"ConfigInfo_InfoPanel"
+	{
+		"pl"		"{yellow} Panel informacyjny{default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"pl"		"{yellow} Punkty życia tanka{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"pl"		"{yellow} Zwykłe tanki{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"pl"		"{yellow}Tryb shotgun {default}"
+	}
+
+}

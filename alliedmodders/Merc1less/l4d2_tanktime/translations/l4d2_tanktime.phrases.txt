@@ -1,0 +1,104 @@
+"Phrases"
+{
+	"PhrasesAuthor"
+	{
+		"en"		"Translated by : {olive}Not A Native Speaker"
+	}
+	"TankTimeInfo"
+	{
+		"en"		"The other team will get the same spawn points! Be so fast as the survivors-team or the Tanks could spawn in front of you."
+	}
+	"YouAreSpawningIn"
+	{
+		"#format"	"{1:d}"
+		"en"		"You are spawning in {1} second(s)"
+	}
+ 	"TanksAreSpawningIn"
+	{
+		"#format"	"{1:d}"
+		"en"		"The Tanks are spawning in {1} second(s)..."
+	}
+ 	"SurvivorSlayYourself"
+	{
+		"#format"	"{1:s}"
+		"en"		"{yellow}You can kill yourself while incapacitated. Type {olive}!{1}{yellow} to chat. It could save time for your team."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"en"		"{yellow}Or you can crawl to the saferoom to get more points for your team."
+	}
+  	"SurvivorSlayedTheirself"
+	{
+		"#format"	"{1:N}"
+		"en"		"{teamcolor}{1}{default} slayed themself while incapacitated."
+	}
+  	"SurvivorIsNotIncapped"
+	{
+		"en"		"You are currently not incapacitated!"
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"#format"	"{1:N},{2:d}"
+		"en"		"{yellow}You were incapped by {teamcolor}{1}{yellow} with {teamcolor}{2} HP{yellow} left"
+	}
+	"TanksAreSpawningNow"
+	{		
+		"en"		"! ! !  Spawn Time ! ! !"
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"en"		"One regular Tank is spawning now ! ! !"
+	}
+	"IsRegular"
+	{
+		"en"		"regular"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"en"		"The Finale has begun : The Tank-Team will not be supported by Bot-Tanks anymore (spawn limit by Valve), but will get extra health!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"en"		"The Round has been started while intro is running. The Server will be restarted now..."
+	}
+	"StartedByTimeout"
+	{
+		"en"		"The Round has been started by timeout!"
+	}
+	"ConfigInfo_Enabled"
+	{
+		"en"		"Enabled"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"en"		"Disabled"
+	}
+	"ConfigInfo_Title"
+	{
+		"en"		"Configuration"
+	}
+	"ConfigInfo_Bots"
+	{
+		"en"		"{yellow}Bots{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"en"		"{yellow}Crawling{default}"
+	}
+	"ConfigInfo_InfoPanel"
+	{
+		"en"		"{yellow}Info panel{default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"en"		"{yellow}Tank's health info{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"en"		"{yellow}Regular Tanks{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"en"		"{yellow}Shotgun-Mode{default}"
+	}
+}

@@ -16,6 +16,7 @@ the original stays here, so we can always compare against it.
 | SilverShot | `l4d_fire_glow`, `l4d_pipebomb_ignore` | AlliedModders | — |
 | Buster "Mr. Zero" Nielsen; fork by cravenge and Dragokas | `sceneprocessor` 1.33.3 (needed by Harry's `l4d2_survivor_mourn_fix`; copy from Harry Potter's Rotoblin-AZMod repo) | [AlliedModders t=241585](https://forums.alliedmods.net/showthread.php?t=241585) | — |
 | pan0s | `l4d2_menu`, `l4d2_srs` (zip contents, without compiled binaries) | AlliedModders | — |
+| Merc1less | `l4d2_tanktime` (Tank!Time! 1.2.3 for mutation19: plugin, gamedata, translations, Stripper files, VScripts; without the binary and its bundled colors.inc) | [AlliedModders t=248745](https://forums.alliedmods.net/showthread.php?t=248745) | [`lef_tanktime`](../plugins/lef_tanktime/) |
 
 Versions and forum links for each one are in [CREDITS.md](../CREDITS.md). Compiled files (`.smx`, `.so`, `.dll`) are not kept.
 

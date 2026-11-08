@@ -1,0 +1,100 @@
+﻿"Phrases"
+{
+	"PhrasesAuthor"
+	{
+		"de"		"Übersetzt von : {olive}Mir{default}"
+	}
+	"TankTimeInfo"
+	{
+		"de"		"Das andere Team wird dieselben Spawns erhalten wie ihr. Seid als Überlebende genauso schnell unterwegs oder die Tanks werden ggf. vor euch spawnen!"
+	}
+	"IsRegular"
+	{	
+		"de"		"regulärer"
+	}
+	"YouAreSpawningIn"
+	{
+		"de"		"Du spawnst in {1} Sekunden"
+	}
+	"TanksAreSpawningIn"
+	{
+		"de"		"Die Tanks spawnen in {1} Sekunde(n)..."
+	}
+	"SurvivorSlayYourself"
+	{
+		"de"		"{yellow}Du kannst dich selbst töten, wenn du außer Gefecht bist. Gib {olive}!{1}{yellow} in den Chat ein, es könnte deinem Team helfen."
+	}
+	"SurvivorSlayYourself_OrCrawl"
+	{
+		"de"		"{yellow}Oder krieche zum Safe-Room, das könnte Punkte bringen!" 			     
+	}
+	"SurvivorSlayedTheirself"
+	{
+		"de"		"{teamcolor}{1}{default} tötete sich selbst während er außer Gefecht war."
+	}
+	"SurvivorIsNotIncapped"
+	{
+		"de"		"{yellow}Du bist derzeit nicht außer Gefecht!"
+	}
+	"Survivor_WasIncappedBy"
+	{
+		"de"		"{yellow}Du wurdest von {teamcolor}{1}{yellow} außer Gefecht gesetzt. Rest-HP: {teamcolor}{2}"
+	}
+	"TanksAreSpawningNow"
+	{		
+		"de"		"! ! ! Die Tanks spawnen jetzt ! ! !"
+	}
+	"RegularTankIsSpawningNow"
+	{
+		"de"		"ACHTUNG! Zusätzlich ist ein regulärer Tank erschienen ! ! !"
+	}
+	"SpawnLimitInfo_Finale"
+	{
+		"de"		"Das Finale hat begonnen : Das Tank-Team wird nicht mehr von Bots unterstützt (Spawn-Limit von Valve), dafür erhalten die Tanks mehr Lebensenergie!"
+	}
+	"RoundStartedTooEarly"
+	{
+		"de"		"Die Runde hat begonnen während das Intro noch läuft. Der Server wird neu gestartet..."
+	}
+	"StartedByTimeout"
+	{
+		"de"		"Die Runde begann wegen eines Timeouts vorzeitig!"
+	}
+	"ConfigInfo_Enabled"
+	{
+		"de"		"Aktiviert"
+	}
+	"ConfigInfo_Disabled"
+	{
+		"de"		"Deaktiviert"
+	}
+	"ConfigInfo_Title"
+	{
+		"de"		"Konfiguration"
+	}
+	"ConfigInfo_Bots"
+	{
+		"de"		"{yellow}Bots{default}"
+	}
+	"ConfigInfo_Crawling"
+	{
+		"de"		"{yellow}Am Boden kriechen{default}"
+	}	
+	"ConfigInfo_InfoPanel"
+	{
+		"de"		"{yellow}Informationsleiste (bei Tanks){default}"
+	}
+	"ConfigInfo_TanksHealth"
+	{
+		"de"		"{yellow}Gesundheitsanzeige der Tanks{default}"
+	}
+	"ConfigInfo_RegularTanks"
+	{
+		"de"		"{yellow}Reguläre Tanks{default}"
+	}
+	"ConfigInfo_ShotgunMode"
+	{
+		"de"		"{yellow}Shotgun-Modus{default}"
+	}
+
+}
