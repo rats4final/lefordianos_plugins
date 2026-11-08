@@ -72,6 +72,15 @@ def repo_root(path):
     return os.path.join(REFS, rel.split(os.sep)[0])
 
 
+def repo_includes(sp):
+    """
+    Harry Potter's repos keep every include in one shared folder (scripting_1.12/include/) since
+    2026-10, and his plugins are built against it: look there first for his sources.
+    """
+    shared = os.path.join(repo_root(sp), "scripting_1.12", "include")
+    return [shared] if os.path.isdir(shared) else []
+
+
 def plugin_sources(sp):
     """The main .sp plus files in a folder named like it (e.g. scripting/lilac/*.sp)."""
     files = [sp]
@@ -197,7 +206,7 @@ def handle(kind, args):
         subdir = args[1] if len(args) > 1 else ""
         name = os.path.splitext(os.path.basename(sp))[0]
         dst = plugin_dest(name, subdir)
-        ok, output = compile_plugin(sp, dst)
+        ok, output = compile_plugin(sp, dst, repo_includes(sp))
         if not ok:
             print(output)
             return warn(f"{name}: failed to compile")
