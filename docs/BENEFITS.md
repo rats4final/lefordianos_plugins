@@ -12,7 +12,7 @@ changes we chose on purpose are listed at the end.
 ## Fair matches
 
 - **Same tank and witch for both teams** (`lef_boss_spawns`): each map rolls once whether there's a
-  tank and/or witch (50% each by default), and the second team gets the same answer **in the same
+  tank and/or witch (tank 60%, witch 50% by default), and the second team gets the same answer **in the same
   spot**. In vanilla one team could get a tank before a drop and the other after it.
 - **Everyone knows where they spawn**: the start panel and the chat show "Tank: 63%, Witch: none", so
   the first team isn't surprised by something the second team knows is coming.
@@ -113,7 +113,7 @@ Silvers. Some players will notice:
 ## Balance changes we chose on purpose
 
 These change vanilla, so they're listed honestly. Each can be turned off in `PLUGINS.md` or its config:
-- **Tank and witch chance**: 50% each per map, the same for both teams (vanilla uses its own odds).
+- **Tank and witch chance**: tank 60%, witch 50% per map, the same for both teams (vanilla uses its own odds).
 - **Survivor bots**: take 15% less damage from infected players.
 - **ZoneMod gameplay picks**:
   - no bunny-hopping, louder jockeys, fixed SI spawn order, no spitter while a tank is up;

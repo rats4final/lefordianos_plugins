@@ -393,6 +393,36 @@ también lo usaría.
 
 ## Más adelante
 
+- **Actualizaciones de los repos de referencia (revisado el 2026-11-08, todavía sin mover las versiones
+  fijadas).** 14 repos tienen commits nuevos.
+  - **Primero lo que bloquea:** Harry Potter borró todos los `.smx` compilados de L4D1_2-Plugins y
+    Sourcemod-Plugins (ahora salen en su página de Releases). 21 líneas `smx` de nuestro manifest apuntan a
+    esos archivos (`l4d_afk_commands`, `l4d_tank_pass`, `gamemode-based_configs`, mission manager,
+    `cannounce`, `smd_advertisements`, transiciones de mapas, varios arreglos...): pasarlas a `sp` (compilar
+    desde el código) antes de mover esas versiones.
+  - **Repo competitivo (35 commits, ZoneMod 2.9.2):** `l4d2_vomit_collision_fix` reemplaza a nuestro
+    `l4d_vomit_trace_patch` (los supervivientes caídos o atrapados dejan de bloquear el vómito que pasa de
+    largo; tiene que ver con el reporte de "vómito corto"); actualizaciones de plugins que usamos
+    (`l4d2_noghostcheat`, `l4d_pounceprotect`, `l4d2_tank_props_glow`, `pause` (no aparecen SI si se
+    mantiene +attack en pausa), `l4d2_spit_spread_patch`, `l4d2_nosecondchances`, arreglos de colisión y
+    escaleras, Left4DHooks); arreglos nuevos de Stripper (Haunted Forest, escaleras de c7m3, Downpour, Amid the
+    Ruins) que `make_stripper.py` tomaría. Plugins nuevos para mirar: `l4d2_voice_mechanics_fix` (el chat de
+    voz deja de afectar sonidos/mecánicas del juego), `l4d2_clipsize_reload_fix`, `l4d2_fix_ladder_collision`
+    (los supervivientes no chocan con las escaleras de infectados), parche de exploits de grabación de demos.
+    No para nosotros: `l4d2_weapon_spawn_variety` (balance), `plugin_manager` (confogl).
+  - **Left4DHooks** (9), **MoYu** (`l4d_tongue_float_fix`, arreglos al agacharse de `l4d_fix_common_shove`,
+    cvars de `l4d_fix_target_replace`), **SMAC/lilac** (methodmaps de SourceMod 1.12, arreglos chicos).
+  - El `l4d2_skill_detect` de Harry arregló cvars cambiados entre deadstop y hunter-deadpounce; nosotros usamos
+    la copia del repo competitivo, revisar si tiene el mismo error.
+  - Repos de ideas (AoC Player-Skills, CommSuite, CallVote-Manager, Family-Share, Player-Stats): refactors y
+    arreglos, nada que cambie nuestros planes.
+- **Ready-Up solo cuando lo queramos** (idea, 2026-11-08): Ready-Up (todos escriben `!ready` antes de que
+  empiece la ronda) está bien en noches entre amigos, pero los randoms se asustan o se van. Idea: apagado
+  por defecto, se prende con un voto o un admin cuando la mayoría son amigos, y se apaga solo cuando el
+  servidor se vacía. Una forma: cargar/descargar el `readyup.smx` del repo competitivo como hace
+  `lef_mode_plugins`, y reiniciar la ronda. A revisar antes: qué plugins nuestros cambian cuando Ready-Up
+  está cargado (`pause`, `l4d_tank_control_eq`; el `!wait` de `lef_round_start` se superpone con él), y si
+  cargarlo a mitad de mapa funciona.
 - **Grabación de demos** para ambas configs (en pausa desde el 2026-10-01, volveremos a esto):
   - la extensión [sourcetvsupport](https://github.com/shqke/sourcetvsupport) (arregla SourceTV en
     L4D2; hay que descargar el binario de sus releases de GitHub o compilarlo desde el código);

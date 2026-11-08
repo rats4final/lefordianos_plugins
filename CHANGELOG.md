@@ -7,6 +7,13 @@ in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](d
 
 ## 2026-11-08
 
+- **Tank on 60% of maps** (was 50%; witch stays 50%), for more interesting games. The `!votes` middle option
+  is now "tank 60%, witch 50% (normal)".
+- **Hint box fixed**: `lef_game_hints` warnings showed color tags like `{green}` as text on screen.
+- **Attack together** (`lef_game_hints` 1.2.0): once per map the infected get the tip, and a smoker, hunter,
+  jockey or charger that went in alone and died fast gets a private reminder. Boomers and spitters never
+  count (sacrificing them to rotate is a tactic), nor falls, suicides, tank time, or downed survivors.
+- **No more "shoved" skill reports** (`sm_skill_report_shove 0`): too common, it was noise.
 - **Taaannnk!! mode (mutation19)** with the new `lef_tanktime`: a port of Merc1less' Tank!Time! that makes
   the all-tanks mutation playable in versus (4 tanks with respawn timers, same spawn spots in both halves,
   bad spawn spots fixed, finale health bonus, `!slayme`). It uses Left4DHooks instead of signatures that

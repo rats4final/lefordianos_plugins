@@ -8,6 +8,15 @@ están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores es
 
 ## 2026-11-08
 
+- **Tank en el 60% de los mapas** (era 50%; la witch sigue en 50%), para partidas más interesantes. La opción
+  del medio de `!votes` ahora es "tank 60%, witch 50% (normal)".
+- **Cuadro de avisos arreglado**: los avisos de `lef_game_hints` mostraban marcas de color como `{green}` como
+  texto en la pantalla.
+- **Ataquen juntos** (`lef_game_hints` 1.2.0): una vez por mapa los infectados reciben el consejo, y un smoker,
+  hunter, jockey o charger que entró solo y murió rápido recibe un aviso privado. Los boomers y spitters nunca
+  cuentan (sacrificarlos para rotar es una táctica), ni las caídas, suicidios, el tank en juego o los
+  supervivientes caídos.
+- **Ya no se anuncia "empujó" en las jugadas destacadas** (`sm_skill_report_shove 0`): pasa demasiado, era ruido.
 - **Modo Taaannnk!! (mutation19)** con el nuevo `lef_tanktime`: un port del Tank!Time! de Merc1less que
   hace jugable en versus la mutación de solo tanks (4 tanks con tiempos de reaparición, los mismos lugares
   de aparición en las dos mitades, lugares malos corregidos, vida extra en finales, `!slayme`). Usa

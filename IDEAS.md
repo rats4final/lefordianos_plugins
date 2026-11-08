@@ -356,6 +356,34 @@ team is wiped**. ZoneMod's `holdout_bonus` is built on it. Our plugin would use 
 
 ## Later
 
+- **Reference repo updates (checked 2026-11-08, pins not moved yet).** 14 repos have new commits.
+  - **Blocker first:** Harry Potter deleted every compiled `.smx` from L4D1_2-Plugins and Sourcemod-Plugins
+    (now built on their Releases page). 21 of our manifest's `smx` lines point to those files
+    (`l4d_afk_commands`, `l4d_tank_pass`, `gamemode-based_configs`, mission manager, `cannounce`,
+    `smd_advertisements`, map transitions, several fixes...): switch them to `sp` (compile from source)
+    before moving those pins.
+  - **Competitive repo (35 commits, ZoneMod 2.9.2):** `l4d2_vomit_collision_fix` replaces our
+    `l4d_vomit_trace_patch` (downed/pinned survivors stop blocking vomit aimed past them; related to the
+    "short vomit" report); updates to plugins we ship (`l4d2_noghostcheat`, `l4d_pounceprotect`,
+    `l4d2_tank_props_glow`, `pause` (no SI spawn when +attack is held during a pause), `l4d2_spit_spread_patch`,
+    `l4d2_nosecondchances`, collision/ladder fixes, Left4DHooks); new Stripper fixes (Haunted Forest, c7m3
+    ladders, Downpour, Amid the Ruins) that `make_stripper.py` would pick up. New plugins worth a look:
+    `l4d2_voice_mechanics_fix` (voice chat stops affecting game sounds/mechanics), `l4d2_clipsize_reload_fix`,
+    `l4d2_fix_ladder_collision` (survivors don't collide with infected ladders), demo-recording exploit patch.
+    Not for us: `l4d2_weapon_spawn_variety` (balance), `plugin_manager` (confogl).
+  - **Left4DHooks** (9), **MoYu** (`l4d_tongue_float_fix`, `l4d_fix_common_shove` crouch fixes,
+    `l4d_fix_target_replace` cvars), **SMAC/lilac** (SourceMod 1.12 methodmaps, small fixes).
+  - Harry's `l4d2_skill_detect` fixed swapped deadstop/hunter-deadpounce cvars; we ship the competitive
+    repo's copy, check whether it has the same bug.
+  - Idea repos (AoC Player-Skills, CommSuite, CallVote-Manager, Family-Share, Player-Stats): refactors
+    and fixes, nothing that changes our plans.
+- **Ready-Up only when we want it** (idea, 2026-11-08): Ready-Up (everyone types `!ready` before the round
+  starts) is good on friends' nights, but randoms get scared or leave. Idea: off by default, switched on
+  by a vote or an admin when most players are friends, and off again when the server empties. Possible
+  way: load/unload the competitive repo's `readyup.smx` like `lef_mode_plugins` does, then restart the
+  round. To check first: which of our plugins change behaviour when Ready-Up is loaded (`pause`,
+  `l4d_tank_control_eq`, `lef_round_start`'s `!wait` overlaps with it), and whether loading it mid-map
+  works.
 - **Demo recording** for both configs (parked 2026-10-01, we'll come back to it):
   - the [sourcetvsupport](https://github.com/shqke/sourcetvsupport) extension (fixes SourceTV
     in L4D2; the binary has to be downloaded from its GitHub releases or built from source);

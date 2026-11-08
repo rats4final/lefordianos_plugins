@@ -12,7 +12,7 @@ balance que elegimos a propósito están al final.
 ## Partidas justas
 
 - **Mismo tank y witch para los dos equipos** (`lef_boss_spawns`): cada mapa sortea una vez si hay tank
-  y/o witch (50% cada uno por defecto), y el segundo equipo recibe la misma respuesta **en el mismo
+  y/o witch (tank 60%, witch 50% por defecto), y el segundo equipo recibe la misma respuesta **en el mismo
   lugar**. En vanilla un equipo podía tener el tank antes de una caída y el otro después.
 - **Todos saben dónde salen**: el panel de inicio y el chat muestran "Tank: 63%, Witch: no hay", así el
   primer equipo no se sorprende con algo que el segundo ya sabe que viene.
@@ -126,7 +126,7 @@ Silvers. Algunas que los jugadores van a notar:
 
 Estos cambian vanilla, así que se listan con honestidad. Cada uno se puede apagar en `PLUGINS.md` o en
 su config:
-- **Probabilidad de tank y witch**: 50% cada uno por mapa, igual para los dos equipos (vanilla usa sus propias
+- **Probabilidad de tank y witch**: tank 60%, witch 50% por mapa, igual para los dos equipos (vanilla usa sus propias
   probabilidades).
 - **Bots sobrevivientes**: reciben 15% menos daño de los jugadores infectados.
 - **Elecciones de juego de ZoneMod**:
