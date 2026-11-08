@@ -82,7 +82,7 @@
 	}
 	"Pause Needs Vote"
 	{
-		"es"		"{green}[Votos]{default} Pausar necesita una votación. Iniciándola ahora."
+		"es"		"{green}[Votos]{default} Pausar necesita una votación. Iniciándola ahora. (Admins: forzar pausa está en !admin.)"
 	}
 	"Pause Disabled"
 	{

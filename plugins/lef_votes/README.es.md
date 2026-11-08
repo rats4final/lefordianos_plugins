@@ -34,8 +34,11 @@ que un troll expulsado podía volver enseguida. Acá expulsar por votación es e
 
 Para que los randoms no pausen cuando quieran, los jugadores no pueden usar `!pause` directo: escribirlo
 inicia una votación de pausa. Si pasa, el juego se pausa como siempre (`pause.smx`), y quitar la pausa
-funciona igual que antes (los dos equipos `!ready`). Los admins sí pueden `!pause` directo, y tienen
-**forzar pausa** y **forzar quitar pausa** en el menú de admin. Se apaga con `lef_votes_pause_by_vote 0`.
+funciona igual que antes (los dos equipos `!ready`). Vale también para los admins (2026-11-08: nuestros
+amigos son todos admins, así que `!pause` les pausaba al instante, sin esperar ningún voto); los admins se
+saltan el voto con **forzar pausa** / **forzar quitar pausa** en el menú de admin, o
+`lef_votes_pause_admin_direct 1` les devuelve el `!pause` directo. Todo se apaga con
+`lef_votes_pause_by_vote 0`.
 
 ## Las votaciones duran toda la sesión
 
@@ -80,7 +83,8 @@ muestra cada voto a medida que llega; `0` lo apaga. No hace falta otro plugin: l
 | `lef_votes_spectators_vote` | 1 | Los espectadores pueden votar |
 | `lef_votes_kick_ban_minutes` | 5 | Minutos que un expulsado por votación no puede volver (0 = solo expulsar) |
 | `lef_votes_immune_flags` | b | Banderas de admin que no se pueden expulsar, mover ni silenciar por votación |
-| `lef_votes_pause_by_vote` | 1 | Los jugadores solo pueden pausar con una votación |
+| `lef_votes_pause_by_vote` | 1 | Pausar solo con una votación (`!pause` la inicia) |
+| `lef_votes_pause_admin_direct` | 0 | 1 = el `!pause` de los admins se salta el voto |
 | `lef_votes_show_voters` | 1 | Mostrar quién votó: 0 = no, 1 = al final, 2 = también cada voto |
 
 La pantalla de votación muestra un solo texto para todos, en el idioma del servidor; los menús siguen el

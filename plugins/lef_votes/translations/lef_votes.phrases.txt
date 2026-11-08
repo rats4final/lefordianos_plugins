@@ -91,7 +91,7 @@
 	}
 	"Pause Needs Vote"
 	{
-		"en"		"{green}[Votes]{default} Pausing needs a vote. Starting one now."
+		"en"		"{green}[Votes]{default} Pausing needs a vote. Starting one now. (Admins: force pause is in !admin.)"
 	}
 	"Pause Disabled"
 	{

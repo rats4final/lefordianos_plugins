@@ -23,7 +23,8 @@
  *            !pause directly: typing !pause starts this vote instead
  *
  * Admins (generic flag) get a "Lefordianos" category in !admin: run any entry instantly, force
- * pause / unpause, and pass or cancel the current vote. Admins can always !pause directly.
+ * pause / unpause, and pass or cancel the current vote. Typing !pause starts the vote for admins too
+ * (they use force pause to skip it), unless lef_votes_pause_admin_direct is 1.
  *
  * Who voted: after every vote on the vote screen (the game's own, ours, or another plugin's), chat
  * lists who voted Yes and who voted No. Players send "Vote Yes" / "Vote No" for all of them, and the
@@ -107,6 +108,7 @@ ConVar
 	g_cvKickBanMinutes,
 	g_cvImmuneFlags,
 	g_cvPauseByVote,
+	g_cvPauseAdminDirect,
 	g_cvShowVoters;
 
 // Settings changed by vote or admin, re-applied after each map's configs: persist key -> command.
@@ -165,7 +167,8 @@ public void OnPluginStart()
 	g_cvSpecJoin       = CreateConVar("lef_votes_spectators_vote", "1", "Spectators can vote Yes/No.", _, true, 0.0, true, 1.0);
 	g_cvKickBanMinutes = CreateConVar("lef_votes_kick_ban_minutes", "5", "A vote kick also bans for this many minutes, like vanilla's vote kick. 0 = kick only.", _, true, 0.0);
 	g_cvImmuneFlags    = CreateConVar("lef_votes_immune_flags", "b", "Admins with any of these flags can't be vote-kicked, moved or muted.");
-	g_cvPauseByVote    = CreateConVar("lef_votes_pause_by_vote", "1", "Players (not admins) can only pause through a vote; typing !pause starts it.", _, true, 0.0, true, 1.0);
+	g_cvPauseByVote    = CreateConVar("lef_votes_pause_by_vote", "1", "Pausing only through a vote: typing !pause starts it.", _, true, 0.0, true, 1.0);
+	g_cvPauseAdminDirect = CreateConVar("lef_votes_pause_admin_direct", "0", "1 = admins' !pause pauses at once, without a vote (they always have force pause in the admin menu).", _, true, 0.0, true, 1.0);
 	g_cvShowVoters     = CreateConVar("lef_votes_show_voters", "1", "After every vote on the vote screen, list who voted Yes and No. 0 = off, 1 = at the end, 2 = also each vote as it comes in.", _, true, 0.0, true, 2.0);
 	AutoExecConfig(true, "lef_votes");
 
@@ -1267,7 +1270,10 @@ void Execute(int index, int initiator, int targetUserId, const char[] map)
 
 Action Listener_Pause(int client, const char[] command, int argc)
 {
-	if (client == 0 || !g_cvPauseByVote.BoolValue || CheckCommandAccess(client, "lef_votes_pause_direct", ADMFLAG_GENERIC))
+	// Admins pausing straight away was the "it paused before the vote ended" report (2026-11-08): our
+	// friends are all admins, so !pause never voted for them. Now it votes unless the cvar says so.
+	if (client == 0 || !g_cvPauseByVote.BoolValue
+		|| (g_cvPauseAdminDirect.BoolValue && CheckCommandAccess(client, "lef_votes_pause_direct", ADMFLAG_GENERIC)))
 	{
 		return Plugin_Continue;
 	}

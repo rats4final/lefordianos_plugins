@@ -33,8 +33,10 @@ so a kicked troll could come straight back. Here a vote kick is a kick plus a sh
 
 So randoms can't pause whenever they like, players can't use `!pause` directly: typing it starts a
 pause vote instead. If it passes, the game pauses as usual (`pause.smx`), and unpausing works as
-before (both teams `!ready`). Admins can still `!pause` directly, and have **force pause** and
-**force unpause** in the admin menu. Turn this off with `lef_votes_pause_by_vote 0`.
+before (both teams `!ready`). This goes for admins too (2026-11-08: our friends are all admins, so
+`!pause` used to pause at once for them, without waiting for any vote); admins skip the vote with
+**force pause** / **force unpause** in the admin menu, or `lef_votes_pause_admin_direct 1` gives them
+the old direct `!pause`. Turn the whole thing off with `lef_votes_pause_by_vote 0`.
 
 ## Votes last the whole session
 
@@ -77,7 +79,8 @@ vote, and we listen to that.
 | `lef_votes_spectators_vote` | 1 | Spectators can vote |
 | `lef_votes_kick_ban_minutes` | 5 | Minutes a vote-kicked player can't rejoin (0 = kick only) |
 | `lef_votes_immune_flags` | b | Admin flags that can't be vote-kicked, moved or muted |
-| `lef_votes_pause_by_vote` | 1 | Players can only pause through a vote |
+| `lef_votes_pause_by_vote` | 1 | Pausing only through a vote (`!pause` starts it) |
+| `lef_votes_pause_admin_direct` | 0 | 1 = admins' `!pause` skips the vote |
 | `lef_votes_show_voters` | 1 | List who voted: 0 = off, 1 = at the end, 2 = also each vote |
 
 The vote screen shows one text for everyone, in the server's language; the menus follow each
