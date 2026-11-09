@@ -217,7 +217,10 @@ message and changes campaign unless lobby votes > rematch votes (`PZEndGameVoteS
 opt1, opt2, ?), a ReturnToLobby vote passed, or `lef_campaigns_allow_lobby` (lef_match's !lobby).
 New public repo `rats4final/lefordianos-motd` (`../lefordianos-motd`, Next.js 16.4, plain CSS for the game's old
 browser): `/motd` and `/host`, live at https://lefordianos-motd.vercel.app (Vercel, deployed by the owner). The
-server's `left4dead2/mymotd.txt` and `myhost.txt` hold those URLs and are tracked in l4d2-server.
+server's `left4dead2/mymotd.txt` and `myhost.txt` are tracked in l4d2-server. **2026-11-09:** the game's browser
+can't open https and Vercel forces it, so the game now loads a plain-HTML copy served over http by l4d2-server's
+`web/serve.ps1` (PowerShell HttpListener, port 27080, started by `start-server.bat`); the Vercel site stays as
+the public copy (keep both texts in sync).
 
 **2026-11-08: Taaannnk!! (mutation19).** `lef_tanktime` ports Merc1less' Tank!Time! 1.2.3 (original kept in
 `alliedmodders/Merc1less/`): Left4DHooks `L4D_ReplaceTank`/`L4D_TakeOverZombieBot` instead of its gamedata,
