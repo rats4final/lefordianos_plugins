@@ -3,8 +3,8 @@
 # l4d_tank_control_eq (patched: no Ready-Up needed)
 
 **L4D2 Tank Control** by arti, with contributions by Sheo, Sir and Altair-Sossai, from
-L4D2-Competitive-Rework (`addons/sourcemod/scripting/l4d_tank_control_eq.sp`, version 0.0.29,
-upstream commit `dac2c41f`).
+L4D2-Competitive-Rework (`addons/sourcemod/scripting/l4d_tank_control_eq.sp`, version 0.0.30,
+upstream commit `a3f246ae`).
 
 ## What it does
 
@@ -20,7 +20,7 @@ it once. When a tank is passed to the AI, it goes back to the next player in lin
 The original includes `readyup.inc`, which makes the Ready-Up plugin a **hard requirement**: it
 won't load without it. But the plugin never calls a single Ready-Up function. We removed that one
 `#include`, so it runs on a server without Ready-Up. Nothing else is changed; the version is
-marked `0.0.29-lef1`.
+marked `0.0.30-lef1`.
 
 The file name is unchanged on purpose: it's a drop-in replacement, and other plugins that look
 for it by name still find it.
