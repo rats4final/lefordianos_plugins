@@ -239,4 +239,9 @@ Later 2026-11-08: tank chance 60 (witch 50; also in the server's custom.cfg), `s
 latest; ZoneMod 2.9.2 swaps (vomit_collision_fix, fix_pill_pass) and 3 new fixes; pause 6.9.1 ported.
 Ready-Up on demand is an idea in IDEAS.
 
+**2026-11-11:** pins moved again (ZoneMod charger fix 1.11, pause 6.9.2 and tank_control_eq 0.0.30 ported to
+our copies, c10m2 Stripper). IDEAS got gameplay modes (big coop via Harry's l4dmultislots + l4dinfectedbots +
+l4d2_rescue_vehicle_multi, 1v1-3v3, hunters only, practice, mutation of the week) and L4D2: Outbreak (64-bit
+CS:GO-branch engine remake, 2027: extensions and gamedata will need new builds).
+
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

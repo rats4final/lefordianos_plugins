@@ -5,6 +5,18 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-11-11
+
+- **Reference repos updated.** From ZoneMod: a survivor slammed by a charger can no longer shoot or shove in
+  the instant before the pummel starts; the Ellis/hunter fix also covers a player taking over a bot; items
+  can't roll under the metal grate on c10m2; several plugins (`pause` 6.9.2 and `l4d_tank_control_eq`
+  0.0.30 in our patched copies, `bequiet`, `l4d2lib`, `ratemonitor`) stop logging errors when their commands
+  are run from the server console, and spectators can now check rates.
+- **MOTD over http** (in the server repo): the game's browser can't open https, so the server shows the
+  MOTD from its own small web server (port 27080).
+- **Ideas** for new modes (big coop with difficulty that grows with the group, 1v1-3v3, hunters only,
+  practice, mutation of the week), server chores, and L4D2: Outbreak: see IDEAS.
+
 ## 2026-11-08
 
 - **Third person notice**: a player moved to spectators for the third person camera is told why, what to

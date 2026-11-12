@@ -6,6 +6,19 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-11-11
+
+- **Repos de referencia actualizados.** De ZoneMod: un superviviente estampado por un charger ya no puede
+  disparar ni empujar en el instante antes de que empiecen los golpes en el suelo; el arreglo de Ellis/hunter
+  también cubre cuando un jugador toma un bot; los objetos ya no ruedan bajo la reja de metal en c10m2;
+  varios plugins (`pause` 6.9.2 y `l4d_tank_control_eq` 0.0.30 en nuestras copias parchadas, `bequiet`,
+  `l4d2lib`, `ratemonitor`) ya no dejan errores en el log cuando sus comandos se usan desde la consola del
+  servidor, y los espectadores ahora pueden ver los rates.
+- **MOTD por http** (en el repo del servidor): el navegador del juego no abre https, así que el servidor
+  muestra el MOTD desde su propio servidor web chiquito (puerto 27080).
+- **Ideas** de modos nuevos (coop grande con dificultad que sube con el grupo, 1v1-3v3, solo hunters,
+  práctica, mutación de la semana), tareas del servidor, y L4D2: Outbreak: ver IDEAS.
+
 ## 2026-11-08
 
 - **Aviso de tercera persona**: a un jugador que pasan a espectadores por la cámara en tercera persona se le

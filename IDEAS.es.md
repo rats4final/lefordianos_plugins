@@ -391,6 +391,77 @@ también lo usaría.
   guardar; nuestra versión usaría consultas a la base de datos que no traban el servidor y ninguna
   extensión extra.
 
+## Ideas de gameplay (2026-11-11)
+
+Modos de juego nuevos y partidas más grandes. Nada está decidido; cada una sería **su propio modo** (se
+elige con el voto de modo, ajustes en su propio archivo de `gamemode_cvars`, plugins extra prendidos solo
+ahí con `lef_mode_plugins`), así el versus normal queda como está.
+
+1. **Coop grande: 5-8 supervivientes, con dificultad que sube con el grupo.** Casi todo ya existe en el
+   repo de Harry Potter (L4D1_2-Plugins), hecho para usarse junto:
+   - el **l4dtoolz** de lakwsh (ya lo usamos) para más lugares: `sv_setmax`, `sv_maxplayers`;
+   - **`l4dmultislots`**: cuando entra un 5.º jugador o más, le da un bot superviviente nuevo para tomar
+     (o `!join`);
+   - **`l4dinfectedbots`**: su config tiene una sección por cantidad de **supervivientes vivos** (de 1 a 31)
+     con cuántos infectados especiales salen, cada cuánto, su vida, y cuántos tanks y witches y su vida.
+     Esa es la parte de "más difícil cuantos más somos", ya hecha; solo elegimos los números;
+   - **`l4d2_rescue_vehicle_multi`**: arregla que los supervivientes 5+ se queden atrás (o no cuenten) en el
+     rescate;
+   - lo que falta nuestro: más comunes por superviviente (`z_common_limit`, `z_mob_spawn_*`; los números de
+     SuperVanilla sirven de guía) y quizá más botiquines. Un plugin `lef_` chico o solo el cfg del modo.
+
+   Por revisar: los lobbies de coop reservan 4 lugares (`sv_force_unreserved` / `l4d_unreservelobby` de
+   Harry), qué finales o eventos asumen 4 supervivientes, y cómo aguanta el servidor 8 supervivientes y
+   muchos infectados (CPU, edicts).
+2. **Versus chico para días de semana (1v1, 2v2, 3v3).** Los `zm1v1`..`zm3v3` de ZoneMod muestran qué
+   cambiar: tamaño de equipo (`survivor_limit`, `z_max_player_zombies`), qué infectados se permiten (1v1:
+   solo hunter y jockey), menos comunes. SuperVanilla de AoC hace lo mismo con el puntaje oficial y da
+   comunes según el tamaño (1v1: 7, 2v2: 14, 3v3: 21, 4v4: 34). Se junta con la idea vieja del "voto de
+   tamaño de equipo"; no hace falta confogl.
+3. **Modos de fiesta** para reírse, todos votables:
+   - **Solo hunters** (`zonehunters` de ZoneMod): todos los infectados son hunters;
+   - **Práctica** (Practiceogl de AoC): supervivientes con 10.000 de vida, munición infinita, infectados que
+     reaparecen al instante, elegir el infectado con clic derecho, `!give`. Para practicar skeets, levels y
+     charges con amigos;
+   - **Mutaciones oficiales** que ya funcionan con versus (Realismo Versus, Healthpackalypse, Bleed Out...):
+     solo necesitan una línea en el voto de modo y un archivo de `gamemode_cvars`. Quizá una **"mutación de
+     la semana"** elegida por fecha.
+4. **Versus más grande (5v5).** `l4dinfectedbots` permite hasta 10v10 y `l4d2_rescue_vehicle_multi` arregla
+   el puntaje de los supervivientes 5+. Más difícil de balancear que el coop (finales, vida del tank,
+   puntaje), así que después de 1-3.
+5. **Ayuda para equipos desparejos** (opcional, apagado por defecto): cuando a los supervivientes les faltan
+   humanos (p. ej. 3 + un bot), los infectados reaparecen un poco más lento. Cambia el balance, así que solo
+   como interruptor.
+
+No para nosotros (solo referencia): Deadman, Apex, Equilibrium, NextMod, ProMod Elite y NeoMod son configs
+competitivas más pesadas.
+
+### Ideas para el servidor (2026-11-11)
+
+- **Rotar `console.log` solo**: `start-server.bat` lo renombra cuando pasa de ~50 MB y borra los viejos.
+- **Reiniciar el servidor solo si se cae**: un bucle en `start-server.bat` en vez de "presione una tecla".
+- **Un nombre fijo en vez de la IP** (DNS dinámico gratis, p. ej. DuckDNS): si la IP pública cambia, el MOTD
+  y el `connect` de los amigos siguen funcionando.
+- **Top 10 de `!rank` en el MOTD**: `lef_ranks` escribe una página HTML en `web/public/` al terminar cada
+  mapa.
+- **FastDL desde el servidor web del MOTD**: los sonidos de karma (y cualquier archivo propio) se bajan del
+  puerto 27080; ya no hace falta hosting.
+
+### Left 4 Dead 2: Outbreak (para seguir de cerca, 2026-11-11)
+
+Una versión comunitaria, gratis y con licencia de Valve, del motor de L4D2 (anunciada el 2026-10-11, salida
+pensada para 2027, pide tener L4D2): **64 bits**, hecha sobre la rama de CS:GO de Source 1, DirectX 11,
+8.000 edicts, mapas más grandes, mismo gameplay y addons del Workshop
+([wiki](https://left4dead.fandom.com/wiki/Left_4_Dead_2:_Outbreak), [outbreak.team](https://outbreak.team/)).
+Qué significa para nosotros:
+- Los **plugins `.smx`** en sí deberían servir si SourceMod corre ahí (el equipo está sumando autores de
+  plugins y servidores a la prueba cerrada para que SourceMod funcione desde el primer día).
+- Todo lo atado a los binarios del juego necesita versiones nuevas: MetaMod, SourceMod, Stripper, l4dtoolz,
+  builtinvotes, Actions y REST in Pawn de **64 bits**; **gamedata nuevo** para Left4DHooks y cada plugin de
+  arreglos. Dependemos de sus autores para eso.
+- Plan: seguir con el servidor de L4D2 normal; cuando salga Outbreak, correr un servidor de prueba al lado y
+  cambiar solo cuando Left4DHooks y las extensiones que usamos estén listas.
+
 ## Más adelante
 
 - **Expulsiones más amables para configs de rendimiento** (idea, 2026-11-08): `cl_survivor_light_enable 0`,
@@ -442,6 +513,7 @@ también lo usaría.
 
 ## Hecho
 
+- **Repos de referencia actualizados otra vez** (2026-11-11): arreglo del charger 1.11 de ZoneMod (un superviviente estampado por un charger no puede disparar ni empujar en el instante antes de los golpes en el suelo), el arreglo de Ellis/hunter cubre cuando un jugador toma un bot, bloqueo de objetos en c10m2, menos errores por comandos desde la consola (`pause` 6.9.2 y `l4d_tank_control_eq` 0.0.30 portados a nuestras copias, `bequiet`, `l4d2lib`, `ratemonitor` deja a los espectadores ver los rates). Sin probar con jugadores.
 - **Repos de referencia actualizados** (2026-11-08): todas las versiones fijadas pasaron a su último commit. Los 21 plugins de Harry Potter ahora se compilan desde el código (borró sus compilados; `build_lite.py` usa su `scripting_1.12/include/` común). ZoneMod 2.9.2: `l4d2_vomit_collision_fix` reemplaza a `l4d_vomit_trace_patch`, `fix_pill_pass` a `pill_passer`, nuevos `l4d2_fix_ladder_collision`, `l4d2_fullupdate_fix`, `l4d2_voice_mechanics_fix`, arreglos nuevos de mapas de Stripper; `pause` 6.9.1 pasado a nuestra copia. Ningún cvar que usamos cambió de nombre. Sin probar con jugadores.
 - **lef_tanktime** + **lef_mode_plugins** (2026-11-08): Tank!Time! para mutation19, portado con Left4DHooks; sus cambios de Stripper los combina `make_stripper.py`, sus VScripts rehechos sobre los scripts actuales de Valve; los plugins de tank/jefes de versus apagados en ese modo. Sin probar con jugadores.
 - **lef_match** (2026-10-08): los puntajes se mantienen cuando un admin cambia el mapa dentro de la campaña, reiniciar capítulo y volver al lobby en `!admin`; `!admin` ordenado con lo útil primero; los SI rompen puertas de un golpe (`z_door_pound_damage 160`). Todavía sin probar en juego.
