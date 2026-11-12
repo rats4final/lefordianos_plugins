@@ -3,9 +3,9 @@
 Console_Spam_Patches https://github.com/SilvDev/Console_Spam_Patches d6044aef47487e33d386ca478920c79fd7b409d2
 Dissolve_Infected https://github.com/SilvDev/Dissolve_Infected 957b7167b815d7e3fe4439fa0bfdc58ee481749c
 Dynamic_Light https://github.com/SilvDev/Dynamic_Light a079916ebf2a00f19f460b25ae609d859b296bff
-Game-Private_Plugin https://github.com/fbef0102/Game-Private_Plugin fef492bbb3b8fa5a3558eb6d489f61e0d90fce91
-L4D1_2-Plugins https://github.com/fbef0102/L4D1_2-Plugins 9b2d28db5e2be9ab7c433cfc318d9a538cd789d2
-L4D2-Competitive-Rework https://github.com/SirPlease/L4D2-Competitive-Rework 0390482d48ee87ba16ecb39490dc6f235dbdc1e0
+Game-Private_Plugin https://github.com/fbef0102/Game-Private_Plugin 1d54560a2faa26adb6818e807bd99785b457a3ef
+L4D1_2-Plugins https://github.com/fbef0102/L4D1_2-Plugins e5278878c4030544def3a1be0bceb23d2cb20bc7
+L4D2-Competitive-Rework https://github.com/SirPlease/L4D2-Competitive-Rework a3f246ae524b41d3bd57295c91799cabedb9199d
 Left-4-fix https://github.com/LuxLuma/Left-4-fix a3016b7c182049ca77ad3f817a7124ed812d5880
 Left4DHooks https://github.com/SilvDev/Left4DHooks 7672bdefc4e03a693ae7fdc06e470df41b4cc069
 MoYu_Server_Stupid_Plugins https://github.com/Target5150/MoYu_Server_Stupid_Plugins 50c457a46178cb108a603b530894635d825a94b8
@@ -15,10 +15,10 @@ Vote_Mode https://github.com/SilvDev/Vote_Mode ba37d041cb4814257175afe58543dcb39
 l4d2-karma-kill-system https://github.com/eyal282/l4d2-karma-kill-system 395bb5161f7c3566f2cb3fa0299edddde6c075b3
 l4d2_mission_manager https://github.com/rikka0w0/l4d2_mission_manager 8df00f7626b6a7261ccae9533b8d979ebda6402e
 l4dtoolz https://github.com/lakwsh/l4dtoolz efa19444081c0ff02913a1365930a09c49cb332b
-sm-plugin-SMAC https://github.com/srcdslab/sm-plugin-SMAC 1182e4b3c69fc0e2d3e922815112ad951f2f8888
+sm-plugin-SMAC https://github.com/srcdslab/sm-plugin-SMAC e8a947c120470190225a6c4475b848dc781b35f4
 sourcetvsupport https://github.com/shqke/sourcetvsupport a19d90cda0a2299d3b737675d68e2d1a50596a8a
-sm-plugin-lilac https://github.com/srcdslab/sm-plugin-lilac 0bf37112d188c6919a9449062168848fca54da5c
-Sourcemod-Plugins https://github.com/fbef0102/Sourcemod-Plugins e3dc59a48a7f6e8f990712fa7d3a3d9599ce4414
+sm-plugin-lilac https://github.com/srcdslab/sm-plugin-lilac da84d567c4749ce1258afcf5cb255a3af5bbd39b
+Sourcemod-Plugins https://github.com/fbef0102/Sourcemod-Plugins 931547f9e160a5ee366acf361a06f4f777d956e1
 Multi-Colors https://github.com/Bara/Multi-Colors d2f2dc9126255571c0fc4499d5729cacb57265ca
 CallVote-Manager https://github.com/AoC-Gamers/CallVote-Manager 490a1670fdbbf0d97b6dfb036252fb26ca40c8a8
 L4D2-Family-Share https://github.com/AoC-Gamers/L4D2-Family-Share b59e610cdaf7c3db8c949e671cd19a6afd6b496c
