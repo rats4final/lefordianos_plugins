@@ -126,10 +126,10 @@ These fix engine/game bugs and keep the vanilla behaviour the game *meant* to ha
   *ES: los boomers no pueden vomitar mientras están aturdidos por un empujón.*
 - [x] `fixes/l4d2_boomer_ladder_fix`: boomer-on-ladder bug. *needs sourcescramble*
   *ES: bug del boomer en escaleras.*
-- [x] `fixes/l4d2_vomit_collision_fix`: downed or pinned survivors who are already covered don't block
-  vomit aimed past them. Replaced `l4d_vomit_trace_patch` in ZoneMod 2.9.2 (2026-11).
-  *ES: los supervivientes caídos o atrapados que ya están vomitados no bloquean el vómito que pasa de
-  largo. Reemplazó a `l4d_vomit_trace_patch` en ZoneMod 2.9.2.*
+- [x] `fixes/l4d_vomit_trace_patch` (Forgetest's copy): vomit isn't blocked by infected teammates. *needs sourcescramble*
+  ZoneMod 2.9.2 replaced it with `l4d2_vomit_collision_fix`, which crashed our Windows server (2026-11-13); we went back.
+  *ES: el vómito no lo bloquean los compañeros infectados. ZoneMod 2.9.2 lo cambió por
+  `l4d2_vomit_collision_fix`, que tumbaba nuestro servidor Windows (2026-11-13); volvimos a este.*
 - [x] `fixes/l4d2_fix_ladder_collision`: survivors don't collide with the infected-only ladders. *Added 2026-11-08.*
   *ES: los supervivientes no chocan con las escaleras que son solo para infectados.*
 - [x] `fixes/l4d2_fullupdate_fix`: blocks a console trick (full update, also used by demo recording) that

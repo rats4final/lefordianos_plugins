@@ -5,6 +5,14 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-11-13
+
+- **Server crashes fixed (we think):** ZoneMod's new vomit fix (`l4d2_vomit_collision_fix`) threw errors right
+  before each of the night's three crashes. We went back to the previous one, Forgetest's
+  `l4d_vomit_trace_patch` (infected teammates don't block the vomit), with `vomit_collide_strict 0` as before.
+- **Fewer errors in the log:** Spanish phrases for `bequiet` (team chat copied to spectators), the tank/witch
+  notice and the game mode vote; without them SourceMod logged an error for SourceTV's copy of every message.
+
 ## 2026-11-11
 
 - **Reference repos updated.** From ZoneMod: a survivor slammed by a charger can no longer shoot or shove in

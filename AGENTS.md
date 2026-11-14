@@ -95,6 +95,8 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
   as today's version (`tools/extract_vscript.py`, `update/` wins) plus changes behind a mode check.
   Mutations based on versus answer `GetGameModeBase() == "versus"` but `GetGameMode()` is `mutation19`.
 - Plugin paths on Windows use `\` (`lefordianos\x.smx`): compare plugin filenames slash-agnostic.
+- ZoneMod is mostly run on Linux: a new ZoneMod plugin can break only on Windows. `l4d2_vomit_collision_fix`
+  crashed our server (2026-11-13); after a pin update, watch the first night's error log for new plugins.
 - Settings a game-mode cfg changes (e.g. `mutation19.cfg`) must be set back in `common.cfg`, or they
   stay changed in the next mode (each mode file only sets its own).
 - Harry Potter's repos (L4D1_2-Plugins, Sourcemod-Plugins) stopped shipping compiled `.smx` (2026-10-26):
@@ -243,5 +245,10 @@ Ready-Up on demand is an idea in IDEAS.
 our copies, c10m2 Stripper). IDEAS got gameplay modes (big coop via Harry's l4dmultislots + l4dinfectedbots +
 l4d2_rescue_vehicle_multi, 1v1-3v3, hunters only, practice, mutation of the week) and L4D2: Outbreak (64-bit
 CS:GO-branch engine remake, 2027: extensions and gamedata will need new builds).
+
+**2026-11-13:** three crashes in one night, each right after `l4d2_vomit_collision_fix` errors (DHooks
+"Invalid Handle" in its TestHitboxes hook; offsets 16/177 verified correct in server.dll). Back to Forgetest's
+`l4d_vomit_trace_patch` (MoYu, `sp`) + `vomit_collide_strict 0`. Spanish phrases added for bequiet,
+tank_witch_spawn_notify and votemode (LANG_SERVER errors, same cause as cannounce).
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.

@@ -6,6 +6,16 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-11-13
+
+- **Caídas del servidor arregladas (creemos):** el arreglo nuevo del vómito de ZoneMod (`l4d2_vomit_collision_fix`)
+  tiraba errores justo antes de cada una de las tres caídas de la noche. Volvimos al anterior,
+  `l4d_vomit_trace_patch` de Forgetest (los compañeros infectados no bloquean el vómito), con
+  `vomit_collide_strict 0` como antes.
+- **Menos errores en el log:** frases en español para `bequiet` (el chat de equipo copiado a los espectadores),
+  el aviso de tank/witch y el voto de modo de juego; sin ellas SourceMod anotaba un error por la copia de
+  SourceTV de cada mensaje.
+
 ## 2026-11-11
 
 - **Repos de referencia actualizados.** De ZoneMod: un superviviente estampado por un charger ya no puede
