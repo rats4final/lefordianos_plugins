@@ -1,0 +1,47 @@
+// Spanish for Vote_Mode (game mode vote). Without it, with "ServerLang" "es" SourceMod logs an error for
+// the server's own copy of its messages.
+// Espanol para Vote_Mode (voto de modo de juego). Sin esto, con "ServerLang" "es" SourceMod anota un
+// error por la copia del servidor de sus mensajes.
+"Phrases"
+{
+	"VoteMode_Force"
+	{
+		"es"	"Forzar modo de juego:"
+	}
+	"VoteMode_Vote"
+	{
+		"es"	"Votar modo de juego:"
+	}
+	"VoteMode_Pass"
+	{
+		"es"	"Un admin aprobó la votación actual."
+	}
+	"VoteMode_Veto"
+	{
+		"es"	"Un admin terminó la votación actual."
+	}
+	"VoteMode_InProgress"
+	{
+		"es"	"No se puede empezar la votación: ya hay una en curso."
+	}
+	"VoteMode_Started"
+	{
+		"es"	"Empezó una votación para cambiar el modo de juego a:"
+	}
+	"VoteMode_Change"
+	{
+		"es"	"Cambiar el modo de juego a:"
+	}
+	"VoteMode_Voted"
+	{
+		"es"	"votó para cambiar el modo de juego."
+	}
+	"VoteMode_Changing"
+	{
+		"es"	"Cambiando a"
+	}
+	"VoteMode_Restarting"
+	{
+		"es"	"El mapa se reinicia en 3 segundos..."
+	}
+}

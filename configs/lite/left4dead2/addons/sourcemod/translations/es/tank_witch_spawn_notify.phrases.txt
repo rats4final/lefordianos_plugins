@@ -1,0 +1,15 @@
+// Spanish for tank_witch_spawn_notify. Without it, with "ServerLang" "es" SourceMod logs an error for
+// SourceTV's copy of each notice.
+// Espanol para tank_witch_spawn_notify. Sin esto, con "ServerLang" "es" SourceMod anota un error por la
+// copia de SourceTV de cada aviso.
+"Phrases"
+{
+	"Tank"
+	{
+		"es"		"{green}[{lightgreen}!{green}] {green}¡Apareció el {olive}Tank{green}!"
+	}
+	"Witch"
+	{
+		"es"		"{green}[{lightgreen}!{green}] {green}¡Apareció la {olive}Witch{green}!"
+	}
+}

@@ -1,0 +1,15 @@
+// Spanish for bequiet (team chat copied to spectators). Without it, with "ServerLang" "es" SourceMod
+// finds no phrase for SourceTV's copy and logs an error for every team message.
+// Espanol para bequiet (chat de equipo copiado a los espectadores). Sin esto, con "ServerLang" "es"
+// SourceMod no encuentra la frase para la copia de SourceTV y anota un error por cada mensaje.
+"Phrases"
+{
+	"SurvivorSay"
+	{
+		"es"		"{default}(Superviviente) {blue}{1} {default}: {2}"
+	}
+	"InfectedSay"
+	{
+		"es"		"{default}(Infectado) {red}{1} {default}: {2}"
+	}
+}
