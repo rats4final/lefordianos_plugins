@@ -248,7 +248,7 @@ CS:GO-branch engine remake, 2027: extensions and gamedata will need new builds).
 
 **2026-11-13:** three crashes in one night, each right after `l4d2_vomit_collision_fix` errors (DHooks
 "Invalid Handle" in its TestHitboxes hook; offsets 16/177 verified correct in server.dll). Back to Forgetest's
-`l4d_vomit_trace_patch` (MoYu, `sp`) + `vomit_collide_strict 0`. Spanish phrases added for bequiet,
+`l4d_vomit_trace_patch` (MoYu, `sp`) + `vomit_collide_strict 0`. Reported as ZoneMod issue #1036; switch back if they fix it. Spanish phrases added for bequiet,
 tank_witch_spawn_notify and votemode (LANG_SERVER errors, same cause as cannounce).
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
