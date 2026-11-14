@@ -64,8 +64,10 @@ smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockeyed_ladder
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_jockey_hitbox_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_jockey_hitbox_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_shenanigans.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_shenanigans.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_boomer_ladder_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_boomer_ladder_fix.sp fixes
-# ZoneMod 2.9.2 (2026-11): l4d2_vomit_collision_fix replaced l4d_vomit_trace_patch
-smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_vomit_collision_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_vomit_collision_fix.sp fixes
+# ZoneMod 2.9.2 swapped this for l4d2_vomit_collision_fix, which crashed our Windows server (2026-11-13,
+# DHooks errors in its TestHitboxes hook right before each crash). Back to Forgetest's l4d_vomit_trace_patch
+# (same code ZoneMod shipped until 2026-11-03).
+sp   "MoYu_Server_Stupid_Plugins/The Last Stand/l4d_vomit_trace_patch/scripting/l4d_vomit_trace_patch.sp" fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fix_ladder_collision.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fix_ladder_collision.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_fullupdate_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_fullupdate_fix.sp fixes
 smx  L4D2-Competitive-Rework/addons/sourcemod/plugins/fixes/l4d2_voice_mechanics_fix.smx L4D2-Competitive-Rework/addons/sourcemod/scripting/l4d2_voice_mechanics_fix.sp fixes
