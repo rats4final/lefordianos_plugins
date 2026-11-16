@@ -5,6 +5,14 @@
 What was built, by date. Nothing here has been tested on a real server yet. Details and reasons are
 in [IDEAS.md](IDEAS.md); what each part gives players is in [docs/BENEFITS.md](docs/BENEFITS.md).
 
+## 2026-11-16
+
+- **Vomit fix back, now fixed:** ZoneMod fixed the crash we reported (`l4d2_vomit_collision_fix` 1.1: on Windows
+  the game checks hitboxes from other threads, and the plugin's hook ran there). We use it again instead of the
+  old `l4d_vomit_trace_patch`: downed or pinned survivors already covered in bile no longer block vomit aimed
+  past them.
+- **Reference repos updated** (ZoneMod, Harry Potter). Harry's changes are to plugins we don't use.
+
 ## 2026-11-13
 
 - **Server crashes fixed (we think):** ZoneMod's new vomit fix (`l4d2_vomit_collision_fix`) threw errors right

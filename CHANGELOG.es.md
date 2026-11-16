@@ -6,6 +6,14 @@ Lo que se hizo, por fecha. Nada de esto se probó todavía en un servidor real. 
 están en [IDEAS.es.md](IDEAS.es.md); lo que cada parte le da a los jugadores está en
 [docs/BENEFITS.es.md](docs/BENEFITS.es.md).
 
+## 2026-11-16
+
+- **Vuelve el arreglo del vómito, ya corregido:** ZoneMod arregló la caída que reportamos
+  (`l4d2_vomit_collision_fix` 1.1: en Windows el juego revisa los hitboxes desde otros hilos, y el hook del plugin
+  corría ahí). Lo usamos de nuevo en vez del viejo `l4d_vomit_trace_patch`: los supervivientes caídos o
+  atrapados que ya están vomitados no bloquean el vómito que pasa de largo.
+- **Repos de referencia actualizados** (ZoneMod, Harry Potter). Los cambios de Harry son en plugins que no usamos.
+
 ## 2026-11-13
 
 - **Caídas del servidor arregladas (creemos):** el arreglo nuevo del vómito de ZoneMod (`l4d2_vomit_collision_fix`)

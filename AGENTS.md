@@ -95,8 +95,9 @@ python3 tools/sync_server.py      # copy build/lite into the server repo ../l4d2
   as today's version (`tools/extract_vscript.py`, `update/` wins) plus changes behind a mode check.
   Mutations based on versus answer `GetGameModeBase() == "versus"` but `GetGameMode()` is `mutation19`.
 - Plugin paths on Windows use `\` (`lefordianos\x.smx`): compare plugin filenames slash-agnostic.
-- ZoneMod is mostly run on Linux: a new ZoneMod plugin can break only on Windows. `l4d2_vomit_collision_fix`
-  crashed our server (2026-11-13); after a pin update, watch the first night's error log for new plugins.
+- ZoneMod is mostly run on Linux: a new ZoneMod plugin can break only on Windows. `l4d2_vomit_collision_fix` 1.0
+  crashed our server (2026-11-13, fixed in 1.1: Windows runs some traces on worker threads, so hooks on
+  them must not stay on); after a pin update, watch the first night's error log for new plugins.
 - Settings a game-mode cfg changes (e.g. `mutation19.cfg`) must be set back in `common.cfg`, or they
   stay changed in the next mode (each mode file only sets its own).
 - Harry Potter's repos (L4D1_2-Plugins, Sourcemod-Plugins) stopped shipping compiled `.smx` (2026-10-26):
@@ -248,7 +249,10 @@ CS:GO-branch engine remake, 2027: extensions and gamedata will need new builds).
 
 **2026-11-13:** three crashes in one night, each right after `l4d2_vomit_collision_fix` errors (DHooks
 "Invalid Handle" in its TestHitboxes hook; offsets 16/177 verified correct in server.dll). Back to Forgetest's
-`l4d_vomit_trace_patch` (MoYu, `sp`) + `vomit_collide_strict 0`. Reported as ZoneMod issue #1036; switch back if they fix it. Spanish phrases added for bequiet,
+`l4d_vomit_trace_patch` (MoYu, `sp`) + `vomit_collide_strict 0`. Reported as ZoneMod issue #1036.
+**2026-11-16:** fixed upstream (85139a24, 1.1: Windows checks hitboxes from worker threads via
+`target_scan_use_query_cache`; the hook now lives only for the frame of a vomit trace). Back on
+`l4d2_vomit_collision_fix` 1.1, `vomit_collide_strict` gone again. Spanish phrases added for bequiet,
 tank_witch_spawn_notify and votemode (LANG_SERVER errors, same cause as cannounce).
 
 **Next step:** the owner keeps playing and reports the error log and what felt wrong.
