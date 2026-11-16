@@ -4,8 +4,8 @@ Console_Spam_Patches https://github.com/SilvDev/Console_Spam_Patches d6044aef474
 Dissolve_Infected https://github.com/SilvDev/Dissolve_Infected 957b7167b815d7e3fe4439fa0bfdc58ee481749c
 Dynamic_Light https://github.com/SilvDev/Dynamic_Light a079916ebf2a00f19f460b25ae609d859b296bff
 Game-Private_Plugin https://github.com/fbef0102/Game-Private_Plugin 1d54560a2faa26adb6818e807bd99785b457a3ef
-L4D1_2-Plugins https://github.com/fbef0102/L4D1_2-Plugins e5278878c4030544def3a1be0bceb23d2cb20bc7
-L4D2-Competitive-Rework https://github.com/SirPlease/L4D2-Competitive-Rework a3f246ae524b41d3bd57295c91799cabedb9199d
+L4D1_2-Plugins https://github.com/fbef0102/L4D1_2-Plugins 921244447f7f6ba435ba099233f03a1ac4100690
+L4D2-Competitive-Rework https://github.com/SirPlease/L4D2-Competitive-Rework 85139a242fafc913add3862c7066880b0ed9b991
 Left-4-fix https://github.com/LuxLuma/Left-4-fix a3016b7c182049ca77ad3f817a7124ed812d5880
 Left4DHooks https://github.com/SilvDev/Left4DHooks 7672bdefc4e03a693ae7fdc06e470df41b4cc069
 MoYu_Server_Stupid_Plugins https://github.com/Target5150/MoYu_Server_Stupid_Plugins 50c457a46178cb108a603b530894635d825a94b8
